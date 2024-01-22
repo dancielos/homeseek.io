@@ -6,6 +6,7 @@ export default function Home() {
 		<main>
 			<h1>Hello World!</h1>
 			<p>New changes</p>
+			<p>{process.env.DB_URL}</p>
 		</main>
 	);
 }
