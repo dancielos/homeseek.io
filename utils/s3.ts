@@ -2,6 +2,7 @@
 
 import { GetObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { revalidatePath } from 'next/cache';
 
 const bucketName = process.env.BUCKET_NAME;
 const region = process.env.BUCKET_REGION;
@@ -22,5 +23,6 @@ export default async function testS3() {
 		Key: 'duck.jpeg',
 	});
 	const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+	revalidatePath('/', 'page');
 	return url;
 }
