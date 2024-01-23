@@ -22,7 +22,7 @@ export default async function testS3() {
 		Bucket: bucketName,
 		Key: 'duck.jpeg',
 	});
-	const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+	const url = await getSignedUrl(s3, command, { expiresIn: 1 });
 	revalidatePath('/', 'page');
 	return url;
 }
