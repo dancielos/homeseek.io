@@ -1,9 +1,7 @@
 // import { testDB } from '@/utils/db';
 
-import testS3 from '@/utils/s3';
 import Image from 'next/image';
 
-const test2 = 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/duck.jpeg';
 // const test = await testS3();
 
 export default function Home() {
@@ -11,10 +9,48 @@ export default function Home() {
 	// console.log(test);
 	return (
 		<main>
-			<h1>Hello World!</h1>
-			<p>New changes</p>
-			<Image src={test2} alt='test' height={100} width={100} priority />
-			{/* <p>{process.arch}</p> */}
+			<section>
+				<h1>Hello World!</h1>
+				<form>
+					<input type='text' id='search-input' />
+					<input type='submit' />
+				</form>
+			</section>
+			<section>
+				<h2>Featured listing</h2>
+				<ul>
+					<li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. </li>
+					<li>
+						Laboriosam ipsam id fugit soluta ducimus voluptates voluptatum
+						consequatur excepturi voluptatibus!{' '}
+					</li>
+					<li>
+						Eum libero eius mollitia quis? Culpa maxime perspiciatis voluptate
+						recusandae unde!
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h2>Are you a landlord, property owner/manager?</h2>
+				<p>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum,
+					quibusdam? Voluptas vero placeat perspiciatis quis labore facilis
+					dolorem nesciunt sapiente tenetur fuga, id aliquam a odio corrupti
+					consequuntur expedita suscipit.
+				</p>
+				<button>Post your listing</button>
+			</section>
+			<section>
+				<h2>Popular Cities</h2>
+				<ul>
+					<li>Toronto</li>
+					<li>Vancouver</li>
+					<li>Montreal</li>
+					<li>Edmonton</li>
+					<li>Calgary</li>
+					<li>Red Deer</li>
+				</ul>
+			</section>
 		</main>
 	);
 }
