@@ -29,3 +29,21 @@ export default async function testS3() {
 	// console.log(url);
 	return url;
 }
+
+function findArray(pref: number[]): number[] {
+	const ans: number[] = [];
+	let prev = -1;
+	pref.forEach((p) => {
+		if (prev === -1) {
+			ans.push(prev);
+			prev = p;
+			return;
+		}
+		const xor = prev ^ p;
+		ans.push(xor);
+		prev = xor;
+	});
+	return ans;
+}
+
+console.log(findArray([5, 2, 0, 3, 1]));
