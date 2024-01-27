@@ -29,7 +29,7 @@ export default function SearchBar() {
 				TransitionComponent={Zoom}
 			>
 				<TextField
-					id='outlined-basic'
+					id='search-input'
 					label='City'
 					variant='outlined'
 					// color='secondary'

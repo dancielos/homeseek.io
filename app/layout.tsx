@@ -1,7 +1,7 @@
 // 'use client';
 // import CustomTheme from '@/utils/theme';
-import Footer from '@/components/Footer';
-import NavBar from '@/components/NavBar';
+import Footer from '@/layouts/Footer';
+import NavBar from '@/layouts/NavBar';
 import ThemeRegistry from '@/utils/themeRegistry';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';

@@ -3,7 +3,7 @@
 import { AppBar, Button, Icon, Toolbar, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import { useTheme } from '@emotion/react';
-import CTA from './ui/CTA';
+import CTA from '../components/ui/CTA';
 
 export default function NavBar() {
 	const theme = useTheme();

@@ -1,98 +1,18 @@
-// 'use client';
-// import { testDB } from '@/utils/db';
-
-import { Button, ImageList, Typography } from '@mui/material';
+import { ImageList } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import SearchBar from '@/components/forms/SearchBar';
 import Image from 'next/image';
 import Section from '@/components/section/Section';
-import CardFeaturedHome from '@/components/cards/CardFeaturedHome';
-import CardCity from '@/components/cards/CardCity';
-import { useTheme } from '@emotion/react';
+import CardFeaturedHome from '@/pages/Home/CardFeaturedHome';
+import CardCity from '@/pages/Home/CardCity';
 import P from '@/components/ui/P';
 import H1 from '@/components/ui/H1';
 import H2 from '@/components/ui/H2';
 import CTA from '@/components/ui/CTA';
 
-const cards = [1, 2, 3, 4];
-
-const itemData = [
-	{
-		img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-		title: 'Breakfast',
-		author: '@bkristastucchio',
-		rows: 2,
-		cols: 2,
-		featured: true,
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-		title: 'Burger',
-		author: '@rollelflex_graphy726',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-		title: 'Camera',
-		author: '@helloimnik',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-		title: 'Coffee',
-		author: '@nolanissac',
-		cols: 2,
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-		title: 'Hats',
-		author: '@hjrc33',
-		cols: 2,
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-		title: 'Honey',
-		author: '@arwinneil',
-		rows: 2,
-		cols: 2,
-		featured: true,
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-		title: 'Basketball',
-		author: '@tjdragotta',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-		title: 'Fern',
-		author: '@katie_wasserman',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-		title: 'Mushrooms',
-		author: '@silverdalex',
-		rows: 2,
-		cols: 2,
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-		title: 'Tomato basil',
-		author: '@shelleypauls',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-		title: 'Sea star',
-		author: '@peterlaster',
-	},
-	{
-		img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-		title: 'Bike',
-		author: '@southside_customs',
-		cols: 2,
-	},
-];
+import { cards, itemData } from '@/data/constants';
 
 export default function Home() {
-	// const test = testDB();
-	// console.log(test);
 	return (
 		<>
 			<Section

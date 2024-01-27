@@ -1,3 +1,4 @@
+import { BORDER_RADIUS, BOX_SHADOW } from '@/data/constants';
 import { createTheme, responsiveFontSizes } from '@mui/material';
 
 import { Ubuntu } from 'next/font/google';
@@ -30,7 +31,6 @@ export const theme = responsiveFontSizes(
 			h1: {
 				letterSpacing: -4,
 				fontWeight: FontWeight.BOLD,
-
 				textAlign: 'center',
 			},
 			h2: {
@@ -46,18 +46,18 @@ export const theme = responsiveFontSizes(
 			MuiCard: {
 				styleOverrides: {
 					root: {
-						borderRadius: 1,
-						boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+						borderRadius: BORDER_RADIUS,
+						boxShadow: BOX_SHADOW,
 					},
 				},
 			},
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						borderRadius: 1,
+						borderRadius: BORDER_RADIUS,
 					},
 					contained: {
-						boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+						boxShadow: BOX_SHADOW,
 					},
 				},
 			},
@@ -65,7 +65,7 @@ export const theme = responsiveFontSizes(
 			MuiOutlinedInput: {
 				styleOverrides: {
 					root: {
-						borderRadius: 1,
+						borderRadius: BORDER_RADIUS,
 						paddingBottom: 0,
 					},
 				},
@@ -73,7 +73,7 @@ export const theme = responsiveFontSizes(
 			MuiAppBar: {
 				styleOverrides: {
 					root: {
-						boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+						boxShadow: BOX_SHADOW,
 					},
 				},
 			},

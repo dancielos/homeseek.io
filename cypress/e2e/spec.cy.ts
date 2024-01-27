@@ -14,7 +14,7 @@ describe('HomeSeek Homepage', () => {
 		cy.visit('http://localhost:3000');
 		cy.get('section').should('have.length', '4');
 		cy.get('input#search-input').should('exist');
-		cy.get('input[type="submit"]').should('exist');
+		cy.get('[type="submit"]').should('exist');
 	});
 	// IN THE FUTURE:
 	// it('should NOT have Lorem or dummy values', () => {
