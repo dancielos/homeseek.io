@@ -1,7 +1,10 @@
 // 'use client';
 // import CustomTheme from '@/utils/theme';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/NavBar';
 import ThemeRegistry from '@/utils/themeRegistry';
 import { ThemeProvider } from '@emotion/react';
+import { CssBaseline } from '@mui/material';
 // import { createTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 // import { defaultTheme } from '@/utils/theme';
@@ -26,7 +29,10 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<AppRouterCacheProvider>
 					<ThemeRegistry options={{ key: 'mui-theme' }}>
-						{children}
+						<CssBaseline />
+						<NavBar />
+						<main>{children}</main>
+						<Footer />
 					</ThemeRegistry>
 				</AppRouterCacheProvider>
 			</body>
