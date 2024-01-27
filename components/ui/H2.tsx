@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material';
+import React from 'react';
 
-export default function SectionTitle({ title }: { title: string }) {
+export default function H2({ children }: { children: React.ReactNode }) {
 	return (
 		<Typography component='h2' variant='h2'>
-			{title}
+			{children}
 		</Typography>
 	);
 }

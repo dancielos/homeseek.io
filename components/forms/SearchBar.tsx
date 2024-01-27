@@ -9,6 +9,7 @@ import {
 	Tooltip,
 	Zoom,
 } from '@mui/material';
+import CTA from '../ui/CTA';
 
 export default function SearchBar() {
 	return (
@@ -31,12 +32,20 @@ export default function SearchBar() {
 					id='outlined-basic'
 					label='City'
 					variant='outlined'
+					// color='secondary'
 					fullWidth
+					sx={{
+						color: 'primary.main',
+						borderColor: '#ffffff',
+						backgroundColor: 'rgba(33, 37, 41, 0.7)',
+						'& input': {
+							color: 'primary.main',
+						},
+					}}
+					focused
 				/>
 			</Tooltip>
-			<Button variant='contained' type='submit'>
-				Search
-			</Button>
+			<CTA type='submit'>Search</CTA>
 		</Stack>
 	);
 }

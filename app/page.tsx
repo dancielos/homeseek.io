@@ -8,6 +8,11 @@ import Image from 'next/image';
 import Section from '@/components/section/Section';
 import CardFeaturedHome from '@/components/cards/CardFeaturedHome';
 import CardCity from '@/components/cards/CardCity';
+import { useTheme } from '@emotion/react';
+import P from '@/components/ui/P';
+import H1 from '@/components/ui/H1';
+import H2 from '@/components/ui/H2';
+import CTA from '@/components/ui/CTA';
 
 const cards = [1, 2, 3, 4];
 
@@ -94,26 +99,23 @@ export default function Home() {
 				variant='custom'
 				sx={{
 					// bgcolor: 'background.paper',
+					color: '#fff4e6',
 					pt: '20vh',
 					pb: 6,
 					background:
-						'url("https://homeseek-bucket.s3.ca-central-1.amazonaws.com/hero-img.jpg")',
+						'url("https://homeseek-bucket.s3.ca-central-1.amazonaws.com/hero-img2_2560px.jpg")',
+					// background:
+					// 'url("https://homeseek-bucket.s3.ca-central-1.amazonaws.com/hero-img2_1280px.jpg")',
 					backgroundSize: 'cover',
 					backgroundRepeat: 'no-repeat',
 					// backgroundPositionY: 'center',
-					minHeight: '90vh',
+					width: '100vw',
+					height: 720,
+					textShadow: '2px 4px 12px #212529',
 				}}
 				fullWidth
 			>
-				<Typography
-					component='h1'
-					variant='h1'
-					align='center'
-					color='text.primary'
-					gutterBottom
-				>
-					Search your next home
-				</Typography>
+				<H1>Search your next home</H1>
 				<SearchBar />
 			</Section>
 			<Section title='Featured Homes'>
@@ -128,18 +130,14 @@ export default function Home() {
 			<Section variant='secondary' fullWidth>
 				<Grid container xs={10}>
 					<Grid xs={8}>
-						<Typography component='h2' variant='h2' gutterBottom>
-							Are you a landlord, property owner, or property manager?
-						</Typography>
-						<Typography>
+						<H2>Are you a landlord, property owner, or property manager?</H2>
+						<P>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
 							minima unde ea ipsam ratione officiis laboriosam culpa, odit
 							accusantium? Adipisci ut ipsum quo tempora vitae hic maiores
 							provident eligendi dolor?
-						</Typography>
-						<Button variant='contained' color='secondary'>
-							Start listing your property
-						</Button>
+						</P>
+						<CTA>Start listing your property</CTA>
 					</Grid>
 					<Grid xs={2}>
 						{/* <Image
