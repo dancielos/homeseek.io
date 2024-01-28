@@ -1,0 +1,14 @@
+.image {
+	z-index: -100;
+	position: absolute;
+	width: 100%;
+	height: auto;
+	top: 0;
+}
+
+@media screen and (max-width: 600px) {
+	.image {
+		width: auto;
+		height: 100%;
+	}
+}

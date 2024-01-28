@@ -1,5 +1,5 @@
 import React, { HTMLProps } from 'react';
-import classes from './video.module.css';
+import classes from '@/styles/video.module.css';
 
 interface VideoProps extends HTMLProps<'video'> {}
 
@@ -9,7 +9,7 @@ interface VideoProps extends HTMLProps<'video'> {}
 
 export default function Video({ src }: VideoProps) {
 	return (
-		<video width='100%' autoPlay loop muted className={classes.video}>
+		<video autoPlay loop muted className={classes.video}>
 			<source src={src} type='video/mp4' />
 		</video>
 	);

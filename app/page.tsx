@@ -24,17 +24,26 @@ export default function Home() {
 					position: 'relative',
 					width: '100vw',
 					// minHeight: '56.25%',
-					paddingY: '15%',
+					// aspectRatio: 16 / 7,
+					aspectRatio: {
+						xs: 9 / 10,
+						sm: 16 / 7,
+					},
+					// paddingY: {
+					// 	xs: '20%',
+					// },
 					paddingX: '0!important',
-					overflowY: 'hidden',
+					overflow: 'hidden',
 				}}
-				alignContent='end'
-				justifyContent='flex-end'
+				alignContent='center'
+				justifyContent='center'
+				alignItems='center'
 				direction='column'
 				columns={12}
+				flexWrap='nowrap'
 			>
 				<HeroBackground />
-				<Grid xs={10} md={10} lg={12}>
+				<Grid xs={12} md={10} lg={12}>
 					<H1
 						sx={{
 							color: '#fff4e6',
@@ -46,10 +55,10 @@ export default function Home() {
 					</H1>
 				</Grid>
 
-				<Grid xs={10} md={10} lg={10} alignSelf='center'>
+				{/* <Grid xs={10} md={10} lg={10}>
 					<Typography>Something here...</Typography>
-				</Grid>
-				<Grid xs={10} md={10} lg={10} alignSelf='center'>
+				</Grid> */}
+				<Grid xs={10} sm={8} md={10} lg={10}>
 					<SearchBar />
 				</Grid>
 			</Grid>
