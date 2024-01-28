@@ -10,7 +10,7 @@ export default function Bento({ data }: { data: string }) {
 			<Grid xs={16} sm={16} md={10}>
 				<CardListing {...DUMMY_LISTING[0]} />
 			</Grid>
-			<Grid xs={16} sm={8} md={6}>
+			<Grid xs={16} sm={8} md={6} alignSelf='end'>
 				<CardListing {...DUMMY_LISTING[1]} />
 			</Grid>
 			<Grid xs={16} sm={8} md={6}>

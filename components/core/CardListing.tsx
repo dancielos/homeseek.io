@@ -27,16 +27,12 @@ export default function CardListing({
 	...rest
 }: CardListingProps) {
 	return (
-		<Card
-			sx={{
-				height: '100%',
-				display: 'flex',
-				flexDirection: 'column',
-			}}
-		>
+		<Card>
 			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
-			<CardContent sx={{ flexGrow: 1, p: 0 }}>
-				<Container sx={{ position: 'relative', minHeight: 128 }}>
+			<CardContent sx={{ p: 0 }}>
+				<Container
+					sx={{ position: 'relative', width: 'auto', aspectRatio: 16 / 8 }}
+				>
 					<Image
 						// component='div'
 						// sx={{
@@ -46,6 +42,7 @@ export default function CardListing({
 						src='https://source.unsplash.com/random?wallpapers'
 						alt='Lorem ipsum'
 						fill
+						style={{}}
 					/>
 				</Container>
 				<Container>
