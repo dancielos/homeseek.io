@@ -51,11 +51,12 @@ export default function Home() {
 							fontSize: {
 								xs: '3rem',
 								sm: '4rem',
-								md: '5rem',
+								md: '6rem',
+								// lg: '6rem',
 							},
 						}}
 					>
-						Move in to your next home
+						Move in to your new home
 					</H1>
 				</Grid>
 
