@@ -11,31 +11,31 @@ import H2 from '@/components/ui/H2';
 import CTA from '@/components/ui/CTA';
 
 import { cards, itemData } from '@/data/constants';
+import { relative } from 'path';
+import HeroBackground from '@/pages/Home/HeroBackground';
 
 export default function Home() {
 	return (
 		<>
 			<Section
+				fullWidth
 				variant='custom'
 				sx={{
-					// bgcolor: 'background.paper',
-					color: '#fff4e6',
-					pt: '20vh',
-					pb: 6,
-					background:
-						'url("https://homeseek-bucket.s3.ca-central-1.amazonaws.com/hero-img2_2560px.jpg")',
-					// background:
-					// 'url("https://homeseek-bucket.s3.ca-central-1.amazonaws.com/hero-img2_1280px.jpg")',
-					backgroundSize: 'cover',
-					backgroundRepeat: 'no-repeat',
-					// backgroundPositionY: 'center',
+					position: 'relative',
 					width: '100vw',
 					height: 720,
-					textShadow: '2px 4px 12px #212529',
+					padding: '0!important',
 				}}
-				fullWidth
 			>
-				<H1>Search your next home</H1>
+				<HeroBackground />
+				<H1
+					sx={{
+						color: '#fff4e6',
+						textShadow: '2px 2px 10px rgba(0, 0, 0, 0.8)',
+					}}
+				>
+					Move in to your next home
+				</H1>
 				<SearchBar />
 			</Section>
 			<Section title='Featured Homes'>

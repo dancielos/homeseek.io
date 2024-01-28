@@ -1,8 +1,12 @@
-import { Typography } from '@mui/material';
+import { Typography, TypographyProps } from '@mui/material';
 
-export default function H1({ children }: { children: React.ReactNode }) {
+interface H1Props extends TypographyProps {
+	children: React.ReactNode;
+}
+
+export default function H1({ children, ...args }: H1Props) {
 	return (
-		<Typography component='h1' variant='h1'>
+		<Typography component='h1' variant='h1' {...args}>
 			{children}
 		</Typography>
 	);
