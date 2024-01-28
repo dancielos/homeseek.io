@@ -27,11 +27,10 @@ export default function Home() {
 					// aspectRatio: 16 / 7,
 					aspectRatio: {
 						xs: 9 / 10,
-						sm: 16 / 7,
+						sm: 16 / 9,
+						md: 16 / 7,
 					},
-					// paddingY: {
-					// 	xs: '20%',
-					// },
+
 					paddingX: '0!important',
 					overflow: 'hidden',
 				}}
@@ -49,6 +48,11 @@ export default function Home() {
 							color: '#fff4e6',
 							zIndex: 100,
 							textShadow: '2px 2px 10px rgba(0, 0, 0, 0.7)',
+							fontSize: {
+								xs: '3rem',
+								sm: '4rem',
+								md: '5rem',
+							},
 						}}
 					>
 						Move in to your next home
@@ -58,7 +62,7 @@ export default function Home() {
 				{/* <Grid xs={10} md={10} lg={10}>
 					<Typography>Something here...</Typography>
 				</Grid> */}
-				<Grid xs={10} sm={8} md={10} lg={10}>
+				<Grid xs={10} sm={6} md={10} lg={10}>
 					<SearchBar />
 				</Grid>
 			</Grid>

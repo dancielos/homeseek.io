@@ -30,8 +30,10 @@ export const theme = responsiveFontSizes(
 			fontFamily: `${ubuntu.style.fontFamily}, Arial, sans-serif`,
 			h1: {
 				letterSpacing: -4,
+				lineHeight: 1,
 				fontWeight: FontWeight.BOLD,
 				textAlign: 'center',
+				paddingBottom: '1.2rem',
 			},
 			h2: {
 				fontWeight: FontWeight.BOLD,
@@ -62,7 +64,7 @@ export const theme = responsiveFontSizes(
 				},
 			},
 
-			MuiOutlinedInput: {
+			MuiFilledInput: {
 				styleOverrides: {
 					root: {
 						borderRadius: BORDER_RADIUS,

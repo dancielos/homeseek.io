@@ -15,8 +15,7 @@ export default function SearchBar() {
 	return (
 		<Stack
 			component='form'
-			sx={{ pt: 4 }}
-			direction='row'
+			direction={{ xs: 'column', sm: 'row' }}
 			spacing={2}
 			justifyContent='center'
 			width={{ xs: '100%', md: 1 / 2 }}
@@ -30,14 +29,13 @@ export default function SearchBar() {
 			>
 				<TextField
 					id='search-input'
-					label='City'
-					variant='outlined'
-					// color='secondary'
+					label='City or Address'
+					variant='filled'
 					fullWidth
 					sx={{
 						color: 'primary.main',
 						borderColor: '#ffffff',
-						backgroundColor: 'rgba(33, 37, 41, 0.7)',
+						backgroundColor: 'rgba(33, 37, 41, 0.8)',
 						'& input': {
 							color: 'primary.main',
 						},
