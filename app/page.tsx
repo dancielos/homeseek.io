@@ -1,4 +1,4 @@
-import { ImageList } from '@mui/material';
+import { ImageList, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import SearchBar from '@/components/forms/SearchBar';
 import Image from 'next/image';
@@ -17,27 +17,42 @@ import HeroBackground from '@/pages/Home/HeroBackground';
 export default function Home() {
 	return (
 		<>
-			<Section
-				fullWidth
-				variant='custom'
+			<Grid
+				container
+				component='section'
 				sx={{
 					position: 'relative',
 					width: '100vw',
-					height: 720,
-					padding: '0!important',
+					// minHeight: '56.25%',
+					paddingY: '15%',
+					paddingX: '0!important',
+					overflowY: 'hidden',
 				}}
+				alignContent='end'
+				justifyContent='flex-end'
+				direction='column'
+				columns={12}
 			>
 				<HeroBackground />
-				<H1
-					sx={{
-						color: '#fff4e6',
-						textShadow: '2px 2px 10px rgba(0, 0, 0, 0.8)',
-					}}
-				>
-					Move in to your next home
-				</H1>
-				<SearchBar />
-			</Section>
+				<Grid xs={10} md={10} lg={12}>
+					<H1
+						sx={{
+							color: '#fff4e6',
+							zIndex: 100,
+							textShadow: '2px 2px 10px rgba(0, 0, 0, 0.7)',
+						}}
+					>
+						Move in to your next home
+					</H1>
+				</Grid>
+
+				<Grid xs={10} md={10} lg={10} alignSelf='center'>
+					<Typography>Something here...</Typography>
+				</Grid>
+				<Grid xs={10} md={10} lg={10} alignSelf='center'>
+					<SearchBar />
+				</Grid>
+			</Grid>
 			<Section title='Featured Homes'>
 				<Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 16 }}>
 					{cards.map((card) => (
