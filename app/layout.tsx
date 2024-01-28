@@ -8,6 +8,7 @@ import { CssBaseline } from '@mui/material';
 // import { createTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 // import { defaultTheme } from '@/utils/theme';
+import '@/styles/globals.css';
 
 import type { Metadata } from 'next';
 

@@ -2,13 +2,12 @@ import { Box, Container, SxProps, Typography } from '@mui/material';
 import React from 'react';
 import SectionTitle from './SectionTitle';
 
-type SectionProps = {
+interface SectionProps extends React.PropsWithChildren {
 	title?: string;
 	fullWidth?: boolean;
-	children?: React.ReactNode;
 	variant?: 'primary' | 'secondary' | 'custom';
 	sx?: SxProps;
-};
+}
 
 export default function Section({
 	fullWidth = false,

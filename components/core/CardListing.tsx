@@ -13,9 +13,19 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import Image from 'next/image';
-import { relative } from 'path';
+import { PROPERTY_TYPE, PropertyListing } from '@/data/types';
+import CTA from '../ui/CTA';
 
-export default function CardFeaturedHome() {
+interface CardListingProps extends PropertyListing {
+	size?: 'sm' | 'md' | 'lg';
+	variant?: 'landscape' | 'portrait';
+}
+
+export default function CardListing({
+	size = 'sm',
+	variant = 'portrait',
+	...rest
+}: CardListingProps) {
 	return (
 		<Card
 			sx={{
@@ -40,29 +50,22 @@ export default function CardFeaturedHome() {
 				</Container>
 				<Container>
 					<Typography gutterBottom component='strong'>
-						Residential
+						{PROPERTY_TYPE[rest.propertyType]}
 					</Typography>
-					<Typography>
-						222 Truant Crescent, Red Deer, Alberta, T4P 0S8
-					</Typography>
+					<Typography>{rest.address}</Typography>
 					<Typography variant='h4' gutterBottom>
-						$419,900 CAD
+						${rest.price} CAD
 					</Typography>
 					<Divider />
 					<Box sx={{ display: 'flex' }}>
-						<Typography>4 bedrooms</Typography>
-						<Typography>2 bathrooms</Typography>
+						<Typography>{rest.bedrooms} bedrooms</Typography>
+						<Typography>{rest.bathrooms} bathrooms</Typography>
 					</Box>
 				</Container>
 			</CardContent>
 
 			<CardActions disableSpacing>
-				<IconButton aria-label='add to favorites'>
-					<FavoriteIcon />
-				</IconButton>
-				<IconButton aria-label='share'>
-					<ShareIcon />
-				</IconButton>
+				<CTA>More details</CTA>
 			</CardActions>
 		</Card>
 	);

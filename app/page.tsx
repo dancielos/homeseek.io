@@ -1,18 +1,17 @@
-import { ImageList, Typography } from '@mui/material';
+import { ImageList } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import SearchBar from '@/components/forms/SearchBar';
 import Image from 'next/image';
 import Section from '@/components/section/Section';
-import CardFeaturedHome from '@/pages/Home/CardFeaturedHome';
 import CardCity from '@/pages/Home/CardCity';
 import P from '@/components/ui/P';
 import H1 from '@/components/ui/H1';
 import H2 from '@/components/ui/H2';
 import CTA from '@/components/ui/CTA';
 
-import { cards, itemData } from '@/data/constants';
-import { relative } from 'path';
+import { itemData } from '@/data/constants';
 import HeroBackground from '@/pages/Home/HeroBackground';
+import Bento from '@/layouts/Bento';
 
 export default function Home() {
 	return (
@@ -23,14 +22,11 @@ export default function Home() {
 				sx={{
 					position: 'relative',
 					width: '100vw',
-					// minHeight: '56.25%',
-					// aspectRatio: 16 / 7,
 					aspectRatio: {
 						xs: 9 / 10,
 						sm: 16 / 9,
 						md: 16 / 7,
 					},
-
 					paddingX: '0!important',
 					overflow: 'hidden',
 				}}
@@ -52,7 +48,6 @@ export default function Home() {
 								xs: '3rem',
 								sm: '4rem',
 								md: '6rem',
-								// lg: '6rem',
 							},
 						}}
 					>
@@ -60,21 +55,12 @@ export default function Home() {
 					</H1>
 				</Grid>
 
-				{/* <Grid xs={10} md={10} lg={10}>
-					<Typography>Something here...</Typography>
-				</Grid> */}
 				<Grid xs={10} sm={6} md={10} lg={10}>
 					<SearchBar />
 				</Grid>
 			</Grid>
 			<Section title='Featured Homes'>
-				<Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 16 }}>
-					{cards.map((card) => (
-						<Grid key={card} xs={4} sm={4} md={4}>
-							<CardFeaturedHome />
-						</Grid>
-					))}
-				</Grid>
+				<Bento data='test' />
 			</Section>
 			<Section variant='secondary' fullWidth>
 				<Grid container xs={10}>
