@@ -1,6 +1,14 @@
-import { Typography } from '@mui/material';
+import { Typography, TypographyProps } from '@mui/material';
 import React from 'react';
 
-export default function P({ children }: { children: React.ReactNode }) {
-	return <Typography variant='body1'>{children}</Typography>;
+interface paragraphProps extends TypographyProps {
+	children: React.ReactNode;
+}
+
+export default function P({ children, ...rest }: paragraphProps) {
+	return (
+		<Typography variant='body1' {...rest}>
+			{children}
+		</Typography>
+	);
 }

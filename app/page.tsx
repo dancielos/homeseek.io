@@ -14,6 +14,8 @@ import HeroBackground from '@/pages/Home/HeroBackground';
 import Bento from '@/layouts/Bento';
 import Underline from '@/components/ui/Underline';
 
+import styles from '@/styles/landlord-cta.module.css';
+
 export default function Home() {
 	return (
 		<>
@@ -66,24 +68,33 @@ export default function Home() {
 			<Section
 				variant='custom'
 				fullWidth
-				sx={{ px: '0!important', paddingTop: 12, position: 'relative' }}
+				sx={{
+					px: '0!important',
+					paddingTop: {
+						// xs: 12,
+						sm: 12,
+						md: 24,
+					},
+					position: 'relative',
+				}}
 			>
 				<Container
 					sx={{
 						bgcolor: 'primary.main',
-						py: {
-							xs: '2rem',
-							sm: '1.4rem',
-						},
+						padding: '0!important',
+						// py: {
+						// 	xs: '2rem',
+						// 	sm: '1.4rem',
+						// },
 					}}
 				>
-					<Grid container columns={10}>
-						<Grid xs={10} sm={5} md={6}>
+					<Grid container columns={10} sx={{ position: 'relative' }}>
+						<Grid xs={10} sm={6} md={7} sx={{ padding: 4, zIndex: 10 }}>
 							<H2>
 								Own a property? List it here for <Underline>maximum</Underline>{' '}
 								exposure!
 							</H2>
-							<P>
+							<P className={styles.paragraph}>
 								Expand your reach and boost your rental income by listing your
 								property with us. Our platform offers unparalleled visibility,
 								connecting your property with a vast pool of potential tenants.
@@ -93,13 +104,14 @@ export default function Home() {
 							</P>
 							<CTA>Start listing your property</CTA>
 						</Grid>
-						<Grid xs={10} sm={5} md={4}>
-							{/* <Image
-							src='https://homeseek-bucket.s3.ca-central-1.amazonaws.com/home-no-bg.png'
-							alt='house with no background'
-							width={500}
-							height={250}
-						/> */}
+						<Grid xs={10} sm={4} md={3} sx={{ position: 'inherit' }}>
+							<Image
+								src='https://homeseek-bucket.s3.ca-central-1.amazonaws.com/condo-building-no-background.png'
+								alt='house with no background'
+								width={598}
+								height={987}
+								className={styles.image}
+							/>
 						</Grid>
 					</Grid>
 				</Container>
