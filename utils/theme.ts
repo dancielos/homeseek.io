@@ -57,6 +57,9 @@ export const theme = responsiveFontSizes(
 				styleOverrides: {
 					root: {
 						borderRadius: BORDER_RADIUS,
+						['&:hover']: {
+							backgroundColor: '#ffe8cc',
+						},
 					},
 					contained: {
 						boxShadow: BOX_SHADOW,

@@ -20,6 +20,7 @@ export default function SearchBar() {
 			justifyContent='center'
 			width={{ xs: '100%', md: 1 / 2 }}
 			margin='auto'
+			autoComplete='off'
 		>
 			<Tooltip
 				disableHoverListener
