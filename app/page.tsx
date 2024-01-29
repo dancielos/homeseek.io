@@ -1,4 +1,4 @@
-import { ImageList } from '@mui/material';
+import { Container, ImageList } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import SearchBar from '@/components/forms/SearchBar';
 import Image from 'next/image';
@@ -12,6 +12,7 @@ import CTA from '@/components/ui/CTA';
 import { itemData } from '@/data/constants';
 import HeroBackground from '@/pages/Home/HeroBackground';
 import Bento from '@/layouts/Bento';
+import Underline from '@/components/ui/Underline';
 
 export default function Home() {
 	return (
@@ -62,27 +63,46 @@ export default function Home() {
 			<Section title='Featured Homes' alignTitleCenter>
 				<Bento data='test' />
 			</Section>
-			<Section variant='secondary' fullWidth>
-				<Grid container xs={10}>
-					<Grid xs={8}>
-						<H2>Are you a landlord, property owner, or property manager?</H2>
-						<P>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-							minima unde ea ipsam ratione officiis laboriosam culpa, odit
-							accusantium? Adipisci ut ipsum quo tempora vitae hic maiores
-							provident eligendi dolor?
-						</P>
-						<CTA>Start listing your property</CTA>
-					</Grid>
-					<Grid xs={2}>
-						{/* <Image
+			<Section
+				variant='custom'
+				fullWidth
+				sx={{ px: '0!important', paddingTop: 12, position: 'relative' }}
+			>
+				<Container
+					sx={{
+						bgcolor: 'primary.main',
+						py: {
+							xs: '2rem',
+							sm: '1.4rem',
+						},
+					}}
+				>
+					<Grid container columns={10}>
+						<Grid xs={10} sm={5} md={6}>
+							<H2>
+								Own a property? List it here for <Underline>maximum</Underline>{' '}
+								exposure!
+							</H2>
+							<P>
+								Expand your reach and boost your rental income by listing your
+								property with us. Our platform offers unparalleled visibility,
+								connecting your property with a vast pool of potential tenants.
+								Whether you're a seasoned landlord or new to property ownership,
+								take advantage of our platform's powerful exposure to find the
+								perfect renters.
+							</P>
+							<CTA>Start listing your property</CTA>
+						</Grid>
+						<Grid xs={10} sm={5} md={4}>
+							{/* <Image
 							src='https://homeseek-bucket.s3.ca-central-1.amazonaws.com/home-no-bg.png'
 							alt='house with no background'
 							width={500}
 							height={250}
 						/> */}
+						</Grid>
 					</Grid>
-				</Grid>
+				</Container>
 			</Section>
 			<Section title='Popular Cities'>
 				<ImageList cols={4}>

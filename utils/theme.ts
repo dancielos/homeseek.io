@@ -28,6 +28,7 @@ export const theme = responsiveFontSizes(
 		},
 		typography: {
 			fontFamily: `${ubuntu.style.fontFamily}, Arial, sans-serif`,
+
 			h1: {
 				letterSpacing: -4,
 				lineHeight: 1,
@@ -38,6 +39,7 @@ export const theme = responsiveFontSizes(
 			h2: {
 				fontWeight: FontWeight.BOLD,
 				paddingBottom: 24,
+				lineHeight: 1,
 			},
 			body1: {
 				fontWeight: FontWeight.LIGHT,

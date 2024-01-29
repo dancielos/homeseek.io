@@ -23,6 +23,7 @@ export default function Section({
 		customStyle.bgcolor = 'primary.main';
 		customStyle.p = { xs: 2, md: 6 };
 		customStyle.mb = 8;
+		// if (sx) customStyle = sx;
 		// TODO remove these spacing when the theme is customized
 	}
 	if (variant === 'custom') {
