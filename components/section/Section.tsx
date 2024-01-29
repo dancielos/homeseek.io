@@ -7,6 +7,7 @@ interface SectionProps extends React.PropsWithChildren {
 	fullWidth?: boolean;
 	variant?: 'primary' | 'secondary' | 'custom';
 	sx?: SxProps;
+	alignTitleCenter?: boolean;
 }
 
 export default function Section({
@@ -15,6 +16,7 @@ export default function Section({
 	children,
 	variant = 'primary',
 	sx,
+	alignTitleCenter = false,
 }: SectionProps) {
 	let customStyle: SxProps = { py: 8 };
 	if (variant === 'secondary') {
@@ -35,7 +37,9 @@ export default function Section({
 			maxWidth={fullWidth ? 'xl' : 'lg'}
 			component='section'
 		>
-			{title ? <SectionTitle title={title} /> : null}
+			{title ? (
+				<SectionTitle title={title} isCentered={alignTitleCenter} />
+			) : null}
 
 			{children}
 		</Container>

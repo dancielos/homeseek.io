@@ -59,7 +59,7 @@ export default function Home() {
 					<SearchBar />
 				</Grid>
 			</Grid>
-			<Section title='Featured Homes'>
+			<Section title='Featured Homes' alignTitleCenter>
 				<Bento data='test' />
 			</Section>
 			<Section variant='secondary' fullWidth>

@@ -8,6 +8,7 @@ import {
 	Container,
 	Divider,
 	IconButton,
+	Stack,
 	Typography,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -15,6 +16,12 @@ import ShareIcon from '@mui/icons-material/Share';
 import Image from 'next/image';
 import { PROPERTY_TYPE, PropertyListing } from '@/data/types';
 import CTA from '../ui/CTA';
+import {
+	BathtubOutlined,
+	KingBedOutlined,
+	MapsHomeWorkOutlined,
+} from '@mui/icons-material';
+import IconText from '../ui/IconText';
 
 interface CardListingProps extends PropertyListing {
 	size?: 'sm' | 'md' | 'lg';
@@ -31,37 +38,55 @@ export default function CardListing({
 			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
 			<CardContent sx={{ p: 0 }}>
 				<Container
-					sx={{ position: 'relative', width: 'auto', aspectRatio: 16 / 8 }}
+					sx={{
+						position: 'relative',
+						width: 'auto',
+						aspectRatio: 16 / 8,
+						paddingLeft: {
+							xs: 0,
+						},
+						paddingRight: {
+							xs: 0,
+						},
+						paddingBottom: 1,
+					}}
 				>
 					<Image
-						// component='div'
-						// sx={{
-						// 16:9
-						// pt: '56.25%',
-						// }}
 						src='https://source.unsplash.com/random?wallpapers'
-						alt='Lorem ipsum'
-						fill
-						style={{}}
+						alt={`${rest.address} Property`}
+						width={640}
+						height={320}
+						style={{
+							width: '100%',
+							height: 'auto',
+						}}
 					/>
 				</Container>
 				<Container>
-					<Typography gutterBottom component='strong'>
-						{PROPERTY_TYPE[rest.propertyType]}
+					<Typography component='p' variant='h6' sx={{ lineHeight: 1, pb: 2 }}>
+						{rest.address}
 					</Typography>
-					<Typography>{rest.address}</Typography>
-					<Typography variant='h4' gutterBottom>
+					<Stack direction='row' useFlexGap flexWrap='wrap' columnGap={2}>
+						<IconText
+							Icon={KingBedOutlined}
+							text={`${rest.bedrooms} bedrooms`}
+						/>
+						<IconText
+							Icon={BathtubOutlined}
+							text={`${rest.bathrooms} bathrooms`}
+						/>
+						<IconText
+							Icon={MapsHomeWorkOutlined}
+							text={PROPERTY_TYPE[rest.propertyType]}
+						/>
+					</Stack>
+					<Divider sx={{ mb: 2 }} />
+					<Typography variant='h5' gutterBottom textAlign='right'>
 						${rest.price} CAD
 					</Typography>
-					<Divider />
-					<Box sx={{ display: 'flex' }}>
-						<Typography>{rest.bedrooms} bedrooms</Typography>
-						<Typography>{rest.bathrooms} bathrooms</Typography>
-					</Box>
 				</Container>
 			</CardContent>
-
-			<CardActions disableSpacing>
+			<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
 				<CTA>More details</CTA>
 			</CardActions>
 		</Card>
