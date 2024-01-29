@@ -50,11 +50,11 @@ export const itemData = [
 		cols: 2,
 		featured: true,
 	},
-	{
-		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/edmonton-city-1280px.jpg',
-		title: 'Edmonton',
-		author: '@rollelflex_graphy726',
-	},
+	// {
+	// 	img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/edmonton-city-1280px.jpg',
+	// 	title: 'Edmonton',
+	// 	author: '@rollelflex_graphy726',
+	// },
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/montreal-city-1280px.jpg',
 		title: 'Montreal',
@@ -65,6 +65,11 @@ export const itemData = [
 		title: 'Ottawa',
 		author: '@nolanissac',
 		cols: 2,
+	},
+	{
+		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/vancouver-city-1280px.jpg',
+		title: 'Vancouver',
+		author: '@tjdragotta',
 	},
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/quebec-city-1280px.jpg',
@@ -80,14 +85,10 @@ export const itemData = [
 		cols: 2,
 		featured: true,
 	},
-	{
-		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/vancouver-city-1280px.jpg',
-		title: 'Vancouver',
-		author: '@tjdragotta',
-	},
-	{
-		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/winnipeg-city-1280px.jpg',
-		title: 'Winnipeg',
-		author: '@katie_wasserman',
-	},
+
+	// {
+	// 	img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/winnipeg-city-1280px.jpg',
+	// 	title: 'Winnipeg',
+	// 	author: '@katie_wasserman',
+	// },
 ];

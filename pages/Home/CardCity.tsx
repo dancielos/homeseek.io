@@ -8,6 +8,7 @@ import Image from 'next/image';
 type cityProp = {
 	img: string;
 	item: ImageListItemProps;
+	i: number;
 };
 
 function srcset(image: string, size: number, rows = 1, cols = 1) {
@@ -19,20 +20,17 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
 	};
 }
 
-export default function CardCity({ item, img }: cityProp) {
+export default function CardCity({ item, img, i }: cityProp) {
 	return (
-		// <ImageListItem>
-		// 	<img
-		// 		srcSet={`${img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-		// 		src={`${img}?w=248&fit=crop&auto=format`}
-		// 		alt={title}
-		// 		loading='lazy'
-		// 	/>
-		// 	<ImageListItemBar title={title} subtitle={author} />
-		// </ImageListItem>
-		<ImageListItem cols={item.cols || 1} rows={item.rows || 1}>
+		<ImageListItem
+			cols={i % 3 === 0 ? 2 : 1}
+			rows={i % 3 === 0 ? 2 : 1}
+			sx={{
+				alignItems: 'end',
+			}}
+		>
 			<Image
-				{...srcset(img, 180, item.rows, item.cols)}
+				src={img}
 				alt={item.title || 'test'}
 				width={640}
 				height={360}
@@ -46,6 +44,7 @@ export default function CardCity({ item, img }: cityProp) {
 				// 	width: '100%',
 				// }}
 			/>
+			<ImageListItemBar title={item.title} />
 		</ImageListItem>
 	);
 }

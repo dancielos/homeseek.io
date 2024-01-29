@@ -84,6 +84,13 @@ export const theme = responsiveFontSizes(
 					},
 				},
 			},
+			MuiImageListItemBar: {
+				styleOverrides: {
+					root: {
+						bottom: '6px',
+					},
+				},
+			},
 		},
 	})
 );

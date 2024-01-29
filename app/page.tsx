@@ -15,6 +15,7 @@ import Bento from '@/layouts/Bento';
 import Underline from '@/components/ui/Underline';
 
 import styles from '@/styles/landlord-cta.module.css';
+import styles2 from '@/styles/cities.module.css';
 
 export default function Home() {
 	return (
@@ -146,9 +147,13 @@ export default function Home() {
 				</Container>
 			</Section>
 			<Section title='Popular Cities'>
-				<ImageList cols={4} rowHeight={120} variant='quilted'>
-					{itemData.map((item) => (
-						<CardCity item={item} img={item.img} key={item.img} />
+				<ImageList
+					cols={4}
+					variant='quilted'
+					className={styles2['cities-grid']}
+				>
+					{itemData.map((item, i) => (
+						<CardCity i={i} item={item} img={item.img} key={item.img} />
 					))}
 				</ImageList>
 			</Section>
