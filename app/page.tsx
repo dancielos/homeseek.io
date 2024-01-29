@@ -71,7 +71,6 @@ export default function Home() {
 				sx={{
 					px: '0!important',
 					paddingTop: {
-						// xs: 12,
 						sm: 12,
 						md: 24,
 					},
@@ -82,10 +81,6 @@ export default function Home() {
 					sx={{
 						bgcolor: 'primary.main',
 						padding: '0!important',
-						// py: {
-						// 	xs: '2rem',
-						// 	sm: '1.4rem',
-						// },
 					}}
 				>
 					<Grid container columns={10} sx={{ position: 'relative' }}>
@@ -117,14 +112,9 @@ export default function Home() {
 				</Container>
 			</Section>
 			<Section title='Popular Cities'>
-				<ImageList cols={4}>
+				<ImageList cols={4} rowHeight={121} variant='quilted'>
 					{itemData.map((item) => (
-						<CardCity
-							img={item.img}
-							key={item.img}
-							author={item.author}
-							title={item.title}
-						/>
+						<CardCity item={item} img={item.img} key={item.img} />
 					))}
 				</ImageList>
 			</Section>

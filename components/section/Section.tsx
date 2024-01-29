@@ -2,13 +2,21 @@ import { Box, Container, SxProps, Typography } from '@mui/material';
 import React from 'react';
 import SectionTitle from './SectionTitle';
 
-interface SectionProps extends React.PropsWithChildren {
+type PrimarySecondaryProps = {
+	variant?: 'primary' | 'secondary';
+	sx?: SxProps;
+};
+
+type CustomProps = {
+	variant?: 'custom';
+	sx: SxProps;
+};
+
+type SectionProps = React.PropsWithChildren & {
 	title?: string;
 	fullWidth?: boolean;
-	variant?: 'primary' | 'secondary' | 'custom';
-	sx?: SxProps;
 	alignTitleCenter?: boolean;
-}
+} & (PrimarySecondaryProps | CustomProps);
 
 export default function Section({
 	fullWidth = false,
