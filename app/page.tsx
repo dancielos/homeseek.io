@@ -67,7 +67,6 @@ export default function Home() {
 			</Section>
 			<Section
 				variant='custom'
-				fullWidth
 				sx={{
 					px: '0!important',
 					paddingTop: {
@@ -75,16 +74,51 @@ export default function Home() {
 						md: 24,
 					},
 					position: 'relative',
+					marginLeft: {
+						lg: 0,
+					},
+					marginRight: {
+						lg: 0,
+					},
+					minWidth: {
+						lg: '100vw',
+					},
 				}}
 			>
 				<Container
 					sx={{
 						bgcolor: 'primary.main',
-						padding: '0!important',
+						padding: '0!important;',
+						minWidth: {
+							lg: '100vw',
+						},
 					}}
+					maxWidth='xl'
 				>
-					<Grid container columns={10} sx={{ position: 'relative' }}>
-						<Grid xs={10} sm={6} md={7} sx={{ padding: 4, zIndex: 10 }}>
+					<Grid
+						container
+						columns={10}
+						sx={{
+							position: 'relative',
+							justifyContent: { xl: 'flex-end' },
+							gap: {
+								xl: 24,
+							},
+						}}
+					>
+						<Grid
+							xs={10}
+							sm={6}
+							md={7}
+							lg={8}
+							sx={{
+								padding: 4,
+								zIndex: 10,
+								maxWidth: {
+									xl: '60%',
+								},
+							}}
+						>
 							<H2>
 								Own a property? List it here for <Underline>maximum</Underline>{' '}
 								exposure!
@@ -99,7 +133,7 @@ export default function Home() {
 							</P>
 							<CTA>Start listing your property</CTA>
 						</Grid>
-						<Grid xs={10} sm={4} md={3} sx={{ position: 'inherit' }}>
+						<Grid xs={10} sm={4} md={3} lg={2} sx={{ position: 'inherit' }}>
 							<Image
 								src='https://homeseek-bucket.s3.ca-central-1.amazonaws.com/condo-building-no-background.png'
 								alt='house with no background'
@@ -112,7 +146,7 @@ export default function Home() {
 				</Container>
 			</Section>
 			<Section title='Popular Cities'>
-				<ImageList cols={4} rowHeight={121} variant='quilted'>
+				<ImageList cols={4} rowHeight={120} variant='quilted'>
 					{itemData.map((item) => (
 						<CardCity item={item} img={item.img} key={item.img} />
 					))}

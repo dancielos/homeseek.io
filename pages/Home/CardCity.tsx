@@ -3,6 +3,7 @@ import {
 	ImageListItemBar,
 	ImageListItemProps,
 } from '@mui/material';
+import Image from 'next/image';
 
 type cityProp = {
 	img: string;
@@ -30,10 +31,20 @@ export default function CardCity({ item, img }: cityProp) {
 		// 	<ImageListItemBar title={title} subtitle={author} />
 		// </ImageListItem>
 		<ImageListItem cols={item.cols || 1} rows={item.rows || 1}>
-			<img
-				{...srcset(img, 121, item.rows, item.cols)}
-				alt={item.title}
-				loading='lazy'
+			<Image
+				{...srcset(img, 180, item.rows, item.cols)}
+				alt={item.title || 'test'}
+				width={640}
+				height={360}
+				style={{
+					width: '100%',
+					height: 'auto',
+				}}
+				// fill
+				// style={{
+				// 	objectFit: 'contain',
+				// 	width: '100%',
+				// }}
 			/>
 		</ImageListItem>
 	);
