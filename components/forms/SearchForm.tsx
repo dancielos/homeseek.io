@@ -4,6 +4,7 @@
 import {
 	Autocomplete,
 	Button,
+	Container,
 	Stack,
 	TextField,
 	Tooltip,
@@ -19,43 +20,45 @@ import {
 	OtherHousesOutlined,
 } from '@mui/icons-material';
 
-type SearchProps = {
+type SearchFormProps = {
 	withFilters?: boolean;
 };
 
-export default function Search({ withFilters = false }: SearchProps) {
+export default function SearchForm({ withFilters = false }: SearchFormProps) {
 	return (
 		<Stack
 			component='form'
 			direction={{ xs: 'column', sm: 'row' }}
 			spacing={2}
 			justifyContent='center'
-			width={{ xs: '100%', md: withFilters ? 1 : 1 / 2 }}
+			width={{ xs: '100%', md: withFilters ? 7 / 8 : 1 / 2 }}
 			margin='auto'
 			autoComplete='off'
 		>
-			<Tooltip
-				disableHoverListener
-				title='The only cities available with dummy data: Toronto, Montreal, Vancouver, Calgary, Edmonton, Ottawa, Winnipeg, and Red Deer'
-				arrow
-				TransitionComponent={Zoom}
-			>
-				<TextField
-					id='search-input'
-					label='City or Address'
-					variant='filled'
-					fullWidth
-					sx={{
-						color: 'primary.main',
-						borderColor: '#ffffff',
-						backgroundColor: 'rgba(33, 37, 41, 0.8)',
-						'& input': {
+			<Container>
+				<Tooltip
+					disableHoverListener
+					title='The only cities available with dummy data: Toronto, Montreal, Vancouver, Calgary, Edmonton, Ottawa, Winnipeg, and Red Deer'
+					arrow
+					TransitionComponent={Zoom}
+				>
+					<TextField
+						id='search-input'
+						label='City or Address'
+						variant='filled'
+						fullWidth
+						sx={{
 							color: 'primary.main',
-						},
-					}}
-					focused
-				/>
-			</Tooltip>
+							borderColor: '#ffffff',
+							backgroundColor: 'rgba(33, 37, 41, 0.8)',
+							'& input': {
+								color: 'primary.main',
+							},
+						}}
+						focused
+					/>
+				</Tooltip>
+			</Container>
 			{withFilters ? (
 				<>
 					<Button

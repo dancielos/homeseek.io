@@ -3,7 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import H1 from '@/components/htmlElements/H1';
 
 import HeroBackground from './HeroBackground';
-import Search from '@/components/forms/Search';
+import SearchForm from '@/components/forms/SearchForm';
 
 export default function SectionHero() {
 	return (
@@ -47,7 +47,7 @@ export default function SectionHero() {
 			</Grid>
 
 			<Grid xs={10} sm={6} md={10} lg={10}>
-				<Search />
+				<SearchForm />
 			</Grid>
 		</Grid>
 	);

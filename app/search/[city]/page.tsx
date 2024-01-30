@@ -1,4 +1,4 @@
-import SearchBar from '@/components/forms/Search';
+import SearchForm from '@/components/forms/SearchForm';
 
 import { AppBar, Button } from '@mui/material';
 
@@ -16,7 +16,7 @@ export default function Search() {
 				}}
 				elevation={0}
 			>
-				<SearchBar withFilters />
+				<SearchForm withFilters />
 			</AppBar>
 		</>
 		// </Container>
