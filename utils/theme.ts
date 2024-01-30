@@ -19,6 +19,12 @@ const ubuntu = Ubuntu({
 //   }
 // }
 
+declare module '@mui/material/Button' {
+	interface ButtonPropsVariantOverrides {
+		outlined2: true;
+	}
+}
+
 export const theme = responsiveFontSizes(
 	createTheme({
 		palette: {
@@ -30,6 +36,7 @@ export const theme = responsiveFontSizes(
 			},
 			secondary: {
 				main: '#ffa94d',
+				dark: '#f76707',
 			},
 		},
 		typography: {
@@ -73,6 +80,19 @@ export const theme = responsiveFontSizes(
 						boxShadow: BOX_SHADOW,
 					},
 				},
+				variants: [
+					{
+						props: { variant: 'outlined2' },
+						style: {
+							color: '#212529',
+							// fontWeight: 700,
+							// background: '#ffc078',
+							// textTransform: 'none',
+							border: `1px solid #212529`,
+							boxShadow: BOX_SHADOW,
+						},
+					},
+				],
 			},
 
 			MuiFilledInput: {

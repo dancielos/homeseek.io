@@ -11,7 +11,11 @@ import {
 } from '@mui/material';
 import CTA from '../ui/CTA';
 
-export default function SearchBar() {
+type SearchBarProps = {
+	withFilters?: boolean;
+};
+
+export default function SearchBar({ withFilters = false }: SearchBarProps) {
 	return (
 		<Stack
 			component='form'

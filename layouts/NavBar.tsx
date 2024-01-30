@@ -1,21 +1,22 @@
-'use client';
+// 'use client';
 
 import {
 	AppBar,
 	Button,
-	Icon,
-	Stack,
+	// Icon,
+	// Stack,
 	Toolbar,
 	Typography,
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import { useTheme } from '@emotion/react';
+// import { useTheme } from '@emotion/react';
 import CTA from '../components/ui/CTA';
+import NavBarCTA from '@/components/ui/NavBarCTA';
 
 export default function NavBar() {
-	const theme = useTheme();
+	// const theme = useTheme();
 	return (
-		<AppBar position='relative'>
+		<AppBar position='relative' elevation={0}>
 			<Toolbar component='nav'>
 				<HomeIcon
 					sx={{
@@ -30,7 +31,7 @@ export default function NavBar() {
 				</Typography>
 
 				<Button color='inherit'>Login</Button>
-				<CTA>Post your listing</CTA>
+				<NavBarCTA>Post your listing</NavBarCTA>
 			</Toolbar>
 		</AppBar>
 	);

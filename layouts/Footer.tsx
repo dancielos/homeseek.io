@@ -35,7 +35,7 @@ import { BOX_SHADOW } from '@/data/constants';
 // tho when using material UI framework,
 // styled components may be better
 // -> but the fact that it will turn a static server component
-// to a client component is a deal-breaker for me.
+// to a client component is a deal-breaker
 
 // const FooterStyle = emotionStyled(Grid)<Grid2Props>((props) => ({
 // 	backgroundColor: '#fff4e6',
