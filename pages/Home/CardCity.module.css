@@ -1,0 +1,14 @@
+.img-container {
+	align-items: end;
+	overflow: hidden;
+}
+
+.img {
+	transition: transform 0.4s ease-in-out !important;
+	width: 100%;
+	height: auto;
+}
+
+.img:hover {
+	transform: scale(1.05);
+}
