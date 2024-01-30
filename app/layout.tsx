@@ -1,13 +1,8 @@
-// 'use client';
-// import CustomTheme from '@/utils/theme';
 import Footer from '@/layouts/Footer';
 import NavBar from '@/layouts/NavBar';
 import ThemeRegistry from '@/utils/themeRegistry';
-import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
-// import { createTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
-// import { defaultTheme } from '@/utils/theme';
 import './globals.css';
 
 import type { Metadata } from 'next';
@@ -17,11 +12,11 @@ export const metadata: Metadata = {
 	description: 'Home Seek starter...',
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
+type rootProps = {
 	children: React.ReactNode;
-}>) {
+};
+
+export default function RootLayout({ children }: Readonly<rootProps>) {
 	return (
 		<html lang='en'>
 			<body>
