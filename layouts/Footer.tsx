@@ -1,8 +1,19 @@
-import { Stack, Typography } from '@mui/material';
+import { Button, IconButton, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import HomeIcon from '@mui/icons-material/Home';
 import CTA from '@/components/ui/CTA';
+import {
+	Facebook,
+	Instagram,
+	LinkedIn,
+	Twitter,
+	X,
+	YouTube,
+} from '@mui/icons-material';
+
+import styles from './Footer.module.css';
+import { BOX_SHADOW } from '@/data/constants';
 
 export default function Footer() {
 	return (
@@ -27,29 +38,60 @@ export default function Footer() {
 			// columnGap={1}
 		>
 			<Grid md={2} justifyContent='center' px={5}>
-				<Stack flexDirection='row' justifyContent='center' alignItems='center'>
+				<Stack
+					flexDirection='row'
+					justifyContent='center'
+					alignItems='center'
+					sx={{
+						pb: 2,
+					}}
+				>
 					<HomeIcon
 						sx={{
 							mr: {
 								xs: 0.2,
 								sm: 1,
 							},
+
+							// filter: 'drop-shadow(0px 0px 12px #fd7e14)',
 						}}
+						// color='secondary'
+						fontSize='large'
 					/>
 					<Typography
 						variant='h4'
 						component='h5'
-						sx={{ flexGrow: 0, fontWeight: 700 }}
+						// color='secondary'
+						sx={{
+							flexGrow: 0,
+							fontWeight: 700,
+							// filter: 'drop-shadow(0px 0px 12px #fd7e14)',
+						}}
 					>
 						HomeSeek
 					</Typography>
 				</Stack>
 				<Typography textAlign='center'>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut quaerat
-					ab minima deserunt cumque. Alias quibusdam a maiores laborum aliquid
-					nisi voluptatibus esse cumque obcaecati quam, provident modi quas
-					quos?
+					Your ultimate destination for effortlessly discovering rental
+					properties and effortlessly listing your own.
 				</Typography>
+				<Stack flexDirection='row' justifyContent='space-around'>
+					<IconButton className={styles['icon-button']}>
+						<Facebook />
+					</IconButton>
+					<IconButton className={styles['icon-button']}>
+						<Instagram />
+					</IconButton>
+					<IconButton className={styles['icon-button']}>
+						<LinkedIn />
+					</IconButton>
+					<IconButton className={styles['icon-button']}>
+						<X />
+					</IconButton>
+					<IconButton className={styles['icon-button']}>
+						<YouTube />
+					</IconButton>
+				</Stack>
 			</Grid>
 
 			<Grid md={1} justifyContent='stretch'>
@@ -65,13 +107,44 @@ export default function Footer() {
 					<li>Support</li>
 				</ul>
 			</Grid>
-			<Grid md={2} px={2}>
+			<Grid md={1} px={2}>
 				<Typography component='h6' variant='h6'>
 					Popular Locations
 				</Typography>
+				<ul>
+					<li>Toronto</li>
+					<li>Vancouver</li>
+					<li>Calgary</li>
+					<li>Edmonton</li>
+					<li>Quebec</li>
+					<li>Montreal</li>
+					<li>Ottawa</li>
+				</ul>
+			</Grid>
+			<Grid md={1} px={2}>
+				<Typography component='h6' variant='h6'>
+					Company
+				</Typography>
+				<ul>
+					<li>About us</li>
+					<li>Blog</li>
+					<li>Contact</li>
+					<li>Careers</li>
+					<li>Terms of Service</li>
+					<li>Privacy Policy</li>
+					<li>FAQs</li>
+				</ul>
 			</Grid>
 			<Grid md={5}>
-				<Typography textAlign='center'>Something Something</Typography>
+				<Typography textAlign='center' fontStyle='italic'>
+					HomeSeek is a notable rental property software devised by{' '}
+					<a href='https://dancielos.com/' target='_blank'>
+						Dan Cielos
+					</a>
+					, providing insight into my abilities as a developer. Please be aware
+					that all data, including addresses, are fictional and any resemblance
+					to real addresses is purely coincidental.
+				</Typography>
 			</Grid>
 		</Grid>
 	);
