@@ -18,6 +18,8 @@ import {
 } from '@mui/icons-material';
 import IconText from '../ui/IconText';
 
+import styles from './Listing.module.css';
+
 interface ListingProps extends PropertyListing {
 	size?: 'sm' | 'md' | 'lg';
 	variant?: 'landscape' | 'portrait';
@@ -29,7 +31,7 @@ export default function Listing({
 	...rest
 }: ListingProps) {
 	return (
-		<Card>
+		<Card className={styles.card}>
 			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
 			<CardContent sx={{ p: 0 }}>
 				<Container
