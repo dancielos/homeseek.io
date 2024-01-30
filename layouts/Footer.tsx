@@ -1,4 +1,4 @@
-import { Button, IconButton, Stack, Typography } from '@mui/material';
+import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -6,6 +6,7 @@ import CTA from '@/components/ui/CTA';
 import { Facebook, Instagram, LinkedIn, X, YouTube } from '@mui/icons-material';
 
 import styles from './Footer.module.css';
+import { BOX_SHADOW } from '@/data/constants';
 
 export default function Footer() {
 	return (
@@ -18,18 +19,28 @@ export default function Footer() {
 					// sm: 6,
 					lg: 20,
 				},
+				boxShadow: BOX_SHADOW,
 			}}
 			// flexDirection='column'
 			component='footer'
 			container
-			columns={5}
+			columns={{
+				xs: 6,
+				md: 5,
+			}}
 			justifyContent='space-between'
-
 			// columnSpacing={1}
 			// gap={1}
 			// columnGap={1}
+			rowGap={4}
 		>
-			<Grid md={2} justifyContent='center' px={5}>
+			<Grid
+				md={2}
+				justifyContent='center'
+				px={{
+					sm: 5,
+				}}
+			>
 				<Stack
 					flexDirection='row'
 					justifyContent='center'
@@ -63,7 +74,16 @@ export default function Footer() {
 						HomeSeek
 					</Typography>
 				</Stack>
-				<Typography textAlign='center'>
+				<Typography
+					textAlign='center'
+					sx={{
+						px: {
+							xs: 0,
+							sm: 12,
+							md: 0,
+						},
+					}}
+				>
 					Your ultimate destination for effortlessly discovering rental
 					properties and effortlessly listing your own.
 				</Typography>
@@ -86,11 +106,18 @@ export default function Footer() {
 				</Stack>
 			</Grid>
 
-			<Grid md={1} justifyContent='stretch'>
-				<Typography component='h6' variant='h6'>
+			<Grid xs={6} sm={2} md={1} justifyContent='stretch'>
+				<Typography
+					component='h6'
+					variant='h6'
+					textAlign={{
+						xs: 'center',
+						sm: 'inherit',
+					}}
+				>
 					Landlords
 				</Typography>
-				<ul>
+				<ul className={`${styles.ul} ${styles['ul-center']}`}>
 					<li>
 						<CTA>List your property</CTA>
 					</li>
@@ -99,11 +126,11 @@ export default function Footer() {
 					<li>Support</li>
 				</ul>
 			</Grid>
-			<Grid md={1} px={2}>
+			<Grid xs={3} sm={2} md={1} px={{ xs: 0, sm: 2 }}>
 				<Typography component='h6' variant='h6'>
 					Popular Locations
 				</Typography>
-				<ul>
+				<ul className={styles.ul}>
 					<li>Toronto</li>
 					<li>Vancouver</li>
 					<li>Calgary</li>
@@ -113,11 +140,11 @@ export default function Footer() {
 					<li>Ottawa</li>
 				</ul>
 			</Grid>
-			<Grid md={1} px={2}>
+			<Grid xs={3} sm={2} md={1} px={{ xs: 0, sm: 2 }}>
 				<Typography component='h6' variant='h6'>
 					Company
 				</Typography>
-				<ul>
+				<ul className={styles.ul}>
 					<li>About us</li>
 					<li>Blog</li>
 					<li>Contact</li>
@@ -128,6 +155,7 @@ export default function Footer() {
 				</ul>
 			</Grid>
 			<Grid md={5}>
+				<Divider />
 				<Typography
 					textAlign='center'
 					fontStyle='italic'
