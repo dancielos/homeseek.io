@@ -3,17 +3,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import HomeIcon from '@mui/icons-material/Home';
 import CTA from '@/components/ui/CTA';
-import {
-	Facebook,
-	Instagram,
-	LinkedIn,
-	Twitter,
-	X,
-	YouTube,
-} from '@mui/icons-material';
+import { Facebook, Instagram, LinkedIn, X, YouTube } from '@mui/icons-material';
 
 import styles from './Footer.module.css';
-import { BOX_SHADOW } from '@/data/constants';
 
 export default function Footer() {
 	return (
@@ -136,7 +128,18 @@ export default function Footer() {
 				</ul>
 			</Grid>
 			<Grid md={5}>
-				<Typography textAlign='center' fontStyle='italic'>
+				<Typography
+					textAlign='center'
+					fontStyle='italic'
+					sx={{
+						width: {
+							sm: 'inherit',
+							md: '80%',
+						},
+						p: 2,
+						mx: 'auto',
+					}}
+				>
 					HomeSeek is a notable rental property software devised by{' '}
 					<a href='https://dancielos.com/' target='_blank'>
 						Dan Cielos
