@@ -23,6 +23,7 @@ export default function CTA({
 		const isHomePage = pathname === mainPath;
 		if (!isHomePage) variant = 'fluid';
 	}
+	// const linkComponent = args.type === 'link' ? Link :
 
 	return (
 		<Button

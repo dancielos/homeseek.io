@@ -1,5 +1,6 @@
-import SearchBar from '@/components/forms/SearchBar';
-import { AppBar, Container } from '@mui/material';
+import SearchBar from '@/components/forms/Search';
+
+import { AppBar, Button } from '@mui/material';
 
 export default function Search() {
 	return (
