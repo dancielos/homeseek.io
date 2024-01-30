@@ -172,9 +172,10 @@ export default function Footer() {
 					<a href='https://dancielos.com/' target='_blank'>
 						Dan Cielos
 					</a>
-					, providing insight into my abilities as a developer. Please be aware
-					that all data, including addresses, are fictional and any resemblance
-					to real addresses is purely coincidental.
+					, providing insight into my abilities as a developer. Please note that
+					while the addresses are sourced from public records for Google Maps
+					integration, the rental listings themselves are randomized and
+					entirely fictional.
 				</Typography>
 			</Grid>
 		</Grid>

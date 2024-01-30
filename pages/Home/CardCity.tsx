@@ -14,10 +14,9 @@ type cityProp = ImageListItemProps & {
 };
 
 export default function CardCity({
-	item = { img: '', title: '' },
+	item = { img: '', title: '' }, //necessary for build time
 	i,
 }: cityProp) {
-	// if (item.img || item.title) return;
 	return (
 		<ImageListItem
 			cols={i % 3 === 0 ? 2 : 1}
@@ -30,11 +29,6 @@ export default function CardCity({
 				width={640}
 				height={360}
 				className={styles['img']}
-				// fill
-				// style={{
-				// 	objectFit: 'contain',
-				// 	width: '100%',
-				// }}
 			/>
 			<ImageListItemBar title={item.title} />
 		</ImageListItem>
