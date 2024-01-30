@@ -1,3 +1,4 @@
+import { City } from '@/data/types';
 import {
 	ImageListItem,
 	ImageListItemBar,
@@ -5,13 +6,16 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 
-type cityProp = {
-	img: string;
-	item: ImageListItemProps;
+type cityProp = ImageListItemProps & {
+	item: City;
 	i: number;
 };
 
-export default function CardCity({ item, img, i }: cityProp) {
+export default function CardCity({
+	item = { img: '', title: '' },
+	i,
+}: cityProp) {
+	// if (item.img || item.title) return;
 	return (
 		<ImageListItem
 			cols={i % 3 === 0 ? 2 : 1}
@@ -21,7 +25,7 @@ export default function CardCity({ item, img, i }: cityProp) {
 			}}
 		>
 			<Image
-				src={img}
+				src={item.img}
 				alt={item.title || 'test'}
 				width={640}
 				height={360}
@@ -35,7 +39,7 @@ export default function CardCity({ item, img, i }: cityProp) {
 				// 	width: '100%',
 				// }}
 			/>
-			<ImageListItemBar title={item.title} />
+			<ImageListItemBar title={item!.title} />
 		</ImageListItem>
 	);
 }

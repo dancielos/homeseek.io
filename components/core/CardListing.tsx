@@ -1,18 +1,13 @@
 import {
-	Box,
 	Card,
 	CardActions,
 	CardContent,
-	CardHeader,
-	CardMedia,
 	Container,
 	Divider,
-	IconButton,
 	Stack,
 	Typography,
 } from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+
 import Image from 'next/image';
 import { PROPERTY_TYPE, PropertyListing } from '@/data/types';
 import CTA from '../ui/CTA';

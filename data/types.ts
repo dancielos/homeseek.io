@@ -17,3 +17,8 @@ export type PropertyListing = {
 	img: string;
 	price: number;
 };
+
+export type City = {
+	img: string;
+	title: string;
+};

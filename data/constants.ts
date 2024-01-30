@@ -1,4 +1,4 @@
-import { PropertyListing } from './types';
+import { City, PropertyListing } from './types';
 
 // STYLES
 export const BOX_SHADOW = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
@@ -42,13 +42,10 @@ export const DUMMY_LISTING: PropertyListing[] = [
 	},
 ];
 
-export const itemData = [
+export const itemData: Array<City> = [
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/toronto-city-1280px.jpg',
 		title: 'Toronto',
-		rows: 2,
-		cols: 2,
-		featured: true,
 	},
 	// {
 	// 	img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/edmonton-city-1280px.jpg',
@@ -58,32 +55,22 @@ export const itemData = [
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/montreal-city-1280px.jpg',
 		title: 'Montreal',
-		author: '@helloimnik',
 	},
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/ottawa-city-1280px.jpg',
 		title: 'Ottawa',
-		author: '@nolanissac',
-		cols: 2,
 	},
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/vancouver-city-1280px.jpg',
 		title: 'Vancouver',
-		author: '@tjdragotta',
 	},
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/quebec-city-1280px.jpg',
 		title: 'Quebec',
-		author: '@hjrc33',
-		cols: 2,
 	},
 	{
 		img: 'https://homeseek-bucket.s3.ca-central-1.amazonaws.com/cities/calgary-city-1280px.jpg',
 		title: 'Calgary',
-		author: '@arwinneil',
-		rows: 2,
-		cols: 2,
-		featured: true,
 	},
 
 	// {

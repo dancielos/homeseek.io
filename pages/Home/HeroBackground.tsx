@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import Video from '@/components/ui/Video';
+import Video from '@/components/htmlElements/Video';
 
 import styles from './HeroBackground.module.css';
 // import dynamic from 'next/dynamic';

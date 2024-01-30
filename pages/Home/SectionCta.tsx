@@ -3,9 +3,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Container } from '@mui/material';
 
 import Section from '@/components/section/Section';
-import H2 from '@/components/ui/H2';
+import H2 from '@/components/htmlElements/H2';
 import Underline from '@/components/ui/Underline';
-import P from '@/components/ui/P';
+import P from '@/components/htmlElements/P';
 import CTA from '@/components/ui/CTA';
 
 import styles from './SectionCta.module.css';

@@ -1,6 +1,6 @@
 import Grid from '@mui/material/Unstable_Grid2';
 
-import H1 from '@/components/ui/H1';
+import H1 from '@/components/htmlElements/H1';
 import SearchBar from '@/components/forms/SearchBar';
 
 import HeroBackground from './HeroBackground';

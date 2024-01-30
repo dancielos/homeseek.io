@@ -13,6 +13,12 @@ const ubuntu = Ubuntu({
 	weight: ['400', '500', '700'],
 });
 
+// declare module '@mui/material/Unstable_Grid2' {
+//   interface Grid2Props {
+//     dashed: true;
+//   }
+// }
+
 export const theme = responsiveFontSizes(
 	createTheme({
 		palette: {

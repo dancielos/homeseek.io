@@ -11,7 +11,7 @@ export default function SectionCities() {
 		<Section title='Explore Popular Cities'>
 			<ImageList cols={4} variant='quilted' className={styles['cities-grid']}>
 				{itemData.map((item, i) => (
-					<CardCity i={i} item={item} img={item.img} key={item.img} />
+					<CardCity i={i} item={item} key={item.img} />
 				))}
 			</ImageList>
 		</Section>
