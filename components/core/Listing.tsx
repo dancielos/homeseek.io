@@ -18,16 +18,16 @@ import {
 } from '@mui/icons-material';
 import IconText from '../ui/IconText';
 
-interface CardListingProps extends PropertyListing {
+interface ListingProps extends PropertyListing {
 	size?: 'sm' | 'md' | 'lg';
 	variant?: 'landscape' | 'portrait';
 }
 
-export default function CardListing({
+export default function Listing({
 	size = 'sm',
 	variant = 'portrait',
 	...rest
-}: CardListingProps) {
+}: ListingProps) {
 	return (
 		<Card>
 			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
