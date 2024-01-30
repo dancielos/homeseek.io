@@ -10,7 +10,14 @@ import {
 	Zoom,
 } from '@mui/material';
 import CTA from '../ui/CTA';
-import { ArrowDropDown, AttachMoney } from '@mui/icons-material';
+import {
+	ArrowDropDown,
+	AttachMoney,
+	BathtubOutlined,
+	BedOutlined,
+	HomeWorkOutlined,
+	OtherHousesOutlined,
+} from '@mui/icons-material';
 
 type SearchProps = {
 	withFilters?: boolean;
@@ -60,28 +67,28 @@ export default function Search({ withFilters = false }: SearchProps) {
 					</Button>
 					<Button
 						variant='contained'
-						startIcon={<AttachMoney />}
+						startIcon={<HomeWorkOutlined />}
 						endIcon={<ArrowDropDown />}
 					>
 						Property Type
 					</Button>
 					<Button
 						variant='contained'
-						startIcon={<AttachMoney />}
+						startIcon={<BedOutlined />}
 						endIcon={<ArrowDropDown />}
 					>
 						Beds
 					</Button>
 					<Button
 						variant='contained'
-						startIcon={<AttachMoney />}
+						startIcon={<BathtubOutlined />}
 						endIcon={<ArrowDropDown />}
 					>
 						Baths
 					</Button>
 					<Button
 						variant='contained'
-						startIcon={<AttachMoney />}
+						startIcon={<OtherHousesOutlined />}
 						endIcon={<ArrowDropDown />}
 					>
 						More
