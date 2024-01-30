@@ -1,17 +1,29 @@
+'use client';
+
 import { Button, ButtonProps } from '@mui/material';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react';
 
 interface CtaProps extends ButtonProps {
 	children: React.ReactNode;
-	variant?: 'contained' | 'outlined2';
+	fluid?: boolean;
+	mainPath?: string;
 }
 
 export default function CTA({
 	children,
-	variant = 'contained',
+	fluid = false,
+	mainPath = '/',
 	...args
 }: CtaProps) {
+	let variant: 'contained' | 'fluid' = 'contained';
+	if (fluid) {
+		const pathname = usePathname();
+		const isHomePage = pathname === mainPath;
+		if (!isHomePage) variant = 'fluid';
+	}
+
 	return (
 		<Button
 			color='secondary'

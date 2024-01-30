@@ -11,7 +11,6 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 // import { useTheme } from '@emotion/react';
 import CTA from '../components/ui/CTA';
-import NavBarCTA from '@/components/ui/NavBarCTA';
 
 export default function NavBar() {
 	// const theme = useTheme();
@@ -31,7 +30,7 @@ export default function NavBar() {
 				</Typography>
 
 				<Button color='inherit'>Login</Button>
-				<NavBarCTA>Post your listing</NavBarCTA>
+				<CTA fluid>Post your listing</CTA>
 			</Toolbar>
 		</AppBar>
 	);

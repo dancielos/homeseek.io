@@ -21,7 +21,7 @@ const ubuntu = Ubuntu({
 
 declare module '@mui/material/Button' {
 	interface ButtonPropsVariantOverrides {
-		outlined2: true;
+		fluid: true;
 	}
 }
 
@@ -82,7 +82,7 @@ export const theme = responsiveFontSizes(
 				},
 				variants: [
 					{
-						props: { variant: 'outlined2' },
+						props: { variant: 'fluid' },
 						style: {
 							color: '#212529',
 							// fontWeight: 700,
