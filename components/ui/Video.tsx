@@ -1,5 +1,5 @@
 import React, { HTMLProps } from 'react';
-import classes from '@/styles/video.module.css';
+import classes from './Video.module.css';
 
 interface VideoProps extends HTMLProps<'video'> {}
 

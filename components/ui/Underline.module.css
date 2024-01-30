@@ -20,7 +20,7 @@
 	position: absolute;
 	content: '';
 	display: inline-block;
-	background-image: url('../assets/needle-underline.svg');
+	background-image: url('../../assets/needle-underline.svg');
 	background-position: right 0px bottom 0px;
 	background-repeat: no-repeat;
 	width: 100%;

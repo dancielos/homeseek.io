@@ -3,7 +3,7 @@
 import Overlay from '@/components/ui/Overlay';
 // import Video from '@/components/ui/Video';
 import Image from 'next/image';
-import styles from '@/styles/hero-background.module.css';
+import styles from './HeroBackground.module.css';
 import Video from '@/components/ui/Video';
 // import dynamic from 'next/dynamic';
 

@@ -146,7 +146,7 @@ export default function Home() {
 					</Grid>
 				</Container>
 			</Section>
-			<Section title='Popular Cities'>
+			<Section title='Explore Popular Cities'>
 				<ImageList
 					cols={4}
 					variant='quilted'
