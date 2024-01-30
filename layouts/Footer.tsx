@@ -168,14 +168,14 @@ export default function Footer() {
 						mx: 'auto',
 					}}
 				>
-					HomeSeek is a notable rental property software devised by{' '}
+					HomeSeek is a notable rental property web app developed by{' '}
 					<a href='https://dancielos.com/' target='_blank'>
 						Dan Cielos
 					</a>
-					, providing insight into my abilities as a developer. Please note that
-					while the addresses are sourced from public records for Google Maps
-					integration, the rental listings themselves are randomized and
-					entirely fictional.
+					, providing insight into his abilities as a software engineer. Please
+					note that while the addresses are sourced from public records for
+					Google Maps integration, the rental listings themselves are randomized
+					and entirely fictional.
 				</Typography>
 			</Grid>
 		</Grid>
