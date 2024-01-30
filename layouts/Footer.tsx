@@ -1,4 +1,13 @@
-import { Button, Divider, IconButton, Stack, Typography } from '@mui/material';
+// 'use client';
+
+import {
+	Button,
+	Divider,
+	IconButton,
+	Stack,
+	SxProps,
+	Typography,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -7,6 +16,38 @@ import { Facebook, Instagram, LinkedIn, X, YouTube } from '@mui/icons-material';
 
 import styles from './Footer.module.css';
 import { BOX_SHADOW } from '@/data/constants';
+// import emotionStyled from '@emotion/styled';
+
+// PROS of this emotionStyled approach
+// CSS will have intellisense and type protection
+// Dynamic styling will be easier
+//    For instance, if disabled I can simply change
+//    the style property instead of class
+// Resolves the issue of using !important in CSS modules
+//
+// CONS
+// it requires that client component even when it's
+//   technically static
+// the whole js re-compiles so it's slow
+
+// In conclusion, I like using css modules since
+// it separates the logic and the design
+// tho when using material UI framework,
+// styled components may be better
+// -> but the fact that it will turn a static server component
+// to a client component is a deal-breaker for me.
+
+// const FooterStyle = emotionStyled(Grid)<Grid2Props>((props) => ({
+// 	backgroundColor: '#fff4e6',
+// 	paddingTop: '4rem',
+// 	paddingBottom: '2rem',
+// 	px: {
+// 		xs: 4,
+// 		// sm: 6,
+// 		lg: 20,
+// 	},
+// 	boxShadow: BOX_SHADOW,
+// }));
 
 export default function Footer() {
 	return (
