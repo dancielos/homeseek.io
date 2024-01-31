@@ -32,10 +32,17 @@ export default function Listing({
 }: ListingProps) {
 	return (
 		<Card className={styles[`card-${variant}`]}>
-			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
 			<CardContent
 				className={styles[`card-content-${variant}`]}
-				// sx={variant === 'landscape' ? { display: 'flex' } : { p: 0 }}
+				sx={
+					variant === 'landscape'
+						? {
+								paddingX: {
+									sm: 0,
+								},
+						  }
+						: {}
+				}
 			>
 				<Container
 					sx={{
@@ -49,7 +56,7 @@ export default function Listing({
 							xs: 0,
 						},
 						paddingBottom: 1,
-						marginY: 'auto',
+						// marginY: 'auto',
 					}}
 				>
 					<Image
@@ -57,16 +64,19 @@ export default function Listing({
 						alt={`${rest.address} Property`}
 						width={640}
 						height={320}
-						style={{
-							width: '100%',
-							height: 'auto',
-						}}
+						className={styles['card-img']}
 					/>
 				</Container>
 				<Container
 					sx={
 						variant === 'landscape'
-							? { display: 'flex', flexDirection: 'column' }
+							? {
+									display: 'flex',
+									flexDirection: 'column',
+									px: {
+										sm: 2,
+									},
+							  }
 							: {}
 					}
 				>
@@ -101,7 +111,7 @@ export default function Listing({
 						${rest.price} CAD
 					</Typography>
 					{variant === 'landscape' ? (
-						<CardActions sx={{ justifyContent: 'flex-end' }}>
+						<CardActions sx={{ justifyContent: 'flex-end', px: 0 }}>
 							<CTA>More details</CTA>
 						</CardActions>
 					) : null}
