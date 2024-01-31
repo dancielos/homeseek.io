@@ -7,7 +7,7 @@ import { useMediaQuery } from '@mui/material';
 export default function Map() {
 	const isMobile = useMediaQuery('(min-width: 600px)');
 	const coordinates = { lat: 43.65107, lng: -79.347015 };
-	console.log(process.env.GOOGLE_MAPS_API_KEY);
+	// console.log(process.env.GOOGLE_MAPS_API_KEY);
 	return (
 		<div className={styles['map-container']}>
 			<GoogleMapReact
