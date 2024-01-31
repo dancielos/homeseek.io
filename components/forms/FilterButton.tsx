@@ -3,13 +3,14 @@ import { Button, ButtonProps } from '@mui/material';
 import { ReactNode } from 'react';
 
 interface FilterButtonProps extends ButtonProps {
-	Icon: ReactNode;
+	Icon?: ReactNode;
 	label: string;
 }
 
 export default function FilterButton({
-	Icon,
+	Icon = null,
 	label,
+
 	...rest
 }: FilterButtonProps) {
 	return (

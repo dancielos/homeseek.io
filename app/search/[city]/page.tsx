@@ -20,7 +20,10 @@ export default function Search() {
 				sx={{
 					bgcolor: '#fff4e69e',
 					boxShadow: 'none',
-					py: 2,
+					py: {
+						xs: 1,
+						sm: 2,
+					},
 					display: {
 						// xs: 'none',
 

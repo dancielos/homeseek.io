@@ -55,7 +55,7 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 			// margin='auto'
 			autoComplete='off'
 		>
-			<Grid sm={6} md={4}>
+			<Grid xs={6} xm={7} sm={6} md={4}>
 				<SearchCityTooltip>
 					<TextField
 						id='search-input'
