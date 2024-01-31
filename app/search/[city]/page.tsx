@@ -1,8 +1,12 @@
 import Map from '@/components/core/Map';
 import SearchForm from '@/components/forms/SearchForm';
 
-import { AppBar, Button, Container } from '@mui/material';
-import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
+import { AppBar } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+
+import { DUMMY_LISTING } from '@/data/constants';
+import Listing from '@/components/core/Listing';
+
 export default function Search() {
 	return (
 		// <Container>
@@ -27,7 +31,18 @@ export default function Search() {
 				<Grid xs={5}>
 					<Map />
 				</Grid>
-				<Grid xs={5}>list here</Grid>
+				<Grid
+					xs={5}
+					sx={{
+						maxHeight: '80vh',
+						overflowY: 'scroll',
+					}}
+				>
+					<Listing {...DUMMY_LISTING[0]} />
+					<Listing {...DUMMY_LISTING[1]} />
+					<Listing {...DUMMY_LISTING[2]} />
+					<Listing {...DUMMY_LISTING[3]} />
+				</Grid>
 			</Grid>
 		</>
 		// </Container>
