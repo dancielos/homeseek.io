@@ -1,7 +1,8 @@
+import Map from '@/components/core/Map';
 import SearchForm from '@/components/forms/SearchForm';
 
 import { AppBar, Button, Container } from '@mui/material';
-
+import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
 export default function Search() {
 	return (
 		// <Container>
@@ -22,7 +23,12 @@ export default function Search() {
 			>
 				<SearchForm withFilters />
 			</AppBar>
-			<Container>some data here</Container>
+			<Grid container columns={10}>
+				<Grid xs={5}>
+					<Map />
+				</Grid>
+				<Grid xs={5}>list here</Grid>
+			</Grid>
 		</>
 		// </Container>
 	);

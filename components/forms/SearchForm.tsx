@@ -1,31 +1,11 @@
 'use client';
 
 // import { handleTextField } from '@/utils/actions';
-import {
-	Autocomplete,
-	Button,
-	Container,
-	IconButton,
-	InputAdornment,
-	Stack,
-	StackProps,
-	TextField,
-	Tooltip,
-	Zoom,
-} from '@mui/material';
-import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
+import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import CTA from '../ui/CTA';
-import {
-	ArrowDropDown,
-	AttachMoney,
-	BathtubOutlined,
-	BedOutlined,
-	HomeWorkOutlined,
-	OtherHousesOutlined,
-	SearchOutlined,
-} from '@mui/icons-material';
+import { SearchOutlined } from '@mui/icons-material';
 import Filters from './Filters';
-import { HTMLProps } from 'react';
 import SearchCityTooltip from './SearchCityTooltip';
 
 type SearchFormProps = {
