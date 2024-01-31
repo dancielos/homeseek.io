@@ -1,7 +1,6 @@
 import Map from '@/components/core/Map';
-import SearchForm from '@/components/forms/SearchForm';
 
-import { AppBar, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 import Grid from '@mui/material/Unstable_Grid2';
 

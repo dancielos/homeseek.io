@@ -1,3 +1,11 @@
+import { AppBar } from '@mui/material';
+
 export default function Details() {
-	return <div>this is a details page.</div>;
+	return (
+		<div>
+			<AppBar position='sticky' color='secondary'>
+				Address here
+			</AppBar>
+		</div>
+	);
 }
