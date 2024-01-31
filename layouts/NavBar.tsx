@@ -2,7 +2,9 @@
 
 import {
 	AppBar,
+	Box,
 	Button,
+	IconButton,
 	// Icon,
 	// Stack,
 	Toolbar,
@@ -11,6 +13,7 @@ import {
 import HomeIcon from '@mui/icons-material/Home';
 // import { useTheme } from '@emotion/react';
 import CTA from '../components/ui/CTA';
+import { Menu } from '@mui/icons-material';
 
 export default function NavBar() {
 	// const theme = useTheme();
@@ -21,7 +24,7 @@ export default function NavBar() {
 					sx={{
 						mr: {
 							xs: 0.2,
-							sm: 1,
+							xm: 1,
 						},
 					}}
 				/>
@@ -29,8 +32,42 @@ export default function NavBar() {
 					HomeSeek
 				</Typography>
 
-				<Button color='inherit'>Login</Button>
-				<CTA fluid>Post your listing</CTA>
+				<Button
+					color='inherit'
+					sx={{
+						display: {
+							xs: 'none',
+							xm: 'inherit',
+						},
+					}}
+				>
+					Login
+				</Button>
+				<CTA
+					fluid
+					sx={{
+						display: {
+							xs: 'none',
+							xm: 'inherit',
+						},
+					}}
+				>
+					Post your listing
+				</CTA>
+				<Box
+					sx={{ flexGrow: 1, display: { xs: 'flex', xm: 'none' } }}
+					justifyContent='flex-end'
+				>
+					<IconButton
+						size='large'
+						aria-label='account of current user'
+						aria-controls='menu-appbar'
+						aria-haspopup='true'
+						color='inherit'
+					>
+						<Menu />
+					</IconButton>
+				</Box>
 			</Toolbar>
 		</AppBar>
 	);

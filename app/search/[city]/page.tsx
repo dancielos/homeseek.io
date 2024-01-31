@@ -8,8 +8,6 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { DUMMY_LISTING } from '@/data/constants';
 import Listing from '@/components/core/Listing';
 
-import BottomAppBar from '@/pages/Search/BottomAppBar';
-
 export default function Search() {
 	return (
 		// <Container>
