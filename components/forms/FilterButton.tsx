@@ -1,14 +1,17 @@
 import { ArrowDropDown } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 import { ReactNode } from 'react';
+
+interface FilterButtonProps extends ButtonProps {
+	Icon: ReactNode;
+	label: string;
+}
 
 export default function FilterButton({
 	Icon,
 	label,
-}: {
-	Icon: ReactNode;
-	label: string;
-}) {
+	...rest
+}: FilterButtonProps) {
 	return (
 		<Button
 			// variant='contained'
@@ -18,6 +21,7 @@ export default function FilterButton({
 				textTransform: 'capitalize',
 				boxShadow: 'unset',
 			}}
+			{...rest}
 		>
 			{label}
 		</Button>

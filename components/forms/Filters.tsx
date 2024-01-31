@@ -1,7 +1,4 @@
-'use client';
-
 import {
-	ArrowDropDown,
 	AttachMoney,
 	BathtubOutlined,
 	BedOutlined,
@@ -11,15 +8,9 @@ import {
 import { ButtonGroup } from '@mui/material';
 import FilterButton from './FilterButton';
 
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-// import styles from 'Filters.module.css';
+import styles from './Filters.module.css';
 
 export default function Filters() {
-	const theme = useTheme();
-	const matches1054 = useMediaQuery('(max-width:1054px)');
-
 	return (
 		<ButtonGroup
 			sx={{
@@ -31,13 +22,22 @@ export default function Filters() {
 			disableElevation
 		>
 			<FilterButton label='Price' Icon={<AttachMoney />} />
-			{!matches1054 && (
-				<>
-					<FilterButton label='Property Type' Icon={<HomeWorkOutlined />} />
-					<FilterButton label='Beds' Icon={<BedOutlined />} />
-					<FilterButton label='Baths' Icon={<BathtubOutlined />} />
-				</>
-			)}
+			<FilterButton
+				label='Property Type'
+				Icon={<HomeWorkOutlined />}
+				className={styles['hide-on-smaller-screens']}
+			/>
+			<FilterButton
+				label='Beds'
+				Icon={<BedOutlined />}
+				className={styles['hide-on-smaller-screens']}
+			/>
+			<FilterButton
+				label='Baths'
+				Icon={<BathtubOutlined />}
+				className={styles['hide-on-smaller-screens']}
+			/>
+
 			<FilterButton label='More' Icon={<OtherHousesOutlined />} />
 		</ButtonGroup>
 	);
