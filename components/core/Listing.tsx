@@ -31,9 +31,12 @@ export default function Listing({
 	...rest
 }: ListingProps) {
 	return (
-		<Card className={styles.card}>
+		<Card className={styles[`card-${variant}`]}>
 			{/* <CardHeader sx={{ , minHeight: 128 }}></CardHeader> */}
-			<CardContent sx={{ p: 0 }}>
+			<CardContent
+				className={styles[`card-content-${variant}`]}
+				// sx={variant === 'landscape' ? { display: 'flex' } : { p: 0 }}
+			>
 				<Container
 					sx={{
 						position: 'relative',
@@ -46,6 +49,7 @@ export default function Listing({
 							xs: 0,
 						},
 						paddingBottom: 1,
+						marginY: 'auto',
 					}}
 				>
 					<Image
@@ -59,8 +63,18 @@ export default function Listing({
 						}}
 					/>
 				</Container>
-				<Container>
-					<Typography component='p' variant='h6' sx={{ lineHeight: 1, pb: 2 }}>
+				<Container
+					sx={
+						variant === 'landscape'
+							? { display: 'flex', flexDirection: 'column' }
+							: {}
+					}
+				>
+					<Typography
+						component='p'
+						variant={variant === 'landscape' ? 'body1' : 'h6'}
+						sx={{ lineHeight: 1, pb: 2 }}
+					>
 						{rest.address}
 					</Typography>
 					<Stack direction='row' useFlexGap flexWrap='wrap' columnGap={2}>
@@ -77,15 +91,27 @@ export default function Listing({
 							text={PROPERTY_TYPE[rest.propertyType]}
 						/>
 					</Stack>
-					<Divider sx={{ mb: 2 }} />
-					<Typography variant='h5' gutterBottom textAlign='right'>
+					{variant === 'portrait' ? <Divider sx={{ mb: 2 }} /> : null}
+					<Typography
+						variant='h5'
+						gutterBottom
+						textAlign={variant === 'landscape' ? 'left' : 'right'}
+						order={-1}
+					>
 						${rest.price} CAD
 					</Typography>
+					{variant === 'landscape' ? (
+						<CardActions sx={{ justifyContent: 'flex-end' }}>
+							<CTA>More details</CTA>
+						</CardActions>
+					) : null}
 				</Container>
 			</CardContent>
-			<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
-				<CTA>More details</CTA>
-			</CardActions>
+			{variant === 'portrait' ? (
+				<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
+					<CTA>More details</CTA>
+				</CardActions>
+			) : null}
 		</Card>
 	);
 }

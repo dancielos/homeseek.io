@@ -1,7 +1,7 @@
 import Map from '@/components/core/Map';
 import SearchForm from '@/components/forms/SearchForm';
 
-import { AppBar } from '@mui/material';
+import { AppBar, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import { DUMMY_LISTING } from '@/data/constants';
@@ -34,13 +34,17 @@ export default function Search() {
 				<Grid
 					xs={5}
 					sx={{
+						minHeight: '480px',
 						maxHeight: '80vh',
 						overflowY: 'scroll',
+						overflowX: 'hidden',
 					}}
 				>
-					{DUMMY_LISTING.map((dummy_list) => (
-						<Listing variant='landscape' {...dummy_list} />
-					))}
+					<Box rowGap={1} display='flex' flexDirection='column' padding={1}>
+						{DUMMY_LISTING.map((dummy_list, i) => (
+							<Listing key={i} variant='landscape' {...dummy_list} />
+						))}
+					</Box>
 				</Grid>
 			</Grid>
 		</>
