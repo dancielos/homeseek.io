@@ -22,11 +22,6 @@ export default function Search() {
 						xs: 1,
 						sm: 2,
 					},
-					display: {
-						// xs: 'none',
-
-						sm: 'inherit',
-					},
 				}}
 				elevation={0}
 			>
@@ -39,6 +34,7 @@ export default function Search() {
 					sx={{
 						display: {
 							xs: 'hidden',
+							sm: 'block',
 						},
 					}}
 				>

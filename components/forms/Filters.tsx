@@ -18,7 +18,7 @@ export default function Filters() {
 				sx={{
 					display: {
 						xs: 'none',
-						xm: 'flex',
+						sm: 'flex',
 					},
 					height: '100%',
 					// flex: '0 0 100%',
@@ -48,7 +48,7 @@ export default function Filters() {
 				sx={{
 					display: {
 						xs: 'flex',
-						xm: 'none',
+						sm: 'none',
 					},
 					height: '100%',
 				}}
