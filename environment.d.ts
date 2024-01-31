@@ -11,6 +11,7 @@ export declare global {
 			BUCKET_REGION: string;
 			ACCESS_KEY_ID: string;
 			SECRET_ACCESS_KEY: string;
+			GOOGLE_MAPS_API_KEY: string;
 		}
 	}
 }
