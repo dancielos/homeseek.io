@@ -7,26 +7,13 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import { DUMMY_LISTING } from '@/data/constants';
 import Listing from '@/components/core/Listing';
+import SearchBar from '@/pages/Search/SearchBar';
 
 export default function Search() {
 	return (
 		// <Container>
 		<>
-			<AppBar
-				position='relative'
-				// color='#fff4e6'
-				sx={{
-					bgcolor: '#fff4e69e',
-					boxShadow: 'none',
-					py: {
-						xs: 1,
-						sm: 2,
-					},
-				}}
-				elevation={0}
-			>
-				<SearchForm withFilters />
-			</AppBar>
+			<SearchBar />
 			<Grid container columns={10}>
 				<Grid
 					xs={0}
