@@ -46,7 +46,7 @@ export const theme = responsiveFontSizes(
 		palette: {
 			primary: {
 				main: '#ffe8cc',
-				// light: '#fff4e6',
+				light: '#fff4e6',
 				// dark: '#ffa94d',
 				contrastText: '#212529',
 			},
@@ -114,8 +114,22 @@ export const theme = responsiveFontSizes(
 			MuiFilledInput: {
 				styleOverrides: {
 					root: {
+						// borderRadius: BORDER_RADIUS,
+						paddingBottom: 0,
+						// borderColor: '#ffffff',
+						// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+					},
+				},
+			},
+			MuiTextField: {
+				styleOverrides: {
+					root: {
 						borderRadius: BORDER_RADIUS,
 						paddingBottom: 0,
+						backgroundColor: 'rgba(33, 37, 41, 0.8)',
+						'& input': {
+							color: '#ffe8cc',
+						},
 					},
 				},
 			},

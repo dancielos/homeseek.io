@@ -5,19 +5,26 @@ export default function ListingContactForm() {
 	return (
 		<Stack
 			component='form'
-			style={{
+			sx={{
 				position: 'sticky',
 				top: '100px',
+				p: 2,
 			}}
+			bgcolor='primary.light'
 			spacing={2}
 		>
-			<TextField id='outlined-basic' label='Name' variant='outlined' />
-			<TextField id='outlined-basic' label='Phone number' variant='outlined' />
-			<TextField id='outlined-basic' label='Email address' variant='outlined' />
 			<TextField
 				id='outlined-basic'
+				color='secondary'
+				label='Name'
+				variant='filled'
+			/>
+			<TextField id='filled-basic' label='Phone number' variant='filled' />
+			<TextField id='filled-basic' label='Email address' variant='filled' />
+			<TextField
+				id='filled-basic'
 				label='Email address'
-				variant='outlined'
+				variant='filled'
 				multiline
 				rows={4}
 			/>

@@ -30,14 +30,6 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 						label='City or Address'
 						variant='filled'
 						fullWidth
-						sx={{
-							color: 'primary.main',
-							borderColor: '#ffffff',
-							backgroundColor: 'rgba(33, 37, 41, 0.8)',
-							'& input': {
-								color: 'primary.main',
-							},
-						}}
 						focused
 					/>
 				</SearchCityTooltip>
