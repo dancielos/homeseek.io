@@ -8,7 +8,7 @@ import { DUMMY_LISTING } from '@/data/constants';
 import Listing from '@/components/core/Listing';
 
 // IMPORTANT :
-// The parent layout is a grid container
+// This page is wrapped in a Grid container,
 // so the 'root' element for this component should be
 // a <Grid> -> item
 
