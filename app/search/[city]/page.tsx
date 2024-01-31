@@ -66,7 +66,6 @@ export default function Search() {
 					</Box>
 				</Grid>
 			</Grid>
-			<BottomAppBar />
 		</>
 		// </Container>
 	);
