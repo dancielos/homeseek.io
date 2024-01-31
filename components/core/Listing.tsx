@@ -25,17 +25,21 @@ interface ListingProps extends PropertyListing {
 	variant?: 'landscape' | 'portrait';
 }
 
+// TODO: refactor the code so it's cleaner
+//       both on portrait and landscape versions
+
 export default function Listing({
 	size = 'sm',
 	variant = 'portrait',
 	...rest
 }: ListingProps) {
+	const isLandscape = variant === 'landscape';
 	return (
 		<Card className={styles[`card-${variant}`]}>
 			<CardContent
 				className={styles[`card-content-${variant}`]}
 				sx={
-					variant === 'landscape'
+					isLandscape
 						? {
 								paddingX: {
 									sm: 0,
@@ -69,7 +73,7 @@ export default function Listing({
 				</Container>
 				<Container
 					sx={
-						variant === 'landscape'
+						isLandscape
 							? {
 									display: 'flex',
 									flexDirection: 'column',
@@ -82,7 +86,7 @@ export default function Listing({
 				>
 					<Typography
 						component='p'
-						variant={variant === 'landscape' ? 'body1' : 'h6'}
+						variant={isLandscape ? 'body1' : 'h6'}
 						sx={{ lineHeight: 1, pb: 2 }}
 					>
 						{rest.address}
@@ -101,27 +105,27 @@ export default function Listing({
 							text={PROPERTY_TYPE[rest.propertyType]}
 						/>
 					</Stack>
-					{variant === 'portrait' ? <Divider sx={{ mb: 2 }} /> : null}
+					{isLandscape ? null : <Divider sx={{ mb: 2 }} />}
 					<Typography
 						variant='h5'
 						gutterBottom
-						textAlign={variant === 'landscape' ? 'left' : 'right'}
+						textAlign={isLandscape ? 'left' : 'right'}
 						order={-1}
 					>
 						${rest.price} CAD
 					</Typography>
-					{variant === 'landscape' ? (
+					{isLandscape ? (
 						<CardActions sx={{ justifyContent: 'flex-end', px: 0 }}>
 							<CTA>More details</CTA>
 						</CardActions>
 					) : null}
 				</Container>
 			</CardContent>
-			{variant === 'portrait' ? (
+			{isLandscape ? null : (
 				<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
 					<CTA>More details</CTA>
 				</CardActions>
-			) : null}
+			)}
 		</Card>
 	);
 }

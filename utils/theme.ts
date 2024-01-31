@@ -25,8 +25,24 @@ declare module '@mui/material/Button' {
 	}
 }
 
+declare module '@mui/material/styles' {
+	interface BreakpointOverrides {
+		xm: true;
+	}
+}
+
 export const theme = responsiveFontSizes(
 	createTheme({
+		breakpoints: {
+			values: {
+				xs: 0,
+				xm: 425,
+				sm: 600,
+				md: 900,
+				lg: 1200,
+				xl: 1536,
+			},
+		},
 		palette: {
 			primary: {
 				main: '#ffe8cc',

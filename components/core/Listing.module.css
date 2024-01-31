@@ -30,3 +30,15 @@
 		flex-direction: column !important;
 	}
 }
+
+@media screen and (max-width: 600px) {
+	.card-content-landscape {
+		flex-direction: row !important;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.card-content-landscape {
+		flex-direction: column !important;
+	}
+}
