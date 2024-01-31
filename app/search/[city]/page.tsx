@@ -38,10 +38,9 @@ export default function Search() {
 						overflowY: 'scroll',
 					}}
 				>
-					<Listing {...DUMMY_LISTING[0]} />
-					<Listing {...DUMMY_LISTING[1]} />
-					<Listing {...DUMMY_LISTING[2]} />
-					<Listing {...DUMMY_LISTING[3]} />
+					{DUMMY_LISTING.map((dummy_list) => (
+						<Listing variant='landscape' {...dummy_list} />
+					))}
 				</Grid>
 			</Grid>
 		</>
