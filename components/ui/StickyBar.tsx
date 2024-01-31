@@ -1,4 +1,4 @@
-import { AppBar, AppBarProps, SxProps } from '@mui/material';
+import { AppBar, SxProps } from '@mui/material';
 import { ReactNode } from 'react';
 
 type StickyBarProps = {

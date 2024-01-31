@@ -1,59 +1,48 @@
+import { ArrowBackOutlined } from '@mui/icons-material';
+import { Chip, Container, IconButton, Stack, TextField } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+
 import H1 from '@/components/htmlElements/H1';
 import StickyBar from '@/components/ui/StickyBar';
-import { ArrowBackOutlined } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
+import H2 from '@/components/htmlElements/H2';
+
+import P from '@/components/htmlElements/P';
+import Map from '@/components/core/Map';
+import CTA from '@/components/ui/CTA';
+import ImageSlider from '@/components/ui/ImageSlider';
+import BasicDetails from '@/pages/Details/BasicDetails';
+import FeaturesAmenities from '@/pages/Details/FeaturesAmentities';
+import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
+import About from '@/pages/Details/About';
+import TitleBar from '@/pages/Details/TitleBar';
+import ListingContactForm from '@/components/forms/ListingContactForm';
 
 export default function Details() {
 	return (
 		<>
-			<StickyBar
+			<TitleBar />
+			<Container
 				sx={{
-					pl: {
-						xm: 0,
-						sm: 1,
-					},
-					py: 0,
-					borderBottom: 'solid',
-					borderColor: 'secondary.main',
+					pt: 4,
+					pb: 12,
 				}}
 			>
-				<Stack flexDirection='row' columnGap={4}>
-					<IconButton
-						color='secondary'
-						sx={{
-							flexBasis: {
-								sm: '5%',
-								md: '10%',
-							},
-							py: 2,
-							borderRadius: 0,
-							borderRight: 'solid',
-						}}
-					>
-						<ArrowBackOutlined />
-					</IconButton>
-
-					<H1
-						sx={{
-							letterSpacing: 1,
-							fontSize: {
-								// xm: '1rem',
-								xs: '1.2rem',
-								xm: '1.4rem',
-								sm: '1.8rem',
-								md: '2rem',
-							},
-							p: 0,
-							py: {
-								xs: 1,
-								sm: 2,
-							},
-						}}
-					>
-						150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5
-					</H1>
-				</Stack>
-			</StickyBar>
+				<Grid container columns={10} columnSpacing={2}>
+					<Grid xm={10} sm={6}>
+						<Stack spacing={4}>
+							<ImageSlider />
+							<BasicDetails />
+							<FeaturesAmenities />
+							<UtilitiesIncluded />
+							<About />
+							<Map />
+						</Stack>
+					</Grid>
+					<Grid xm={10} sm={4}>
+						<ListingContactForm />
+					</Grid>
+				</Grid>
+			</Container>
 		</>
 	);
 }
