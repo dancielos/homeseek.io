@@ -5,11 +5,15 @@ import {
 	Autocomplete,
 	Button,
 	Container,
+	IconButton,
+	InputAdornment,
 	Stack,
+	StackProps,
 	TextField,
 	Tooltip,
 	Zoom,
 } from '@mui/material';
+import Grid, { Grid2Props } from '@mui/material/Unstable_Grid2';
 import CTA from '../ui/CTA';
 import {
 	ArrowDropDown,
@@ -18,30 +22,29 @@ import {
 	BedOutlined,
 	HomeWorkOutlined,
 	OtherHousesOutlined,
+	SearchOutlined,
 } from '@mui/icons-material';
+import Filters from './Filters';
+import { HTMLProps } from 'react';
+import SearchCityTooltip from './SearchCityTooltip';
 
 type SearchFormProps = {
 	withFilters?: boolean;
 };
 
 export default function SearchForm({ withFilters = false }: SearchFormProps) {
-	return (
-		<Stack
-			component='form'
-			direction={{ xs: 'column', sm: 'row' }}
-			spacing={2}
-			justifyContent='center'
-			width={{ xs: '100%', md: withFilters ? 7 / 8 : 1 / 2 }}
-			margin='auto'
-			autoComplete='off'
-		>
-			<Container>
-				<Tooltip
-					disableHoverListener
-					title='The only cities available with dummy data: Toronto, Montreal, Vancouver, Calgary, Edmonton, Ottawa, Winnipeg, and Red Deer'
-					arrow
-					TransitionComponent={Zoom}
-				>
+	if (!withFilters) {
+		return (
+			<Stack
+				component='form'
+				direction={{ xs: 'column', sm: 'row' }}
+				spacing={2}
+				justifyContent='center'
+				width={{ xs: '100%', md: 1 / 2 }}
+				margin='auto'
+				autoComplete='off'
+			>
+				<SearchCityTooltip>
 					<TextField
 						id='search-input'
 						label='City or Address'
@@ -57,48 +60,57 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 						}}
 						focused
 					/>
-				</Tooltip>
-			</Container>
-			{withFilters ? (
-				<>
-					<Button
-						variant='contained'
-						startIcon={<AttachMoney />}
-						endIcon={<ArrowDropDown />}
-					>
-						Price
-					</Button>
-					<Button
-						variant='contained'
-						startIcon={<HomeWorkOutlined />}
-						endIcon={<ArrowDropDown />}
-					>
-						Property Type
-					</Button>
-					<Button
-						variant='contained'
-						startIcon={<BedOutlined />}
-						endIcon={<ArrowDropDown />}
-					>
-						Beds
-					</Button>
-					<Button
-						variant='contained'
-						startIcon={<BathtubOutlined />}
-						endIcon={<ArrowDropDown />}
-					>
-						Baths
-					</Button>
-					<Button
-						variant='contained'
-						startIcon={<OtherHousesOutlined />}
-						endIcon={<ArrowDropDown />}
-					>
-						More
-					</Button>
-				</>
-			) : null}
-			<CTA type='button'>Search</CTA>
-		</Stack>
+				</SearchCityTooltip>
+				<CTA type='submit'>Search</CTA>
+			</Stack>
+		);
+	}
+	return (
+		<Grid
+			container
+			component='form'
+			// spacing={2}
+			justifyContent='center'
+			columns={10}
+			// margin='auto'
+			autoComplete='off'
+		>
+			<Grid sm={6} md={4}>
+				<SearchCityTooltip>
+					<TextField
+						id='search-input'
+						label='City or Address'
+						variant='filled'
+						fullWidth
+						sx={{
+							color: 'primary.main',
+							borderColor: '#ffffff',
+							backgroundColor: 'rgba(33, 37, 41, 0.8)',
+							'& input, & label': {
+								color: 'primary.main',
+							},
+						}}
+						InputProps={{
+							endAdornment: (
+								<InputAdornment position='end'>
+									{/* <Button
+									color='secondary'
+									variant='contained'
+									endIcon={<SearchOutlined />}
+								></Button> */}
+									<IconButton color='secondary'>
+										<SearchOutlined />
+									</IconButton>
+								</InputAdornment>
+							),
+						}}
+						// focused
+					/>
+				</SearchCityTooltip>
+			</Grid>
+			<Grid xs={'auto'} flexShrink={1}>
+				<Filters />
+			</Grid>
+		</Grid>
 	);
 }
