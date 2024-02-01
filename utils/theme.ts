@@ -1,4 +1,4 @@
-import { BORDER_RADIUS, BOX_SHADOW } from '@/data/constants';
+import { BOX_SHADOW } from '@/data/constants';
 import { createTheme, responsiveFontSizes } from '@mui/material';
 
 import { Ubuntu } from 'next/font/google';
@@ -33,6 +33,9 @@ declare module '@mui/material/styles' {
 
 export const theme = responsiveFontSizes(
 	createTheme({
+		shape: {
+			borderRadius: 1,
+		},
 		breakpoints: {
 			values: {
 				xs: 0,
@@ -79,7 +82,6 @@ export const theme = responsiveFontSizes(
 			MuiCard: {
 				styleOverrides: {
 					root: {
-						borderRadius: BORDER_RADIUS,
 						boxShadow: BOX_SHADOW,
 					},
 				},
@@ -87,7 +89,6 @@ export const theme = responsiveFontSizes(
 			MuiButton: {
 				styleOverrides: {
 					root: {
-						borderRadius: BORDER_RADIUS,
 						['&:hover']: {
 							backgroundColor: '#ffe8cc',
 						},
@@ -114,7 +115,6 @@ export const theme = responsiveFontSizes(
 			MuiFilledInput: {
 				styleOverrides: {
 					root: {
-						// borderRadius: BORDER_RADIUS,
 						paddingBottom: 0,
 						// borderColor: '#ffffff',
 						// backgroundColor: 'rgba(33, 37, 41, 0.8)',
@@ -124,7 +124,6 @@ export const theme = responsiveFontSizes(
 			MuiTextField: {
 				styleOverrides: {
 					root: {
-						borderRadius: BORDER_RADIUS,
 						paddingBottom: 0,
 						backgroundColor: 'rgba(33, 37, 41, 0.8)',
 						'& input, & label': {
@@ -144,14 +143,6 @@ export const theme = responsiveFontSizes(
 				styleOverrides: {
 					root: {
 						bottom: '6px',
-					},
-				},
-			},
-			MuiPaper: {
-				styleOverrides: {
-					root: {
-						backgroundColor: '#f8f9f9',
-						padding: '1.6rem',
 					},
 				},
 			},

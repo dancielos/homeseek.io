@@ -50,7 +50,7 @@ export default function TitleBar() {
 						},
 					}}
 				>
-					150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5
+					150 Peter Herner Bay
 				</H1>
 
 				<IconButton

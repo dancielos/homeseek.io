@@ -2,7 +2,7 @@ import { City, PropertyListing } from './types';
 
 // STYLES
 export const BOX_SHADOW = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
-export const BORDER_RADIUS = 1;
+// export const BORDER_RADIUS = 1;
 
 // DUMMY DATA
 // TODO: to be deleted
