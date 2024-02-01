@@ -127,7 +127,7 @@ export const theme = responsiveFontSizes(
 						borderRadius: BORDER_RADIUS,
 						paddingBottom: 0,
 						backgroundColor: 'rgba(33, 37, 41, 0.8)',
-						'& input': {
+						'& input, & label': {
 							color: '#ffe8cc',
 						},
 					},

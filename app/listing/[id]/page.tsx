@@ -17,7 +17,7 @@ import ListingContactForm from '@/components/forms/ListingContactForm';
 export default function Details() {
 	return (
 		<>
-			<Grid xm={10} sm={6}>
+			<Grid xm={10} sm={5} md={6}>
 				<Stack spacing={4}>
 					<ImageSlider />
 					<BasicDetails />
@@ -27,7 +27,7 @@ export default function Details() {
 					<Map />
 				</Stack>
 			</Grid>
-			<Grid xm={10} sm={4}>
+			<Grid xm={10} sm={5} md={4}>
 				<ListingContactForm />
 			</Grid>
 		</>
