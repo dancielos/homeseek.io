@@ -1,7 +1,7 @@
 'use client';
 
 import Link, { LinkProps } from 'next/link';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import { Url } from 'next/dist/shared/lib/router/router';
 import { UrlObject } from 'url';
@@ -22,18 +22,20 @@ export default function DetailsLink({
 	const prev = useFullPath();
 
 	return (
-		<Link
-			{...rest}
-			href={{
-				pathname: href.toString(),
-				query: {
-					prev,
-				},
-			}}
-		>
-			<Button component='span' color='secondary' variant='contained'>
-				{children}
-			</Button>
-		</Link>
+		<Suspense>
+			<Link
+				{...rest}
+				href={{
+					pathname: href.toString(),
+					query: {
+						prev,
+					},
+				}}
+			>
+				<Button component='span' color='secondary' variant='contained'>
+					{children}
+				</Button>
+			</Link>
+		</Suspense>
 	);
 }
