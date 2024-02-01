@@ -14,6 +14,7 @@ export default function TitleBar() {
 				},
 				py: 0,
 				borderBottom: 'solid',
+				borderTop: 'solid',
 				borderColor: 'secondary.main',
 			}}
 		>
