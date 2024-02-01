@@ -9,9 +9,7 @@ export default function concatPathQuery({
 	path,
 	searchParams,
 }: pathQuery): string {
-	console.log(path);
 	if (!searchParams && !path) return '/';
-	if (!searchParams && path) return path;
 
 	const queries: string[] = [];
 	if (searchParams) {
@@ -21,6 +19,8 @@ export default function concatPathQuery({
 	}
 	// console.log(queries);
 
-	const pathAndQuery = `${path}?${queries.join('&')}`;
+	const pathAndQuery = `${path}${queries.length > 0 ? '?' : ''}${queries.join(
+		'&'
+	)}`;
 	return pathAndQuery;
 }

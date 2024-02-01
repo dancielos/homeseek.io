@@ -59,9 +59,17 @@ describe('Unit tests for utility functions', () => {
 
 		// Assert the expected output
 		expect(result).toBe('/example');
+		expect(result.includes('?')).toBe(false);
+
+		// const searchParams: ReadonlyURLSearchParams | null =
+		// 	new MockReadonlyURLSearchParams([]) as any;
+
+		// const result2: string = concatPathQuery({ path, searchParams });
+		// expect(result2).toBe('/example');
+		// expect(result2.includes('?')).toBe(false);
 	});
 
-	test('should return default / if both path and searchParams are null', () => {
+	test('should return default / if both path and searchParams are null or empty', () => {
 		const result: string = concatPathQuery({ path: null, searchParams: null });
 
 		expect(result).toBe('/');
