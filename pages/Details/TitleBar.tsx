@@ -1,7 +1,8 @@
 import H1 from '@/components/htmlElements/H1';
+import CTA from '@/components/ui/CTA';
 import StickyBar from '@/components/ui/StickyBar';
-import { ArrowBackOutlined } from '@mui/icons-material';
-import { IconButton, Stack } from '@mui/material';
+import { ArrowBackOutlined, MailOutline } from '@mui/icons-material';
+import { Button, IconButton, Stack } from '@mui/material';
 
 export default function TitleBar() {
 	return (
@@ -37,7 +38,7 @@ export default function TitleBar() {
 						letterSpacing: 1,
 						fontSize: {
 							// xm: '1rem',
-							xs: '1.2rem',
+							xs: '1rem',
 							xm: '1.4rem',
 							sm: '1.8rem',
 							md: '2rem',
@@ -51,6 +52,23 @@ export default function TitleBar() {
 				>
 					150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5
 				</H1>
+
+				<IconButton
+					// variant='contained'
+					// color='secondary'
+					sx={{
+						backgroundColor: 'secondary.main',
+						borderRadius: 0,
+						display: {
+							xm: 'flex',
+							sm: 'none',
+						},
+						flex: '0 0 auto',
+					}}
+					// startIcon={}
+				>
+					<MailOutline />
+				</IconButton>
 			</Stack>
 		</StickyBar>
 	);
