@@ -9,6 +9,10 @@ export default function concatPathQuery({
 	path,
 	searchParams,
 }: pathQuery): string {
+	console.log(path);
+	if (!searchParams && !path) return '/';
+	if (!searchParams && path) return path;
+
 	const queries: string[] = [];
 	if (searchParams) {
 		for (const [key, value] of searchParams?.entries()) {

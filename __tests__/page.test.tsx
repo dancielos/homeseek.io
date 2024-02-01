@@ -1,4 +1,5 @@
-import hello from '@/utils/dummy';
+import concatPathQuery from '@/utils/concatPathQuery';
+import { ReadonlyURLSearchParams } from 'next/navigation';
 import { describe, expect, test } from 'vitest';
 
 // in order to save time and to be more efficient
@@ -13,8 +14,56 @@ import { describe, expect, test } from 'vitest';
 
 // For now, I made a dummy util function
 
-describe('Unit tests', () => {
-	test('The dummy function should return hello world', () => {
-		expect(hello()).toBe('Hello World');
+class MockReadonlyURLSearchParams {
+	constructor(private params: [string, string][]) {}
+	entries() {
+		return this.params[Symbol.iterator]();
+	}
+}
+
+describe('Unit tests for utility functions', () => {
+	// test('the concatenation of pathname and query (search params)', () => {
+	// 	expect(concatPathQuery())
+	// });
+	const path = '/example';
+
+	test('should concatenate path and search params correctly', () => {
+		const searchParams: ReadonlyURLSearchParams | null =
+			new MockReadonlyURLSearchParams([
+				['param1', 'value1'],
+				['param2', 'value2'],
+			]) as any;
+
+		const result: string = concatPathQuery({
+			path,
+			searchParams,
+		});
+
+		// Assert the expected output
+		expect(result).toBe('/example?param1=value1&param2=value2');
+	});
+
+	test('should concatenate path and searchParams(1) correctly, no "&"', () => {
+		const searchParams: ReadonlyURLSearchParams | null =
+			new MockReadonlyURLSearchParams([['param1', 'value1']]) as any;
+		const result: string = concatPathQuery({
+			path,
+			searchParams,
+		});
+		expect(result).toBe('/example?param1=value1');
+		expect(result.includes('&')).toBe(false);
+	});
+
+	test('should return only path if searchParams are null', () => {
+		const result: string = concatPathQuery({ path, searchParams: null });
+
+		// Assert the expected output
+		expect(result).toBe('/example');
+	});
+
+	test('should return default / if both path and searchParams are null', () => {
+		const result: string = concatPathQuery({ path: null, searchParams: null });
+
+		expect(result).toBe('/');
 	});
 });
