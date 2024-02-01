@@ -83,6 +83,13 @@ export const theme = responsiveFontSizes(
 			},
 		},
 		components: {
+			MuiChip: {
+				styleOverrides: {
+					root: {
+						borderRadius: 1,
+					},
+				},
+			},
 			MuiCard: {
 				styleOverrides: {
 					root: {
