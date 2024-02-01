@@ -17,7 +17,16 @@ export default function TitleBar() {
 				borderColor: 'secondary.main',
 			}}
 		>
-			<Stack flexDirection='row' columnGap={4}>
+			<Stack
+				flexDirection='row'
+				columnGap={4}
+				sx={{
+					justifyContent: {
+						xs: 'space-between',
+						sm: 'flex-start',
+					},
+				}}
+			>
 				<IconButton
 					color='secondary'
 					sx={{
@@ -35,6 +44,7 @@ export default function TitleBar() {
 
 				<H1
 					sx={{
+						alignSelf: 'center',
 						letterSpacing: 1,
 						fontSize: {
 							// xm: '1rem',
@@ -63,7 +73,7 @@ export default function TitleBar() {
 							xm: 'flex',
 							sm: 'none',
 						},
-						flex: '0 0 auto',
+						flex: '0 0 10%',
 					}}
 					// startIcon={}
 				>
