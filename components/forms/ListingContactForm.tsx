@@ -8,6 +8,8 @@ export default function ListingContactForm() {
 		<>
 			<Stack
 				component='form'
+				id='contact-listing'
+				data-testid='contact-listing'
 				sx={{
 					position: 'sticky',
 					top: '100px',
@@ -39,7 +41,7 @@ export default function ListingContactForm() {
 					multiline
 					rows={4}
 				/>
-				<CTA>Submit</CTA>
+				<CTA type='submit'>Submit</CTA>
 			</Stack>
 		</>
 	);

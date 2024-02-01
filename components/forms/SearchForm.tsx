@@ -17,6 +17,8 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 		return (
 			<Stack
 				component='form'
+				data-testid='search-form'
+				id='search-form'
 				direction={{ xs: 'column', sm: 'row' }}
 				spacing={2}
 				justifyContent='center'
@@ -26,6 +28,7 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 			>
 				<SearchCityTooltip>
 					<TextField
+						type='search'
 						id='search-input'
 						label='City or Address'
 						variant='filled'
@@ -41,6 +44,8 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 		<Grid
 			container
 			component='form'
+			data-testid='search-form'
+			id='search-form'
 			// spacing={2}
 			justifyContent='center'
 			columns={10}
@@ -51,6 +56,7 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 				<SearchCityTooltip>
 					<TextField
 						id='search-input'
+						type='search'
 						label='City or Address'
 						variant='filled'
 						fullWidth
@@ -70,7 +76,7 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 									variant='contained'
 									endIcon={<SearchOutlined />}
 								></Button> */}
-									<IconButton color='secondary'>
+									<IconButton color='secondary' type='submit'>
 										<SearchOutlined />
 									</IconButton>
 								</InputAdornment>

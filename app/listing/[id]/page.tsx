@@ -8,6 +8,7 @@ import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';
 import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
 import About from '@/pages/Details/About';
 import ListingContactForm from '@/components/forms/ListingContactForm';
+import Section from '@/components/section/Section';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -19,8 +20,10 @@ export default function Details() {
 		<>
 			<Grid xm={10} sm={5} md={6}>
 				<Stack spacing={4}>
-					<ImageSlider />
-					<BasicDetails />
+					<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
+						<ImageSlider />
+						<BasicDetails />
+					</Section>
 					<FeaturesAmenities />
 					<UtilitiesIncluded />
 					<About />

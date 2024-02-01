@@ -39,6 +39,7 @@ export default function TitleBar() {
 						borderRadius: 0,
 						borderRight: 'solid',
 					}}
+					data-testid='go-back'
 				>
 					<ArrowBackOutlined />
 				</IconButton>

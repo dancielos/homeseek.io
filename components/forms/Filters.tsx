@@ -24,6 +24,7 @@ export default function Filters() {
 					// flex: '0 0 100%',
 				}}
 				variant='contained'
+				data-testid='filters-container'
 				disableElevation
 			>
 				<FilterButton label='Price' Icon={<AttachMoney />} />
