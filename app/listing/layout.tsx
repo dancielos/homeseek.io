@@ -14,7 +14,7 @@ export default function ListingLayout({ children }: { children: ReactNode }) {
 					pb: 12,
 				}}
 			>
-				<Grid container columns={10} columnSpacing={2}>
+				<Grid container columns={10} columnSpacing={2} rowSpacing={6}>
 					{children}
 				</Grid>
 			</Container>
