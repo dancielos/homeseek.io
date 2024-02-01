@@ -14,28 +14,36 @@ interface DetailsLinkProps extends LinkProps {
 	href: Url | UrlObject;
 }
 
+function DetailsLinkButton({ children, href, ...rest }: DetailsLinkProps) {
+	const prev = useFullPath();
+
+	return (
+		<Link
+			{...rest}
+			href={{
+				pathname: href.toString(),
+				query: {
+					prev,
+				},
+			}}
+		>
+			<Button component='span' color='secondary' variant='contained'>
+				{children}
+			</Button>
+		</Link>
+	);
+}
+
 export default function DetailsLink({
 	children,
 	href,
 	...rest
 }: DetailsLinkProps) {
-	const prev = useFullPath();
-
 	return (
 		<Suspense>
-			<Link
-				{...rest}
-				href={{
-					pathname: href.toString(),
-					query: {
-						prev,
-					},
-				}}
-			>
-				<Button component='span' color='secondary' variant='contained'>
-					{children}
-				</Button>
-			</Link>
+			<DetailsLinkButton href={href} {...rest}>
+				{children}
+			</DetailsLinkButton>
 		</Suspense>
 	);
 }
