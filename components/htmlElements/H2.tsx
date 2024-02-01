@@ -1,12 +1,8 @@
-import { Typography, TypographyProps } from '@mui/material';
+import { HProps } from '@/data/types';
+import { Typography } from '@mui/material';
 import React from 'react';
 
-interface H2Props extends TypographyProps {
-	children: React.ReactNode;
-	smaller?: boolean;
-}
-
-export default function H2({ children, smaller = false, ...args }: H2Props) {
+export default function H2({ children, smaller = false, ...args }: HProps) {
 	const customStyle = smaller
 		? {
 				fontSize: {

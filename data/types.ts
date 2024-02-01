@@ -1,3 +1,5 @@
+import { TypographyProps } from '@mui/material';
+
 export const PROPERTY_TYPE = {
 	HOUSE: 'House',
 	CONDO_APARTMENT: 'Condo/Apartment',
@@ -22,3 +24,8 @@ export type City = {
 	img: string;
 	title: string;
 };
+
+export interface HProps extends TypographyProps {
+	children: React.ReactNode;
+	smaller?: boolean;
+}
