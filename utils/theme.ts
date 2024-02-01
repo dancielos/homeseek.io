@@ -76,6 +76,7 @@ export const theme = responsiveFontSizes(
 				fontWeight: FontWeight.BOLD,
 				paddingBottom: 24,
 				lineHeight: 1,
+				fontSize: '3rem',
 			},
 			body1: {
 				fontWeight: FontWeight.LIGHT,

@@ -11,13 +11,7 @@ export default function H2({ children, smaller = false, ...args }: HProps) {
 					md: '2rem',
 				},
 		  }
-		: {
-				fontSize: {
-					xs: '2rem',
-					sm: '2.5rem',
-					md: '3rem',
-				},
-		  };
+		: {};
 
 	return (
 		<Typography component='h2' variant='h2' sx={customStyle} {...args}>
