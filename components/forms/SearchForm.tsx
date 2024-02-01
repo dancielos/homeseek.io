@@ -7,6 +7,7 @@ import CTA from '../ui/CTA';
 import { SearchOutlined } from '@mui/icons-material';
 import Filters from './Filters';
 import SearchCityTooltip from './SearchCityTooltip';
+import Link from 'next/link';
 
 type SearchFormProps = {
 	withFilters?: boolean;
@@ -36,7 +37,14 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 						focused
 					/>
 				</SearchCityTooltip>
-				<CTA type='submit'>Search</CTA>
+				<CTA
+					type='submit'
+					id='search-submit'
+					LinkComponent={Link}
+					href='/search'
+				>
+					Search
+				</CTA>
 			</Stack>
 		);
 	}

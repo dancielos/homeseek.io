@@ -11,7 +11,7 @@ describe('Links should direct the use to correct pages', () => {
 		cy.get('a#homeseek-logo').click();
 
 		cy.url().should('match', homepageRegex);
-		cy.get('a[data-testid=more-details0]').click();
+		cy.get('a[data-testid=more-details-0]').click();
 
 		cy.url().should('include', '/listing/');
 		cy.get('[data-testid=go-back]').click();

@@ -42,7 +42,7 @@ export default function Search() {
 			>
 				<Box rowGap={1} display='flex' flexDirection='column' padding={1}>
 					{DUMMY_LISTING.map((dummy_list, i) => (
-						<Listing key={i} variant='landscape' {...dummy_list} />
+						<Listing i={i} key={i} variant='landscape' {...dummy_list} />
 					))}
 				</Box>
 			</Grid>

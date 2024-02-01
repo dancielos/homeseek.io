@@ -19,10 +19,13 @@ import {
 import IconText from '../ui/IconText';
 
 import styles from './Listing.module.css';
+import Link from 'next/link';
+import DetailsLink from '../ui/DetailsLink';
 
 interface ListingProps extends PropertyListing {
 	size?: 'sm' | 'md' | 'lg';
 	variant?: 'landscape' | 'portrait';
+	i: number;
 }
 
 // TODO: refactor the code so it's cleaner
@@ -31,6 +34,7 @@ interface ListingProps extends PropertyListing {
 export default function Listing({
 	size = 'sm',
 	variant = 'portrait',
+	i = 0,
 	...rest
 }: ListingProps) {
 	const isLandscape = variant === 'landscape';
@@ -116,14 +120,24 @@ export default function Listing({
 					</Typography>
 					{isLandscape ? (
 						<CardActions sx={{ justifyContent: 'flex-end', px: 0 }}>
-							<CTA>More details</CTA>
+							<DetailsLink
+								data-testid={`more-details-${i}`}
+								href='/listing/something'
+							>
+								More details
+							</DetailsLink>
 						</CardActions>
 					) : null}
 				</Container>
 			</CardContent>
 			{isLandscape ? null : (
 				<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
-					<CTA>More details</CTA>
+					<DetailsLink
+						href='/listing/something'
+						data-testid={`more-details-${i}`}
+					>
+						More details
+					</DetailsLink>
 				</CardActions>
 			)}
 		</Card>

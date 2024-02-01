@@ -1,8 +1,8 @@
 import H1 from '@/components/htmlElements/H1';
-import CTA from '@/components/ui/CTA';
 import StickyBar from '@/components/ui/StickyBar';
-import { ArrowBackOutlined, MailOutline } from '@mui/icons-material';
-import { Button, IconButton, Stack } from '@mui/material';
+import { MailOutline } from '@mui/icons-material';
+import { IconButton, Stack } from '@mui/material';
+import BackButton from './BackButton';
 
 export default function TitleBar() {
 	return (
@@ -28,21 +28,7 @@ export default function TitleBar() {
 					},
 				}}
 			>
-				<IconButton
-					color='secondary'
-					sx={{
-						flexBasis: {
-							sm: '5%',
-							md: '10%',
-						},
-						py: 2,
-						borderRadius: 0,
-						borderRight: 'solid',
-					}}
-					data-testid='go-back'
-				>
-					<ArrowBackOutlined />
-				</IconButton>
+				<BackButton />
 
 				<H1
 					sx={{
