@@ -27,10 +27,7 @@ describe('Pages should render the crucial components', () => {
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 
-		cy.get('main')
-			.get('header')
-			.get('button[data-testid=go-back]')
-			.should('exist');
+		cy.get('main').get('header').get('[data-testid=go-back]').should('exist');
 		// .should('have', 'h1');
 		cy.get('main').get('section').should('have.length.at.least', 4);
 		cy.get('form[data-testid=contact-listing]')

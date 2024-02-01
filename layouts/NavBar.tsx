@@ -14,6 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 // import { useTheme } from '@emotion/react';
 import CTA from '../components/ui/CTA';
 import { Menu } from '@mui/icons-material';
+import Link from 'next/link';
 
 export default function NavBar() {
 	// const theme = useTheme();
@@ -29,7 +30,9 @@ export default function NavBar() {
 					}}
 				/>
 				<Typography variant='h6' component='span' sx={{ flexGrow: 1 }}>
-					HomeSeek
+					<Link href='/' id='homeseek-logo'>
+						HomeSeek
+					</Link>
 				</Typography>
 
 				<Button

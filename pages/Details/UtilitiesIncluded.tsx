@@ -11,7 +11,7 @@ export default function UtilitiesIncluded() {
 				<H2 smaller>Utilities Included</H2>
 				<Stack flexDirection='row' gap={1} flexWrap='wrap'>
 					{arr.map((a) => (
-						<Chip label={`Lorem${a}`} />
+						<Chip key={a} label={`Lorem${a}`} />
 					))}
 				</Stack>
 			</Section>
