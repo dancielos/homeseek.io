@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Map from '@/components/core/Map';
 import ImageSlider from '@/components/ui/ImageSlider';
 import BasicDetails from '@/pages/Details/BasicDetails';
-import FeaturesAmenities from '@/pages/Details/FeaturesAmentities';
+import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';
 import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
 import About from '@/pages/Details/About';
 import ListingContactForm from '@/components/forms/ListingContactForm';
