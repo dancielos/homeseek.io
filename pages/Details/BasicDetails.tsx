@@ -20,13 +20,35 @@ export default function BasicDetails() {
 			}}
 			elevation={3}
 		>
-			<H3 gutterBottom>$1600CAD</H3>
+			<H3
+				gutterBottom
+				sx={{
+					fontSize: {
+						xs: 28,
+						sm: 32,
+					},
+				}}
+			>
+				$1600CAD
+			</H3>
 			<P>150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5</P>
 			<Stack direction='row' useFlexGap flexWrap='wrap' columnGap={2}>
-				<IconText Icon={KingBedOutlined} text={`4 bedrooms`} />
-				<IconText Icon={BathtubOutlined} text={`2 bathrooms`} />
-				<IconText Icon={MapsHomeWorkOutlined} text={'Condo'} />
-				<IconText Icon={PetsOutlined} text={'Pet-friendly'} />
+				<IconText
+					color='secondary'
+					Icon={KingBedOutlined}
+					text={`4 bedrooms`}
+				/>
+				<IconText
+					color='secondary'
+					Icon={BathtubOutlined}
+					text={`2 bathrooms`}
+				/>
+				<IconText
+					color='secondary'
+					Icon={MapsHomeWorkOutlined}
+					text={'Condo'}
+				/>
+				<IconText color='secondary' Icon={PetsOutlined} text={'Pet-friendly'} />
 			</Stack>
 		</Paper>
 	);

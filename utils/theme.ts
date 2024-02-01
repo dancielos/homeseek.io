@@ -36,6 +36,7 @@ export const theme = responsiveFontSizes(
 		shape: {
 			borderRadius: 1,
 		},
+
 		breakpoints: {
 			values: {
 				xs: 0,
@@ -47,6 +48,9 @@ export const theme = responsiveFontSizes(
 			},
 		},
 		palette: {
+			common: {
+				black: '#212529',
+			},
 			primary: {
 				main: '#ffe8cc',
 				light: '#fff4e6',
