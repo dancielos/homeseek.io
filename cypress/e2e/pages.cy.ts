@@ -1,9 +1,7 @@
 describe('Pages should render the crucial components', () => {
-	const URL = 'http://localhost:3000';
-
 	// it('must have ')
 	it('should render the homepage properly', () => {
-		cy.visit(`${URL}`);
+		cy.visit(`${Cypress.config().baseUrl}`);
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 		cy.get('section').should('have.length', 4);
@@ -12,7 +10,7 @@ describe('Pages should render the crucial components', () => {
 	});
 
 	it('should render the search page successfully', () => {
-		cy.visit(`${URL}/search?address=toronto`);
+		cy.visit(`${Cypress.config().baseUrl}/search?address=toronto`);
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 
@@ -25,7 +23,7 @@ describe('Pages should render the crucial components', () => {
 	});
 
 	it('should render the details page successfully', () => {
-		cy.visit(`${URL}/listing/toronto`);
+		cy.visit(`${Cypress.config().baseUrl}/listing/toronto`);
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 
