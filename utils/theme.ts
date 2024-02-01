@@ -147,6 +147,14 @@ export const theme = responsiveFontSizes(
 					},
 				},
 			},
+			MuiPaper: {
+				styleOverrides: {
+					root: {
+						backgroundColor: '#f8f9f9',
+						padding: '1.6rem',
+					},
+				},
+			},
 		},
 	})
 );

@@ -1,6 +1,7 @@
 import { Stack, TextField } from '@mui/material';
 import CTA from '../ui/CTA';
 import H3 from '../htmlElements/H3';
+import { BOX_SHADOW } from '@/data/constants';
 
 export default function ListingContactForm() {
 	return (
@@ -14,6 +15,7 @@ export default function ListingContactForm() {
 				}}
 				bgcolor='primary.light'
 				spacing={2}
+				boxShadow={BOX_SHADOW}
 			>
 				<H3
 					sx={{
