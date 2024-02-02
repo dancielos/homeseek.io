@@ -1,85 +1,61 @@
-import { Adb, Home, Menu, Settings } from '@mui/icons-material';
-import {
-	AppBar,
-	Avatar,
-	Box,
-	Container,
-	IconButton,
-	Toolbar,
-	Tooltip,
-	Typography,
-} from '@mui/material';
-import Logo from './Logo';
+'use client';
 
-export default function AdminAppBar() {
+import { IconButton, Toolbar, Typography } from '@mui/material';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+
+import MenuIcon from '@mui/icons-material/Menu';
+
+interface AppBarProps extends MuiAppBarProps {
+	open?: boolean;
+}
+
+const drawerWidth = 240;
+
+const AppBar = styled(MuiAppBar, {
+	shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+	zIndex: theme.zIndex.drawer + 1,
+	transition: theme.transitions.create(['width', 'margin'], {
+		easing: theme.transitions.easing.sharp,
+		duration: theme.transitions.duration.leavingScreen,
+	}),
+	...(open && {
+		marginLeft: drawerWidth,
+		width: `calc(100% - ${drawerWidth}px)`,
+		transition: theme.transitions.create(['width', 'margin'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+	}),
+}));
+
+export default function AdminAppBar({
+	open,
+	handleDrawerOpen,
+}: {
+	open: boolean;
+	handleDrawerOpen: () => void;
+}) {
 	return (
-		<AppBar position='static'>
-			<Container maxWidth='xl'>
-				<Toolbar
-					disableGutters
+		<AppBar position='fixed' open={open}>
+			<Toolbar>
+				<IconButton
+					color='inherit'
+					aria-label='open drawer'
+					onClick={handleDrawerOpen}
+					edge='start'
 					sx={{
-						justifyContent: 'space-between',
+						marginRight: 5,
+						...(open && { display: 'none' }),
 					}}
 				>
-					<Box
-						flexBasis={'320px'}
-						display='flex'
-						// justifyContent='space-between'
-					>
-						<IconButton
-							size='large'
-							aria-label='account of current user'
-							aria-controls='menu-appbar'
-							aria-haspopup='true'
-							// onClick={handleOpenNavMenu}
-							color='secondary'
-							sx={{
-								border: 'solid 1px #ffa94d',
-								borderRadius: '1px',
-								p: 1,
-								// borderColor: 'secondary',
-								// borderWidth: '2px',
-							}}
-						>
-							<Menu />
-						</IconButton>
-						<Logo />
-					</Box>
-
-					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title='Open settings'>
-							<IconButton
-								// onClick={handleOpenUserMenu}
-								sx={{ p: 0 }}
-							>
-								<Settings />
-							</IconButton>
-						</Tooltip>
-						{/* <Menu
-							sx={{ mt: '45px' }}
-							id='menu-appbar'
-							anchorEl={anchorElUser}
-							anchorOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'right',
-							}}
-							open={Boolean(anchorElUser)}
-							onClose={handleCloseUserMenu}
-						>
-							{settings.map((setting) => (
-								<MenuItem key={setting} onClick={handleCloseUserMenu}>
-									<Typography textAlign='center'>{setting}</Typography>
-								</MenuItem>
-							))}
-						</Menu> */}
-					</Box>
-				</Toolbar>
-			</Container>
+					<MenuIcon />
+				</IconButton>
+				<Typography variant='h6' noWrap component='div'>
+					Mini variant drawer
+				</Typography>
+			</Toolbar>
 		</AppBar>
 	);
 }
