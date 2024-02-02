@@ -1,4 +1,4 @@
-import AdminAppBar from '@/layouts/AdminAppBar';
+import AdminAppBar from '@/layouts/admin/AdminAppBar';
 import { ReactNode } from 'react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
