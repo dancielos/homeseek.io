@@ -32,7 +32,7 @@ export default function SectionHero() {
 			<Grid xs={12} md={10} lg={12}>
 				<H1
 					sx={{
-						color: '#fff4e6',
+						color: 'primary.light',
 						zIndex: 100,
 						textShadow: '2px 2px 10px rgba(0, 0, 0, 0.7)',
 						fontSize: {

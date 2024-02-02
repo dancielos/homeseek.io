@@ -1,8 +1,8 @@
 .icon-button {
 	/* color: red !important; */
-	color: #212529 !important;
-	border: solid 1px #212529 !important;
-	background-color: #ffe8cc;
+	color: var(--default-black) !important;
+	border: var(--default-border) !important;
+	background-color: var(--primary-main);
 }
 
 .ul {

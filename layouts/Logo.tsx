@@ -6,7 +6,7 @@ export default function Logo() {
 		<Button
 			component='div'
 			sx={{
-				color: '#212529',
+				color: 'common.black',
 			}}
 			// className={styles['link']}
 			size='large'

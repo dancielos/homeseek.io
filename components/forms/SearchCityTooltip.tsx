@@ -1,4 +1,4 @@
-import { Tooltip, TooltipProps, Zoom } from '@mui/material';
+import { Tooltip, Zoom } from '@mui/material';
 
 export default function SearchCityTooltip({
 	children,

@@ -6,6 +6,8 @@ import { styled } from '@mui/material/styles';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
+import styles from './AdminAppBar.module.css';
+
 interface AppBarProps extends MuiAppBarProps {
 	open?: boolean;
 }

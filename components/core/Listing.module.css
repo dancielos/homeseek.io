@@ -5,7 +5,7 @@
 }
 
 .card-portrait {
-	transition: transform 0.3s ease-in-out !important;
+	transition: var(--default-transition) !important;
 }
 
 .card-portrait:hover {

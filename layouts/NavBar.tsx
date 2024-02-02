@@ -9,9 +9,7 @@ import {
 	// Icon,
 	// Stack,
 	Toolbar,
-	Typography,
 } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
 // import { useTheme } from '@emotion/react';
 import CTA from '../components/ui/CTA';
 import { Menu } from '@mui/icons-material';

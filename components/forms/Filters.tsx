@@ -3,10 +3,9 @@ import {
 	BathtubOutlined,
 	BedOutlined,
 	HomeWorkOutlined,
-	Menu,
 	OtherHousesOutlined,
 } from '@mui/icons-material';
-import { ButtonGroup, IconButton } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 import FilterButton from './FilterButton';
 
 import styles from './Filters.module.css';

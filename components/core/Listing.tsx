@@ -10,7 +10,7 @@ import {
 
 import Image from 'next/image';
 import { PROPERTY_TYPE, PropertyListing } from '@/data/types';
-import CTA from '../ui/CTA';
+
 import {
 	BathtubOutlined,
 	KingBedOutlined,
@@ -19,8 +19,7 @@ import {
 import IconText from '../ui/IconText';
 
 import styles from './Listing.module.css';
-import Link from 'next/link';
-import DetailsLink from '../ui/DetailsLink';
+import DetailsLink from '@/components/ui/DetailsLink';
 
 interface ListingProps extends PropertyListing {
 	size?: 'sm' | 'md' | 'lg';
@@ -38,6 +37,7 @@ export default function Listing({
 	...rest
 }: ListingProps) {
 	const isLandscape = variant === 'landscape';
+
 	return (
 		<Card className={styles[`card-${variant}`]}>
 			<CardContent

@@ -53,7 +53,7 @@ export default function Footer() {
 	return (
 		<Grid
 			sx={{
-				bgcolor: '#fff4e6',
+				bgcolor: 'primary.light',
 				py: 6,
 				px: {
 					xs: 4,

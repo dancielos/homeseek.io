@@ -41,7 +41,7 @@ export default function FeaturesAmenities() {
 						onChange={handleChange}
 						aria-label='lab API tabs example'
 						sx={{
-							color: '#212529',
+							// color: 'common.black',
 							backgroundColor: 'primary.light',
 						}}
 					>

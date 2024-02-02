@@ -1,4 +1,18 @@
+:root {
+	--default-black: #212529;
+	--default-border: solid 1px var(--default-black);
+	--default-transition: transform 0.3s ease-in-out;
+
+	--primary-main: #ffe8cc;
+	--primary-light: #fff4e6;
+
+	--secondary-main: #ffa94d;
+	--secondary-dark: #f76707;
+
+	--drawer-width: 240px;
+}
+
 body {
-	color: #212529 !important;
+	color: var(--default-black) !important;
 	padding-bottom: 0 !important;
 }

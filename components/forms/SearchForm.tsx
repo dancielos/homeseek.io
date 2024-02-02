@@ -70,8 +70,8 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 						fullWidth
 						sx={{
 							color: 'primary.main',
-							borderColor: '#ffffff',
-							backgroundColor: 'rgba(33, 37, 41, 0.8)',
+							// borderColor: '#ffffff',
+							// backgroundColor: 'rgba(33, 37, 41, 0.8)',
 							'& input, & label': {
 								color: 'primary.main',
 							},
