@@ -5,6 +5,7 @@ import {
 	Box,
 	Button,
 	IconButton,
+	Stack,
 	// Icon,
 	// Stack,
 	Toolbar,
@@ -16,47 +17,64 @@ import CTA from '../components/ui/CTA';
 import { Menu } from '@mui/icons-material';
 import Link from 'next/link';
 
+// import styles from './NavBar.module.css';
+
 export default function NavBar() {
 	// const theme = useTheme();
 	return (
 		<AppBar position='relative' elevation={0}>
-			<Toolbar component='nav'>
-				<HomeIcon
-					sx={{
-						mr: {
-							xs: 0.2,
-							xm: 1,
-						},
-					}}
-				/>
-				<Typography variant='h6' component='span' sx={{ flexGrow: 1 }}>
-					<Link href='/' id='homeseek-logo'>
-						HomeSeek
-					</Link>
-				</Typography>
-
-				<Button
-					color='inherit'
-					sx={{
-						display: {
-							xs: 'none',
-							xm: 'inherit',
-						},
-					}}
-				>
-					Login
-				</Button>
-				<CTA
-					fluid
-					sx={{
-						display: {
-							xs: 'none',
-							xm: 'inherit',
-						},
-					}}
-				>
-					Post your listing
-				</CTA>
+			<Toolbar
+				component='nav'
+				sx={{
+					justifyContent: 'space-between',
+				}}
+			>
+				<Link href='/' id='homeseek-logo'>
+					<Button
+						component='div'
+						sx={{
+							color: '#212529',
+						}}
+						// className={styles['link']}
+						size='large'
+						startIcon={<HomeIcon />}
+					>
+						<Typography
+							variant='h5'
+							sx={{ fontWeight: 700, textTransform: 'capitalize' }}
+						>
+							HomeSeek
+						</Typography>
+					</Button>
+					{/* <IconButton component='div'>
+						<HomeIcon />
+						
+					</IconButton> */}
+				</Link>
+				<Stack flexDirection='row' gap={2}>
+					<Button
+						color='inherit'
+						sx={{
+							display: {
+								xs: 'none',
+								xm: 'inherit',
+							},
+						}}
+					>
+						Login
+					</Button>
+					<CTA
+						fluid
+						sx={{
+							display: {
+								xs: 'none',
+								xm: 'inherit',
+							},
+						}}
+					>
+						Post your listing
+					</CTA>
+				</Stack>
 				<Box
 					sx={{ flexGrow: 1, display: { xs: 'flex', xm: 'none' } }}
 					justifyContent='flex-end'

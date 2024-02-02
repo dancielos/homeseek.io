@@ -1,0 +1,16 @@
+.link {
+	text-decoration: unset;
+	color: #212529;
+	transition: all 0.3s ease-in-out !important;
+}
+
+.link:hover {
+	color: #ffa94d;
+	-webkit-text-stroke: 0.5px;
+	-webkit-text-stroke-color: #212529;
+	stroke: #212529;
+	stroke-width: 0.5px;
+	/* text-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px; */
+
+	/* text-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+}
