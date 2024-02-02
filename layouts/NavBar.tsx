@@ -16,6 +16,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import CTA from '../components/ui/CTA';
 import { Menu } from '@mui/icons-material';
 import Link from 'next/link';
+import Logo from './Logo';
 
 // import styles from './NavBar.module.css';
 
@@ -30,26 +31,7 @@ export default function NavBar() {
 				}}
 			>
 				<Link href='/' id='homeseek-logo'>
-					<Button
-						component='div'
-						sx={{
-							color: '#212529',
-						}}
-						// className={styles['link']}
-						size='large'
-						startIcon={<HomeIcon />}
-					>
-						<Typography
-							variant='h5'
-							sx={{ fontWeight: 700, textTransform: 'capitalize' }}
-						>
-							HomeSeek
-						</Typography>
-					</Button>
-					{/* <IconButton component='div'>
-						<HomeIcon />
-						
-					</IconButton> */}
+					<Logo />
 				</Link>
 				<Stack flexDirection='row' gap={2}>
 					<Button

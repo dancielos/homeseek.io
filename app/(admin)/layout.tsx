@@ -1,11 +1,10 @@
-import Footer from '@/layouts/Footer';
-import NavBar from '@/layouts/NavBar';
-
+import AdminAppBar from '@/layouts/AdminAppBar';
 import { ReactNode } from 'react';
 
-export default function RentalsLayout({ children }: { children: ReactNode }) {
+export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
 		<>
+			<AdminAppBar />
 			<main>{children}</main>
 		</>
 	);
