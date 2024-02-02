@@ -14,6 +14,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { Box } from '@mui/material';
+
+import styles from './AdminDrawer.module.css';
 
 const drawerWidth = 240;
 
@@ -37,15 +40,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
 		width: `calc(${theme.spacing(8)} + 1px)`,
 	},
 });
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'flex-end',
-	padding: theme.spacing(0, 1),
-	// necessary for content to be below app bar
-	...theme.mixins.toolbar,
-}));
 
 const Drawer = styled(MuiDrawer, {
 	shouldForwardProp: (prop) => prop !== 'open',
@@ -74,7 +68,7 @@ export default function AdminDrawer({
 	const theme = useTheme();
 	return (
 		<Drawer variant='permanent' open={open}>
-			<DrawerHeader>
+			<Box className={styles['back-button-container']}>
 				<IconButton onClick={handleDrawerClose}>
 					{theme.direction === 'rtl' ? (
 						<ChevronRightIcon />
@@ -82,7 +76,7 @@ export default function AdminDrawer({
 						<ChevronLeftIcon />
 					)}
 				</IconButton>
-			</DrawerHeader>
+			</Box>
 			<Divider />
 			<List>
 				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (

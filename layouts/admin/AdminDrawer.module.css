@@ -1,0 +1,20 @@
+.back-button-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 10px;
+	padding-left: 10px;
+	min-height: 56px !important;
+}
+
+@media screen and (min-width: 0px) {
+	.back-button-container {
+		min-height: 48px !important;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.back-button-container {
+		min-height: 64px !important;
+	}
+}
