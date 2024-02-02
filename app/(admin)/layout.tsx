@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
 		<>
-			<AdminAppBar />
+			{/* <AdminAppBar /> */}
 			<main>{children}</main>
 		</>
 	);

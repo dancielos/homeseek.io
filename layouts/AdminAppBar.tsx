@@ -1,4 +1,4 @@
-import { Adb, Home, Menu } from '@mui/icons-material';
+import { Adb, Home, Menu, Settings } from '@mui/icons-material';
 import {
 	AppBar,
 	Avatar,
@@ -9,97 +9,42 @@ import {
 	Tooltip,
 	Typography,
 } from '@mui/material';
+import Logo from './Logo';
 
 export default function AdminAppBar() {
 	return (
 		<AppBar position='static'>
 			<Container maxWidth='xl'>
-				<Toolbar disableGutters>
-					<Home sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-					<Typography
-						variant='h6'
-						noWrap
-						component='a'
-						href='#app-bar-with-responsive-menu'
-						sx={{
-							mr: 2,
-							display: { xs: 'none', md: 'flex' },
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: '.3rem',
-							color: 'inherit',
-							textDecoration: 'none',
-						}}
+				<Toolbar
+					disableGutters
+					sx={{
+						justifyContent: 'space-between',
+					}}
+				>
+					<Box
+						flexBasis={'320px'}
+						display='flex'
+						// justifyContent='space-between'
 					>
-						LOGO
-					</Typography>
-
-					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
 							size='large'
 							aria-label='account of current user'
 							aria-controls='menu-appbar'
 							aria-haspopup='true'
 							// onClick={handleOpenNavMenu}
-							color='inherit'
+							color='secondary'
+							sx={{
+								border: 'solid 1px #ffa94d',
+								borderRadius: '1px',
+								p: 1,
+								// borderColor: 'secondary',
+								// borderWidth: '2px',
+							}}
 						>
 							<Menu />
 						</IconButton>
-						{/* <Menu
-							id='menu-appbar'
-							anchorEl={anchorElNav}
-							anchorOrigin={{
-								vertical: 'bottom',
-								horizontal: 'left',
-							}}
-							keepMounted
-							transformOrigin={{
-								vertical: 'top',
-								horizontal: 'left',
-							}}
-							open={Boolean(anchorElNav)}
-							onClose={handleCloseNavMenu}
-							sx={{
-								display: { xs: 'block', md: 'none' },
-							}}
-						>
-							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign='center'>{page}</Typography>
-								</MenuItem>
-							))}
-						</Menu> */}
+						<Logo />
 					</Box>
-					<Adb sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-					<Typography
-						variant='h5'
-						noWrap
-						component='a'
-						href='#app-bar-with-responsive-menu'
-						sx={{
-							mr: 2,
-							display: { xs: 'flex', md: 'none' },
-							flexGrow: 1,
-							fontFamily: 'monospace',
-							fontWeight: 700,
-							letterSpacing: '.3rem',
-							color: 'inherit',
-							textDecoration: 'none',
-						}}
-					>
-						LOGO
-					</Typography>
-					{/* <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-						{pages.map((page) => (
-							<Button
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}
-							>
-								{page}
-							</Button>
-						))}
-					</Box> */}
 
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Open settings'>
@@ -107,7 +52,7 @@ export default function AdminAppBar() {
 								// onClick={handleOpenUserMenu}
 								sx={{ p: 0 }}
 							>
-								<Avatar alt='Remy Sharp' src='/static/images/avatar/2.jpg' />
+								<Settings />
 							</IconButton>
 						</Tooltip>
 						{/* <Menu
