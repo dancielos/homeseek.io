@@ -1,0 +1,17 @@
+.app-bar {
+	z-index: 1201 !important;
+	/* width: 100% !important; */
+	transition: all var(--transition-duration-leaving-screen)
+		var(--transition-easing-sharp) !important;
+	-webkit-transition: all var(--transition-duration-leaving-screen)
+		var(--transition-easing-sharp) !important;
+}
+
+.open {
+	margin-left: var(--drawer-width) !important;
+	width: calc(100% - var(--drawer-width)) !important;
+	transition: all var(--transition-duration-leaving-screen)
+		var(--transition-easing-sharp) !important;
+	-webkit-transition: all var(--transition-duration-leaving-screen)
+		var(--transition-easing-sharp) !important;
+}

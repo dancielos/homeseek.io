@@ -1,36 +1,8 @@
-'use client';
-
-import { IconButton, Toolbar, Typography } from '@mui/material';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { styled } from '@mui/material/styles';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 
 import styles from './AdminAppBar.module.css';
-
-interface AppBarProps extends MuiAppBarProps {
-	open?: boolean;
-}
-
-const drawerWidth = 240;
-
-const AppBar = styled(MuiAppBar, {
-	shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-	zIndex: theme.zIndex.drawer + 1,
-	transition: theme.transitions.create(['width', 'margin'], {
-		easing: theme.transitions.easing.sharp,
-		duration: theme.transitions.duration.leavingScreen,
-	}),
-	...(open && {
-		marginLeft: drawerWidth,
-		width: `calc(100% - ${drawerWidth}px)`,
-		transition: theme.transitions.create(['width', 'margin'], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen,
-		}),
-	}),
-}));
 
 export default function AdminAppBar({
 	open,
@@ -40,7 +12,11 @@ export default function AdminAppBar({
 	handleDrawerOpen: () => void;
 }) {
 	return (
-		<AppBar position='fixed' open={open}>
+		<AppBar
+			position='fixed'
+			// open={open}
+			className={`${styles['app-bar']} ${open ? styles['open'] : ''}`}
+		>
 			<Toolbar>
 				<IconButton
 					color='inherit'

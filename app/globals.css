@@ -1,7 +1,6 @@
 :root {
 	--default-black: #212529;
 	--default-border: solid 1px var(--default-black);
-	--default-transition: transform 0.3s ease-in-out;
 
 	--primary-main: #ffe8cc;
 	--primary-light: #fff4e6;
@@ -10,6 +9,10 @@
 	--secondary-dark: #f76707;
 
 	--drawer-width: 240px;
+
+	--default-transition: transform 0.3s ease-in-out;
+	--transition-easing-sharp: cubic-bezier(0.4, 0, 0.6, 1);
+	--transition-duration-leaving-screen: 195ms;
 }
 
 body {
