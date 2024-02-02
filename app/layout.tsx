@@ -23,9 +23,7 @@ export default function RootLayout({ children }: Readonly<rootProps>) {
 				<AppRouterCacheProvider>
 					<ThemeRegistry options={{ key: 'mui-theme' }}>
 						<CssBaseline />
-						<NavBar />
-						<main>{children}</main>
-						<Footer />
+						{children}
 					</ThemeRegistry>
 				</AppRouterCacheProvider>
 			</body>
