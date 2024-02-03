@@ -1,7 +1,6 @@
 import H2 from '@/components/htmlElements/H2';
 import P from '@/components/htmlElements/P';
 import Section from '@/components/section/Section';
-import { Stack } from '@mui/material';
 
 export default function About() {
 	return (

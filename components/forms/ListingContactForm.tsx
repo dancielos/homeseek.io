@@ -1,5 +1,5 @@
 import { Stack, TextField } from '@mui/material';
-import CTA from '../ui/CTA';
+import CTA from '../client/CTA';
 import H3 from '../htmlElements/H3';
 import { BOX_SHADOW } from '@/data/constants';
 

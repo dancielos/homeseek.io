@@ -1,4 +1,4 @@
-import { Box, Container, SxProps, Typography } from '@mui/material';
+import { Container, SxProps } from '@mui/material';
 import React from 'react';
 import SectionTitle from './SectionTitle';
 

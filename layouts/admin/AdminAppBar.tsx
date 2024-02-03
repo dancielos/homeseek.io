@@ -1,46 +1,21 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Toolbar, Typography } from '@mui/material';
 
-import styles from './AdminAppBar.module.css';
+import ClientAppBar from '@/components/client/admin/AppBar';
+import ToggleDrawer from '@/components/client/admin/ToggleDrawer';
+import { Menu } from '@mui/icons-material';
+import Logo from '../Logo';
 
-export default function AdminAppBar({
-	open,
-	handleDrawerOpen,
-}: {
-	open: boolean;
-	handleDrawerOpen: () => void;
-}) {
+export default function AdminAppBar() {
 	return (
-		<AppBar
-			position='fixed'
-			// open={open}
-			className={`${styles['app-bar']} ${open ? styles['open'] : ''}`}
-		>
+		<ClientAppBar>
 			<Toolbar>
-				<IconButton
-					color='inherit'
-					aria-label='open drawer'
-					onClick={handleDrawerOpen}
-					edge='start'
-					sx={{
-						marginRight: {
-							sm: 0,
-							md: 5,
-						},
-						pr: 2,
-						pl: {
-							xs: 2,
-							sm: 1,
-						},
-						...(open && { display: 'none' }),
-					}}
-				>
-					<MenuIcon />
-				</IconButton>
+				<ToggleDrawer drawerAction='open'>
+					<Menu />
+				</ToggleDrawer>
 				<Typography variant='h6' noWrap component='div'>
-					Mini variant drawer
+					<Logo />
 				</Typography>
 			</Toolbar>
-		</AppBar>
+		</ClientAppBar>
 	);
 }

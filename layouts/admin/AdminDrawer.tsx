@@ -1,91 +1,43 @@
-import {
-	Box,
-	Drawer,
-	ListItem,
-	ListItemButton,
-	IconButton,
-	Divider,
-	List,
-	ListItemText,
-	ListItemIcon,
-} from '@mui/material';
+import { Box, Divider, List } from '@mui/material';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
 import styles from './AdminDrawer.module.css';
+import ClientDrawer from '@/components/client/admin/Drawer';
+import ToggleDrawer from '@/components/client/admin/ToggleDrawer';
 
-export default function AdminDrawer({
-	open,
-	handleDrawerClose,
-}: {
-	open: boolean;
-	handleDrawerClose: () => void;
-}) {
+import ListItem from '@/components/ui/admin/ListItem';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import MailIcon from '@mui/icons-material/Mail';
+import SpeedIcon from '@mui/icons-material/Speed';
+import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
+import SettingsIcon from '@mui/icons-material/Settings';
+
+export default function AdminDrawer() {
 	return (
-		<Drawer
-			variant='permanent'
-			open={open}
-			className={`${styles['drawer']} ${
-				open ? styles['open'] : styles['close']
-			}`}
-		>
+		<ClientDrawer>
 			<Box className={styles['back-button-container']}>
-				<IconButton onClick={handleDrawerClose}>
+				<ToggleDrawer drawerAction='close'>
 					<ChevronLeftIcon />
-				</IconButton>
+				</ToggleDrawer>
 			</Box>
 			<Divider />
 			<List>
-				{['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-					<ListItem key={text} disablePadding sx={{ display: 'block' }}>
-						<ListItemButton
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? 'initial' : 'center',
-								px: 2.5,
-							}}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : 'auto',
-									justifyContent: 'center',
-								}}
-							>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				<ListItem
+					text='Go to Homepage'
+					Icon={OpenInNewIcon}
+					flexDirection='row-reverse'
+					sx={{ mb: 0 }}
+				/>
 			</List>
 			<Divider />
 			<List>
-				{['All mail', 'Trash', 'Spam'].map((text, index) => (
-					<ListItem key={text} disablePadding sx={{ display: 'block' }}>
-						<ListItemButton
-							sx={{
-								minHeight: 48,
-								justifyContent: open ? 'initial' : 'center',
-								px: 2.5,
-							}}
-						>
-							<ListItemIcon
-								sx={{
-									minWidth: 0,
-									mr: open ? 3 : 'auto',
-									justifyContent: 'center',
-								}}
-							>
-								{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-							</ListItemIcon>
-							<ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-						</ListItemButton>
-					</ListItem>
-				))}
+				<ListItem text='Dashboard' Icon={SpeedIcon} />
+				<ListItem text='Messages' Icon={MailIcon} />
+				<ListItem text='Properties' Icon={HolidayVillageIcon} />
+				<ListItem text='Settings' Icon={SettingsIcon} />
 			</List>
-		</Drawer>
+			<Divider />
+		</ClientDrawer>
 	);
 }

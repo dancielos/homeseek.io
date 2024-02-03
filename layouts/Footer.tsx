@@ -11,7 +11,7 @@ import {
 import Grid from '@mui/material/Unstable_Grid2';
 
 import HomeIcon from '@mui/icons-material/Home';
-import CTA from '@/components/ui/CTA';
+import CTA from '@/components/client/CTA';
 import { Facebook, Instagram, LinkedIn, X, YouTube } from '@mui/icons-material';
 
 import styles from './Footer.module.css';

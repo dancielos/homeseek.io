@@ -6,7 +6,7 @@ import Section from '@/components/section/Section';
 import H2 from '@/components/htmlElements/H2';
 import Underline from '@/components/ui/Underline';
 import P from '@/components/htmlElements/P';
-import CTA from '@/components/ui/CTA';
+import CTA from '@/components/client/CTA';
 
 import styles from './SectionCta.module.css';
 

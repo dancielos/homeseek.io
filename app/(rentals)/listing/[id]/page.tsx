@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import Map from '@/components/core/Map';
+import Map from '@/components/client/Map';
 import ImageSlider from '@/components/ui/ImageSlider';
 import BasicDetails from '@/pages/Details/BasicDetails';
 import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';

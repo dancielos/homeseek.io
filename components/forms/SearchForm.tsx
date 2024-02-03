@@ -1,9 +1,9 @@
-'use client';
+// 'use client';
 
 // import { handleTextField } from '@/utils/actions';
 import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import CTA from '../ui/CTA';
+import CTA from '../client/CTA';
 import { SearchOutlined } from '@mui/icons-material';
 import Filters from './Filters';
 import SearchCityTooltip from './SearchCityTooltip';

@@ -1,4 +1,4 @@
-import Map from '@/components/core/Map';
+import Map from '@/components/client/Map';
 
 import { Box } from '@mui/material';
 

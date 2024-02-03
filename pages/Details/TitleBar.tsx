@@ -2,7 +2,7 @@ import H1 from '@/components/htmlElements/H1';
 import StickyBar from '@/components/ui/StickyBar';
 import { MailOutline } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
-import BackButton from './BackButton';
+import BackButton from '../../components/client/BackButton';
 
 export default function TitleBar() {
 	return (

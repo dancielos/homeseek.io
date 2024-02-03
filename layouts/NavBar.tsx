@@ -11,7 +11,7 @@ import {
 	Toolbar,
 } from '@mui/material';
 // import { useTheme } from '@emotion/react';
-import CTA from '../components/ui/CTA';
+import CTA from '../components/client/CTA';
 import { Menu } from '@mui/icons-material';
 import Link from 'next/link';
 import Logo from './Logo';
