@@ -22,6 +22,7 @@ const ubuntu = Ubuntu({
 declare module '@mui/material/Button' {
 	interface ButtonPropsVariantOverrides {
 		fluid: true;
+		subtle: true;
 	}
 }
 
@@ -119,6 +120,12 @@ export const theme = responsiveFontSizes(
 							// textTransform: 'none',
 							border: `1px solid #212529`,
 							boxShadow: BOX_SHADOW,
+						},
+					},
+					{
+						props: { variant: 'subtle' },
+						style: {
+							backgroundColor: '#f1f3f5',
 						},
 					},
 				],
