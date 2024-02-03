@@ -2,8 +2,8 @@
 
 import { closeDrawer, openDrawer } from '@/data/slices/adminDrawer';
 import { AppDispatch, useAppSelector } from '@/data/store';
-import { IconButton } from '@mui/material';
-import { ReactNode } from 'react';
+import { IconButton, useMediaQuery } from '@mui/material';
+import { ReactNode, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 export default function ToggleDrawer({
@@ -13,12 +13,18 @@ export default function ToggleDrawer({
 	children: ReactNode;
 	drawerAction: 'open' | 'close';
 }) {
-	// TODO:
-	// will the const open be re-evaluated?
+	const isMobile = useMediaQuery('(max-width: 600px)');
 
 	const open = useAppSelector((state) => state.adminDrawerReducer.open);
 
 	const dispatch = useDispatch<AppDispatch>();
+
+	useEffect(() => {
+		if (isMobile) {
+			// console.log(isMobile);
+			dispatch(closeDrawer());
+		}
+	}, [isMobile]);
 
 	function handleDrawerAction() {
 		if (drawerAction === 'open') dispatch(openDrawer());

@@ -12,14 +12,7 @@ import { Paper, Stack } from '@mui/material';
 
 export default function BasicDetails() {
 	return (
-		<Paper
-			sx={{
-				p: 4,
-				// borderRadius: '1px',
-				boxShadow: BOX_SHADOW,
-			}}
-			elevation={3}
-		>
+		<Paper elevation={3}>
 			<H3
 				gutterBottom
 				sx={{

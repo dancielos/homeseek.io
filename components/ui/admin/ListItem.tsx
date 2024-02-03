@@ -37,6 +37,7 @@ export default function ListItem({
 				<ListItemIcon
 					sx={{
 						minWidth: 0,
+
 						justifyContent: 'center',
 					}}
 				>
