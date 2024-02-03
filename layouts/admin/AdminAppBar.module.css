@@ -5,6 +5,19 @@
 		var(--transition-easing-sharp) !important;
 	-webkit-transition: all var(--transition-duration-leaving-screen)
 		var(--transition-easing-sharp) !important;
+	min-height: 56px !important;
+}
+
+@media screen and (min-width: 0px) {
+	.app-bar {
+		min-height: 48px !important;
+	}
+}
+
+@media screen and (min-width: 600px) {
+	.app-bar {
+		min-height: 64px !important;
+	}
 }
 
 .open {

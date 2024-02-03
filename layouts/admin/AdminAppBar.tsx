@@ -23,7 +23,15 @@ export default function AdminAppBar({
 					onClick={handleDrawerOpen}
 					edge='start'
 					sx={{
-						marginRight: 5,
+						marginRight: {
+							sm: 0,
+							md: 5,
+						},
+						pr: 2,
+						pl: {
+							xs: 2,
+							sm: 1,
+						},
 						...(open && { display: 'none' }),
 					}}
 				>

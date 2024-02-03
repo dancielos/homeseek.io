@@ -22,7 +22,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 			<Box sx={{ display: 'flex' }}>
 				<AdminAppBar open={open} handleDrawerOpen={handleDrawerOpen} />
 				<AdminDrawer open={open} handleDrawerClose={handleDrawerClose} />
-				<Box component='main' sx={{ flexGrow: 1, p: 3, pt: 8 }}>
+				<Box component='main' sx={{ flexGrow: 1, p: 3, pt: { xs: 7, sm: 8 } }}>
 					{children}
 				</Box>
 			</Box>
