@@ -171,8 +171,10 @@ theme.components = {
 	MuiPaper: {
 		styleOverrides: {
 			elevation3: {
-				padding: 'calc(24px + 1vw)',
-
+				padding: 32,
+				[theme.breakpoints.down('sm')]: {
+					padding: 16,
+				},
 				boxShadow: BOX_SHADOW,
 			},
 		},
