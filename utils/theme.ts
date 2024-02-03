@@ -160,7 +160,7 @@ export const theme = responsiveFontSizes(
 			},
 			MuiPaper: {
 				styleOverrides: {
-					root: {
+					elevation3: {
 						padding: 32,
 						boxShadow: BOX_SHADOW,
 					},
