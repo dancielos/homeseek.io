@@ -1,6 +1,14 @@
 import CTA from '@/components/client/CTA';
-import { InfoOutlined } from '@mui/icons-material';
-import { Box, Paper, TextField, Typography } from '@mui/material';
+import Logo from '@/layouts/Logo';
+import { Home, InfoOutlined } from '@mui/icons-material';
+import {
+	Avatar,
+	Box,
+	Paper,
+	Stack,
+	TextField,
+	Typography,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Image from 'next/image';
 
@@ -8,11 +16,11 @@ export default function Login() {
 	return (
 		<Grid
 			container
-			sx={
-				{
-					// height: { xs: '92vh', sm: '90vh', md: '100vh' },
-				}
-			}
+			// sx={
+			// 	{
+			// height: { xs: '92vh', sm: '90vh', md: '100vh' },
+			// 	}
+			// }
 		>
 			<Grid
 				xs={false}
@@ -66,9 +74,14 @@ export default function Login() {
 						gap: 4,
 					}}
 				>
-					<Typography component='h1' variant='h5'>
-						Sign in
-					</Typography>
+					<Stack flexDirection='row' gap={2} alignItems='center'>
+						<Avatar variant='rounded'>
+							<Home />
+						</Avatar>
+						<Typography component='h1' variant='h5'>
+							Sign in
+						</Typography>
+					</Stack>
 					<Box
 						component='form'
 						noValidate
