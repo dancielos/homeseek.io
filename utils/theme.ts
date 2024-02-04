@@ -62,6 +62,10 @@ export let theme = responsiveFontSizes(
 				main: '#ffa94d',
 				dark: '#f76707',
 			},
+			info: {
+				main: '#4DA3FF',
+				light: '#e6f2ff',
+			},
 		},
 		typography: {
 			fontFamily: `${ubuntu.style.fontFamily}, Arial, sans-serif`,
@@ -176,6 +180,14 @@ theme.components = {
 					padding: 16,
 				},
 				boxShadow: BOX_SHADOW,
+			},
+			elevation2: {
+				padding: 32,
+				[theme.breakpoints.down('sm')]: {
+					padding: 16,
+				},
+				boxShadow: 'unset',
+				backgroundColor: '#f1f3f5',
 			},
 		},
 	},
