@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation';
+
 export default function Messages() {
-	return <div>Messages page</div>;
+	// return notFound();
 }
