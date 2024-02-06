@@ -141,6 +141,14 @@ theme.components = {
 			},
 		},
 	},
+	// MuiStep: {
+	// 	styleOverrides: {
+	// 		root: {
+	// 			backgroundColor: 'red',
+	// 			width: '100%',
+	// 		},
+	// 	},
+	// },
 	MuiButtonGroup: {},
 	MuiButton: {
 		styleOverrides: {
