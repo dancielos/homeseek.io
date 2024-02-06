@@ -26,9 +26,31 @@ declare module '@mui/material/Button' {
 	}
 }
 
+declare module '@mui/material/ButtonGroup' {
+	interface ButtonGroupPropsVariantOverrides {
+		smaller: true;
+	}
+}
+
 declare module '@mui/material/styles' {
 	interface BreakpointOverrides {
 		xm: true;
+	}
+}
+
+declare module '@mui/material/ButtonGroup' {
+	interface ButtonGroupPropsColorOverrides {
+		black: true;
+	}
+}
+
+declare module '@mui/material/styles' {
+	interface Palette {
+		black: Palette['primary'];
+	}
+
+	interface PaletteOptions {
+		black?: PaletteOptions['primary'];
 	}
 }
 
@@ -62,6 +84,7 @@ export let theme = responsiveFontSizes(
 				main: '#ffa94d',
 				dark: '#f76707',
 			},
+
 			info: {
 				main: '#4DA3FF',
 				light: '#e6f2ff',
@@ -91,6 +114,17 @@ export let theme = responsiveFontSizes(
 	})
 );
 
+theme = createTheme(theme, {
+	palette: {
+		black: theme.palette.augmentColor({
+			color: {
+				main: '#212529',
+			},
+			name: 'black',
+		}),
+	},
+});
+
 // export const theme = createTheme({...defaults, });
 theme.components = {
 	MuiChip: {
@@ -107,6 +141,7 @@ theme.components = {
 			},
 		},
 	},
+	MuiButtonGroup: {},
 	MuiButton: {
 		styleOverrides: {
 			root: {
@@ -149,11 +184,22 @@ theme.components = {
 	},
 	MuiTextField: {
 		styleOverrides: {
+			// root: {
+			// paddingBottom: 0,
+			// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			// '& input, & label': {
+			// 	color: '#ffe8cc',
+			// },
 			root: {
 				paddingBottom: 0,
-				backgroundColor: 'rgba(33, 37, 41, 0.8)',
+				backgroundColor: '#f8f9fa',
+
+				color: theme.palette.common.black,
 				'& input, & label': {
-					color: '#ffe8cc',
+					color: `${theme.palette.black.main} !important`,
+				},
+				'& div::after': {
+					borderBottom: `2px solid ${theme.palette.secondary.main} !important`,
 				},
 			},
 		},

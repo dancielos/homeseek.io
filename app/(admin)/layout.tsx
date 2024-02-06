@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 import AdminAppBar from '@/layouts/admin/AdminAppBar';
 import AdminDrawer from '@/layouts/admin/AdminDrawer';
-import { Stack } from '@mui/material';
+import { Stack, TextField } from '@mui/material';
 import H1 from '@/components/htmlElements/H1';
 import CTA from '@/components/client/CTA';
 
@@ -21,7 +21,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 					<Stack
 						flexDirection='row'
 						alignItems='center'
-						justifyContent='space-between'
+						// justifyContent='space-between'
+						gap={2}
 						mb={2}
 					>
 						<H1
@@ -38,6 +39,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 							Properties
 						</H1>
 						<CTA>Add new Property</CTA>
+						<TextField variant='filled' label='Search Property' />
 					</Stack>
 					{children}
 				</Box>

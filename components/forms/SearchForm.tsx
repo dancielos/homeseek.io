@@ -1,7 +1,13 @@
 // 'use client';
 
 // import { handleTextField } from '@/utils/actions';
-import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
+import {
+	IconButton,
+	InputAdornment,
+	Stack,
+	SxProps,
+	TextField,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CTA from '../client/CTA';
 import { SearchOutlined } from '@mui/icons-material';
@@ -11,9 +17,13 @@ import Link from 'next/link';
 
 type SearchFormProps = {
 	withFilters?: boolean;
+	sx?: SxProps;
 };
 
-export default function SearchForm({ withFilters = false }: SearchFormProps) {
+export default function SearchForm({
+	withFilters = false,
+	sx,
+}: SearchFormProps) {
 	if (!withFilters) {
 		return (
 			<Stack
@@ -35,6 +45,7 @@ export default function SearchForm({ withFilters = false }: SearchFormProps) {
 						variant='filled'
 						fullWidth
 						focused
+						sx={sx ? { ...sx } : {}}
 					/>
 				</SearchCityTooltip>
 				<CTA

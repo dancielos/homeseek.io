@@ -1,4 +1,4 @@
-import Footer from '@/layouts/Footer';
+// import Footer from '@/layouts/Footer';
 import NavBar from '@/layouts/NavBar';
 import { Box } from '@mui/material';
 

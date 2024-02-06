@@ -47,7 +47,14 @@ export default function SectionHero() {
 			</Grid>
 
 			<Grid xs={10} sm={6} md={10} lg={10}>
-				<SearchForm />
+				<SearchForm
+					sx={{
+						bgcolor: 'rgba(33, 37, 41, 0.8)',
+						'& input, & label': {
+							color: '#ffe8cc !important',
+						},
+					}}
+				/>
 			</Grid>
 		</Grid>
 	);
