@@ -3,10 +3,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
-import { Button, ButtonGroup, TextField } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
-import H1 from '@/components/htmlElements/H1';
-import CTA from '@/components/client/CTA';
+import { Button, ButtonGroup } from '@mui/material';
 
 const columns: GridColDef[] = [
 	// { field: 'id', headerName: 'ID', width: 90 },
@@ -328,39 +325,6 @@ const rows = [
 export default function Properties() {
 	return (
 		<>
-			<Grid
-				container
-				columns={10}
-				// gap={2}
-				mb={2}
-				spacing={2}
-			>
-				<Grid xs={10} sm={5} display='flex' alignItems='center' gap={2}>
-					<H1
-						sx={{
-							pb: 0,
-							letterSpacing: 1,
-							fontSize: {
-								xs: '1.2rem',
-								md: '1.6rem',
-							},
-							textAlign: 'left',
-						}}
-					>
-						Properties
-					</H1>
-					<CTA>Add new Property</CTA>
-				</Grid>
-				<Grid xs={10} sm={5} display='flex' justifyContent='flex-end'>
-					<TextField
-						size='small'
-						variant='outlined'
-						type='search'
-						label='Search Property'
-					/>
-					<Button variant='subtle'>Search</Button>
-				</Grid>
-			</Grid>
 			<Box sx={{ overflow: 'auto' }}>
 				<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
 					<DataGrid
