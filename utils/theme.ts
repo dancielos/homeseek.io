@@ -182,6 +182,15 @@ theme.components = {
 			},
 		},
 	},
+	MuiOutlinedInput: {
+		styleOverrides: {
+			root: {
+				paddingBottom: 0,
+				// borderColor: '#ffffff',
+				// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			},
+		},
+	},
 	MuiTextField: {
 		styleOverrides: {
 			// root: {
