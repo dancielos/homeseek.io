@@ -1,6 +1,9 @@
 'use client';
 
-import { FormControlLabel, Switch, SwitchProps, styled } from '@mui/material';
+import { toggleTheme } from '@/data/slices/themeSelector';
+import { AppDispatch, useAppSelector } from '@/data/store';
+import { Switch, SwitchProps, styled } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 	width: 62,
@@ -52,5 +55,19 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 interface toggleThemeProps extends SwitchProps {}
 
 export default function ToggleTheme({ ...args }: toggleThemeProps) {
-	return <MaterialUISwitch sx={{ m: 1 }} defaultChecked {...args} />;
+	const dispatch = useDispatch<AppDispatch>();
+	const theme = useAppSelector((state) => state.themeSelectorReducer.theme);
+	const handleToggleTheme = () => {
+		dispatch(toggleTheme());
+	};
+	return (
+		<MaterialUISwitch
+			// className={styles['switch']}
+			sx={{ m: 1 }}
+			defaultChecked={false}
+			checked={theme}
+			onChange={handleToggleTheme}
+			{...args}
+		/>
+	);
 }
