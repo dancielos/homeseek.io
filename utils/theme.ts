@@ -221,6 +221,28 @@ theme.components = {
 			},
 		},
 	},
+	MuiFormControl: {
+		styleOverrides: {
+			// root: {
+			// paddingBottom: 0,
+			// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			// '& input, & label': {
+			// 	color: '#ffe8cc',
+			// },
+			root: {
+				paddingBottom: 0,
+				backgroundColor: '#f8f9fa',
+
+				color: theme.palette.common.black,
+				'& input, & label': {
+					color: `${theme.palette.black.main} !important`,
+				},
+				'& div::after': {
+					borderBottom: `2px solid ${theme.palette.secondary.main} !important`,
+				},
+			},
+		},
+	},
 	MuiAppBar: {
 		styleOverrides: {
 			root: {
