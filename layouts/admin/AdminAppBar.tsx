@@ -22,7 +22,10 @@ export default function AdminAppBar() {
 						<Logo />
 					</Typography>
 				</div>
-				<ToggleTheme />
+				{/* 
+				// TODO: Set this up later, 
+				// but right now this is not a priority
+				<ToggleTheme /> */}
 			</Toolbar>
 		</ClientAppBar>
 	);
