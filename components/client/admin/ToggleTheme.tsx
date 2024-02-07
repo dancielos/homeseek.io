@@ -1,6 +1,9 @@
 'use client';
 
+import { toggleTheme } from '@/data/slices/themeSelector';
+import { AppDispatch, useAppSelector } from '@/data/store';
 import { FormControlLabel, Switch, SwitchProps, styled } from '@mui/material';
+import { useDispatch } from 'react-redux';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 	width: 62,
@@ -52,5 +55,20 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 interface toggleThemeProps extends SwitchProps {}
 
 export default function ToggleTheme({ ...args }: toggleThemeProps) {
-	return <MaterialUISwitch sx={{ m: 1 }} defaultChecked {...args} />;
+	const isLightMode = useAppSelector(
+		(state) => state.themeSelectorReducer.theme
+	);
+	const dispatch = useDispatch<AppDispatch>();
+	const handleToggleTheme = () => {
+		dispatch(toggleTheme());
+	};
+	return (
+		<MaterialUISwitch
+			checked={isLightMode}
+			onChange={handleToggleTheme}
+			sx={{ m: 1 }}
+			defaultChecked
+			{...args}
+		/>
+	);
 }
