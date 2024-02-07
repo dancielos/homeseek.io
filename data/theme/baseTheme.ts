@@ -1,6 +1,7 @@
 import { createTheme, responsiveFontSizes } from '@mui/material';
 
 import { Ubuntu } from 'next/font/google';
+import { BOX_SHADOW } from '../constants';
 // import './globals.css';
 enum FontWeight {
 	LIGHT = 400,
@@ -80,4 +81,15 @@ baseTheme.palette = {
 		},
 		name: 'black',
 	}),
+};
+
+baseTheme.components = {
+	...baseTheme.components,
+	MuiChip: {
+		styleOverrides: {
+			root: {
+				borderRadius: 1,
+			},
+		},
+	},
 };

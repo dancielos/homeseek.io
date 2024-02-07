@@ -44,13 +44,14 @@ export let lightTheme = createTheme(baseTheme, {
 });
 
 lightTheme.components = {
-	MuiChip: {
-		styleOverrides: {
-			root: {
-				borderRadius: 1,
-			},
-		},
-	},
+	...baseTheme.components,
+	// MuiChip: {
+	// 	styleOverrides: {
+	// 		root: {
+	// 			borderRadius: 1,
+	// 		},
+	// 	},
+	// },
 	MuiCard: {
 		styleOverrides: {
 			root: {
