@@ -8,6 +8,7 @@ import { darkTheme } from './darkTheme';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../slices/themeSelector';
+import hasThemeCache from '@/utils/hasThemeCache';
 
 // TODO: is the caching here necessary?
 // Nextjs already has appRouterCacheProvider
@@ -25,16 +26,16 @@ export default function ThemeRegistry({
 
 	const theme = useAppSelector((state) => state.themeSelectorReducer.theme);
 
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-	// useEffect(() => {
-	// 	const currentTheme = localStorage.getItem('theme');
-	// 	console.log({ currentTheme });
-	// 	if (currentTheme) {
-	// 		const changeTo = currentTheme === 'dark' ? false : true;
-	// 		dispatch(setTheme(changeTo));
-	// 	}
-	// }, []);
+	useEffect(() => {
+		const currentTheme = hasThemeCache();
+
+		if (currentTheme) {
+			const changeTo = currentTheme === 'dark' ? 'light' : 'dark';
+			dispatch(setTheme(changeTo));
+		}
+	}, []);
 
 	if (!lightModeOnly) {
 		mode = theme === 'light' ? lightTheme : darkTheme;

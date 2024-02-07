@@ -1,9 +1,6 @@
-export default function hasThemeCache(): boolean | undefined {
+export default function hasThemeCache(): 'dark' | 'light' | null {
 	if (typeof window !== 'undefined' && window.localStorage) {
-		if (localStorage.getItem('theme'))
-			if (localStorage.getItem('theme') === 'dark') return false;
-			else return true;
-		return undefined;
+		return localStorage.getItem('theme') as 'dark' | 'light' | null;
 	}
-	return undefined;
+	return null;
 }
