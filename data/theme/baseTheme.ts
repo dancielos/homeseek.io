@@ -92,4 +92,67 @@ baseTheme.components = {
 			},
 		},
 	},
+	MuiCard: {
+		styleOverrides: {
+			root: {
+				boxShadow: BOX_SHADOW,
+			},
+		},
+	},
+	MuiButton: {
+		styleOverrides: {
+			contained: {
+				boxShadow: BOX_SHADOW,
+			},
+		},
+	},
+	MuiFilledInput: {
+		styleOverrides: {
+			root: {
+				paddingBottom: 0,
+				// borderColor: '#ffffff',
+				// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			},
+		},
+	},
+	MuiOutlinedInput: {
+		styleOverrides: {
+			root: {
+				paddingBottom: 0,
+				// borderColor: '#ffffff',
+				// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			},
+		},
+	},
+	MuiAppBar: {
+		styleOverrides: {
+			root: {
+				boxShadow: BOX_SHADOW,
+			},
+		},
+	},
+	MuiImageListItemBar: {
+		styleOverrides: {
+			root: {
+				bottom: '6px',
+			},
+		},
+	},
+	MuiPaper: {
+		styleOverrides: {
+			elevation3: {
+				padding: 32,
+				[baseTheme.breakpoints.down('sm')]: {
+					padding: 16,
+				},
+				boxShadow: BOX_SHADOW,
+			},
+			elevation2: {
+				padding: 32,
+				[baseTheme.breakpoints.down('sm')]: {
+					padding: 16,
+				},
+			},
+		},
+	},
 };

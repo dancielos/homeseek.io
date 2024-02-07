@@ -45,38 +45,13 @@ export let lightTheme = createTheme(baseTheme, {
 
 lightTheme.components = {
 	...baseTheme.components,
-	// MuiChip: {
-	// 	styleOverrides: {
-	// 		root: {
-	// 			borderRadius: 1,
-	// 		},
-	// 	},
-	// },
-	MuiCard: {
-		styleOverrides: {
-			root: {
-				boxShadow: BOX_SHADOW,
-			},
-		},
-	},
-	// MuiStep: {
-	// 	styleOverrides: {
-	// 		root: {
-	// 			backgroundColor: 'red',
-	// 			width: '100%',
-	// 		},
-	// 	},
-	// },
-	MuiButtonGroup: {},
 	MuiButton: {
 		styleOverrides: {
+			...baseTheme.components?.MuiButton?.styleOverrides,
 			root: {
 				['&:hover']: {
 					backgroundColor: '#ffe8cc',
 				},
-			},
-			contained: {
-				boxShadow: BOX_SHADOW,
 			},
 		},
 		variants: [
@@ -98,24 +73,6 @@ lightTheme.components = {
 				},
 			},
 		],
-	},
-	MuiFilledInput: {
-		styleOverrides: {
-			root: {
-				paddingBottom: 0,
-				// borderColor: '#ffffff',
-				// backgroundColor: 'rgba(33, 37, 41, 0.8)',
-			},
-		},
-	},
-	MuiOutlinedInput: {
-		styleOverrides: {
-			root: {
-				paddingBottom: 0,
-				// borderColor: '#ffffff',
-				// backgroundColor: 'rgba(33, 37, 41, 0.8)',
-			},
-		},
 	},
 	MuiTextField: {
 		styleOverrides: {
@@ -161,34 +118,12 @@ lightTheme.components = {
 			},
 		},
 	},
-	MuiAppBar: {
-		styleOverrides: {
-			root: {
-				boxShadow: BOX_SHADOW,
-			},
-		},
-	},
-	MuiImageListItemBar: {
-		styleOverrides: {
-			root: {
-				bottom: '6px',
-			},
-		},
-	},
 	MuiPaper: {
 		styleOverrides: {
-			elevation3: {
-				padding: 32,
-				[baseTheme.breakpoints.down('sm')]: {
-					padding: 16,
-				},
-				boxShadow: BOX_SHADOW,
-			},
+			...baseTheme.components?.MuiPaper?.styleOverrides,
 			elevation2: {
-				padding: 32,
-				[baseTheme.breakpoints.down('sm')]: {
-					padding: 16,
-				},
+				...(baseTheme.components?.MuiPaper?.styleOverrides
+					?.elevation2 as object),
 				boxShadow: 'unset',
 				backgroundColor: '#f1f3f5',
 			},
