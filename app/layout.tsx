@@ -18,16 +18,11 @@ type rootProps = {
 export default function RootLayout({ children }: Readonly<rootProps>) {
 	return (
 		<html lang='en'>
-			<body>
-				<ReduxProvider>
-					<AppRouterCacheProvider>
-						<ThemeRegistry options={{ key: 'mui-theme' }}>
-							<CssBaseline />
-							{children}
-						</ThemeRegistry>
-					</AppRouterCacheProvider>
-				</ReduxProvider>
-			</body>
+			<ReduxProvider>
+				<body>
+					<AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+				</body>
+			</ReduxProvider>
 		</html>
 	);
 }

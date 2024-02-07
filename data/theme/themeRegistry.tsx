@@ -12,16 +12,24 @@ import { darkTheme } from './darkTheme';
 export default function ThemeRegistry({
 	options,
 	children,
+	lightModeOnly = false,
 }: Readonly<{
 	options: Options;
 	children: React.ReactNode;
+	lightModeOnly?: boolean;
 }>) {
 	const isLightMode = useAppSelector(
 		(state) => state.themeSelectorReducer.theme
 	);
 
+	const mode = lightModeOnly
+		? lightTheme
+		: isLightMode
+		? lightTheme
+		: darkTheme;
+
 	return (
-		<ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
+		<ThemeProvider theme={mode}>
 			<CssBaseline />
 			{children}
 		</ThemeProvider>

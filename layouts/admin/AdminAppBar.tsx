@@ -1,4 +1,4 @@
-import { Toolbar, Typography } from '@mui/material';
+import { Stack, Toolbar, Typography } from '@mui/material';
 
 import ClientAppBar from '@/components/client/admin/AppBar';
 import ToggleDrawer from '@/components/client/admin/ToggleDrawer';
@@ -14,18 +14,16 @@ export default function AdminAppBar() {
 					justifyContent: 'space-between',
 				}}
 			>
-				<div>
+				<Stack direction='row'>
 					<ToggleDrawer drawerAction='open'>
 						<Menu />
 					</ToggleDrawer>
 					<Typography variant='h6' noWrap component='div'>
 						<Logo />
 					</Typography>
-				</div>
-				{/* 
-				// TODO: Set this up later, 
-				// but right now this is not a priority
-				<ToggleTheme /> */}
+				</Stack>
+
+				<ToggleTheme />
 			</Toolbar>
 		</ClientAppBar>
 	);

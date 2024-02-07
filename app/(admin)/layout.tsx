@@ -6,10 +6,11 @@ import AdminAppBar from '@/layouts/admin/AdminAppBar';
 import AdminDrawer from '@/layouts/admin/AdminDrawer';
 
 import PageTitle from '@/components/client/admin/PageTitle';
+import ThemeRegistry from '@/data/theme/themeRegistry';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
 	return (
-		<>
+		<ThemeRegistry options={{ key: 'mui-theme' }}>
 			<Box sx={{ display: 'flex' }}>
 				<AdminAppBar />
 				<AdminDrawer />
@@ -21,6 +22,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
 					{children}
 				</Box>
 			</Box>
-		</>
+		</ThemeRegistry>
 	);
 }

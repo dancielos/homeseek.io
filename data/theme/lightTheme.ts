@@ -2,43 +2,9 @@ import { BOX_SHADOW } from '@/data/constants';
 import { createTheme } from '@mui/material';
 import { baseTheme } from './baseTheme';
 
-declare module '@mui/material/Button' {
-	interface ButtonPropsVariantOverrides {
-		fluid: true;
-		subtle: true;
-	}
-}
-
-declare module '@mui/material/ButtonGroup' {
-	interface ButtonGroupPropsVariantOverrides {
-		smaller: true;
-	}
-}
-
-declare module '@mui/material/styles' {
-	interface BreakpointOverrides {
-		xm: true;
-	}
-}
-
-declare module '@mui/material/ButtonGroup' {
-	interface ButtonGroupPropsColorOverrides {
-		black: true;
-	}
-}
-
-declare module '@mui/material/styles' {
-	interface Palette {
-		black: Palette['primary'];
-	}
-
-	interface PaletteOptions {
-		black?: PaletteOptions['primary'];
-	}
-}
-
 export let lightTheme = createTheme(baseTheme, {
 	palette: {
+		...baseTheme.palette,
 		mode: 'light',
 	},
 });
@@ -58,11 +24,11 @@ lightTheme.components = {
 			{
 				props: { variant: 'fluid' },
 				style: {
-					color: '#212529',
+					color: baseTheme.palette.common.black,
 					// fontWeight: 700,
 					// background: '#ffc078',
 					// textTransform: 'none',
-					border: `1px solid #212529`,
+					border: `1px solid ${baseTheme.palette.common.black}`,
 					boxShadow: BOX_SHADOW,
 				},
 			},

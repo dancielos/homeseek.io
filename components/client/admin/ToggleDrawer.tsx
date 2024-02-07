@@ -34,9 +34,9 @@ export default function ToggleDrawer({
 	const openButtonSx = {
 		marginRight: {
 			sm: 0,
-			md: 5,
+			// md: 5,
 		},
-		pr: 2,
+		// pr: 2,
 		pl: {
 			xs: 2,
 			sm: 1,
