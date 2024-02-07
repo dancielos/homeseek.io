@@ -37,7 +37,11 @@ declare module '@mui/material/styles' {
 	}
 }
 
-export let lightTheme = createTheme(baseTheme);
+export let lightTheme = createTheme(baseTheme, {
+	palette: {
+		mode: 'light',
+	},
+});
 
 lightTheme.components = {
 	MuiChip: {
