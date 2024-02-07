@@ -35,7 +35,11 @@ export default function PageTitle() {
 				>
 					{title}
 				</H1>
-				{pathname === '/properties' && <CTA>Add new Property</CTA>}
+				{pathname === '/properties' && (
+					<CTA href='/properties/new' id='add-new-property-link'>
+						Add new Property
+					</CTA>
+				)}
 			</Grid>
 			{pathname === '/properties' && (
 				<Grid xs={10} sm={5} display='flex' justifyContent='flex-end'>

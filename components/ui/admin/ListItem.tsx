@@ -2,22 +2,31 @@ import ClientListItemText from '@/components/client/admin/ListItemText';
 import { SvgIconComponent } from '@mui/icons-material';
 import {
 	ListItemButton,
+	ListItemButtonBaseProps,
 	ListItemIcon,
+	ListItemProps,
 	ListItem as MuiListItem,
 	SxProps,
 } from '@mui/material';
+import Link from 'next/link';
+import { AnchorHTMLAttributes } from 'react';
+
+interface listItem extends AnchorHTMLAttributes<HTMLAnchorElement> {
+	Icon: SvgIconComponent;
+	text: string;
+	flexDirection?: 'row' | 'row-reverse';
+	sx?: SxProps;
+	href?: string;
+}
 
 export default function ListItem({
 	Icon,
 	text,
 	flexDirection = 'row',
 	sx,
-}: {
-	Icon: SvgIconComponent;
-	text: string;
-	flexDirection?: 'row' | 'row-reverse';
-	sx?: SxProps;
-}) {
+	href = '#',
+	...args
+}: listItem) {
 	return (
 		<MuiListItem
 			key={text}
@@ -33,6 +42,9 @@ export default function ListItem({
 					columnGap: 2,
 					flexDirection,
 				}}
+				LinkComponent={Link}
+				href={href}
+				{...args}
 			>
 				<ListItemIcon
 					sx={{

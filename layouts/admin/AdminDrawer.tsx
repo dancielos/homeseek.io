@@ -28,14 +28,31 @@ export default function AdminDrawer() {
 					Icon={OpenInNewIcon}
 					flexDirection='row-reverse'
 					sx={{ mb: 0 }}
+					href='/'
+					id='drawer-link-homepage'
 					// buttonSx={{}}
 				/>
 			</List>
 			<Divider />
 			<List>
-				<ListItem text='Dashboard' Icon={SpeedIcon} />
-				<ListItem text='Messages' Icon={MailIcon} />
-				<ListItem text='Properties' Icon={HolidayVillageIcon} />
+				<ListItem
+					text='Dashboard'
+					Icon={SpeedIcon}
+					href='/dashboard'
+					id='drawer-link-dashboard'
+				/>
+				<ListItem
+					text='Messages'
+					Icon={MailIcon}
+					href='/messages'
+					id='drawer-link-messages'
+				/>
+				<ListItem
+					text='Properties'
+					Icon={HolidayVillageIcon}
+					href='/properties'
+					id='drawer-link-properties'
+				/>
 				<ListItem text='Settings' Icon={SettingsIcon} />
 			</List>
 			<Divider />

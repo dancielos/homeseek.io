@@ -16,6 +16,7 @@ import { Facebook, Instagram, LinkedIn, X, YouTube } from '@mui/icons-material';
 
 import styles from './Footer.module.css';
 import { BOX_SHADOW } from '@/data/constants';
+import Link from 'next/link';
 // import emotionStyled from '@emotion/styled';
 
 // PROS of this emotionStyled approach
@@ -160,9 +161,15 @@ export default function Footer() {
 				</Typography>
 				<ul className={`${styles.ul} ${styles['ul-center']}`}>
 					<li>
-						<CTA>List your property</CTA>
+						<CTA href='/dashboard' id='footer-link-post-listing'>
+							List your property
+						</CTA>
 					</li>
-					<li>Login</li>
+					<li>
+						<Link href='/login' id='footer-link-login'>
+							Login
+						</Link>
+					</li>
 					<li>Sign up</li>
 					<li>Support</li>
 				</ul>

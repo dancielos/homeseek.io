@@ -119,7 +119,7 @@ export default function Login() {
 								control={<Checkbox value='remember' color='primary' />}
 								label='Remember me'
 							/> */}
-						<CTA type='submit' fullWidth>
+						<CTA type='submit' href='/dashboard' fullWidth>
 							Sign In
 						</CTA>
 					</Box>

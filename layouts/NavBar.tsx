@@ -40,6 +40,9 @@ export default function NavBar() {
 								xm: 'inherit',
 							},
 						}}
+						LinkComponent={Link}
+						id='navbar-link-login'
+						href='/login'
 					>
 						Login
 					</Button>
@@ -51,6 +54,9 @@ export default function NavBar() {
 								xm: 'inherit',
 							},
 						}}
+						LinkComponent={Link}
+						id='navbar-link-post-listing'
+						href='/dashboard'
 					>
 						Post your listing
 					</CTA>
