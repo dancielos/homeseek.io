@@ -2,7 +2,7 @@
 import { Options } from '@emotion/cache';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from './theme';
+import { theme } from '../data/theme';
 
 // TODO: is the caching here necessary?
 // Nextjs already has appRouterCacheProvider
