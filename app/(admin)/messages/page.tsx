@@ -40,7 +40,7 @@ const columns: GridColDef[] = [
 						fontSize: '1rem',
 						height: '1rem',
 					}}
-					color='black'
+					color='subtle'
 					aria-label='outlined button group'
 					disableElevation
 				>

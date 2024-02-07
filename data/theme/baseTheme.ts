@@ -20,6 +20,12 @@ declare module '@mui/material/Button' {
 	}
 }
 
+declare module '@mui/material/Button' {
+	interface ButtonPropsColorOverrides {
+		subtle: true;
+	}
+}
+
 declare module '@mui/material/ButtonGroup' {
 	interface ButtonGroupPropsVariantOverrides {
 		smaller: true;
@@ -35,16 +41,19 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/ButtonGroup' {
 	interface ButtonGroupPropsColorOverrides {
 		black: true;
+		subtle: true;
 	}
 }
 
 declare module '@mui/material/styles' {
 	interface Palette {
 		black: Palette['primary'];
+		subtle: Palette['primary'];
 	}
 
 	interface PaletteOptions {
 		black?: PaletteOptions['primary'];
+		subtle?: PaletteOptions['primary'];
 	}
 }
 
@@ -78,7 +87,9 @@ export let baseTheme = responsiveFontSizes(
 				main: '#ffa94d',
 				dark: '#f76707',
 			},
-
+			subtle: {
+				main: '#212529',
+			},
 			info: {
 				main: '#4DA3FF',
 				light: '#e6f2ff',

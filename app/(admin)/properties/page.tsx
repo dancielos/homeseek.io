@@ -53,6 +53,7 @@ const columns: GridColDef[] = [
 					disableElevation
 				>
 					<Button
+						color='subtle'
 						sx={{
 							px: 2,
 							py: 1,
@@ -61,6 +62,7 @@ const columns: GridColDef[] = [
 						View
 					</Button>
 					<Button
+						color='subtle'
 						sx={{
 							px: 2,
 							py: 1,

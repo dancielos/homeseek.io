@@ -4,10 +4,6 @@ import { baseTheme } from './baseTheme';
 export let darkTheme = createTheme(baseTheme, {
 	palette: {
 		mode: 'dark',
-		common: {
-			black: '#212529',
-			white: '#f8f9fa',
-		},
 		background: {
 			paper: '#212529',
 			default: '#212529',
@@ -21,8 +17,13 @@ export let darkTheme = createTheme(baseTheme, {
 			main: '#212529',
 			light: '#868e96',
 			// dark: '#ffa94d',
-			contrastText: '#fff',
+			contrastText: '#f8f9fa',
 		},
+		subtle: {
+			main: '#f8f9fa',
+			light: '#495057',
+		},
+		divider: '#868e96',
 	},
 });
 
@@ -40,7 +41,7 @@ darkTheme.components = {
 			{
 				props: { variant: 'subtle' },
 				style: {
-					backgroundColor: darkTheme.palette.primary.main,
+					backgroundColor: darkTheme.palette.subtle.light,
 				},
 			},
 		],

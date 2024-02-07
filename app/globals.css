@@ -16,7 +16,7 @@
 }
 
 body {
-	color: var(--default-black) !important;
+	/* color: var(--default-black) !important; */
 	padding-bottom: 0 !important;
 }
 
