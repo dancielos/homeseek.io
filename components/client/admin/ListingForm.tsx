@@ -50,9 +50,13 @@ const VisuallyHiddenInput = styled('input')({
 	width: 1,
 });
 
-export default function ListingForm() {
+export default function ListingForm({
+	id = 'new-property-form',
+}: {
+	id: string;
+}) {
 	return (
-		<Grid container columns={10} spacing={1} component='form'>
+		<Grid container columns={10} spacing={1} component='form' id={id}>
 			<Grid xs={10} md={5}>
 				<Paper elevation={3}>
 					<H2 sx={customH2Style}>Address</H2>
@@ -268,7 +272,7 @@ export default function ListingForm() {
 				<Button color='warning' size='small' variant='outlined'>
 					Delete
 				</Button>
-				<CTA>Save / Update Property</CTA>
+				<CTA type='submit'>Save / Update Property</CTA>
 			</Grid>
 		</Grid>
 	);

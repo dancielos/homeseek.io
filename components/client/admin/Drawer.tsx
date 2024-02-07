@@ -16,6 +16,8 @@ export default function ClientDrawer({ children }: { children: ReactNode }) {
 			className={`${styles['drawer']} ${
 				open ? styles['open'] : styles['close']
 			}`}
+			data-testid='admin-drawer'
+			id='admin-drawer'
 		>
 			{children}
 		</Drawer>
