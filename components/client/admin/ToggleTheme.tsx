@@ -64,6 +64,7 @@ export default function ToggleTheme({ ...args }: toggleThemeProps) {
 		<MaterialUISwitch
 			checked={theme !== 'light'}
 			onChange={handleToggleTheme}
+			id='admin-toggle-theme'
 			sx={{ m: 1 }}
 			{...args}
 		/>
