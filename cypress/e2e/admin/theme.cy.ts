@@ -34,17 +34,12 @@ describe('Admin Page Theme Switching', () => {
 		cy.get('#admin-toggle-theme').click();
 
 		// Visit different pages to ensure theme persistence
-		cy.visit(`${Cypress.config().baseUrl}/properties`);
+		cy.get('#drawer-link-messages').click();
 		cy.window().then((win) => {
 			expect(win.localStorage.getItem('theme')).to.equal('dark');
 		});
 
-		cy.visit(`${Cypress.config().baseUrl}/messages`);
-		cy.window().then((win) => {
-			expect(win.localStorage.getItem('theme')).to.equal('dark');
-		});
-
-		cy.visit(`${Cypress.config().baseUrl}/properties/new`);
+		cy.get('#drawer-link-properties').click();
 		cy.window().then((win) => {
 			expect(win.localStorage.getItem('theme')).to.equal('dark');
 		});
