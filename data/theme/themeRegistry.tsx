@@ -22,11 +22,11 @@ export default function ThemeRegistry({
 		(state) => state.themeSelectorReducer.theme
 	);
 
-	const mode = lightModeOnly
-		? lightTheme
-		: isLightMode
-		? lightTheme
-		: darkTheme;
+	let mode = lightTheme;
+
+	if (!lightModeOnly) {
+		mode = isLightMode ? lightTheme : darkTheme;
+	}
 
 	return (
 		<ThemeProvider theme={mode}>

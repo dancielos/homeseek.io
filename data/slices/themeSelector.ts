@@ -1,11 +1,14 @@
+import prefersDarkTheme from '@/utils/prefersDarkTheme';
 import { createSlice } from '@reduxjs/toolkit';
 
 type InitialState = {
 	theme: boolean;
 };
 
+const prefersDarkMode = prefersDarkTheme();
+
 const initialState = {
-	theme: true,
+	theme: prefersDarkMode ? false : true,
 } as InitialState;
 
 export const themeSelector = createSlice({
