@@ -5,6 +5,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { lightTheme } from './lightTheme';
 import { useAppSelector } from '../store';
 import { darkTheme } from './darkTheme';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setTheme } from '../slices/themeSelector';
 
 // TODO: is the caching here necessary?
 // Nextjs already has appRouterCacheProvider
@@ -18,14 +21,23 @@ export default function ThemeRegistry({
 	children: React.ReactNode;
 	lightModeOnly?: boolean;
 }>) {
-	const isLightMode = useAppSelector(
-		(state) => state.themeSelectorReducer.theme
-	);
-
 	let mode = lightTheme;
 
+	const theme = useAppSelector((state) => state.themeSelectorReducer.theme);
+
+	// const dispatch = useDispatch();
+
+	// useEffect(() => {
+	// 	const currentTheme = localStorage.getItem('theme');
+	// 	console.log({ currentTheme });
+	// 	if (currentTheme) {
+	// 		const changeTo = currentTheme === 'dark' ? false : true;
+	// 		dispatch(setTheme(changeTo));
+	// 	}
+	// }, []);
+
 	if (!lightModeOnly) {
-		mode = isLightMode ? lightTheme : darkTheme;
+		mode = theme === 'light' ? lightTheme : darkTheme;
 	}
 
 	return (

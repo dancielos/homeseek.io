@@ -55,16 +55,14 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 interface toggleThemeProps extends SwitchProps {}
 
 export default function ToggleTheme({ ...args }: toggleThemeProps) {
-	const isLightMode = !useAppSelector(
-		(state) => state.themeSelectorReducer.theme
-	);
+	const theme = useAppSelector((state) => state.themeSelectorReducer.theme);
 	const dispatch = useDispatch<AppDispatch>();
 	const handleToggleTheme = () => {
 		dispatch(toggleTheme());
 	};
 	return (
 		<MaterialUISwitch
-			checked={isLightMode}
+			checked={theme !== 'light'}
 			onChange={handleToggleTheme}
 			sx={{ m: 1 }}
 			{...args}

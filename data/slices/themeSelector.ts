@@ -1,26 +1,30 @@
+import hasThemeCache from '@/utils/hasThemeCache';
 import prefersDarkTheme from '@/utils/prefersDarkTheme';
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type InitialState = {
-	theme: boolean;
+	theme: 'dark' | 'light';
 };
 
-const prefersDarkMode = prefersDarkTheme();
-
 const initialState = {
-	theme: prefersDarkMode ? false : true,
+	theme: 'light',
 } as InitialState;
 
 export const themeSelector = createSlice({
 	name: 'themeSelector',
 	initialState,
 	reducers: {
+		setTheme: (state, action: PayloadAction<'dark' | 'light'>) => {
+			state.theme = action.payload;
+			localStorage.setItem('theme', action.payload);
+		},
 		toggleTheme: (state) => {
 			// Access the current theme value from state and toggle it
-			state.theme = !state.theme;
+			state.theme = state.theme === 'light' ? 'dark' : 'light';
+			localStorage.setItem('theme', state.theme);
 		},
 	},
 });
 
-export const { toggleTheme } = themeSelector.actions;
+export const { toggleTheme, setTheme } = themeSelector.actions;
 export default themeSelector.reducer;
