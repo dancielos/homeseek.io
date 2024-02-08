@@ -50,8 +50,8 @@ export default async function Details() {
 						nearby={listing.amenities.nearby}
 						other={listing.amenities.other}
 					/>
-					<UtilitiesIncluded />
-					{/* <UtilitiesIncluded utilities={listing.utilities} /> */}
+					{/* <UtilitiesIncluded /> */}
+					<UtilitiesIncluded utilities={listing.utilitiesIncluded} />
 					<About />
 					<Map />
 				</Stack>
