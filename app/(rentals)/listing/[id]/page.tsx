@@ -45,8 +45,11 @@ export default async function Details() {
 							isPetFriendly={listing.isPetFriendly}
 						/>
 					</Section>
-					<FeaturesAmenities />
-					{/* <FeaturesAmenities amenities={listing.amenities}/> */}
+					<FeaturesAmenities
+						features={listing.amenities.features}
+						nearby={listing.amenities.nearby}
+						other={listing.amenities.other}
+					/>
 					<UtilitiesIncluded />
 					{/* <UtilitiesIncluded utilities={listing.utilities} /> */}
 					<About />

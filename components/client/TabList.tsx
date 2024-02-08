@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 export default function TabList({ children }: { children: ReactNode }) {
 	const dispatch = useDispatch<AppDispatch>();
 
-	const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+	const handleChange = (_: React.SyntheticEvent, newValue: string) => {
 		dispatch(setValue(+newValue));
 	};
 
