@@ -2,7 +2,7 @@ import H3 from '@/components/htmlElements/H3';
 import P from '@/components/htmlElements/P';
 import IconText from '@/components/ui/IconText';
 import { BOX_SHADOW } from '@/data/constants';
-import { PropertyType } from '@/data/types';
+import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import {
 	BathtubOutlined,
 	KingBedOutlined,
@@ -13,7 +13,7 @@ import { Paper, Stack } from '@mui/material';
 
 type BasicDetailsProps = {
 	address: string;
-	price: number;
+	price: string;
 	bedrooms: number;
 	bathrooms: number;
 	propertyType: PropertyType;
@@ -41,24 +41,30 @@ export default function BasicDetails({
 			>
 				{price}
 			</H3>
-			<P>150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5</P>
+			<P>{address}</P>
 			<Stack direction='row' useFlexGap flexWrap='wrap' columnGap={2}>
 				<IconText
 					color='secondary'
 					Icon={KingBedOutlined}
-					text={`4 bedrooms`}
+					text={`${bedrooms} bedrooms`}
 				/>
 				<IconText
 					color='secondary'
 					Icon={BathtubOutlined}
-					text={`2 bathrooms`}
+					text={`${bathrooms} bathrooms`}
 				/>
 				<IconText
 					color='secondary'
 					Icon={MapsHomeWorkOutlined}
-					text={'Condo'}
+					text={PROPERTY_TYPE[propertyType]}
 				/>
-				<IconText color='secondary' Icon={PetsOutlined} text={'Pet-friendly'} />
+				{isPetFriendly ? (
+					<IconText
+						color='secondary'
+						Icon={PetsOutlined}
+						text={'Pet-friendly'}
+					/>
+				) : null}
 			</Stack>
 		</Paper>
 	);

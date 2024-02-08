@@ -12,6 +12,7 @@ import Section from '@/components/section/Section';
 import connectDB from '@/utils/db';
 import ListingModel from '@/models/Listing';
 import formatAddress from '@/utils/formatAddress';
+import formatPrice from '@/utils/formatPrice';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -28,6 +29,7 @@ export default async function Details() {
 		listing.province,
 		listing.postalCode
 	);
+	const price = formatPrice(listing.price);
 	return (
 		<>
 			<Grid xm={10} sm={5} md={6}>
@@ -36,9 +38,9 @@ export default async function Details() {
 						<ImageSlider images={listing.img} />
 						<BasicDetails
 							address={address}
-							price={listing.price}
-							bedrooms={listing.bedrooms}
-							bathrooms={listing.bathrooms}
+							price={price}
+							bedrooms={listing.numBedrooms}
+							bathrooms={listing.numBathrooms}
 							propertyType={listing.propertyType}
 							isPetFriendly={listing.isPetFriendly}
 						/>
