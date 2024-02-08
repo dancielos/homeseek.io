@@ -1,9 +1,13 @@
 import Image from 'next/image';
 
-export default function ImageSlider() {
+export default function ImageSlider({ images }: { images: string[] }) {
+	// TODO
+	// actually create a slider
+	//
+	const image = images[Math.trunc(Math.random() * 3)];
 	return (
 		<Image
-			src='https://source.unsplash.com/random?wallpapers'
+			src={`${process.env.S3_URL}/${image}`}
 			alt='what'
 			// alt={`${rest.address} Property`}
 			width={1280}
