@@ -11,6 +11,7 @@ import ListingContactForm from '@/components/forms/ListingContactForm';
 import Section from '@/components/section/Section';
 import connectDB from '@/utils/db';
 import ListingModel from '@/models/Listing';
+import formatAddress from '@/utils/formatAddress';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -21,20 +22,27 @@ export default async function Details() {
 	await connectDB();
 	const listing = await ListingModel.findOne();
 	// console.log({ listing });
-	// const address = formatAddress(
-	// 	listing.street,
-	// 	listing.city,
-	// 	listing.province,
-	// 	listing.postalCode
-	// );
+	const address = formatAddress(
+		listing.street,
+		listing.city,
+		listing.province,
+		listing.postalCode
+	);
 	return (
 		<>
 			<Grid xm={10} sm={5} md={6}>
 				<Stack spacing={4}>
 					<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
 						<ImageSlider images={listing.img} />
-						{/* <BasicDetails address={address} price={listing.price} bedrooms={listing.bedrooms} bathrooms={listing.bathrooms} propertyType={listing.propertyType} isPetFriendly={listing.isPetFriendly} /> */}
-						<BasicDetails />
+						<BasicDetails
+							address={address}
+							price={listing.price}
+							bedrooms={listing.bedrooms}
+							bathrooms={listing.bathrooms}
+							propertyType={listing.propertyType}
+							isPetFriendly={listing.isPetFriendly}
+						/>
+						{/* <BasicDetails /> */}
 					</Section>
 					<FeaturesAmenities />
 					{/* <FeaturesAmenities amenities={listing.amenities}/> */}

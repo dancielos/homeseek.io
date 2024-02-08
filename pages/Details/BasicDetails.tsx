@@ -2,6 +2,7 @@ import H3 from '@/components/htmlElements/H3';
 import P from '@/components/htmlElements/P';
 import IconText from '@/components/ui/IconText';
 import { BOX_SHADOW } from '@/data/constants';
+import { PropertyType } from '@/data/types';
 import {
 	BathtubOutlined,
 	KingBedOutlined,
@@ -10,7 +11,23 @@ import {
 } from '@mui/icons-material';
 import { Paper, Stack } from '@mui/material';
 
-export default function BasicDetails() {
+type BasicDetailsProps = {
+	address: string;
+	price: number;
+	bedrooms: number;
+	bathrooms: number;
+	propertyType: PropertyType;
+	isPetFriendly: boolean;
+};
+
+export default function BasicDetails({
+	address,
+	price,
+	bedrooms,
+	bathrooms,
+	propertyType,
+	isPetFriendly,
+}: BasicDetailsProps) {
 	return (
 		<Paper elevation={3}>
 			<H3
@@ -22,7 +39,7 @@ export default function BasicDetails() {
 					},
 				}}
 			>
-				$1600CAD
+				{price}
 			</H3>
 			<P>150 Peter Herner Bay, Winnipeg, Manitoba, R2V 4W5</P>
 			<Stack direction='row' useFlexGap flexWrap='wrap' columnGap={2}>
