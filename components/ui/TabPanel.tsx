@@ -9,7 +9,7 @@ type TabPanelProps = {
 
 export default function TabPanel({ value, list }: TabPanelProps) {
 	return (
-		<MuiTabPanel value={value}>
+		<MuiTabPanel value={value} className={styles['tab-panel']}>
 			{
 				<ul className={styles['ul']}>
 					{list.map((listItem) => (
