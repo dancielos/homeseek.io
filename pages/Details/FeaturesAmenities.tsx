@@ -16,6 +16,9 @@ export default function FeaturesAmenities({
 	nearby,
 	other,
 }: FeaturesAmenitiesProps) {
+	const all = [...features, ...nearby];
+	if (other) all.push(...other);
+
 	return (
 		<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
 			<H2 smaller>Features & Amenities</H2>
@@ -28,10 +31,9 @@ export default function FeaturesAmenities({
 						{other && <Tab label='Other' value='4' />}
 					</TabList>
 				</Box>
-				<TabPanel value='1' list={[]} />
+				<TabPanel value='1' list={all} />
 				<TabPanel value='2' list={features} />
 				<TabPanel value='3' list={nearby} />
-
 				{other && <TabPanel value='4' list={other} />}
 			</TabContext>
 		</Section>
