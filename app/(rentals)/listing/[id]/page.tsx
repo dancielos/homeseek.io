@@ -52,7 +52,7 @@ export default async function Details() {
 					/>
 					{/* <UtilitiesIncluded /> */}
 					<UtilitiesIncluded utilities={listing.utilitiesIncluded} />
-					<About />
+					<About text={listing.about} />
 					<Map />
 				</Stack>
 			</Grid>
