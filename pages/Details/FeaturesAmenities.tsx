@@ -1,9 +1,10 @@
+import { Box, Tab } from '@mui/material';
+
 import TabContext from '@/components/client/TabContext';
 import TabList from '@/components/client/TabList';
 import H2 from '@/components/htmlElements/H2';
 import Section from '@/components/section/Section';
 import TabPanel from '@/components/ui/TabPanel';
-import { Box, Tab } from '@mui/material';
 
 type FeaturesAmenitiesProps = {
 	features: string[];

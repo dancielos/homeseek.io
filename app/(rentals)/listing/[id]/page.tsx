@@ -20,7 +20,7 @@ import formatPrice from '@/utils/formatPrice';
 // a <Grid> -> item
 
 export default async function Details() {
-	// await connectDB();
+	await connectDB();
 	const listing = await ListingModel.findOne();
 	// console.log({ listing });
 	const address = formatAddress(
