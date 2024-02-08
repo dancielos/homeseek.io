@@ -20,7 +20,7 @@ import formatPrice from '@/utils/formatPrice';
 // a <Grid> -> item
 
 export default async function Details() {
-	await connectDB();
+	// await connectDB();
 	const listing = await ListingModel.findOne();
 	// console.log({ listing });
 	const address = formatAddress(
@@ -44,7 +44,6 @@ export default async function Details() {
 							propertyType={listing.propertyType}
 							isPetFriendly={listing.isPetFriendly}
 						/>
-						{/* <BasicDetails /> */}
 					</Section>
 					<FeaturesAmenities />
 					{/* <FeaturesAmenities amenities={listing.amenities}/> */}

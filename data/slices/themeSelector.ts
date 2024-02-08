@@ -1,5 +1,3 @@
-import hasThemeCache from '@/utils/hasThemeCache';
-import prefersDarkTheme from '@/utils/prefersDarkTheme';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 type InitialState = {
