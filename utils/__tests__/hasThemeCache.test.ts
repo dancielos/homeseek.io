@@ -1,5 +1,3 @@
-import concatPathQuery from '@/utils/concatPathQuery';
-import { ReadonlyURLSearchParams } from 'next/navigation';
 import { describe, expect, test, vi } from 'vitest';
 
 import hasThemeCache from '@/utils/hasThemeCache';

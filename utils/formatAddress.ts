@@ -4,5 +4,7 @@ export default function formatAddress(
 	province: string,
 	postalCode: string
 ) {
-	return `${street}, ${city}, ${province}, ${postalCode}`;
+	const capitalizedPostalCode = postalCode.toUpperCase();
+
+	return `${street}, ${city}, ${province}, ${capitalizedPostalCode}`;
 }
