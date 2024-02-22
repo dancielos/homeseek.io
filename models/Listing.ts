@@ -1,10 +1,29 @@
-import { Address, PROPERTY_TYPE, PropertyType } from '@/data/types';
+import { Address } from '@/data/types';
 import { Schema, Types, model, models } from 'mongoose';
 
 interface Amenities {
-	features: string[];
-	nearby: string[];
-	other?: string[];
+	features: (
+		| 'elevator'
+		| 'lockers'
+		| 'fridge'
+		| 'dryer'
+		| 'laundry'
+		| 'dishwasher'
+		| 'microwave'
+		| 'parking'
+		| 'stove'
+		| 'garage'
+		| 'pool'
+		| 'gym'
+	)[];
+	nearby: (
+		| 'publicTransit'
+		| 'convenienceStore'
+		| 'shopping'
+		| 'school'
+		| 'parks'
+	)[];
+	other: ('onSiteMaintenance' | 'noSmoking')[];
 }
 
 interface Listing {
@@ -16,11 +35,22 @@ interface Listing {
 	numBathrooms: number;
 	isPetFriendly: boolean;
 	img: string[];
-	featured?: boolean;
-	propertyType: PropertyType;
+	propertyType:
+		| 'House'
+		| 'Condo/Apartment'
+		| 'Row/Townhouse'
+		| 'Duplex/Triplex'
+		| 'Mobile'
+		| 'Multi-family';
 	about: string;
 	amenities: Amenities;
-	utilitiesIncluded: string[];
+	utilitiesIncluded: (
+		| 'heating'
+		| 'water'
+		| 'electricity'
+		| 'internet'
+		| 'cable'
+	)[];
 }
 
 const listingSchema = new Schema<Listing>({
@@ -37,29 +67,69 @@ const listingSchema = new Schema<Listing>({
 	numBathrooms: { type: Number, required: true },
 	isPetFriendly: { type: Boolean, required: true },
 	img: { type: [String], required: true },
-	featured: { type: Boolean, required: false },
 	propertyType: {
 		type: String,
-		enum: PROPERTY_TYPE,
+		enum: [
+			'House',
+			'Condo/Apartment',
+			'Row/Townhouse',
+			'Duplex/Triplex',
+			'Mobile',
+			'Multi-family',
+		],
 		required: true,
 	},
 	about: { type: String, required: true },
 	amenities: {
 		features: {
-			type: [String],
+			type: [
+				{
+					type: String,
+					enum: [
+						'elevator',
+						'lockers',
+						'fridge',
+						'dryer',
+						'laundry',
+						'dishwasher',
+						'microwave',
+						'parking',
+						'stove',
+						'garage',
+						'pool',
+						'gym',
+					],
+				},
+			],
 			required: true,
 		},
 		nearby: {
-			type: [String],
+			type: [
+				{
+					type: String,
+					enum: [
+						'publicTransit',
+						'convenienceStore',
+						'shopping',
+						'school',
+						'parks',
+					],
+				},
+			],
 			required: true,
 		},
 		other: {
-			type: [String],
-			required: false,
+			type: [{ type: String, enum: ['onSiteMaintenance', 'noSmoking'] }],
+			required: true,
 		},
 	},
 	utilitiesIncluded: {
-		type: [String],
+		type: [
+			{
+				type: String,
+				enum: ['heating', 'water', 'electricity', 'internet', 'cable'],
+			},
+		],
 		required: true,
 	},
 });

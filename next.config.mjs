@@ -8,6 +8,10 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
+				hostname: 'image-slider-sample.s3.ca-central-1.amazonaws.com',
+			},
+			{
+				protocol: 'https',
 				hostname: 'source.unsplash.com',
 			},
 			{

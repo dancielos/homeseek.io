@@ -1,4 +1,4 @@
-import MuiTabPanel from '@mui/lab/TabPanel';
+import { TabPanel as MuiTabPanel } from '@mui/lab';
 
 import styles from './TabPanel.module.css';
 
@@ -7,7 +7,7 @@ type TabPanelProps = {
 	list: string[];
 };
 
-export default function CustomTabPanel({ value, list }: TabPanelProps) {
+export default function TabPanel({ value, list }: TabPanelProps) {
 	return (
 		<MuiTabPanel value={value} className={styles['tab-panel']}>
 			{
