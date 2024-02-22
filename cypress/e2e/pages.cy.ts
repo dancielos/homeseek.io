@@ -24,6 +24,8 @@ describe('Pages should render the crucial components', () => {
 
 	it('should render the details page successfully', () => {
 		cy.visit(`${Cypress.config().baseUrl}/listing/toronto`);
+		cy.wait(5000);
+
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 
