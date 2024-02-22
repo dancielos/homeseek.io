@@ -10,6 +10,7 @@
 	.video {
 		overflow-x: hidden;
 		width: auto;
+		max-width: none;
 		height: 100%;
 	}
 }

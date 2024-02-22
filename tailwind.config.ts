@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-	content: ['./components/**/*.{js,ts,jsx,tsx,mdx}'],
+	content: ['./components/ImageSlider/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		extend: {
 			backgroundImage: {
