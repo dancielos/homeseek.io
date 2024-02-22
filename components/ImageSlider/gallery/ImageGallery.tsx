@@ -1,9 +1,15 @@
-import { NavigationAction, TypeImage } from '../types/types';
+import {
+	ImageSliderContextType,
+	NavigationAction,
+	TypeImage,
+} from '../types/types';
 import ImageGalleryItem from './ImageGalleryItem';
 
 import styles from './ImageGallery.module.css';
 import Controls from '../controls/Controls';
 import { useAppSelector } from '@/data/store';
+import { useContext } from 'react';
+import { ImageSliderContext } from '../ImageSliderProvider';
 
 type ChildProps = {
 	fullscreen?: boolean;
@@ -16,13 +22,9 @@ export default function ImageGallery({
 	handleScroll,
 	handleFullscreen,
 }: ChildProps) {
-	const currentIndex = useAppSelector(
-		(state) => state.imageSliderReducer.currentIndex
-	);
-	const direction = useAppSelector(
-		(state) => state.imageSliderReducer.direction
-	);
-	const images = useAppSelector((state) => state.imageSliderReducer.images);
+	const { currentIndex, direction, images } = useContext(
+		ImageSliderContext
+	) as ImageSliderContextType;
 
 	return (
 		<div

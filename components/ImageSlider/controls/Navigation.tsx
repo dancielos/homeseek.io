@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { NavigationAction } from '../types/types';
-import { useAppSelector } from '@/data/store';
+import { ReactNode, useContext } from 'react';
+import { ImageSliderContextType, NavigationAction } from '../types/types';
+import { ImageSliderContext } from '../ImageSliderProvider';
 
 type ChildProps = {
 	direction: NavigationAction;
@@ -13,9 +13,10 @@ export default function Navigation({
 	children,
 	handleScroll,
 }: ChildProps) {
-	const currentIndex = useAppSelector(
-		(state) => state.imageSliderReducer.currentIndex
-	);
+	const { currentIndex } = useContext(
+		ImageSliderContext
+	) as ImageSliderContextType;
+
 	function handleNavClick(directionParam: NavigationAction) {
 		handleScroll(directionParam, currentIndex);
 	}

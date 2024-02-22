@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { NavigationAction, TypeImage } from '../types/types';
+import { ImageSliderContextType, NavigationAction } from '../types/types';
 import ThumbnailLink from './ThumbnailLink';
-import { forwardRef } from 'react';
-import { useAppSelector } from '@/data/store';
+import { forwardRef, useContext } from 'react';
+import { ImageSliderContext } from '../ImageSliderProvider';
 
 type ChildProps = {
 	handleScroll: (action: NavigationAction, index: number) => void;
@@ -12,7 +12,7 @@ type ChildProps = {
 
 const Thumbnails = forwardRef<Map<number, HTMLLIElement>, ChildProps>(
 	function Thumbnails({ handleScroll, getMap, fullscreen }, ref) {
-		const images = useAppSelector((state) => state.imageSliderReducer.images);
+		const { images } = useContext(ImageSliderContext) as ImageSliderContextType;
 
 		return (
 			<div

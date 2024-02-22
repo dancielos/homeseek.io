@@ -1,6 +1,7 @@
-import { ReactNode, forwardRef } from 'react';
-import { NavigationAction } from '../types/types';
+import { ReactNode, forwardRef, useContext } from 'react';
+import { ImageSliderContextType, NavigationAction } from '../types/types';
 import { useAppSelector } from '@/data/store';
+import { ImageSliderContext } from '../ImageSliderProvider';
 
 type ChildProps = {
 	i: number;
@@ -9,9 +10,9 @@ type ChildProps = {
 };
 const ThumbnailLink = forwardRef<HTMLLIElement, ChildProps>(
 	function ThumbnailLink({ children, handleScroll, i }, ref) {
-		const currentIndex = useAppSelector(
-			(state) => state.imageSliderReducer.currentIndex
-		);
+		const { currentIndex } = useContext(
+			ImageSliderContext
+		) as ImageSliderContextType;
 
 		function handleThumbnailClick(index: number) {
 			handleScroll('jump', index);

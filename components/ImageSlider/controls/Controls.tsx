@@ -1,8 +1,9 @@
 import ImageIndex from './ImageIndex';
-import { NavigationAction } from '../types/types';
+import { ImageSliderContextType, NavigationAction } from '../types/types';
 import FullscreenButton from './FullscreenButton';
 import NavControls from './NavControls';
-import { useAppSelector } from '@/data/store';
+import { useContext } from 'react';
+import { ImageSliderContext } from '../ImageSliderProvider';
 
 type ChildProps = {
 	handleFullscreen: (action: 'open' | 'close') => void;
@@ -15,10 +16,9 @@ export default function Controls({
 	handleFullscreen,
 	fullscreen,
 }: ChildProps) {
-	const currentIndex = useAppSelector(
-		(state) => state.imageSliderReducer.currentIndex
-	);
-	const len = useAppSelector((state) => state.imageSliderReducer.len);
+	const { currentIndex, len } = useContext(
+		ImageSliderContext
+	) as ImageSliderContextType;
 
 	return (
 		<>
