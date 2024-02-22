@@ -29,3 +29,10 @@ export interface HProps extends TypographyProps {
 	children: React.ReactNode;
 	smaller?: boolean;
 }
+
+export type Address = {
+	street: string;
+	city: string;
+	province: string;
+	postalCode: string;
+};

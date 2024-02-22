@@ -1,4 +1,4 @@
-import { PROPERTY_TYPE, PropertyType } from '@/data/types';
+import { Address, PROPERTY_TYPE, PropertyType } from '@/data/types';
 import { Schema, Types, model, models } from 'mongoose';
 
 interface Amenities {
@@ -10,10 +10,7 @@ interface Amenities {
 interface Listing {
 	id: number;
 	userId: Types.ObjectId;
-	street: string;
-	city: string;
-	province: string;
-	postalCode: string;
+	address: Address;
 	price: number;
 	numBedrooms: number;
 	numBathrooms: number;
@@ -29,10 +26,12 @@ interface Listing {
 const listingSchema = new Schema<Listing>({
 	id: { type: Number, required: true },
 	userId: { type: Schema.Types.ObjectId, ref: 'User' },
-	street: { type: String, required: true },
-	city: { type: String, required: true },
-	province: { type: String, required: true },
-	postalCode: { type: String, required: true },
+	address: {
+		street: { type: String, required: true },
+		city: { type: String, required: true },
+		province: { type: String, required: true },
+		postalCode: { type: String, required: true },
+	},
 	price: { type: Number, required: true },
 	numBedrooms: { type: Number, required: true },
 	numBathrooms: { type: Number, required: true },

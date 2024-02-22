@@ -21,13 +21,13 @@ import formatPrice from '@/utils/formatPrice';
 
 export default async function Details() {
 	await connectDB();
-	const listing = await ListingModel.findOne();
-	// console.log({ listing });
+	const listing = await ListingModel.findById('65c571c8fbbb710a915839a7');
+	// console.log(listing.address);
 	const address = formatAddress(
-		listing.street,
-		listing.city,
-		listing.province,
-		listing.postalCode
+		listing.address.street,
+		listing.address.city,
+		listing.address.province,
+		listing.address.postalCode
 	);
 	const price = formatPrice(listing.price);
 	return (
