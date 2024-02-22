@@ -6,7 +6,7 @@ import { TypeImage } from './types/types';
 
 type ChildProps = {
 	images: TypeImage[];
-	showThumbnail: boolean;
+	showThumbnail?: boolean;
 };
 
 export default function ImageSlider({
