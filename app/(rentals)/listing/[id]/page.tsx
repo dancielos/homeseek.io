@@ -2,7 +2,6 @@ import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import Map from '@/components/client/Map';
-import ImageSlider from '@/components/ui/ImageSlider';
 import BasicDetails from '@/pages/Details/BasicDetails';
 import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';
 import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
@@ -13,6 +12,7 @@ import connectDB from '@/utils/db';
 import ListingModel from '@/models/Listing';
 import formatAddress from '@/utils/formatAddress';
 import formatPrice from '@/utils/formatPrice';
+import ImageSlider from '@/components/ImageSlider/ImageSlider';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,

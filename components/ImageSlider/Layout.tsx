@@ -22,9 +22,10 @@ import { ImageSliderContext } from './ImageSliderProvider';
 
 type ChildProps = {
 	images: TypeImage[];
+	showThumbnail: boolean;
 };
 
-export default function Layout({ images }: ChildProps) {
+export default function Layout({ images, showThumbnail }: ChildProps) {
 	const thumbnailsRef = useRef() as React.MutableRefObject<
 		Map<number, HTMLLIElement>
 	>;
@@ -35,17 +36,6 @@ export default function Layout({ images }: ChildProps) {
 	const { currentIndex, len, setImages, scrollTo } = useContext(
 		ImageSliderContext
 	) as ImageSliderContextType;
-
-	// const currentIndex = useContext(ImageSliderContext) as number;
-
-	// console.log(`from layout.tsx: ${currentIndex}`);
-	// const len = 2;
-	// const scrollTo = (to: number, direction: Direction) => {};
-
-	// const currentIndex = useAppSelector(
-	// 	(state) => state.imageSliderReducer.currentIndex
-	// );
-	// const len = useAppSelector((state) => state.imageSliderReducer.len);
 
 	useEffect(() => {
 		setImages(images);
@@ -118,11 +108,13 @@ export default function Layout({ images }: ChildProps) {
 					handleScroll={handleScroll}
 					handleFullscreen={showFullscreen}
 				/>
-				<Thumbnails
-					handleScroll={handleScroll}
-					getMap={getThumbnailsMap}
-					ref={thumbnailsRef}
-				/>
+				{showThumbnail ? (
+					<Thumbnails
+						handleScroll={handleScroll}
+						getMap={getThumbnailsMap}
+						ref={thumbnailsRef}
+					/>
+				) : null}
 			</DefaultContainer>
 			<FullscreenContainer ref={dialogRef}>
 				<ImageGallery

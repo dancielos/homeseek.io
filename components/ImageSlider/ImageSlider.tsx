@@ -4,10 +4,18 @@ import { ImageSliderProvider } from './ImageSliderProvider';
 import Layout from './Layout';
 import { TypeImage } from './types/types';
 
-export default function ImageSlider({ images }: { images: TypeImage[] }) {
+type ChildProps = {
+	images: TypeImage[];
+	showThumbnail: boolean;
+};
+
+export default function ImageSlider({
+	images,
+	showThumbnail = true,
+}: ChildProps) {
 	return (
 		<ImageSliderProvider>
-			<Layout images={images} />
+			<Layout images={images} showThumbnail={showThumbnail} />
 		</ImageSliderProvider>
 	);
 }

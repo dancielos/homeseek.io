@@ -103,7 +103,7 @@ export default function Listing({
 						mb: 2,
 					}}
 				>
-					<ImageSlider images={images} />
+					<ImageSlider images={images} showThumbnail={false} />
 					{/* <Image
 						src='https://source.unsplash.com/random?wallpapers'
 						alt={`${rest.address} Property`}

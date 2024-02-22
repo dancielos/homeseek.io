@@ -29,7 +29,7 @@ export default function ImageGallery({
 	return (
 		<div
 			className={`container relative ${
-				fullscreen ? 'h-4/5 min-w-full' : 'h-[360px] w-full'
+				fullscreen ? 'h-4/5 min-w-full' : 'h-[320px] w-full'
 			}  overflow-hidden`}
 		>
 			<div className=' relative h-full w-full' id='gallery'>
