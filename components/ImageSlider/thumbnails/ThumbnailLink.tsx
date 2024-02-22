@@ -1,6 +1,6 @@
 import { ReactNode, forwardRef } from 'react';
 import { NavigationAction } from '../types/types';
-import { useAppSelector } from '../redux/store';
+import { useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	i: number;

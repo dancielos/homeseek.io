@@ -6,13 +6,13 @@ import Thumbnails from './thumbnails/Thumbnails';
 import { NavigationAction, TypeImage } from './types/types';
 import ImageGallery from './gallery/ImageGallery';
 import { useEffect, useRef } from 'react';
-import { scrollTo, setImages } from './redux/imageSliderSlice';
+import { scrollTo, setImages } from '../../data/slices/imageSliderSlice';
 import { useDispatch } from 'react-redux';
-import { AppDispatch, useAppSelector } from './redux/store';
 
 import DefaultContainer from './containers/DefaultContainer';
 
 import FullscreenContainer from './containers/FullscreenContainer';
+import { AppDispatch, useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	images: TypeImage[];

@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import adminDrawerReducer from './slices/adminDrawer';
 import themeSelectorReducer from './slices/themeSelector';
 import listingTabsReducer from './slices/listingTabs';
+import imageSliderReducer from './slices/imageSliderSlice';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
 
 export const store = configureStore({
@@ -10,6 +11,7 @@ export const store = configureStore({
 		adminDrawerReducer,
 		themeSelectorReducer,
 		listingTabsReducer,
+		imageSliderReducer,
 	},
 });
 

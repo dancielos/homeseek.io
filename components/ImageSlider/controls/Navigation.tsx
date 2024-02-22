@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { useAppSelector } from '../redux/store';
 import { NavigationAction } from '../types/types';
+import { useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	direction: NavigationAction;

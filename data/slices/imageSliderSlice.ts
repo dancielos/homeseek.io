@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { TypeImage } from '../types/types';
+import { TypeImage } from '../../components/ImageSlider/types/types';
 
 type InitialState = {
 	currentIndex: number;

@@ -1,9 +1,9 @@
 import { NavigationAction, TypeImage } from '../types/types';
 import ImageGalleryItem from './ImageGalleryItem';
-import { useAppSelector } from '../redux/store';
 
 import styles from './ImageGallery.module.css';
 import Controls from '../controls/Controls';
+import { useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	fullscreen?: boolean;

@@ -1,8 +1,8 @@
 import ImageIndex from './ImageIndex';
-import { useAppSelector } from '../redux/store';
 import { NavigationAction } from '../types/types';
 import FullscreenButton from './FullscreenButton';
 import NavControls from './NavControls';
+import { useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	handleFullscreen: (action: 'open' | 'close') => void;

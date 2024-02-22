@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { NavigationAction, TypeImage } from '../types/types';
 import ThumbnailLink from './ThumbnailLink';
 import { forwardRef } from 'react';
-import { useAppSelector } from '../redux/store';
+import { useAppSelector } from '@/data/store';
 
 type ChildProps = {
 	handleScroll: (action: NavigationAction, index: number) => void;
