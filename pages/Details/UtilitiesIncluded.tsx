@@ -3,7 +3,7 @@ import Section from '@/components/section/Section';
 import { Chip, Stack } from '@mui/material';
 
 export default function UtilitiesIncluded({
-	utilities,
+	utilities = [],
 }: {
 	utilities: Array<string>;
 }) {

@@ -1,31 +1,28 @@
 'use client';
 
-import { setValue } from '@/data/slices/listingTabs';
-import { AppDispatch } from '@/data/store';
-import { TabList as MuiTabList } from '@mui/lab';
-
-import { ReactNode } from 'react';
-import { useDispatch } from 'react-redux';
+import { ReactNode, useContext } from 'react';
+import { TabContext, TabContextType } from './TabContext';
+import { Tabs } from '@mui/material';
 
 export default function TabList({ children }: { children: ReactNode }) {
-	const dispatch = useDispatch<AppDispatch>();
+	const { setTabNumber, tabNumber } = useContext(TabContext) as TabContextType;
 
-	const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-		dispatch(setValue(+newValue));
+	const handleChange = (_: React.SyntheticEvent, newValue: number) => {
+		setTabNumber(newValue);
 	};
 
 	return (
-		<MuiTabList
+		<Tabs
 			textColor='inherit'
 			indicatorColor='secondary'
 			variant='scrollable'
 			onChange={handleChange}
-			aria-label='lab API tabs example'
+			value={tabNumber}
 			sx={{
 				backgroundColor: 'primary.light',
 			}}
 		>
 			{children}
-		</MuiTabList>
+		</Tabs>
 	);
 }

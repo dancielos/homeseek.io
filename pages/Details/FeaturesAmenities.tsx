@@ -12,9 +12,9 @@ type FeaturesAmenitiesProps = {
 };
 
 export default function FeaturesAmenities({
-	features,
-	nearby,
-	other,
+	features = [],
+	nearby = [],
+	other = [],
 }: FeaturesAmenitiesProps) {
 	const all = [...features, ...nearby];
 	if (other) all.push(...other);
@@ -25,16 +25,16 @@ export default function FeaturesAmenities({
 			<TabContext>
 				<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 					<TabList>
-						<Tab label='All' value='1' />
-						<Tab label='Features' value='2' />
-						<Tab label='Nearby' value='3' />
-						{other && <Tab label='Other' value='4' />}
+						<Tab label='All' />
+						<Tab label='Features' />
+						<Tab label='Nearby' />
+						{other && <Tab label='Other' />}
 					</TabList>
 				</Box>
-				<TabPanel value='1' list={all} />
-				<TabPanel value='2' list={features} />
-				<TabPanel value='3' list={nearby} />
-				{other && <TabPanel value='4' list={other} />}
+				<TabPanel index={0} list={all} />
+				<TabPanel index={1} list={features} />
+				<TabPanel index={2} list={nearby} />
+				{other && <TabPanel index={3} list={other} />}
 			</TabContext>
 		</Section>
 	);

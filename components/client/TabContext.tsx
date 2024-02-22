@@ -1,11 +1,30 @@
 'use client';
 
-import { useAppSelector } from '@/data/store';
-import { TabContext as MuiTabContext } from '@mui/lab';
+import {
+	Dispatch,
+	ReactNode,
+	SetStateAction,
+	createContext,
+	useState,
+} from 'react';
 
-import { ReactNode } from 'react';
+export type TabContextType = {
+	tabNumber: number;
+	setTabNumber: Dispatch<SetStateAction<number>>;
+};
 
-export default function TabContext({ children }: { children: ReactNode }) {
-	const value = useAppSelector((state) => state.listingTabsReducer.value);
-	return <MuiTabContext value={'' + value}>{children}</MuiTabContext>;
+export const TabContext = createContext<TabContextType | null>(null);
+
+export default function TabContextProvider({
+	children,
+}: {
+	children: ReactNode;
+}) {
+	const [tabNumber, setTabNumber] = useState<number>(0);
+
+	return (
+		<TabContext.Provider value={{ tabNumber, setTabNumber }}>
+			{children}
+		</TabContext.Provider>
+	);
 }
