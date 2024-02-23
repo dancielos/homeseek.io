@@ -1,3 +1,5 @@
+'use server';
+
 import { Address } from '@/data/types';
 import { Schema, Types, model, models } from 'mongoose';
 

@@ -1,3 +1,5 @@
+'use server';
+
 import { Schema, model, connect, models } from 'mongoose';
 
 export default async function connectDB() {
