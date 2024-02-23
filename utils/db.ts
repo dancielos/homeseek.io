@@ -3,6 +3,7 @@
 import { Schema, model, connect, models } from 'mongoose';
 
 export default async function connectDB() {
+	console.log('from db.ts > connectDB() ' + process.env.DB_URL);
 	try {
 		await connect(process.env.DB_URL);
 		console.log('Successfully established database connection.');
