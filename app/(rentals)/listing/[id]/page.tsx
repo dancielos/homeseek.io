@@ -29,13 +29,18 @@ export default async function Details() {
 		listing.address.province,
 		listing.address.postalCode
 	);
+
+	const images = listing.img.map((image: string, i: number) => {
+		return { src: `${process.env.S3_URL}/${image}`, alt: `address ${i}` };
+	});
+
 	const price = formatPrice(listing.price);
 	return (
 		<>
 			<Grid xm={10} sm={5} md={6}>
 				<Stack spacing={4}>
 					<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
-						<ImageSlider images={listing.img} />
+						<ImageSlider images={images} />
 						<BasicDetails
 							address={address}
 							price={price}
