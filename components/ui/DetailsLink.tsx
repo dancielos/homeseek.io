@@ -40,10 +40,10 @@ export default function DetailsLink({
 	...rest
 }: DetailsLinkProps) {
 	return (
-		// <Suspense>
-		<DetailsLinkButton href={href} {...rest}>
-			{children}
-		</DetailsLinkButton>
-		// </Suspense>
+		<Suspense>
+			<DetailsLinkButton href={href} {...rest}>
+				{children}
+			</DetailsLinkButton>
+		</Suspense>
 	);
 }
