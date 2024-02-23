@@ -21,31 +21,31 @@ import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 // a <Grid> -> item
 
 export default async function Details() {
-	// await connectDB();
-	// const listing = await ListingModel.findById('65c571c8fbbb710a915839a7');
-	// // console.log(listing.address);
-	// const address = formatAddress(
-	// 	listing.address.street,
-	// 	listing.address.city,
-	// 	listing.address.province,
-	// 	listing.address.postalCode
-	// );
-	const listing = {
-		img: ['test'],
-		price: 0,
-		amenities: {
-			features: [],
-			nearby: [],
-			other: [],
-		},
-		about: 'Lorem ipsum',
-		utilitiesIncluded: [],
-		numBedrooms: 1,
-		numBathrooms: 2,
-		propertyType: 'HOUSE' as PropertyType,
-		isPetFriendly: true,
-	};
-	const address = 'dummy';
+	await connectDB();
+	const listing = await ListingModel.findById('65c571c8fbbb710a915839a7');
+	// console.log(listing.address);
+	const address = formatAddress(
+		listing.address.street,
+		listing.address.city,
+		listing.address.province,
+		listing.address.postalCode
+	);
+	// const listing = {
+	// 	img: ['test'],
+	// 	price: 0,
+	// 	amenities: {
+	// 		features: [],
+	// 		nearby: [],
+	// 		other: [],
+	// 	},
+	// 	about: 'Lorem ipsum',
+	// 	utilitiesIncluded: [],
+	// 	numBedrooms: 1,
+	// 	numBathrooms: 2,
+	// 	propertyType: 'HOUSE' as PropertyType,
+	// 	isPetFriendly: true,
+	// };
+	// const address = 'dummy';
 
 	const images = listing.img.map((image: string, i: number) => {
 		return { src: `${process.env.S3_URL}/${image}`, alt: `address ${i}` };
