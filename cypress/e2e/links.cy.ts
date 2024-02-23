@@ -30,4 +30,8 @@ describe('Links should direct the use to correct pages', () => {
 		cy.get('a#homeseek-logo').click();
 		cy.url().should('match', homepageRegex);
 	});
+	it.only('testing the listing', () => {
+		cy.visit(`${Cypress.config().baseUrl}/listing/toronto`);
+		cy.url().should('include', '/listing/');
+	});
 });
