@@ -12,7 +12,6 @@ describe('Links should direct the use to correct pages', () => {
 
 		cy.url().should('match', homepageRegex);
 		cy.get('a[data-testid=more-details-0]').click();
-		cy.wait(5000);
 
 		cy.url().should('include', '/listing/');
 		cy.get('[data-testid=go-back]').click();
