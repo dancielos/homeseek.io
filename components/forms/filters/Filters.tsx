@@ -5,10 +5,12 @@ import {
 	HomeWorkOutlined,
 	OtherHousesOutlined,
 } from '@mui/icons-material';
-import { ButtonGroup } from '@mui/material';
+import { Box, ButtonGroup, Popover, Slider, Typography } from '@mui/material';
 import FilterButton from './FilterButton';
 
 import styles from './Filters.module.css';
+import { MouseEvent, useState } from 'react';
+import PriceFilter from './PriceFilter';
 
 export default function Filters() {
 	return (
@@ -26,7 +28,7 @@ export default function Filters() {
 				data-testid='filters-container'
 				disableElevation
 			>
-				<FilterButton label='Price' Icon={<AttachMoney />} />
+				<PriceFilter />
 				<FilterButton
 					label='Property Type'
 					Icon={<HomeWorkOutlined />}

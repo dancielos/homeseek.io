@@ -79,3 +79,21 @@ export const itemData: Array<City> = [
 	// 	author: '@katie_wasserman',
 	// },
 ];
+
+export const MIN_PRICE = 1000;
+export const MAX_PRICE = 10000;
+export const PRICE_STEP = 1000;
+export const PRICE_MARKS = [
+	{ value: 1000 },
+	{ value: 2000 },
+	{ value: 3000 },
+	{ value: 4000 },
+	{ value: 5000 },
+	{ value: 6000 },
+	{ value: 7000 },
+	{ value: 8000 },
+	{ value: 9000 },
+	{ value: 10000 },
+];
+
+export const PRICE_DISTANCE = 1000;
