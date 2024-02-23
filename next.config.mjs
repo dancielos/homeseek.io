@@ -22,6 +22,7 @@ const nextConfig = {
 	},
 	env: {
 		GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
+		DB_URL: process.env.DB_URL,
 	},
 	transpilePackages: ['@mui/x-charts'],
 };
