@@ -1,5 +1,5 @@
 import { ArrowDropDown } from '@mui/icons-material';
-import { Button, ButtonProps } from '@mui/material';
+import { Button, ButtonProps, Popover } from '@mui/material';
 import { MouseEvent, ReactNode } from 'react';
 
 interface FilterButtonProps extends ButtonProps {
@@ -7,6 +7,11 @@ interface FilterButtonProps extends ButtonProps {
 	label: string;
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 	children?: ReactNode;
+	popover?: boolean;
+	popoverId?: 'simple-popover' | undefined;
+	popoverOpen?: boolean;
+	anchorEl?: HTMLButtonElement | null;
+	onPopoverClose?: () => void;
 }
 
 export default function FilterButton({
@@ -14,6 +19,11 @@ export default function FilterButton({
 	label,
 	onClick,
 	children,
+	popover = true,
+	popoverId = undefined,
+	popoverOpen = false,
+	anchorEl = null,
+	onPopoverClose,
 	...rest
 }: FilterButtonProps) {
 	return (
@@ -31,7 +41,22 @@ export default function FilterButton({
 			>
 				{label}
 			</Button>
-			{children}
+			{popover ? (
+				<Popover
+					id={popoverId}
+					open={popoverOpen}
+					anchorEl={anchorEl}
+					onClose={onPopoverClose}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'left',
+					}}
+				>
+					{children}
+				</Popover>
+			) : (
+				<>{children}</>
+			)}
 		</>
 	);
 }

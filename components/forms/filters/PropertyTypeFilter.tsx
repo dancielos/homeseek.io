@@ -6,7 +6,6 @@ import {
 	FormControl,
 	FormControlLabel,
 	FormGroup,
-	Popover,
 	Typography,
 } from '@mui/material';
 import { PROPERTY_TYPE } from '@/data/types';
@@ -41,45 +40,38 @@ export default function PropertyTypeFilter() {
 			label='Property Type'
 			Icon={<HomeWorkOutlined />}
 			onClick={handleClick}
+			popoverId={id}
+			popoverOpen={open}
+			anchorEl={anchorEl}
+			onPopoverClose={handleClose}
 		>
-			<Popover
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
-				}}
+			<FormControl
+				sx={{ m: 3, bgcolor: 'unset' }}
+				component='fieldset'
+				variant='standard'
 			>
-				<FormControl
-					sx={{ m: 3, bgcolor: 'unset' }}
-					component='fieldset'
-					variant='standard'
-				>
-					<Typography component='legend' sx={{ pb: 1 }}>
-						You can select different properties at a time:
-					</Typography>
-					<FormGroup>
-						{propertyTypesArray.map((property, i) => {
-							return (
-								<FormControlLabel
-									key={`${property}-${i}`}
-									control={
-										<Checkbox
-											defaultChecked
-											checked={propertyCheckboxes[property.name]}
-											onChange={handleChange}
-											name={property.name}
-										/>
-									}
-									label={property.value}
-								/>
-							);
-						})}
-					</FormGroup>
-				</FormControl>
-			</Popover>
+				<Typography component='legend' sx={{ pb: 1 }}>
+					You can select different properties at a time:
+				</Typography>
+				<FormGroup>
+					{propertyTypesArray.map((property, i) => {
+						return (
+							<FormControlLabel
+								key={`${property}-${i}`}
+								control={
+									<Checkbox
+										defaultChecked
+										checked={propertyCheckboxes[property.name]}
+										onChange={handleChange}
+										name={property.name}
+									/>
+								}
+								label={property.value}
+							/>
+						);
+					})}
+				</FormGroup>
+			</FormControl>
 		</FilterButton>
 	);
 }

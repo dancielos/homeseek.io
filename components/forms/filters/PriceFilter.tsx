@@ -1,6 +1,6 @@
 import { AttachMoney } from '@mui/icons-material';
 import FilterButton from './FilterButton';
-import { Box, Popover, Slider, Typography } from '@mui/material';
+import { Box, Slider, Typography } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 import {
 	MAX_PRICE,
@@ -46,43 +46,40 @@ export default function PriceFilter() {
 	const open = Boolean(anchorEl);
 	const id = open ? 'simple-popover' : undefined;
 	return (
-		<FilterButton label='Price' Icon={<AttachMoney />} onClick={handleClick}>
-			<Popover
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
+		<FilterButton
+			label='Price'
+			Icon={<AttachMoney />}
+			onClick={handleClick}
+			popoverId={id}
+			popoverOpen={open}
+			anchorEl={anchorEl}
+			onPopoverClose={handleClose}
+		>
+			<Typography sx={{ px: 2, pt: 2 }}>Enter the price range:</Typography>
+			<Box
+				sx={{
+					width: 300,
+					height: 72,
+					pb: 2,
+					display: 'flex',
+					alignItems: 'end',
 				}}
 			>
-				<Typography sx={{ px: 2, pt: 2 }}>Enter the price range:</Typography>
-				<Box
-					sx={{
-						width: 300,
-						height: 72,
-						pb: 2,
-						display: 'flex',
-						alignItems: 'end',
-					}}
-				>
-					<Slider
-						disableSwap
-						name='price-range'
-						sx={{ mx: 6 }}
-						min={MIN_PRICE}
-						max={MAX_PRICE}
-						step={PRICE_STEP}
-						getAriaLabel={() => 'Listing Price'}
-						marks={PRICE_MARKS}
-						value={value}
-						onChange={handleChangeSlider}
-						valueLabelDisplay='on'
-						valueLabelFormat={(x) => `$${x}`}
-					/>
-				</Box>
-			</Popover>
+				<Slider
+					disableSwap
+					name='price-range'
+					sx={{ mx: 6 }}
+					min={MIN_PRICE}
+					max={MAX_PRICE}
+					step={PRICE_STEP}
+					getAriaLabel={() => 'Listing Price'}
+					marks={PRICE_MARKS}
+					value={value}
+					onChange={handleChangeSlider}
+					valueLabelDisplay='on'
+					valueLabelFormat={(x) => `$${x}`}
+				/>
+			</Box>
 		</FilterButton>
 	);
 }

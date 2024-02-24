@@ -6,7 +6,6 @@ import {
 	FormControl,
 	FormControlLabel,
 	FormGroup,
-	Popover,
 } from '@mui/material';
 
 export default function MoreFilter() {
@@ -37,37 +36,30 @@ export default function MoreFilter() {
 			label='More'
 			Icon={<OtherHousesOutlined />}
 			onClick={handleClick}
+			popoverId={id}
+			popoverOpen={open}
+			anchorEl={anchorEl}
+			onPopoverClose={handleClose}
 		>
-			<Popover
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left',
-				}}
+			<FormControl
+				sx={{ m: 3, bgcolor: 'unset' }}
+				component='fieldset'
+				variant='standard'
 			>
-				<FormControl
-					sx={{ m: 3, bgcolor: 'unset' }}
-					component='fieldset'
-					variant='standard'
-				>
-					<FormGroup>
-						<FormControlLabel
-							control={
-								<Checkbox
-									defaultChecked
-									checked={checkboxes.isPetFriendly}
-									onChange={handleChange}
-									name={'isPetFriendly'}
-								/>
-							}
-							label={'Pet Friendly'}
-						/>
-					</FormGroup>
-				</FormControl>
-			</Popover>
+				<FormGroup>
+					<FormControlLabel
+						control={
+							<Checkbox
+								defaultChecked
+								checked={checkboxes.isPetFriendly}
+								onChange={handleChange}
+								name={'isPetFriendly'}
+							/>
+						}
+						label={'Pet Friendly'}
+					/>
+				</FormGroup>
+			</FormControl>
 		</FilterButton>
 	);
 }

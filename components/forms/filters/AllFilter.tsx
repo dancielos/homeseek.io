@@ -36,7 +36,7 @@ export default function AllFilter() {
 	};
 
 	return (
-		<FilterButton onClick={handleClickOpen} label='Filters'>
+		<FilterButton onClick={handleClickOpen} label='Filters' popover={false}>
 			<Dialog
 				fullScreen
 				open={open}
