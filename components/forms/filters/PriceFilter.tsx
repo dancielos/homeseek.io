@@ -61,7 +61,8 @@ export default function PriceFilter() {
 				<Box
 					sx={{
 						width: 300,
-						height: 64,
+						height: 72,
+						pb: 2,
 						display: 'flex',
 						alignItems: 'end',
 					}}

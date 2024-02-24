@@ -1,4 +1,4 @@
-import { City, PropertyListing } from './types';
+import { City, PROPERTY_TYPE, PropertyListing } from './types';
 
 // STYLES
 export const BOX_SHADOW = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
@@ -97,3 +97,10 @@ export const PRICE_MARKS = [
 ];
 
 export const PRICE_DISTANCE = 1000;
+
+export const propertyTypesArray = Object.entries(PROPERTY_TYPE).map(
+	([name, value]) => ({
+		name,
+		value,
+	})
+);

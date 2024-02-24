@@ -11,6 +11,7 @@ import FilterButton from './FilterButton';
 import styles from './Filters.module.css';
 import { MouseEvent, useState } from 'react';
 import PriceFilter from './PriceFilter';
+import PropertyTypeFilter from './PropertyTypeFilter';
 
 export default function Filters() {
 	return (
@@ -29,11 +30,7 @@ export default function Filters() {
 				disableElevation
 			>
 				<PriceFilter />
-				<FilterButton
-					label='Property Type'
-					Icon={<HomeWorkOutlined />}
-					className={styles['hide-on-smaller-screens']}
-				/>
+				<PropertyTypeFilter styles={styles} />
 				<FilterButton
 					label='Beds'
 					Icon={<BedOutlined />}
