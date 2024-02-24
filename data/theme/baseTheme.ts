@@ -131,6 +131,7 @@ baseTheme.palette = {
 
 baseTheme.components = {
 	...baseTheme.components,
+
 	MuiChip: {
 		styleOverrides: {
 			root: {
@@ -197,6 +198,16 @@ baseTheme.components = {
 				padding: 32,
 				[baseTheme.breakpoints.down('sm')]: {
 					padding: 16,
+				},
+			},
+		},
+	},
+	MuiCheckbox: {
+		styleOverrides: {
+			root: {
+				// color: baseTheme.palette.secondary.main,
+				'&.Mui-checked': {
+					color: baseTheme.palette.secondary.main,
 				},
 			},
 		},

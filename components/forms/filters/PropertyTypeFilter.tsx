@@ -75,6 +75,7 @@ export default function PropertyTypeFilter({
 									key={`${property}-${i}`}
 									control={
 										<Checkbox
+											defaultChecked
 											checked={propertyCheckboxes[property.name]}
 											onChange={handleChange}
 											name={property.name}
