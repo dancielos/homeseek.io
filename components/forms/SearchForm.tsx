@@ -14,10 +14,11 @@ import CTA from '../client/CTA';
 import { SearchOutlined } from '@mui/icons-material';
 import Filters from './filters/Filters';
 import SearchCityTooltip from './SearchCityTooltip';
-import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
+import { getSearchQuery } from '@/utils/getSearchQuery';
+import useSearchQuery from '@/hooks/useSearchQuery';
 
 type SearchFormProps = {
 	withFilters?: boolean;
@@ -37,21 +38,17 @@ export default function SearchForm({
 	);
 	const debouncedSearch = useDebounce(searchInput);
 
-	function updateSearchQuery(searchValue: string) {
-		const path = pathname === '/' ? '/search' : '';
-
-		let queryParams = `s=${searchValue}`;
-		router.push(`${path}?${queryParams}`);
-	}
-
-	useEffect(() => {
-		if (pathname !== '/') updateSearchQuery(debouncedSearch);
-	}, [debouncedSearch, updateSearchQuery]);
+	if (pathname !== '/') useSearchQuery('s', '' + debouncedSearch);
 
 	async function submitSearch(formData: FormData) {
 		// ONLY for homepage where 'listening' is not important
 		// AND where the user needs to explicitly submit the form
-		updateSearchQuery(formData.get('search-input') as string);
+		// AND from the homepage, ONLY the 's' will be available
+		const query = getSearchQuery(
+			pathname!,
+			formData.get('search-input') as string
+		);
+		router.push(query);
 	}
 
 	if (!withFilters) {

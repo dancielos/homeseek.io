@@ -1,10 +1,19 @@
+import { useDebounce } from '@/hooks/useDebounce';
+import useSearchQuery from '@/hooks/useSearchQuery';
+import { getSearchQuery } from '@/utils/getSearchQuery';
 import { Box, Slider, Typography } from '@mui/material';
-import { useState } from 'react';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
+import { SyntheticEvent, useEffect, useState } from 'react';
 
 export default function BathFilter() {
 	const [value, setValue] = useState<number[]>([1, 3]);
+	const debouncedValue = useDebounce(value);
+	useSearchQuery('bath', '' + debouncedValue);
 
-	const handleChangeSlider = (event: Event, newValue: number | number[]) => {
+	const handleChangeSlider = (
+		event: Event | SyntheticEvent<Element, Event>,
+		newValue: number | number[]
+	) => {
 		if (!Array.isArray(newValue)) return;
 		setValue(newValue as number[]);
 	};
@@ -29,6 +38,7 @@ export default function BathFilter() {
 					getAriaLabel={() => 'Number of bathrooms'}
 					value={value}
 					onChange={handleChangeSlider}
+					// onChangeCommitted={handleChangeSlider}
 					valueLabelDisplay='on'
 					valueLabelFormat={(x) => {
 						if (x === 3) return `${x}+`;
