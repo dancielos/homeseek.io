@@ -7,6 +7,7 @@ import PropertyTypeFilter from './PropertyTypeFilter';
 import BedsFilter from './BedsFilter';
 import BathFilter from './BathFilter';
 import MoreFilter from './MoreFilter';
+import AllFilter from './AllFilter';
 
 export default function Filters() {
 	return (
@@ -42,7 +43,7 @@ export default function Filters() {
 				variant='contained'
 				disableElevation
 			>
-				<FilterButton label='Filters' />
+				<AllFilter />
 			</ButtonGroup>
 		</>
 	);
