@@ -1,15 +1,7 @@
-import {
-	AttachMoney,
-	BathtubOutlined,
-	BedOutlined,
-	HomeWorkOutlined,
-	OtherHousesOutlined,
-} from '@mui/icons-material';
-import { Box, ButtonGroup, Popover, Slider, Typography } from '@mui/material';
+import { ButtonGroup } from '@mui/material';
 import FilterButton from './FilterButton';
 
 import styles from './Filters.module.css';
-import { MouseEvent, useState } from 'react';
 import PriceFilter from './PriceFilter';
 import PropertyTypeFilter from './PropertyTypeFilter';
 import BedsFilter from './BedsFilter';
@@ -23,29 +15,30 @@ export default function Filters() {
 				sx={{
 					display: {
 						xs: 'none',
-						sm: 'flex',
+						md: 'flex',
 					},
 					height: '100%',
-					// flex: '0 0 100%',
 				}}
+				className={styles['hide-on-smaller-screens']}
 				variant='contained'
 				data-testid='filters-container'
 				disableElevation
 			>
 				<PriceFilter />
-				<PropertyTypeFilter styles={styles} />
-				<BedsFilter styles={styles} />
-				<BathFilter styles={styles} />
+				<PropertyTypeFilter />
+				<BedsFilter />
+				<BathFilter />
 				<MoreFilter />
 			</ButtonGroup>
 			<ButtonGroup
 				sx={{
 					display: {
 						xs: 'flex',
-						sm: 'none',
+						md: 'none',
 					},
 					height: '100%',
 				}}
+				className={styles['show-on-smaller-screens']}
 				variant='contained'
 				disableElevation
 			>

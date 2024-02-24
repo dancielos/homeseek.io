@@ -3,11 +3,7 @@ import FilterButton from './FilterButton';
 import { Box, Popover, Slider, Typography } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 
-export default function BedsFilter({
-	styles,
-}: {
-	styles: { readonly [key: string]: string };
-}) {
+export default function BedsFilter() {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const [value, setValue] = useState<number[]>([1, 6]);
@@ -28,12 +24,7 @@ export default function BedsFilter({
 	const open = Boolean(anchorEl);
 	const id = open ? 'simple-popover' : undefined;
 	return (
-		<FilterButton
-			label='Beds'
-			Icon={<BedOutlined />}
-			className={styles['hide-on-smaller-screens']}
-			onClick={handleClick}
-		>
+		<FilterButton label='Beds' Icon={<BedOutlined />} onClick={handleClick}>
 			<Popover
 				id={id}
 				open={open}

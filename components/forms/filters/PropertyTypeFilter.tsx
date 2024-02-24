@@ -2,24 +2,17 @@ import { HomeWorkOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
 import { ChangeEvent, MouseEvent, useState } from 'react';
 import {
-	Box,
 	Checkbox,
 	FormControl,
 	FormControlLabel,
 	FormGroup,
-	FormHelperText,
-	FormLabel,
 	Popover,
 	Typography,
 } from '@mui/material';
 import { PROPERTY_TYPE } from '@/data/types';
 import { propertyTypesArray } from '@/data/constants';
 
-export default function PropertyTypeFilter({
-	styles,
-}: {
-	styles: { readonly [key: string]: string };
-}) {
+export default function PropertyTypeFilter() {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 	const [propertyCheckboxes, setPropertyCheckboxes] = useState(
 		Object.fromEntries(
@@ -47,7 +40,6 @@ export default function PropertyTypeFilter({
 		<FilterButton
 			label='Property Type'
 			Icon={<HomeWorkOutlined />}
-			className={styles['hide-on-smaller-screens']}
 			onClick={handleClick}
 		>
 			<Popover

@@ -1,4 +1,4 @@
-import { HomeWorkOutlined, OtherHousesOutlined } from '@mui/icons-material';
+import { OtherHousesOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
 import { ChangeEvent, MouseEvent, useState } from 'react';
 import {
@@ -7,7 +7,6 @@ import {
 	FormControlLabel,
 	FormGroup,
 	Popover,
-	Typography,
 } from '@mui/material';
 
 export default function MoreFilter() {

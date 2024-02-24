@@ -3,11 +3,7 @@ import FilterButton from './FilterButton';
 import { Box, Popover, Slider, Typography } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 
-export default function BathFilter({
-	styles,
-}: {
-	styles: { readonly [key: string]: string };
-}) {
+export default function BathFilter() {
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
 	const [value, setValue] = useState<number[]>([1, 3]);
@@ -31,7 +27,6 @@ export default function BathFilter({
 		<FilterButton
 			label='Baths'
 			Icon={<BathtubOutlined />}
-			className={styles['hide-on-smaller-screens']}
 			onClick={handleClick}
 		>
 			<Popover

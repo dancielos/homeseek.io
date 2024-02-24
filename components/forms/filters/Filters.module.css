@@ -2,4 +2,7 @@
 	.hide-on-smaller-screens {
 		display: none !important;
 	}
+	.show-on-smaller-screens {
+		display: flex !important;
+	}
 }
