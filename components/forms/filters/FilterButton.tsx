@@ -1,37 +1,48 @@
 import { ArrowDropDown } from '@mui/icons-material';
 import { Button, ButtonProps, Popover } from '@mui/material';
-import { MouseEvent, ReactNode } from 'react';
+import { MouseEvent, ReactNode, useState } from 'react';
 
 interface FilterButtonProps extends ButtonProps {
 	Icon?: ReactNode;
 	label: string;
-	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+	// onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 	children?: ReactNode;
 	popover?: boolean;
-	popoverOpen?: boolean;
-	anchorEl?: HTMLButtonElement | null;
-	onPopoverClose?: () => void;
+	// popoverOpen?: boolean;
+	// anchorEl?: HTMLButtonElement | null;
+	// onPopoverClose?: () => void;
 }
 
 export default function FilterButton({
 	Icon = null,
 	label,
-	onClick,
+	// onClick,
 	children,
 	popover = true,
-	popoverOpen = false,
-	anchorEl = null,
-	onPopoverClose,
+	// popoverOpen = false,
+	// anchorEl = null,
+	// onPopoverClose,
 	...rest
 }: FilterButtonProps) {
-	const id = popoverOpen ? 'simple-popover' : undefined;
+	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
 	return (
 		<>
 			<Button
 				// variant='contained'
 				startIcon={Icon}
 				endIcon={<ArrowDropDown />}
-				onClick={onClick}
+				onClick={handleClick}
 				sx={{
 					textTransform: 'capitalize',
 					boxShadow: 'unset',
@@ -43,9 +54,9 @@ export default function FilterButton({
 			{popover ? (
 				<Popover
 					id={id}
-					open={popoverOpen}
+					open={open}
 					anchorEl={anchorEl}
-					onClose={onPopoverClose}
+					onClose={handleClose}
 					anchorOrigin={{
 						vertical: 'bottom',
 						horizontal: 'left',

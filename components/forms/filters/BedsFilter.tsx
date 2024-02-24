@@ -1,11 +1,9 @@
 import { BedOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
 import { Box, Slider, Typography } from '@mui/material';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 
 export default function BedsFilter() {
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
 	const [value, setValue] = useState<number[]>([1, 6]);
 
 	const handleChangeSlider = (event: Event, newValue: number | number[]) => {
@@ -13,25 +11,8 @@ export default function BedsFilter() {
 		setValue(newValue as number[]);
 	};
 
-	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const open = Boolean(anchorEl);
-
 	return (
-		<FilterButton
-			label='Beds'
-			Icon={<BedOutlined />}
-			onClick={handleClick}
-			popoverOpen={open}
-			anchorEl={anchorEl}
-			onPopoverClose={handleClose}
-		>
+		<FilterButton label='Beds' Icon={<BedOutlined />}>
 			<Typography sx={{ px: 2, pt: 2 }}>Number of bedrooms:</Typography>
 			<Box
 				sx={{

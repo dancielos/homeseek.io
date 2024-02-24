@@ -1,7 +1,7 @@
 import { AttachMoney } from '@mui/icons-material';
 import FilterButton from './FilterButton';
 import { Box, Slider, Typography } from '@mui/material';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 import {
 	MAX_PRICE,
 	MIN_PRICE,
@@ -11,8 +11,6 @@ import {
 } from '@/data/constants';
 
 export default function PriceFilter() {
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
 	const [value, setValue] = useState<number[]>([MIN_PRICE, MAX_PRICE]);
 
 	const handleChangeSlider = (
@@ -35,24 +33,8 @@ export default function PriceFilter() {
 		}
 	};
 
-	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const open = Boolean(anchorEl);
 	return (
-		<FilterButton
-			label='Price'
-			Icon={<AttachMoney />}
-			onClick={handleClick}
-			popoverOpen={open}
-			anchorEl={anchorEl}
-			onPopoverClose={handleClose}
-		>
+		<FilterButton label='Price' Icon={<AttachMoney />}>
 			<Typography sx={{ px: 2, pt: 2 }}>Enter the price range:</Typography>
 			<Box
 				sx={{

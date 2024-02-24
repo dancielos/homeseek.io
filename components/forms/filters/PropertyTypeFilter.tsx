@@ -1,6 +1,6 @@
 import { HomeWorkOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import {
 	Checkbox,
 	FormControl,
@@ -12,19 +12,11 @@ import { PROPERTY_TYPE } from '@/data/types';
 import { propertyTypesArray } from '@/data/constants';
 
 export default function PropertyTypeFilter() {
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 	const [propertyCheckboxes, setPropertyCheckboxes] = useState(
 		Object.fromEntries(
 			Object.entries(PROPERTY_TYPE).map(([key]) => [key, true])
 		)
 	);
-	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setPropertyCheckboxes({
@@ -33,16 +25,8 @@ export default function PropertyTypeFilter() {
 		});
 	};
 
-	const open = Boolean(anchorEl);
 	return (
-		<FilterButton
-			label='Property Type'
-			Icon={<HomeWorkOutlined />}
-			onClick={handleClick}
-			popoverOpen={open}
-			anchorEl={anchorEl}
-			onPopoverClose={handleClose}
-		>
+		<FilterButton label='Property Type' Icon={<HomeWorkOutlined />}>
 			<FormControl
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'

@@ -1,6 +1,6 @@
 import { OtherHousesOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import {
 	Checkbox,
 	FormControl,
@@ -9,18 +9,9 @@ import {
 } from '@mui/material';
 
 export default function MoreFilter() {
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 	const [checkboxes, setCheckboxes] = useState({
 		isPetFriendly: true,
 	});
-
-	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
 
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setCheckboxes({
@@ -29,17 +20,8 @@ export default function MoreFilter() {
 		});
 	};
 
-	const open = Boolean(anchorEl);
-
 	return (
-		<FilterButton
-			label='More'
-			Icon={<OtherHousesOutlined />}
-			onClick={handleClick}
-			popoverOpen={open}
-			anchorEl={anchorEl}
-			onPopoverClose={handleClose}
-		>
+		<FilterButton label='More' Icon={<OtherHousesOutlined />}>
 			<FormControl
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'

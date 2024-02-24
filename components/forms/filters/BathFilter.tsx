@@ -1,11 +1,9 @@
 import { BathtubOutlined } from '@mui/icons-material';
 import FilterButton from './FilterButton';
 import { Box, Slider, Typography } from '@mui/material';
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 
 export default function BathFilter() {
-	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-
 	const [value, setValue] = useState<number[]>([1, 3]);
 
 	const handleChangeSlider = (event: Event, newValue: number | number[]) => {
@@ -13,24 +11,8 @@ export default function BathFilter() {
 		setValue(newValue as number[]);
 	};
 
-	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const open = Boolean(anchorEl);
 	return (
-		<FilterButton
-			label='Baths'
-			Icon={<BathtubOutlined />}
-			onClick={handleClick}
-			popoverOpen={open}
-			anchorEl={anchorEl}
-			onPopoverClose={handleClose}
-		>
+		<FilterButton label='Baths' Icon={<BathtubOutlined />}>
 			<Typography sx={{ px: 2, pt: 2 }}>Number of bathrooms:</Typography>
 			<Box
 				sx={{
