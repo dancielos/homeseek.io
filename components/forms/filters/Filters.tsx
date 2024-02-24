@@ -12,6 +12,8 @@ import styles from './Filters.module.css';
 import { MouseEvent, useState } from 'react';
 import PriceFilter from './PriceFilter';
 import PropertyTypeFilter from './PropertyTypeFilter';
+import BedsFilter from './BedsFilter';
+import BathFilter from './BathFilter';
 
 export default function Filters() {
 	return (
@@ -31,16 +33,8 @@ export default function Filters() {
 			>
 				<PriceFilter />
 				<PropertyTypeFilter styles={styles} />
-				<FilterButton
-					label='Beds'
-					Icon={<BedOutlined />}
-					className={styles['hide-on-smaller-screens']}
-				/>
-				<FilterButton
-					label='Baths'
-					Icon={<BathtubOutlined />}
-					className={styles['hide-on-smaller-screens']}
-				/>
+				<BedsFilter styles={styles} />
+				<BathFilter styles={styles} />
 				<FilterButton label='More' Icon={<OtherHousesOutlined />} />
 			</ButtonGroup>
 			<ButtonGroup

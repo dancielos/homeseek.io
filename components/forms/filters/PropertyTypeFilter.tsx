@@ -23,7 +23,7 @@ export default function PropertyTypeFilter({
 	const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 	const [propertyCheckboxes, setPropertyCheckboxes] = useState(
 		Object.fromEntries(
-			Object.entries(PROPERTY_TYPE).map(([key]) => [key, false])
+			Object.entries(PROPERTY_TYPE).map(([key]) => [key, true])
 		)
 	);
 	const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
