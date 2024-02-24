@@ -4,6 +4,7 @@ import {
 	FormControl,
 	FormControlLabel,
 	FormGroup,
+	Typography,
 } from '@mui/material';
 
 export default function MoreFilter() {
@@ -25,6 +26,9 @@ export default function MoreFilter() {
 				component='fieldset'
 				variant='standard'
 			>
+				<Typography component='legend' sx={{ pb: 1 }}>
+					Other filters
+				</Typography>
 				<FormGroup>
 					<FormControlLabel
 						control={

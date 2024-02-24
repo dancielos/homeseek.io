@@ -16,6 +16,11 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import BathFilter from './BathFilter';
 import BedsFilter from './BedsFilter';
+import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import { Alert, Paper, Portal, Snackbar } from '@mui/material';
+import PriceFilter from './PriceFilter';
+import PropertyTypeFilter from './PropertyTypeFilter';
+import MoreFilter from './MoreFilter';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -28,17 +33,33 @@ const Transition = React.forwardRef(function Transition(
 
 export default function AllFilter() {
 	const [open, setOpen] = React.useState(false);
+	const [snackbarOpen, setSnackbarOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
 		setOpen(true);
+		setSnackbarOpen(true);
 	};
 
 	const handleClose = () => {
 		setOpen(false);
+		setSnackbarOpen(false);
+	};
+
+	const handleSnackBarClose = () => {
+		setSnackbarOpen(false);
 	};
 
 	return (
 		<FilterButton onClick={handleClickOpen} label='Filters' popover={false}>
+			<Portal>
+				<Snackbar
+					anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+					open={snackbarOpen}
+					message='Scroll down for more filter options'
+					autoHideDuration={3000}
+					onClose={handleSnackBarClose}
+				/>
+			</Portal>
 			<Dialog
 				fullScreen
 				open={open}
@@ -51,6 +72,9 @@ export default function AllFilter() {
 					},
 					bottom: '0',
 					top: 'auto',
+					'& .MuiDialog-container > div': {
+						overflowY: 'hidden !important',
+					},
 				}}
 			>
 				<AppBar sx={{ position: 'relative' }}>
@@ -64,17 +88,27 @@ export default function AllFilter() {
 							<CloseIcon />
 						</IconButton>
 						<Typography sx={{ ml: 2, flex: 1 }} variant='h6' component='div'>
-							Sound
+							Filter Search
 						</Typography>
-						<Button autoFocus color='inherit' onClick={handleClose}>
+						<Button autoFocus color='secondary' onClick={handleClose}>
 							save
 						</Button>
 					</Toolbar>
 				</AppBar>
-				<List>
+				<List
+					sx={{
+						overflowY: 'scroll',
+					}}
+				>
+					<PriceFilter />
+					<Divider />
+					<PropertyTypeFilter />
+					<Divider />
 					<BathFilter />
 					<Divider />
 					<BedsFilter />
+					<Divider />
+					<MoreFilter />
 					<Divider />
 				</List>
 			</Dialog>

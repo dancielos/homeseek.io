@@ -31,7 +31,7 @@ export default function PropertyTypeFilter() {
 				variant='standard'
 			>
 				<Typography component='legend' sx={{ pb: 1 }}>
-					You can select different properties at a time:
+					You can select different property types at a time:
 				</Typography>
 				<FormGroup>
 					{propertyTypesArray.map((property, i) => {
