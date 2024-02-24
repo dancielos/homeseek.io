@@ -1,5 +1,3 @@
-import { BedOutlined } from '@mui/icons-material';
-import FilterButton from './FilterButton';
 import { Box, Slider, Typography } from '@mui/material';
 import { useState } from 'react';
 
@@ -12,7 +10,7 @@ export default function BedsFilter() {
 	};
 
 	return (
-		<FilterButton label='Beds' Icon={<BedOutlined />}>
+		<>
 			<Typography sx={{ px: 2, pt: 2 }}>Number of bedrooms:</Typography>
 			<Box
 				sx={{
@@ -39,6 +37,6 @@ export default function BedsFilter() {
 					}}
 				/>
 			</Box>
-		</FilterButton>
+		</>
 	);
 }

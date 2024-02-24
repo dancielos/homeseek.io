@@ -5,9 +5,16 @@ import styles from './Filters.module.css';
 import PriceFilter from './PriceFilter';
 import PropertyTypeFilter from './PropertyTypeFilter';
 import BedsFilter from './BedsFilter';
-import BathFilter from './BathFilter';
 import MoreFilter from './MoreFilter';
 import AllFilter from './AllFilter';
+import {
+	AttachMoney,
+	BathtubOutlined,
+	BedOutlined,
+	HomeWorkOutlined,
+	OtherHousesOutlined,
+} from '@mui/icons-material';
+import BathFilter from './BathFilter';
 
 export default function Filters() {
 	return (
@@ -25,11 +32,21 @@ export default function Filters() {
 				data-testid='filters-container'
 				disableElevation
 			>
-				<PriceFilter />
-				<PropertyTypeFilter />
-				<BedsFilter />
-				<BathFilter />
-				<MoreFilter />
+				<FilterButton label='Price' Icon={<AttachMoney />}>
+					<PriceFilter />
+				</FilterButton>
+				<FilterButton label='Property Type' Icon={<HomeWorkOutlined />}>
+					<PropertyTypeFilter />
+				</FilterButton>
+				<FilterButton label='Beds' Icon={<BedOutlined />}>
+					<BedsFilter />
+				</FilterButton>
+				<FilterButton label='Baths' Icon={<BathtubOutlined />}>
+					<BathFilter />
+				</FilterButton>
+				<FilterButton label='More' Icon={<OtherHousesOutlined />}>
+					<MoreFilter />
+				</FilterButton>
 			</ButtonGroup>
 			<ButtonGroup
 				sx={{

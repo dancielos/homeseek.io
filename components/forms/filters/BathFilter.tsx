@@ -1,5 +1,3 @@
-import { BathtubOutlined } from '@mui/icons-material';
-import FilterButton from './FilterButton';
 import { Box, Slider, Typography } from '@mui/material';
 import { useState } from 'react';
 
@@ -10,9 +8,8 @@ export default function BathFilter() {
 		if (!Array.isArray(newValue)) return;
 		setValue(newValue as number[]);
 	};
-
 	return (
-		<FilterButton label='Baths' Icon={<BathtubOutlined />}>
+		<>
 			<Typography sx={{ px: 2, pt: 2 }}>Number of bathrooms:</Typography>
 			<Box
 				sx={{
@@ -39,6 +36,6 @@ export default function BathFilter() {
 					}}
 				/>
 			</Box>
-		</FilterButton>
+		</>
 	);
 }

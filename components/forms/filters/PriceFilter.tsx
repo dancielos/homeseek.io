@@ -34,7 +34,7 @@ export default function PriceFilter() {
 	};
 
 	return (
-		<FilterButton label='Price' Icon={<AttachMoney />}>
+		<>
 			<Typography sx={{ px: 2, pt: 2 }}>Enter the price range:</Typography>
 			<Box
 				sx={{
@@ -60,6 +60,6 @@ export default function PriceFilter() {
 					valueLabelFormat={(x) => `$${x}`}
 				/>
 			</Box>
-		</FilterButton>
+		</>
 	);
 }

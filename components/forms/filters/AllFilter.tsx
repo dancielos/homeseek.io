@@ -14,6 +14,8 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import BathFilter from './BathFilter';
+import BedsFilter from './BedsFilter';
 
 const Transition = React.forwardRef(function Transition(
 	props: TransitionProps & {
@@ -70,16 +72,10 @@ export default function AllFilter() {
 					</Toolbar>
 				</AppBar>
 				<List>
-					<ListItemButton>
-						<ListItemText primary='Phone ringtone' secondary='Titania' />
-					</ListItemButton>
+					<BathFilter />
 					<Divider />
-					<ListItemButton>
-						<ListItemText
-							primary='Default notification ringtone'
-							secondary='Tethys'
-						/>
-					</ListItemButton>
+					<BedsFilter />
+					<Divider />
 				</List>
 			</Dialog>
 		</FilterButton>

@@ -1,5 +1,3 @@
-import { OtherHousesOutlined } from '@mui/icons-material';
-import FilterButton from './FilterButton';
 import { ChangeEvent, useState } from 'react';
 import {
 	Checkbox,
@@ -21,7 +19,7 @@ export default function MoreFilter() {
 	};
 
 	return (
-		<FilterButton label='More' Icon={<OtherHousesOutlined />}>
+		<>
 			<FormControl
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'
@@ -41,6 +39,6 @@ export default function MoreFilter() {
 					/>
 				</FormGroup>
 			</FormControl>
-		</FilterButton>
+		</>
 	);
 }

@@ -1,5 +1,3 @@
-import { HomeWorkOutlined } from '@mui/icons-material';
-import FilterButton from './FilterButton';
 import { ChangeEvent, useState } from 'react';
 import {
 	Checkbox,
@@ -26,7 +24,7 @@ export default function PropertyTypeFilter() {
 	};
 
 	return (
-		<FilterButton label='Property Type' Icon={<HomeWorkOutlined />}>
+		<>
 			<FormControl
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'
@@ -54,6 +52,6 @@ export default function PropertyTypeFilter() {
 					})}
 				</FormGroup>
 			</FormControl>
-		</FilterButton>
+		</>
 	);
 }
