@@ -22,13 +22,12 @@ export default function BedsFilter() {
 	};
 
 	const open = Boolean(anchorEl);
-	const id = open ? 'simple-popover' : undefined;
+
 	return (
 		<FilterButton
 			label='Beds'
 			Icon={<BedOutlined />}
 			onClick={handleClick}
-			popoverId={id}
 			popoverOpen={open}
 			anchorEl={anchorEl}
 			onPopoverClose={handleClose}

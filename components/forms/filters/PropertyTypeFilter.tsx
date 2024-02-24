@@ -34,13 +34,11 @@ export default function PropertyTypeFilter() {
 	};
 
 	const open = Boolean(anchorEl);
-	const id = open ? 'simple-popover' : undefined;
 	return (
 		<FilterButton
 			label='Property Type'
 			Icon={<HomeWorkOutlined />}
 			onClick={handleClick}
-			popoverId={id}
 			popoverOpen={open}
 			anchorEl={anchorEl}
 			onPopoverClose={handleClose}

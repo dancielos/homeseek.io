@@ -44,13 +44,11 @@ export default function PriceFilter() {
 	};
 
 	const open = Boolean(anchorEl);
-	const id = open ? 'simple-popover' : undefined;
 	return (
 		<FilterButton
 			label='Price'
 			Icon={<AttachMoney />}
 			onClick={handleClick}
-			popoverId={id}
 			popoverOpen={open}
 			anchorEl={anchorEl}
 			onPopoverClose={handleClose}

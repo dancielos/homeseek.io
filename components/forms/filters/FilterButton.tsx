@@ -8,7 +8,6 @@ interface FilterButtonProps extends ButtonProps {
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 	children?: ReactNode;
 	popover?: boolean;
-	popoverId?: 'simple-popover' | undefined;
 	popoverOpen?: boolean;
 	anchorEl?: HTMLButtonElement | null;
 	onPopoverClose?: () => void;
@@ -20,12 +19,12 @@ export default function FilterButton({
 	onClick,
 	children,
 	popover = true,
-	popoverId = undefined,
 	popoverOpen = false,
 	anchorEl = null,
 	onPopoverClose,
 	...rest
 }: FilterButtonProps) {
+	const id = popoverOpen ? 'simple-popover' : undefined;
 	return (
 		<>
 			<Button
@@ -43,7 +42,7 @@ export default function FilterButton({
 			</Button>
 			{popover ? (
 				<Popover
-					id={popoverId}
+					id={id}
 					open={popoverOpen}
 					anchorEl={anchorEl}
 					onClose={onPopoverClose}

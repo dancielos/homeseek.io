@@ -22,13 +22,11 @@ export default function BathFilter() {
 	};
 
 	const open = Boolean(anchorEl);
-	const id = open ? 'simple-popover' : undefined;
 	return (
 		<FilterButton
 			label='Baths'
 			Icon={<BathtubOutlined />}
 			onClick={handleClick}
-			popoverId={id}
 			popoverOpen={open}
 			anchorEl={anchorEl}
 			onPopoverClose={handleClose}
