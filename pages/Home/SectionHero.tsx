@@ -4,6 +4,7 @@ import H1 from '@/components/htmlElements/H1';
 
 import HeroBackground from './HeroBackground';
 import SearchForm from '@/components/forms/SearchForm';
+import { Suspense } from 'react';
 
 export default function SectionHero() {
 	return (
@@ -47,14 +48,16 @@ export default function SectionHero() {
 			</Grid>
 
 			<Grid xs={10} sm={6} md={10} lg={10}>
-				<SearchForm
-					sx={{
-						bgcolor: 'rgba(33, 37, 41, 0.8)',
-						'& input, & label': {
-							color: '#ffe8cc !important',
-						},
-					}}
-				/>
+				<Suspense fallback={null}>
+					<SearchForm
+						sx={{
+							bgcolor: 'rgba(33, 37, 41, 0.8)',
+							'& input, & label': {
+								color: '#ffe8cc !important',
+							},
+						}}
+					/>
+				</Suspense>
 			</Grid>
 		</Grid>
 	);
