@@ -14,6 +14,7 @@ import PriceFilter from './PriceFilter';
 import PropertyTypeFilter from './PropertyTypeFilter';
 import BedsFilter from './BedsFilter';
 import BathFilter from './BathFilter';
+import MoreFilter from './MoreFilter';
 
 export default function Filters() {
 	return (
@@ -35,7 +36,7 @@ export default function Filters() {
 				<PropertyTypeFilter styles={styles} />
 				<BedsFilter styles={styles} />
 				<BathFilter styles={styles} />
-				<FilterButton label='More' Icon={<OtherHousesOutlined />} />
+				<MoreFilter />
 			</ButtonGroup>
 			<ButtonGroup
 				sx={{
