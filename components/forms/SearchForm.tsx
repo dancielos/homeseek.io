@@ -16,7 +16,8 @@ import Filters from './filters/Filters';
 import SearchCityTooltip from './SearchCityTooltip';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useDebounce } from '@/hooks/useDebounce';
 
 type SearchFormProps = {
 	withFilters?: boolean;
@@ -34,21 +35,23 @@ export default function SearchForm({
 	const [searchInput, setSearchInput] = useState<string>(
 		searchParams?.get('s') || ''
 	);
+	const debouncedSearch = useDebounce(searchInput);
 
-	function handleSearchInputChange(val: string) {
-		setSearchInput(val);
-	}
-
-	async function submitSearch(formData: FormData) {
-		console.log('search form submitted');
-		console.log(Object.fromEntries(formData.entries()));
+	function updateSearchQuery(searchValue: string) {
 		const path = pathname === '/' ? '/search' : '';
 
-		let queryParams = `s=${formData.get('search-input')}`;
-		const priceRange = formData.get('price-range');
-		if (priceRange) queryParams += `&p=${priceRange}`;
-
+		let queryParams = `s=${searchValue}`;
 		router.push(`${path}?${queryParams}`);
+	}
+
+	useEffect(() => {
+		if (pathname !== '/') updateSearchQuery(debouncedSearch);
+	}, [debouncedSearch, updateSearchQuery]);
+
+	async function submitSearch(formData: FormData) {
+		// ONLY for homepage where 'listening' is not important
+		// AND where the user needs to explicitly submit the form
+		updateSearchQuery(formData.get('search-input') as string);
 	}
 
 	if (!withFilters) {
@@ -99,7 +102,8 @@ export default function SearchForm({
 			justifyContent='center'
 			columns={10}
 			// margin='auto'
-			action={submitSearch}
+			// action={submitSearch}
+			action={() => {}}
 			autoComplete='off'
 		>
 			<Grid xs={6} xm={7} sm={6} md={4}>
@@ -111,7 +115,7 @@ export default function SearchForm({
 						name='search-input'
 						variant='filled'
 						fullWidth
-						onChange={(e) => handleSearchInputChange(e.target.value)}
+						onChange={(e) => setSearchInput(e.target.value)}
 						value={searchInput}
 						sx={{
 							color: 'primary.main',
