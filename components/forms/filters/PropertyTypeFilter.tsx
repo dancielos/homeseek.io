@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, SyntheticEvent, useEffect, useState } from 'react';
 import {
 	Checkbox,
 	FormControl,
@@ -8,20 +8,47 @@ import {
 } from '@mui/material';
 import { PROPERTY_TYPE } from '@/data/types';
 import { propertyTypesArray } from '@/data/constants';
+import { useSearchParams } from 'next/navigation';
+import { useDebounce } from '@/hooks/useDebounce';
+import useSearchQuery from '@/hooks/useSearchQuery';
+
+const PROPERTY_PARAM = 'property';
+
+const initialValue = Object.fromEntries(
+	Object.entries(PROPERTY_TYPE).map(([key]) => [key, true])
+);
 
 export default function PropertyTypeFilter() {
-	const [propertyCheckboxes, setPropertyCheckboxes] = useState(
-		Object.fromEntries(
-			Object.entries(PROPERTY_TYPE).map(([key]) => [key, true])
-		)
-	);
+	const propertyParam = useSearchParams()?.get(PROPERTY_PARAM);
+	// TODO, initially all checkboxes should be checked
+	// in short, when propertyParam is empty
+	// it should fallback to the initialValue
 
-	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+	const newValue = initialValue;
+	console.log(`is propertyParam empty ${propertyParam !== ''}`);
+	if (propertyParam !== '') {
+		const properties = propertyParam?.split(',');
+		for (const key in newValue) {
+			newValue[key] = properties?.includes(key) ? true : false;
+		}
+	}
+	const [propertyCheckboxes, setPropertyCheckboxes] = useState(newValue);
+
+	const debouncedPropertyCheckboxes = useDebounce(propertyCheckboxes);
+
+	const mappedValues = Object.entries(debouncedPropertyCheckboxes)
+		.filter(([key, value]) => value === true)
+		.map(([key, _]) => key)
+		.join(',');
+
+	useSearchQuery(PROPERTY_PARAM, mappedValues);
+
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
 		setPropertyCheckboxes({
 			...propertyCheckboxes,
 			[event.target.name]: event.target.checked,
 		});
-	};
+	}
 
 	return (
 		<>
@@ -40,7 +67,6 @@ export default function PropertyTypeFilter() {
 								key={`${property}-${i}`}
 								control={
 									<Checkbox
-										defaultChecked
 										checked={propertyCheckboxes[property.name]}
 										onChange={handleChange}
 										name={property.name}

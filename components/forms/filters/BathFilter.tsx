@@ -5,10 +5,17 @@ import { Box, Slider, Typography } from '@mui/material';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { SyntheticEvent, useEffect, useState } from 'react';
 
+const BATH_PARAM = 'bath';
+
 export default function BathFilter() {
-	const [value, setValue] = useState<number[]>([1, 3]);
+	const searchParams = useSearchParams();
+	const initialValue = searchParams
+		?.get(BATH_PARAM)
+		?.split(',')
+		.map(Number) ?? [1, 3];
+	const [value, setValue] = useState<number[]>(initialValue);
 	const debouncedValue = useDebounce(value);
-	useSearchQuery('bath', '' + debouncedValue);
+	useSearchQuery(BATH_PARAM, '' + debouncedValue);
 
 	const handleChangeSlider = (
 		event: Event | SyntheticEvent<Element, Event>,

@@ -21,7 +21,6 @@ describe('Admin pages should render the crucial components', () => {
 		cy.visit(`${Cypress.config().baseUrl}/properties/new`);
 		cy.get('header').should('exist');
 		cy.get('[data-testid=admin-drawer]').should('exist');
-		// TODO
 
 		cy.get('form#new-property-form').should('exist');
 		cy.get('form#new-property-form').get('[type=submit]').should('exist');

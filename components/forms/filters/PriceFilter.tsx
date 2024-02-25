@@ -9,9 +9,21 @@ import {
 	PRICE_MARKS,
 	PRICE_STEP,
 } from '@/data/constants';
+import { useDebounce } from '@/hooks/useDebounce';
+import useSearchQuery from '@/hooks/useSearchQuery';
+import { useSearchParams } from 'next/navigation';
+
+const PRICE_PARAM = 'price';
 
 export default function PriceFilter() {
-	const [value, setValue] = useState<number[]>([MIN_PRICE, MAX_PRICE]);
+	const searchParams = useSearchParams();
+	const initialValue = searchParams
+		?.get(PRICE_PARAM)
+		?.split(',')
+		.map(Number) ?? [MIN_PRICE, MAX_PRICE];
+	const [value, setValue] = useState<number[]>(initialValue);
+	const debouncedValue = useDebounce(value);
+	useSearchQuery('price', '' + debouncedValue);
 
 	const handleChangeSlider = (
 		event: Event,

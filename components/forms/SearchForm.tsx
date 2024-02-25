@@ -19,6 +19,7 @@ import { useEffect, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import { getSearchQuery } from '@/utils/getSearchQuery';
 import useSearchQuery from '@/hooks/useSearchQuery';
+import { getUserCity } from '@/utils/getUserCity';
 
 type SearchFormProps = {
 	withFilters?: boolean;
@@ -29,6 +30,8 @@ export default function SearchForm({
 	withFilters = false,
 	sx,
 }: SearchFormProps) {
+	// TODO:
+
 	const router = useRouter();
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
@@ -44,10 +47,8 @@ export default function SearchForm({
 		// ONLY for homepage where 'listening' is not important
 		// AND where the user needs to explicitly submit the form
 		// AND from the homepage, ONLY the 's' will be available
-		const query = getSearchQuery(
-			pathname!,
-			formData.get('search-input') as string
-		);
+		const searchInput = (formData.get('search-input') as string) || 'toronto';
+		const query = getSearchQuery(pathname!, searchInput);
 		router.push(query);
 	}
 
@@ -75,6 +76,7 @@ export default function SearchForm({
 						fullWidth
 						focused
 						sx={sx ? { ...sx } : {}}
+						required
 					/>
 				</SearchCityTooltip>
 				<CTA
