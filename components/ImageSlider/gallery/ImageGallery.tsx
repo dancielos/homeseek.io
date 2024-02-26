@@ -30,7 +30,7 @@ export default function ImageGallery({
 
 	let containerStyle = '';
 	if (fullscreen) containerStyle = 'h-4/5 min-w-full';
-	else if (autoHeight) containerStyle = 'h-[200px] w-full';
+	else if (autoHeight) containerStyle = 'h-[200px] max-w-full';
 	else containerStyle = 'h-[320px] w-full';
 
 	return (

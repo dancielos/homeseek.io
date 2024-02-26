@@ -28,24 +28,6 @@ export default async function Search({
 	const coords = (await getCoordsFromCity(searchParams.s as string)) as Coords;
 	const listings = await getListings(searchParams.s as string);
 
-	const mappedListings = listings.map((l) => {
-		const address = formatAddress(
-			l.address.street,
-			l.address.city,
-			l.address.province,
-			l.address.postalCode
-		);
-		return {
-			address,
-			propertyType: l.propertyType as PropertyType,
-			bedrooms: l.numBedrooms,
-			bathrooms: l.numBathrooms,
-			img: l.img,
-			price: l.price,
-		};
-	});
-	// console.log('From search page: ' + listings[0]);
-
 	return (
 		<>
 			<Grid
@@ -74,7 +56,7 @@ export default async function Search({
 				}}
 			>
 				<Box rowGap={1} display='flex' flexDirection='column' padding={1}>
-					{mappedListings.map((listing, i) => (
+					{listings.map((listing, i) => (
 						<Listing i={i} key={i} variant='landscape' {...listing} />
 					))}
 				</Box>

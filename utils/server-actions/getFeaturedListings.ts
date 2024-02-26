@@ -5,14 +5,14 @@ import connectDB from '../db';
 import { PropertyListing, PropertyType } from '@/data/types';
 import formatAddress from '../formatAddress';
 
-export default async function getListings(
-	city: string
-): Promise<PropertyListing[]> {
+export default async function getFeaturedListings(): Promise<
+	PropertyListing[]
+> {
 	try {
 		await connectDB();
-		// Retrieve listings that match the given city
-		const listings = await ListingModel.find({ 'address.city': city }).exec();
-		return listings.map((l) => {
+
+		const featuredListings = await ListingModel.find({ featured: true }).exec();
+		return featuredListings.map((l) => {
 			const address = formatAddress(
 				l.address.street,
 				l.address.city,
@@ -29,7 +29,7 @@ export default async function getListings(
 			};
 		});
 	} catch (error) {
-		console.error('Error fetching listings:', error);
+		console.error('Error fetching featured listings', error);
 		throw error;
 	}
 }
