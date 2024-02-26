@@ -20,16 +20,20 @@ const initialValue = Object.fromEntries(
 
 export default function PropertyTypeFilter() {
 	const propertyParam = useSearchParams()?.get(PROPERTY_PARAM);
-	// TODO, initially all checkboxes should be checked
-	// in short, when propertyParam is empty
-	// it should fallback to the initialValue
+	// TODO:
+	// when nothing is checked, the house is still checked
 
 	const newValue = initialValue;
-	console.log(`is propertyParam empty ${propertyParam !== ''}`);
-	if (propertyParam !== '') {
+	console.log({ propertyParam, newValue });
+
+	if (propertyParam) {
 		const properties = propertyParam?.split(',');
 		for (const key in newValue) {
 			newValue[key] = properties?.includes(key) ? true : false;
+		}
+	} else {
+		for (const key in newValue) {
+			newValue[key] = true;
 		}
 	}
 	const [propertyCheckboxes, setPropertyCheckboxes] = useState(newValue);

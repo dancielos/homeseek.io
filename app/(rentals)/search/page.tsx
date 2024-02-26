@@ -12,7 +12,18 @@ import Listing from '@/components/core/Listing';
 // so the 'root' element for this component should be
 // a <Grid> -> item
 
-export default function Search() {
+type SearchParams = {
+	[key: string]: string | string[] | undefined;
+};
+
+export default async function Search({
+	searchParams,
+}: {
+	searchParams: SearchParams;
+}) {
+	// const query = searchParams.s as string;
+	// const cities = (await getCityFromQuery(query)) ?? '';
+	// console.log({ city });
 	return (
 		<>
 			<Grid

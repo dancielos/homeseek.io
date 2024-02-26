@@ -6,7 +6,7 @@ import HeroBackground from './HeroBackground';
 import SearchForm from '@/components/forms/SearchForm';
 import { Suspense } from 'react';
 
-export default function SectionHero() {
+export default async function SectionHero() {
 	return (
 		<Grid
 			container

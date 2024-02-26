@@ -96,6 +96,17 @@ export const PRICE_MARKS = [
 	{ value: 10000 },
 ];
 
+export const CITIES = [
+	'Toronto',
+	'Vancouver',
+	'Calgary',
+	'Montreal',
+	'Ottawa',
+	'Edmonton',
+	'Quebec City',
+	'Lethbridge',
+];
+
 export const PRICE_DISTANCE = 1000;
 
 export const propertyTypesArray = Object.entries(PROPERTY_TYPE).map(
