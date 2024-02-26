@@ -6,6 +6,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import { DUMMY_LISTING } from '@/data/constants';
 import Listing from '@/components/core/Listing';
+import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
+import { Coords } from '@/data/types';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -21,9 +23,8 @@ export default async function Search({
 }: {
 	searchParams: SearchParams;
 }) {
-	// const query = searchParams.s as string;
-	// const cities = (await getCityFromQuery(query)) ?? '';
-	// console.log({ city });
+	const coords = (await getCoordsFromCity(searchParams.s as string)) as Coords;
+	console.log(coords);
 	return (
 		<>
 			<Grid
@@ -36,7 +37,7 @@ export default async function Search({
 					},
 				}}
 			>
-				<Map />
+				<Map coordinates={coords} />
 			</Grid>
 			<Grid
 				xs={10}

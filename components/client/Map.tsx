@@ -5,9 +5,13 @@ import styles from './Map.module.css';
 // import { useMediaQuery } from '@mui/material';
 // import { Suspense } from 'react';
 
-export default function Map() {
+export default function Map({
+	coordinates,
+}: {
+	coordinates: { lat: number; lng: number };
+}) {
 	// const isMobile = useMediaQuery('(min-width: 600px)');
-	const coordinates = { lat: 43.65107, lng: -79.347015 };
+
 	// console.log(process.env.GOOGLE_MAPS_API_KEY);
 	return (
 		<section

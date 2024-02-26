@@ -36,3 +36,8 @@ export type Address = {
 	province: string;
 	postalCode: string;
 };
+
+export type Coords = {
+	lat: number;
+	lng: number;
+};
