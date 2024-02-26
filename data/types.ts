@@ -16,7 +16,7 @@ export type PropertyListing = {
 	bedrooms: number;
 	bathrooms: number;
 	address: string;
-	img: string;
+	img: string[];
 	price: number;
 };
 

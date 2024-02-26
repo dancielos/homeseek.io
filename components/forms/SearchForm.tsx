@@ -69,7 +69,9 @@ export default function SearchForm({
 				<Autocomplete
 					disablePortal
 					options={CITIES}
-					sx={{ width: 300 }}
+					sx={{
+						width: '100%',
+					}}
 					renderInput={(params) => (
 						<TextField
 							{...params}

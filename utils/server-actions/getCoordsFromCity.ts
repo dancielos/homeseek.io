@@ -14,7 +14,7 @@ export default async function getCoordsFromCity(city: string) {
 			);
 			const data = await response.json();
 
-			console.log(city, data.results[0].geometry);
+			// console.log(city, data.results[0].geometry);
 			if (data.results && data.results.length > 0) {
 				const { lng, lat } = data.results[0].geometry.location;
 				return { lng, lat };

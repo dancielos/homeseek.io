@@ -26,7 +26,7 @@ interface Amenities {
 	other: ('onSiteMaintenance' | 'noSmoking')[];
 }
 
-interface Listing {
+export interface Listing {
 	id: number;
 	userId: Types.ObjectId;
 	address: Address;

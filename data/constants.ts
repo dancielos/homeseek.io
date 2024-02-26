@@ -13,7 +13,7 @@ export const DUMMY_LISTING: PropertyListing[] = [
 		bedrooms: 3,
 		bathrooms: 2,
 		address: '123 Calgary St SW, Calgary, AB',
-		img: 'house1.jpg',
+		img: ['house1.jpg'],
 		price: 2000,
 	},
 	{
@@ -21,7 +21,7 @@ export const DUMMY_LISTING: PropertyListing[] = [
 		bedrooms: 2,
 		bathrooms: 1,
 		address: '456 Downtown Ave NE, Calgary, AB',
-		img: 'apartment1.jpg',
+		img: ['apartment1.jpg'],
 		price: 1500,
 	},
 	{
@@ -29,7 +29,7 @@ export const DUMMY_LISTING: PropertyListing[] = [
 		bedrooms: 4,
 		bathrooms: 3,
 		address: '789 Oakridge Dr SW, Calgary, AB',
-		img: 'townhouse1.jpg',
+		img: ['townhouse1.jpg'],
 		price: 2500,
 	},
 	{
@@ -37,7 +37,7 @@ export const DUMMY_LISTING: PropertyListing[] = [
 		bedrooms: 2,
 		bathrooms: 1.5,
 		address: '101 Bow River Rd SE, Calgary, AB',
-		img: 'duplex1.jpg',
+		img: ['duplex1.jpg'],
 		price: 1800,
 	},
 ];

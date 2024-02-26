@@ -15,23 +15,26 @@ type ChildProps = {
 	fullscreen?: boolean;
 	handleScroll: (action: NavigationAction, index: number) => void;
 	handleFullscreen: () => void;
+	autoHeight: boolean;
 };
 
 export default function ImageGallery({
 	fullscreen,
 	handleScroll,
 	handleFullscreen,
+	autoHeight,
 }: ChildProps) {
 	const { currentIndex, direction, images } = useContext(
 		ImageSliderContext
 	) as ImageSliderContextType;
 
+	let containerStyle = '';
+	if (fullscreen) containerStyle = 'h-4/5 min-w-full';
+	else if (autoHeight) containerStyle = 'h-[200px] w-full';
+	else containerStyle = 'h-[320px] w-full';
+
 	return (
-		<div
-			className={`container relative ${
-				fullscreen ? 'h-4/5 min-w-full' : 'h-[320px] w-full'
-			}  overflow-hidden`}
-		>
+		<div className={`container relative ${containerStyle}  overflow-hidden`}>
 			<div className=' relative h-full w-full' id='gallery'>
 				{images.map((image, i) => (
 					<ImageGalleryItem

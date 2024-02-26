@@ -23,9 +23,14 @@ import { ImageSliderContext } from './ImageSliderProvider';
 type ChildProps = {
 	images: TypeImage[];
 	showThumbnail: boolean;
+	autoHeight: boolean;
 };
 
-export default function Layout({ images, showThumbnail }: ChildProps) {
+export default function Layout({
+	images,
+	showThumbnail,
+	autoHeight,
+}: ChildProps) {
 	const thumbnailsRef = useRef() as React.MutableRefObject<
 		Map<number, HTMLLIElement>
 	>;
@@ -107,6 +112,7 @@ export default function Layout({ images, showThumbnail }: ChildProps) {
 				<ImageGallery
 					handleScroll={handleScroll}
 					handleFullscreen={showFullscreen}
+					autoHeight
 				/>
 				{showThumbnail ? (
 					<Thumbnails
@@ -121,6 +127,7 @@ export default function Layout({ images, showThumbnail }: ChildProps) {
 					fullscreen
 					handleScroll={handleScroll}
 					handleFullscreen={hideFullScreen}
+					autoHeight={false}
 				/>
 				<Thumbnails
 					fullscreen

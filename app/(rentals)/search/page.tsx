@@ -7,7 +7,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { DUMMY_LISTING } from '@/data/constants';
 import Listing from '@/components/core/Listing';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
-import { Coords } from '@/data/types';
+import { Coords, PropertyListing, PropertyType } from '@/data/types';
+import getListings from '@/utils/server-actions/getListings';
+import formatAddress from '@/utils/formatAddress';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -24,7 +26,26 @@ export default async function Search({
 	searchParams: SearchParams;
 }) {
 	const coords = (await getCoordsFromCity(searchParams.s as string)) as Coords;
-	console.log(coords);
+	const listings = await getListings(searchParams.s as string);
+
+	const mappedListings = listings.map((l) => {
+		const address = formatAddress(
+			l.address.street,
+			l.address.city,
+			l.address.province,
+			l.address.postalCode
+		);
+		return {
+			address,
+			propertyType: l.propertyType as PropertyType,
+			bedrooms: l.numBedrooms,
+			bathrooms: l.numBathrooms,
+			img: l.img,
+			price: l.price,
+		};
+	});
+	// console.log('From search page: ' + listings[0]);
+
 	return (
 		<>
 			<Grid
@@ -53,8 +74,8 @@ export default async function Search({
 				}}
 			>
 				<Box rowGap={1} display='flex' flexDirection='column' padding={1}>
-					{DUMMY_LISTING.map((dummy_list, i) => (
-						<Listing i={i} key={i} variant='landscape' {...dummy_list} />
+					{mappedListings.map((listing, i) => (
+						<Listing i={i} key={i} variant='landscape' {...listing} />
 					))}
 				</Box>
 			</Grid>
