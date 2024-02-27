@@ -12,9 +12,15 @@ import useFullPath from '@/hooks/useFullPath';
 interface DetailsLinkProps extends LinkProps {
 	children: ReactNode;
 	href: Url | UrlObject;
+	size?: 'small' | 'medium' | 'large';
 }
 
-function DetailsLinkButton({ children, href, ...rest }: DetailsLinkProps) {
+function DetailsLinkButton({
+	children,
+	href,
+	size = 'medium',
+	...rest
+}: DetailsLinkProps) {
 	const prev = useFullPath();
 
 	return (
@@ -27,7 +33,12 @@ function DetailsLinkButton({ children, href, ...rest }: DetailsLinkProps) {
 				},
 			}}
 		>
-			<Button component='span' color='secondary' variant='contained'>
+			<Button
+				component='span'
+				color='secondary'
+				variant='contained'
+				size={size}
+			>
 				{children}
 			</Button>
 		</Link>
@@ -37,11 +48,12 @@ function DetailsLinkButton({ children, href, ...rest }: DetailsLinkProps) {
 export default function DetailsLink({
 	children,
 	href,
+	size,
 	...rest
 }: DetailsLinkProps) {
 	return (
 		<Suspense>
-			<DetailsLinkButton href={href} {...rest}>
+			<DetailsLinkButton size={size} href={href} {...rest}>
 				{children}
 			</DetailsLinkButton>
 		</Suspense>

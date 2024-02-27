@@ -5,6 +5,7 @@ import styles from './Map.module.css';
 import { Bounds, Coords, PropertyListing } from '@/data/types';
 import {
 	APIProvider,
+	AdvancedMarker,
 	InfoWindow,
 	Map,
 	MapCameraChangedEvent,
@@ -28,11 +29,13 @@ import MapMarker from './MapMarker';
 export default function MapComponent({
 	coordinates,
 	bounds,
+	pin,
 	listing,
 }: {
 	coordinates: Coords;
-	bounds: Bounds;
-	listing: PropertyListing[];
+	pin?: Coords;
+	bounds?: Bounds;
+	listing?: PropertyListing[];
 }) {
 	const INITIAL_CAMERA = {
 		center: coordinates,
@@ -71,16 +74,21 @@ export default function MapComponent({
 				disableDefaultUI={true}
 				mapId={process.env.GOOGLE_MAPS_ID}
 			>
-				{listing.map((pin, i) => (
-					<MapMarker
-						key={i}
-						pin={{ lat: pin.lat, lng: pin.lng }}
-						address={pin.address}
-						price={pin.price}
-						id={pin.id}
-						img={`${process.env.S3_URL}/${pin.img[0]}`}
-					/>
-				))}
+				{!pin ? (
+					listing?.map((pin, i) => (
+						<MapMarker
+							i={i}
+							key={i}
+							pin={{ lat: pin.lat, lng: pin.lng }}
+							address={pin.address}
+							price={pin.price}
+							id={pin.id}
+							img={`${process.env.S3_URL}/${pin.img[0]}`}
+						/>
+					))
+				) : (
+					<AdvancedMarker position={pin} />
+				)}
 			</Map>
 		</APIProvider>
 	);

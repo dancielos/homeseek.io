@@ -4,7 +4,7 @@ import { MailOutline } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import BackButton from '../../components/client/BackButton';
 
-export default function TitleBar() {
+export default function TitleBar({ title }: { title: string }) {
 	return (
 		<StickyBar
 			sx={{
@@ -48,7 +48,7 @@ export default function TitleBar() {
 						},
 					}}
 				>
-					150 Peter Herner Bay
+					{title}
 				</H1>
 
 				<IconButton

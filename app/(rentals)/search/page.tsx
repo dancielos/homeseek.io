@@ -1,21 +1,11 @@
 import Map from '@/components/client/Map';
 
-import { Box, Card, Typography } from '@mui/material';
-
+import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-
-import { DUMMY_LISTING, propertyTypesArray } from '@/data/constants';
-import Listing from '@/components/core/Listing';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
-import {
-	Coords,
-	PROPERTY_TYPE,
-	PropertyListing,
-	PropertyType,
-} from '@/data/types';
+import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import getListings from '@/utils/server-actions/getListings';
-import formatAddress from '@/utils/formatAddress';
-import getFeaturedListings from '@/utils/server-actions/getFeaturedListings';
+import Listing from '@/components/core/Listing';
 import H3 from '@/components/htmlElements/H3';
 import InfoBox from '@/components/htmlElements/InfoBox';
 
@@ -73,10 +63,6 @@ export default async function Search({
 		isPetFriendly,
 	});
 
-	console.log(listings);
-
-	// const pins = (await getPins({ listings, coords }));
-
 	return (
 		<>
 			<Grid
@@ -89,7 +75,7 @@ export default async function Search({
 					},
 				}}
 			>
-				<Map coordinates={coords} listing={listings} bounds={bounds} />
+				<Map coordinates={coords} listing={listings} />
 			</Grid>
 			<Grid
 				xs={10}
@@ -108,7 +94,7 @@ export default async function Search({
 					<Typography sx={{ pb: 0, px: 2, pt: 1 }}>
 						Showing {listings.length} result{listings.length > 1 ? 's' : ''}.
 					</Typography>
-					{/* {listings.length === 0 ? (
+					{listings.length === 0 ? (
 						<Box
 							sx={{
 								p: 4,
@@ -121,7 +107,7 @@ export default async function Search({
 						listings.map((listing, i) => (
 							<Listing i={i} key={i} variant='landscape' {...listing} />
 						))
-					)} */}
+					)}
 				</Box>
 			</Grid>
 		</>

@@ -1,17 +1,14 @@
 import { Coords } from '@/data/types';
 import formatPrice from '@/utils/formatPrice';
-import { Box, Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import {
 	AdvancedMarker,
 	InfoWindow,
-	Marker,
 	useAdvancedMarkerRef,
-	useMarkerRef,
 } from '@vis.gl/react-google-maps';
 import { useState } from 'react';
-import CTA from './CTA';
-import Link from 'next/link';
 import Image from 'next/image';
+import DetailsLink from '../ui/DetailsLink';
 
 type MapMarkerProps = {
 	pin: Coords;
@@ -19,6 +16,7 @@ type MapMarkerProps = {
 	address: string;
 	img: string;
 	id: string;
+	i: number;
 };
 
 export default function MapMarker({
@@ -27,6 +25,7 @@ export default function MapMarker({
 	price,
 	address,
 	id,
+	i,
 }: MapMarkerProps) {
 	const [markerRef, marker] = useAdvancedMarkerRef();
 
@@ -71,9 +70,13 @@ export default function MapMarker({
 							<Typography variant='body2' alignSelf='end'>
 								{formatPrice(price)}
 							</Typography>
-							<CTA href='#' size='small'>
+							<DetailsLink
+								data-testid={`more-details-${i}`}
+								href={`/listing/${id}`}
+								size='small'
+							>
 								More details
-							</CTA>
+							</DetailsLink>
 						</Stack>
 					</Stack>
 				</InfoWindow>

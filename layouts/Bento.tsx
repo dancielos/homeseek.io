@@ -3,7 +3,7 @@ import { PropertyListing } from '@/data/types';
 import Grid from '@mui/material/Unstable_Grid2';
 
 export default function Bento({ listings }: { listings: PropertyListing[] }) {
-	console.log(listings[0].id);
+	// console.log(listings[0].id);
 	return (
 		<Grid container spacing={4} columns={16} justifyContent='center'>
 			{/* {cards.map((card, i) => ( */}
