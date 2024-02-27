@@ -18,7 +18,6 @@ import formatAddress from '@/utils/formatAddress';
 import getFeaturedListings from '@/utils/server-actions/getFeaturedListings';
 import H3 from '@/components/htmlElements/H3';
 import InfoBox from '@/components/htmlElements/InfoBox';
-import getPins from '@/utils/server-actions/getPins';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,

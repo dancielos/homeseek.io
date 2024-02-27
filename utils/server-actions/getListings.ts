@@ -1,6 +1,6 @@
 'use server';
 
-import ListingModel from '@/models/Listing';
+import ListingModel, { Listing } from '@/models/Listing';
 import connectDB from '../db';
 import { Coords, PropertyListing, PropertyType } from '@/data/types';
 import formatAddress from '../formatAddress';
@@ -15,18 +15,6 @@ type ListingsProps = {
 	baths: number[];
 	propertyType: PropertyType[];
 	isPetFriendly?: boolean;
-};
-
-type FormattedListing = {
-	id: number;
-	address: string;
-	propertyType: PropertyType;
-	bedrooms: number;
-	bathrooms: number;
-	img: string[];
-	price: number;
-	lat: number;
-	lng: number;
 };
 
 export default async function getListings({
@@ -66,7 +54,8 @@ export default async function getListings({
 		// Retrieve listings that match the given city
 		const pins: Coords[] = [];
 		const listings = await ListingModel.find(query).exec();
-		const formattedListings: FormattedListing[] = await Promise.all(
+
+		const formattedListings: PropertyListing[] = await Promise.all(
 			listings.map(async (l) => {
 				const address = formatAddress(
 					l.address.street,
@@ -98,7 +87,7 @@ export default async function getListings({
 				// console.log(pinLng, pinLat);
 
 				return {
-					id: l.id,
+					id: l._id.toString(),
 					address,
 					propertyType: l.propertyType as PropertyType,
 					bedrooms: l.numBedrooms,
@@ -110,6 +99,7 @@ export default async function getListings({
 				};
 			})
 		);
+		console.log(formattedListings);
 		return formattedListings;
 	} catch (error) {
 		console.error('Error fetching listings:', error);

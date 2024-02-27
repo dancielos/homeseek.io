@@ -18,7 +18,7 @@ type MapMarkerProps = {
 	price: number;
 	address: string;
 	img: string;
-	id: number;
+	id: string;
 };
 
 export default function MapMarker({
@@ -51,7 +51,11 @@ export default function MapMarker({
 				// }
 			/>
 			{infowindowShown && (
-				<InfoWindow anchor={marker} position={{ lat: pin.lat, lng: pin.lng }}>
+				<InfoWindow
+					anchor={marker}
+					position={{ lat: pin.lat, lng: pin.lng }}
+					onCloseClick={closeInfoWindow}
+				>
 					<Stack>
 						<Stack flexDirection='row' gap={1}>
 							<Image

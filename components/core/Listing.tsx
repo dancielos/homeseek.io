@@ -125,7 +125,7 @@ export default function Listing({
 						<CardActions sx={{ justifyContent: 'flex-end', px: 0 }}>
 							<DetailsLink
 								data-testid={`more-details-${i}`}
-								href='/listing/something'
+								href={`/listing/${rest.id}`}
 							>
 								More details
 							</DetailsLink>
@@ -136,7 +136,7 @@ export default function Listing({
 			{isLandscape ? null : (
 				<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
 					<DetailsLink
-						href='/listing/something'
+						href={`/listing/${rest.id}`}
 						data-testid={`more-details-${i}`}
 					>
 						More details

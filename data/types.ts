@@ -12,7 +12,7 @@ export const PROPERTY_TYPE = {
 export type PropertyType = keyof typeof PROPERTY_TYPE;
 
 export type PropertyListing = {
-	id: number;
+	id: string;
 	propertyType: PropertyType;
 	bedrooms: number;
 	bathrooms: number;
