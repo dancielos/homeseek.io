@@ -41,3 +41,18 @@ export type Coords = {
 	lat: number;
 	lng: number;
 };
+
+export type Bounds = {
+	northeast: {
+		lat: number;
+		lng: number;
+	};
+	southwest: {
+		lat: number;
+		lng: number;
+	};
+};
+
+export type CoordsWithBounds = {
+	bounds: Bounds;
+} & Coords;

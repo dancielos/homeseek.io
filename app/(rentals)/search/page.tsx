@@ -18,6 +18,7 @@ import formatAddress from '@/utils/formatAddress';
 import getFeaturedListings from '@/utils/server-actions/getFeaturedListings';
 import H3 from '@/components/htmlElements/H3';
 import InfoBox from '@/components/htmlElements/InfoBox';
+import getPins from '@/utils/server-actions/getPins';
 
 // IMPORTANT :
 // This page is wrapped in a Grid container,
@@ -42,8 +43,10 @@ export default async function Search({
 }: {
 	searchParams: SearchParams;
 }) {
-	const coords = (await getCoordsFromCity(searchParams.s as string)) as Coords;
 	const city = (searchParams.s as string) || fallbacks.city;
+	const { lat, lng, bounds } = await getCoordsFromCity(city);
+	console.log(bounds, ' from search page');
+	const coords = { lat, lng };
 	const price = ((searchParams.price as string) || fallbacks.price)
 		.split(',')
 		.map(Number);
@@ -71,6 +74,11 @@ export default async function Search({
 		isPetFriendly,
 	});
 
+	const pins = (await getPins(
+		listings.map((l) => l.address) as string[],
+		coords
+	)) as Coords[];
+
 	return (
 		<>
 			<Grid
@@ -83,7 +91,7 @@ export default async function Search({
 					},
 				}}
 			>
-				<Map coordinates={coords} />
+				<Map coordinates={coords} pins={pins} bounds={bounds} />
 			</Grid>
 			<Grid
 				xs={10}
