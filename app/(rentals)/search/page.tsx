@@ -74,10 +74,9 @@ export default async function Search({
 		isPetFriendly,
 	});
 
-	const pins = (await getPins(
-		listings.map((l) => l.address) as string[],
-		coords
-	)) as Coords[];
+	console.log(listings);
+
+	// const pins = (await getPins({ listings, coords }));
 
 	return (
 		<>
@@ -91,7 +90,7 @@ export default async function Search({
 					},
 				}}
 			>
-				<Map coordinates={coords} pins={pins} bounds={bounds} />
+				<Map coordinates={coords} listing={listings} bounds={bounds} />
 			</Grid>
 			<Grid
 				xs={10}

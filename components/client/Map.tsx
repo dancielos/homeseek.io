@@ -2,9 +2,10 @@
 
 // import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import styles from './Map.module.css';
-import { Bounds, Coords } from '@/data/types';
+import { Bounds, Coords, PropertyListing } from '@/data/types';
 import {
 	APIProvider,
+	InfoWindow,
 	Map,
 	MapCameraChangedEvent,
 	MapCameraProps,
@@ -16,6 +17,7 @@ import {
 
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import { useCallback, useEffect, useState } from 'react';
+import MapMarker from './MapMarker';
 
 // const Marker = ({ ...props }: { lat: number; lng: number }) => (
 // 	<div {...props}>
@@ -26,11 +28,11 @@ import { useCallback, useEffect, useState } from 'react';
 export default function MapComponent({
 	coordinates,
 	bounds,
-	pins,
+	listing,
 }: {
 	coordinates: Coords;
 	bounds: Bounds;
-	pins: Coords[];
+	listing: PropertyListing[];
 }) {
 	const INITIAL_CAMERA = {
 		center: coordinates,
@@ -67,12 +69,17 @@ export default function MapComponent({
 				// draggableCursor={true}
 				// gestureHandling={'greedy'}
 				disableDefaultUI={true}
+				mapId={process.env.GOOGLE_MAPS_ID}
 			>
-				{pins.map((pin, i) => (
-					<div key={i}>
-						{i}
-						<Marker key={i} position={{ lat: pin.lat, lng: pin.lng }} />
-					</div>
+				{listing.map((pin, i) => (
+					<MapMarker
+						key={i}
+						pin={{ lat: pin.lat, lng: pin.lng }}
+						address={pin.address}
+						price={pin.price}
+						id={pin.id}
+						img={`${process.env.S3_URL}/${pin.img[0]}`}
+					/>
 				))}
 			</Map>
 		</APIProvider>
