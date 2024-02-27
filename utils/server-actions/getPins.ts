@@ -20,12 +20,26 @@ export default async function getPins(addresses: string[], coords: Coords) {
 			responses.map((response) => response.json())
 		);
 
-		const coordinatesList = results.map((data) => {
+		const coordinatesList: { lat: number; lng: number }[] = [];
+
+		results.forEach((data) => {
 			if (data.results && data.results.length > 0) {
 				const location = data.results[0].geometry.location;
-				return { lat: location.lat, lng: location.lng };
+				let duplicate = false;
+				for (let i = 0; i < coordinatesList.length; i++) {
+					if (
+						location.lat === coordinatesList[i].lat &&
+						location.lng === coordinatesList[i].lng
+					) {
+						duplicate = true;
+						break;
+					}
+				}
+				if (duplicate) coordinatesList.push(generateRandomCoordinates(coords));
+				else
+					return coordinatesList.push({ lat: location.lat, lng: location.lng });
 			} else {
-				return generateRandomCoordinates(coords);
+				return coordinatesList.push(generateRandomCoordinates(coords));
 			}
 		});
 

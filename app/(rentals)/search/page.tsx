@@ -45,7 +45,7 @@ export default async function Search({
 }) {
 	const city = (searchParams.s as string) || fallbacks.city;
 	const { lat, lng, bounds } = await getCoordsFromCity(city);
-	console.log(bounds, ' from search page');
+	// console.log(bounds, ' from search page');
 	const coords = { lat, lng };
 	const price = ((searchParams.price as string) || fallbacks.price)
 		.split(',')
@@ -110,7 +110,7 @@ export default async function Search({
 					<Typography sx={{ pb: 0, px: 2, pt: 1 }}>
 						Showing {listings.length} result{listings.length > 1 ? 's' : ''}.
 					</Typography>
-					{listings.length === 0 ? (
+					{/* {listings.length === 0 ? (
 						<Box
 							sx={{
 								p: 4,
@@ -123,7 +123,7 @@ export default async function Search({
 						listings.map((listing, i) => (
 							<Listing i={i} key={i} variant='landscape' {...listing} />
 						))
-					)}
+					)} */}
 				</Box>
 			</Grid>
 		</>

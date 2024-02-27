@@ -6,7 +6,7 @@ export function generateRandomCoordinates(baseCoords: Coords): Coords {
 	}
 
 	// Generate random latitude and longitude within a small vicinity of the city
-	const lat = getRandomInRange(baseCoords.lat - 0.01, baseCoords.lat + 0.01);
-	const lng = getRandomInRange(baseCoords.lng - 0.01, baseCoords.lng + 0.01);
+	const lat = getRandomInRange(baseCoords.lat - 0.02, baseCoords.lat + 0.02);
+	const lng = getRandomInRange(baseCoords.lng - 0.02, baseCoords.lng + 0.02);
 	return { lat, lng };
 }

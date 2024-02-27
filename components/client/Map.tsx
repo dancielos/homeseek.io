@@ -1,19 +1,29 @@
 'use client';
 
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import styles from './Map.module.css';
 import { Bounds, Coords } from '@/data/types';
+import {
+	APIProvider,
+	Map,
+	MapCameraChangedEvent,
+	MapCameraProps,
+	MapEvent,
+	Marker,
+} from '@vis.gl/react-google-maps';
 // import { useMediaQuery } from '@mui/material';
 // import { Suspense } from 'react';
 
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-const Marker = ({ ...props }: { lat: number; lng: number }) => (
-	<FmdGoodIcon color='secondary' {...props} />
-);
+// const Marker = ({ ...props }: { lat: number; lng: number }) => (
+// 	<div {...props}>
+// 		<FmdGoodIcon color='secondary' />
+// 	</div>
+// );
 
-export default function Map({
+export default function MapComponent({
 	coordinates,
 	bounds,
 	pins,
@@ -22,38 +32,49 @@ export default function Map({
 	bounds: Bounds;
 	pins: Coords[];
 }) {
-	console.log(coordinates, 'from Map.tsx');
-	// const isMobile = useMediaQuery('(min-width: 600px)');
+	const INITIAL_CAMERA = {
+		center: coordinates,
+		zoom: 13,
+	};
 
-	// console.log(process.env.GOOGLE_MAPS_API_KEY);
-	const { isLoaded } = useJsApiLoader({
-		id: 'google-map-script',
-		googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
-	});
+	const [cameraProps, setCameraProps] =
+		useState<MapCameraProps>(INITIAL_CAMERA);
 
-	const [map, setMap] = useState(null);
+	useEffect(() => {
+		// console.log('use effect called');
+		setCameraProps({
+			center: coordinates,
+			zoom: 13,
+		});
+	}, [coordinates]);
 
-	return isLoaded ? (
-		// <section
-		// 	id='google-maps'
-		// 	data-testid='google-maps'
-		// 	className={styles['map-container']}
-		// >
-		<GoogleMap
-			mapContainerStyle={{
-				width: '100%',
-				height: '80vh',
-			}}
-			center={coordinates}
-			zoom={12}
-			options={{}}
-		>
-			{pins.map((pin, i) => (
-				<Marker key={i} lat={pin.lat} lng={pin.lng} />
-			))}
-		</GoogleMap>
-	) : (
-		//{/* </section> */}
-		<></>
+	const handleCameraChange = useCallback(
+		(ev: MapEvent) => {
+			// console.log('handler called');
+			return setCameraProps(ev.detail as MapCameraProps);
+		},
+		[coordinates]
+	);
+
+	return (
+		<APIProvider apiKey={process.env.GOOGLE_MAPS_API_KEY}>
+			<Map
+				// center={coordinates}
+				defaultZoom={13}
+				{...cameraProps}
+				onDrag={handleCameraChange}
+				// onCameraChanged={handleCameraChange}
+				// draggableCursor={true}
+				// gestureHandling={'greedy'}
+				disableDefaultUI={true}
+			>
+				{pins.map((pin, i) => (
+					<div key={i}>
+						{i}
+						<Marker key={i} position={{ lat: pin.lat, lng: pin.lng }} />
+					</div>
+				))}
+			</Map>
+		</APIProvider>
 	);
 }
