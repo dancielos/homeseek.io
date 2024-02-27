@@ -1,4 +1,5 @@
 import CTA from '@/components/client/CTA';
+import InfoBox from '@/components/htmlElements/InfoBox';
 import Logo from '@/layouts/Logo';
 import { Home, InfoOutlined } from '@mui/icons-material';
 import {
@@ -123,21 +124,7 @@ export default function Login() {
 							Sign In
 						</CTA>
 					</Box>
-					<Paper
-						elevation={2}
-						sx={{
-							width: '100%',
-							mt: 2,
-							display: 'flex',
-							gap: 1,
-							alignItems: 'center',
-						}}
-					>
-						<InfoOutlined />
-						<Typography variant='body2'>
-							You can use demo@homeseek.io and password Password123!
-						</Typography>
-					</Paper>
+					<InfoBox message='You can use demo@homeseek.io and password Password123!' />
 				</Box>
 			</Grid>
 		</Grid>
