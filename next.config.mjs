@@ -25,6 +25,7 @@ const nextConfig = {
 		GOOGLE_MAPS_ID: process.env.GOOGLE_MAPS_ID,
 		DB_URL: process.env.DB_URL,
 		S3_URL: process.env.S3_URL,
+		HOMESEEK_SECRET: process.env.HOMESEEK_SECRET,
 	},
 	transpilePackages: ['@mui/x-charts'],
 };

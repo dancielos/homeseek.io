@@ -7,8 +7,16 @@ import AdminDrawer from '@/layouts/admin/AdminDrawer';
 
 import PageTitle from '@/components/client/admin/PageTitle';
 import ThemeRegistry from '@/data/theme/themeRegistry';
+import { redirect } from 'next/navigation';
+import { getSession } from '@/utils/server-actions/auth';
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminLayout({
+	children,
+}: {
+	children: ReactNode;
+}) {
+	const session = await getSession();
+	if (!session) redirect('/login');
 	return (
 		<ThemeRegistry options={{ key: 'mui-theme' }}>
 			<Box sx={{ display: 'flex' }}>

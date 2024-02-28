@@ -12,8 +12,18 @@ import MailIcon from '@mui/icons-material/Mail';
 import SpeedIcon from '@mui/icons-material/Speed';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { getSession, logout } from '@/utils/server-actions/auth';
+import { Logout } from '@mui/icons-material';
+import { redirect } from 'next/navigation';
+import LogoutButton from './LogoutButton';
 
-export default function AdminDrawer() {
+export default async function AdminDrawer() {
+	const session = await getSession();
+
+	function handleLogout() {
+		console.log('logging out...');
+	}
+
 	return (
 		<ClientDrawer>
 			<Box className={styles['back-button-container']}>
@@ -53,9 +63,9 @@ export default function AdminDrawer() {
 					href='/properties'
 					id='drawer-link-properties'
 				/>
-				<ListItem text='Settings' Icon={SettingsIcon} />
 			</List>
 			<Divider />
+			<>{session ? <LogoutButton /> : ''}</>
 		</ClientDrawer>
 	);
 }

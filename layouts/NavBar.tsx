@@ -15,10 +15,12 @@ import CTA from '../components/client/CTA';
 import { Menu } from '@mui/icons-material';
 import Link from 'next/link';
 import Logo from './Logo';
+import { getSession } from '@/utils/server-actions/auth';
 
 // import styles from './NavBar.module.css';
 
-export default function NavBar() {
+export default async function NavBar() {
+	const session = await getSession();
 	// const theme = useTheme();
 	return (
 		<AppBar position='relative' elevation={0}>
@@ -32,20 +34,22 @@ export default function NavBar() {
 					<Logo />
 				</Link>
 				<Stack flexDirection='row' gap={2}>
-					<Button
-						color='inherit'
-						sx={{
-							display: {
-								xs: 'none',
-								xm: 'inherit',
-							},
-						}}
-						LinkComponent={Link}
-						id='navbar-link-login'
-						href='/login'
-					>
-						Login
-					</Button>
+					{!session && (
+						<Button
+							color='inherit'
+							sx={{
+								display: {
+									xs: 'none',
+									xm: 'inherit',
+								},
+							}}
+							LinkComponent={Link}
+							id='navbar-link-login'
+							href='/login'
+						>
+							Login
+						</Button>
+					)}
 					<CTA
 						fluid
 						sx={{
