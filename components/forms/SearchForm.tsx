@@ -131,6 +131,7 @@ export default function SearchForm({
 									color: 'primary.main',
 								},
 							}}
+							required
 						/>
 					)}
 				/>
