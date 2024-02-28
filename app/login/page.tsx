@@ -115,7 +115,7 @@ export default function Login() {
 						{/* <CTA type='submit' fullWidth>
 							Sign In
 						</CTA> */}
-						<CTA href='/dashboard' fullWidth>
+						<CTA href='/dashboard' type='submit' fullWidth>
 							Sign In
 						</CTA>
 					</Box>
