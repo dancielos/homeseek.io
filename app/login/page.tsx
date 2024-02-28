@@ -1,6 +1,6 @@
 import CTA from '@/components/client/CTA';
 import InfoBox from '@/components/htmlElements/InfoBox';
-import login from '@/utils/server-actions/auth';
+// import login from '@/utils/server-actions/auth';
 import { Home } from '@mui/icons-material';
 import { Avatar, Box, Stack, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -79,7 +79,7 @@ export default function Login() {
 					<Box
 						component='form'
 						noValidate
-						action={login}
+						// action={login}
 						// onSubmit={handleSubmit}
 						sx={{
 							display: 'flex',
