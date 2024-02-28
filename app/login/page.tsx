@@ -1,5 +1,6 @@
 import CTA from '@/components/client/CTA';
 import InfoBox from '@/components/htmlElements/InfoBox';
+import login from '@/utils/server-actions/auth';
 import { Home } from '@mui/icons-material';
 import { Avatar, Box, Stack, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -43,7 +44,7 @@ export default function Login() {
 				// }}
 			>
 				<Image
-					src='https://source.unsplash.com/random?wallpapers'
+					src='https://homeseek-bucket.s3.ca-central-1.amazonaws.com/listing/CONDO_APARTMENT000143.jpg'
 					alt='Homeseek Login Image'
 					width={1280}
 					height={720}
@@ -78,6 +79,7 @@ export default function Login() {
 					<Box
 						component='form'
 						noValidate
+						action={login}
 						// onSubmit={handleSubmit}
 						sx={{
 							display: 'flex',
@@ -95,7 +97,6 @@ export default function Login() {
 							id='email'
 							label='Email Address'
 							name='email'
-							autoComplete='email'
 							autoFocus
 						/>
 						<TextField
@@ -106,13 +107,12 @@ export default function Login() {
 							label='Password'
 							type='password'
 							id='password'
-							autoComplete='current-password'
 						/>
 						{/* <FormControlLabel
 								control={<Checkbox value='remember' color='primary' />}
 								label='Remember me'
 							/> */}
-						<CTA type='submit' href='/dashboard' fullWidth>
+						<CTA type='submit' fullWidth>
 							Sign In
 						</CTA>
 					</Box>
