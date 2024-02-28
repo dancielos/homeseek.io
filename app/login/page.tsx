@@ -1,15 +1,7 @@
 import CTA from '@/components/client/CTA';
 import InfoBox from '@/components/htmlElements/InfoBox';
-import Logo from '@/layouts/Logo';
-import { Home, InfoOutlined } from '@mui/icons-material';
-import {
-	Avatar,
-	Box,
-	Paper,
-	Stack,
-	TextField,
-	Typography,
-} from '@mui/material';
+import { Home } from '@mui/icons-material';
+import { Avatar, Box, Stack, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Image from 'next/image';
 

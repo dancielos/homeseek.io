@@ -6,7 +6,7 @@ import HeroBackground from './HeroBackground';
 import SearchForm from '@/components/forms/SearchForm';
 import { Suspense } from 'react';
 
-export default async function SectionHero() {
+export default function SectionHero() {
 	return (
 		<Grid
 			container
@@ -48,7 +48,7 @@ export default async function SectionHero() {
 			</Grid>
 
 			<Grid xs={10} sm={6} md={10} lg={10}>
-				<Suspense fallback={null}>
+				<Suspense>
 					<SearchForm
 						sx={{
 							bgcolor: 'rgba(33, 37, 41, 0.8)',

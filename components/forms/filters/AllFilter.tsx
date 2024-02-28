@@ -48,7 +48,12 @@ export default function AllFilter() {
 	};
 
 	return (
-		<FilterButton onClick={handleClickOpen} label='Filters' popover={false}>
+		<FilterButton
+			buttonId='filter-button__for-mobile'
+			onClick={handleClickOpen}
+			label='Filters'
+			popover={false}
+		>
 			<Portal>
 				<Snackbar
 					anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}

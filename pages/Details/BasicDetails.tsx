@@ -1,7 +1,6 @@
 import H3 from '@/components/htmlElements/H3';
 import P from '@/components/htmlElements/P';
 import IconText from '@/components/ui/IconText';
-import { BOX_SHADOW } from '@/data/constants';
 import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import {
 	BathtubOutlined,

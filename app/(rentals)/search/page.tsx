@@ -3,7 +3,7 @@ import Map from '@/components/client/Map';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
-import { PROPERTY_TYPE, PropertyListing, PropertyType } from '@/data/types';
+import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import getListings from '@/utils/server-actions/getListings';
 import Listing from '@/components/core/Listing';
 import H3 from '@/components/htmlElements/H3';
@@ -28,7 +28,7 @@ const fallbacks = {
 };
 
 export default async function Search({
-	searchParams,
+	searchParams = { s: '' },
 }: {
 	searchParams: SearchParams;
 }) {

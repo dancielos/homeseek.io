@@ -1,22 +1,12 @@
 'use client';
 
 // import { handleTextField } from '@/utils/actions';
-import {
-	Autocomplete,
-	Button,
-	IconButton,
-	InputAdornment,
-	Stack,
-	SxProps,
-	TextField,
-} from '@mui/material';
+import { Autocomplete, Button, Stack, SxProps, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CTA from '../client/CTA';
-import { SearchOutlined } from '@mui/icons-material';
 import Filters from './filters/Filters';
-import SearchCityTooltip from './SearchCityTooltip';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { SyntheticEvent, useEffect, useMemo, useState } from 'react';
+import { SyntheticEvent, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import { getSearchQuery } from '@/utils/getSearchQuery';
 import useSearchQuery from '@/hooks/useSearchQuery';
@@ -29,7 +19,7 @@ type SearchFormProps = {
 
 export default function SearchForm({
 	withFilters = false,
-	sx,
+	sx = {},
 }: SearchFormProps) {
 	// TODO:
 	const router = useRouter();

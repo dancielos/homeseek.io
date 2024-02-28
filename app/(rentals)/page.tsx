@@ -6,6 +6,7 @@ import getFeaturedListings from '@/utils/server-actions/getFeaturedListings';
 
 export default async function Home() {
 	const featuredListings = await getFeaturedListings();
+
 	return (
 		<>
 			<SectionHero />
