@@ -3,7 +3,7 @@ import Map from '@/components/client/Map';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
-import { PROPERTY_TYPE, PropertyType } from '@/data/types';
+import { PROPERTY_TYPE, PropertyListing, PropertyType } from '@/data/types';
 import getListings from '@/utils/server-actions/getListings';
 import Listing from '@/components/core/Listing';
 import H3 from '@/components/htmlElements/H3';
@@ -33,7 +33,7 @@ export default async function Search({
 	searchParams: SearchParams;
 }) {
 	const city = (searchParams.s as string) || fallbacks.city;
-	const { lat, lng, bounds } = await getCoordsFromCity(city);
+	const { lat, lng } = await getCoordsFromCity(city);
 	// console.log(bounds, ' from search page');
 	const coords = { lat, lng };
 	const price = ((searchParams.price as string) || fallbacks.price)
@@ -62,6 +62,7 @@ export default async function Search({
 		propertyType,
 		isPetFriendly,
 	});
+	// const listings = [] as PropertyListing[];
 
 	return (
 		<>
@@ -101,7 +102,7 @@ export default async function Search({
 							}}
 						>
 							<H3>Error 404: No Listing Found</H3>
-							<InfoBox message='The only dummy data I have are from these cities: Toronto, Vancouver, Calgary, Montreal, Ottawa, Edmonton, Quebec City, Lethbridge. Either that, or try changing your filters for a wider search.' />
+							<InfoBox message='The only dummy data I have are from these cities: Toronto, Vancouver, Calgary, Montreal, Ottawa, Edmonton, and Quebec City. Either that, or try changing your filters for a wider search.' />
 						</Box>
 					) : (
 						listings.map((listing, i) => (

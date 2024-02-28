@@ -39,6 +39,7 @@ export default function MoreFilter() {
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'
 				variant='standard'
+				id='more-filter-checkboxes'
 			>
 				<Typography component='legend' sx={{ pb: 1 }}>
 					Other filters

@@ -42,7 +42,7 @@ export default async function getListings({
 	// console.log(propertyType);
 
 	const query: { [key: string]: any } = {
-		'address.city': city,
+		'address.city': { $regex: new RegExp(city, 'i') },
 		price: { $gte: minPrice, $lte: maxPrice },
 		numBedrooms: { $gte: minBed, $lte: maxBed },
 		numBathrooms: { $gte: minBath, $lte: maxBath },
@@ -99,7 +99,7 @@ export default async function getListings({
 				};
 			})
 		);
-		console.log(formattedListings);
+		// console.log(formattedListings);
 		return formattedListings;
 	} catch (error) {
 		console.error('Error fetching listings:', error);

@@ -59,6 +59,7 @@ export default function PriceFilter() {
 			>
 				<Slider
 					disableSwap
+					id='price-range'
 					name='price-range'
 					sx={{ mx: 6 }}
 					min={MIN_PRICE}

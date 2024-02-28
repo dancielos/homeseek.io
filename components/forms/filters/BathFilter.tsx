@@ -38,7 +38,8 @@ export default function BathFilter() {
 			>
 				<Slider
 					disableSwap
-					name='price-range'
+					id='bath-range'
+					name='bath-range'
 					sx={{ mx: 6 }}
 					min={1}
 					max={3}

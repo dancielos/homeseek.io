@@ -6,6 +6,7 @@ interface FilterButtonProps extends ButtonProps {
 	Icon?: ReactNode;
 	label: string;
 	// onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
+	buttonId: string;
 	children?: ReactNode;
 	popover?: boolean;
 	// popoverOpen?: boolean;
@@ -16,6 +17,7 @@ interface FilterButtonProps extends ButtonProps {
 export default function FilterButton({
 	Icon = null,
 	label,
+	buttonId,
 	// onClick,
 	children,
 	popover = true,
@@ -40,6 +42,7 @@ export default function FilterButton({
 		<>
 			<Button
 				// variant='contained'
+				id={buttonId}
 				startIcon={Icon}
 				endIcon={<ArrowDropDown />}
 				onClick={handleClick}

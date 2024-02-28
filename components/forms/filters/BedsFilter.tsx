@@ -37,7 +37,8 @@ export default function BedsFilter() {
 			>
 				<Slider
 					disableSwap
-					name='price-range'
+					id='bed-range'
+					name='bed-range'
 					sx={{ mx: 6 }}
 					min={1}
 					max={6}

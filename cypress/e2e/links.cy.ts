@@ -5,7 +5,8 @@ describe('Links should direct the use to correct pages', () => {
 	const homepageRegex = new RegExp('^' + Cypress.config().baseUrl + '/?$');
 	it('should link to correct pages', () => {
 		cy.visit(`${Cypress.config().baseUrl}`);
-		cy.get('a#search-submit').click();
+		cy.get('input[name=search-input]').type('Ottawa');
+		cy.get('button#search-submit').click();
 
 		cy.url().should('include', '/search');
 		cy.get('a#homeseek-logo').click();
@@ -19,7 +20,7 @@ describe('Links should direct the use to correct pages', () => {
 		cy.url().should('match', homepageRegex);
 		cy.get('a[data-testid=listing-for-city-toronto]').click();
 
-		cy.url().should('include', '/search?query=toronto');
+		cy.url().should('include', '/search?s=toronto');
 		cy.get('a[data-testid=more-details-0]').click();
 
 		cy.url().should('include', '/listing/');

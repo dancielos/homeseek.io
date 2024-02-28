@@ -28,7 +28,7 @@ export default function CardCity({
 				href={{
 					pathname: '/search',
 					query: {
-						query: item.title.toLowerCase(),
+						s: item.title.toLowerCase(),
 					},
 				}}
 				data-testid={`listing-for-city-${item.title.toLowerCase()}`}

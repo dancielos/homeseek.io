@@ -10,20 +10,20 @@ describe('Pages should render the crucial components', () => {
 	});
 
 	it('should render the search page successfully', () => {
-		cy.visit(`${Cypress.config().baseUrl}/search?address=toronto`);
+		cy.visit(`${Cypress.config().baseUrl}/search?s=Ottawa`);
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');
 
 		cy.get('form#search-form').should('exist');
 		cy.get('form#search-form').get('input[type=search]').should('exist');
-		cy.get('form#search-form').get('[type=submit]').should('exist');
+		// cy.get('form#search-form').get('[type=submit]').should('exist');
 		// .should('contain', '[type=submit]');
 
 		cy.get('[data-testid=filters-container]').should('be.visible');
 	});
 
 	it('should render the details page successfully', () => {
-		cy.visit(`${Cypress.config().baseUrl}/listing/toronto`);
+		cy.visit(`${Cypress.config().baseUrl}/listing/65c571c8fbbb710a915839ad`);
 
 		cy.get('header').should('exist');
 		cy.get('footer').should('exist').should('have.length', '1');

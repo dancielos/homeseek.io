@@ -32,19 +32,39 @@ export default function Filters() {
 				data-testid='filters-container'
 				disableElevation
 			>
-				<FilterButton label='Price' Icon={<AttachMoney />}>
+				<FilterButton
+					buttonId='filter-button__price'
+					label='Price'
+					Icon={<AttachMoney />}
+				>
 					<PriceFilter />
 				</FilterButton>
-				<FilterButton label='Property Type' Icon={<HomeWorkOutlined />}>
+				<FilterButton
+					buttonId='filter-button__property'
+					label='Property Type'
+					Icon={<HomeWorkOutlined />}
+				>
 					<PropertyTypeFilter />
 				</FilterButton>
-				<FilterButton label='Beds' Icon={<BedOutlined />}>
+				<FilterButton
+					buttonId='filter-button__bed'
+					label='Beds'
+					Icon={<BedOutlined />}
+				>
 					<BedsFilter />
 				</FilterButton>
-				<FilterButton label='Baths' Icon={<BathtubOutlined />}>
+				<FilterButton
+					buttonId='filter-button__bath'
+					label='Baths'
+					Icon={<BathtubOutlined />}
+				>
 					<BathFilter />
 				</FilterButton>
-				<FilterButton label='More' Icon={<OtherHousesOutlined />}>
+				<FilterButton
+					buttonId='filter-button__more'
+					label='More'
+					Icon={<OtherHousesOutlined />}
+				>
 					<MoreFilter />
 				</FilterButton>
 			</ButtonGroup>

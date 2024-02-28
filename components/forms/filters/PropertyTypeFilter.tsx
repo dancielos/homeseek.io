@@ -60,6 +60,7 @@ export default function PropertyTypeFilter() {
 				sx={{ m: 3, bgcolor: 'unset' }}
 				component='fieldset'
 				variant='standard'
+				id='property-checkboxes'
 			>
 				<Typography component='legend' sx={{ pb: 1 }}>
 					You can select different property types at a time:
