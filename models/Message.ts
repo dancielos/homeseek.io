@@ -2,7 +2,7 @@ import { Schema, Types, model, models } from 'mongoose';
 
 export type Message = {
 	name: string;
-	phone: number;
+	phone: string;
 	email: string;
 	message: string;
 };
@@ -13,7 +13,7 @@ const messageSchema = new Schema<Message>({
 		required: true,
 	},
 	phone: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	email: {
