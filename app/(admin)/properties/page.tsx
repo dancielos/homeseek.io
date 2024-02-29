@@ -327,7 +327,7 @@ const rows = [
 export default function Properties() {
 	return (
 		<>
-			<Box sx={{ overflow: 'auto' }}>
+			<Box sx={{ overflow: 'auto', minHeight: '80vh' }}>
 				<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
 					<DataGrid
 						rows={rows}

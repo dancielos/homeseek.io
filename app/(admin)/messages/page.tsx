@@ -25,7 +25,7 @@ export default async function Messages() {
 	console.log(messages2);
 	return (
 		<>
-			<Box sx={{ overflow: 'auto' }}>
+			<Box sx={{ overflow: 'auto', minHeight: '80vh' }}>
 				<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
 					<DataGridMessages rows={messages} />
 				</Box>

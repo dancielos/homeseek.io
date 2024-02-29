@@ -16,12 +16,10 @@ export default async function RentalsLayout({
 	if (session) redirect('/dashboard');
 	return (
 		<ThemeRegistry options={{ key: 'mui-theme' }} lightModeOnly>
-			<body>
-				<Box>
-					<NavBar />
-					<main>{children}</main>
-				</Box>
-			</body>
+			<Box>
+				<NavBar />
+				<main>{children}</main>
+			</Box>
 		</ThemeRegistry>
 	);
 }

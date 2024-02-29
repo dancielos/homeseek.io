@@ -24,12 +24,18 @@ export default async function AdminLayout({
 	return (
 		<ThemeRegistry options={{ key: 'mui-theme' }}>
 			<ScopedCssBaseline>
-				<Box sx={{ display: 'flex', height: '100vh' }}>
+				<Box sx={{ display: 'flex' }}>
 					<AdminAppBar />
 					<AdminDrawer />
 					<Box
 						component='main'
-						sx={{ flexGrow: 1, p: 3, pt: { xs: 10, sm: 12 } }}
+						sx={{
+							flexGrow: 1,
+							px: 3,
+							pt: { xs: 10, sm: 12 },
+							position: 'relative',
+							display: 'block',
+						}}
 					>
 						<Suspense>
 							<PageTitle
