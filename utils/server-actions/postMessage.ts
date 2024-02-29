@@ -2,24 +2,82 @@
 
 import MessageModel from '@/models/Message';
 import connectDB from '../db';
+import validateEmail from '../validateEmail';
+import validatePhoneNumber from '../validatePhoneNumber';
 
-export default async function postMessage(formData: FormData) {
-	const DUMMY_MESSAGE = {
-		name: 'Hello',
-		phone: 123456,
-		email: 'hello@world.com',
-		message: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut condimentum condimentum suscipit. Maecenas id fringilla nisi. Aliquam aliquam at nulla eu molestie. Duis sed libero id nisl bibendum bibendum non vitae tortor. Maecenas consequat, arcu a interdum mollis, ante massa consequat tellus, ac consectetur ex elit vitae nibh. Integer molestie vestibulum dui, at tristique diam tincidunt cursus. In ligula urna, viverra eget enim quis, convallis fringilla orci. Cras faucibus mollis mattis. Pellentesque ultricies nisi at pellentesque scelerisque.`,
+type InputType = {
+	error: string[];
+	name: string;
+	email: string;
+	phone: string;
+	message: string;
+};
+
+function validateInput(formData: FormData): InputType {
+	const data: InputType = {
+		error: [],
+		name: '',
+		email: '',
+		phone: '',
+		message: '',
 	};
+	const name = formData.get('name');
+	if (!name) data.error.push('name');
+
+	data.name = name as string;
+
+	const email = formData.get('email');
+	if (!email || !validateEmail(email as string)) data.error.push('email');
+
+	data.email = email as string;
+
+	const phone = formData.get('phone');
+	if (!phone || !validatePhoneNumber(phone as string)) data.error.push('phone');
+
+	data.phone = phone as string;
+
+	const message = formData.get('message');
+	if (!message) data.error.push('message');
+
+	data.message = message as string;
+
+	return data;
+}
+
+type MessagePrompt =
+	| { error: string[] }
+	| { success: string }
+	| null
+	| undefined;
+
+export default async function postMessage(
+	prevState: MessagePrompt,
+	formData: FormData
+): Promise<MessagePrompt> {
+	const { error, name, email, phone, message } = validateInput(formData);
+	if (error.length > 0) {
+		return { error };
+	}
+
+	// Not necessary, just for the cool loading effect...
+	await new Promise<void>((resolve) => {
+		setTimeout(() => {
+			resolve();
+		}, 1000);
+	});
 
 	try {
 		await connectDB();
 
-		const newMessage = await MessageModel.create(DUMMY_MESSAGE);
+		await MessageModel.create({
+			name,
+			email,
+			phone,
+			message,
+		});
 
-		console.log('Message sent successfully');
-		return newMessage;
+		return { success: "Message successfully sent. We'll contact you soon." };
 	} catch (error) {
-		console.error('Error posting message: ', error);
-		return;
+		console.log('Error sending message: ', error);
 	}
 }

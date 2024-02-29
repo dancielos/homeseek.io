@@ -2,7 +2,7 @@
 
 import { Alert, Box } from '@mui/material';
 import LoginFields from './LoginFields';
-import { getSession, login } from '@/utils/server-actions/auth';
+import { login } from '@/utils/server-actions/auth';
 import { useFormState } from 'react-dom';
 import { Suspense } from 'react';
 

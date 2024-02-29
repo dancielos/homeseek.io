@@ -52,13 +52,6 @@ export async function login(
 	prevState: { error: string } | null | undefined,
 	formData: FormData
 ) {
-	// await new Promise<void>((resolve) => {
-	// 	setTimeout(() => {
-	// 		console.log('3 seconds passed');
-	// 		resolve();
-	// 	}, 3000);
-	// });
-
 	const credentials = {
 		email: (formData.get('email') as string).trim(),
 		password: formData.get('password') as string,

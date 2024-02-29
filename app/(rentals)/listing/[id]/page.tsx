@@ -6,7 +6,7 @@ import BasicDetails from '@/pages/Details/BasicDetails';
 import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';
 import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
 import About from '@/pages/Details/About';
-import ListingContactForm from '@/components/forms/ListingContactForm';
+import ListingContactForm from '@/components/forms/contact/ListingContactForm';
 import Section from '@/components/section/Section';
 import connectDB from '@/utils/db';
 import ListingModel from '@/models/Listing';
