@@ -5,6 +5,8 @@ export type Message = {
 	phone: string;
 	email: string;
 	message: string;
+	listingId: Types.ObjectId;
+	address: string;
 };
 
 const messageSchema = new Schema<Message>({
@@ -21,6 +23,14 @@ const messageSchema = new Schema<Message>({
 		required: true,
 	},
 	message: {
+		type: String,
+		required: true,
+	},
+	listingId: {
+		type: Schema.Types.ObjectId,
+		required: true,
+	},
+	address: {
 		type: String,
 		required: true,
 	},
