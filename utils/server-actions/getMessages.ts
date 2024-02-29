@@ -21,6 +21,6 @@ export default async function getMessages(): Promise<MessagesRow[]> {
 		return formattedMessages;
 	} catch (error) {
 		console.error('Something went wrong when retrieving messages', error);
+		return [] as MessagesRow[];
 	}
-	return [] as MessagesRow[];
 }

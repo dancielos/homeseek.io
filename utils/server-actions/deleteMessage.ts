@@ -1,3 +1,6 @@
+'use server';
+
+import { revalidatePath } from 'next/cache';
 import connectDB from '../db';
 import MessageModel from '@/models/Message';
 
@@ -8,6 +11,7 @@ export default async function deleteMessage(
 		await connectDB();
 
 		// Find the message by its ID and delete it
+		// throw Error('test');
 		const deletedMessage = await MessageModel.findByIdAndDelete(id);
 
 		if (!deletedMessage) {
@@ -17,6 +21,7 @@ export default async function deleteMessage(
 		}
 
 		// Return the deleted message
+		revalidatePath('/(admin)/messages', 'page');
 		return { success: 'Message deleted' };
 	} catch (error) {
 		// Handle error

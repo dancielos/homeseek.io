@@ -5,7 +5,7 @@ import connectDB from '../db';
 import validateEmail from '../validateEmail';
 import validatePhoneNumber from '../validatePhoneNumber';
 import { Types } from 'mongoose';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
 
 type InputType = {
 	error: string[];
@@ -88,6 +88,7 @@ export default async function postMessage(
 			date,
 		});
 
+		revalidatePath('/(admin)/messages', 'page');
 		return { success: "Message successfully sent. We'll contact you soon." };
 	} catch (error) {
 		console.log('Error sending message: ', error);

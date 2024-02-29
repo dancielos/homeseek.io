@@ -2,7 +2,7 @@
 
 import defineColsMessages from '@/pages/Messages/defineCols';
 import { MessagesRow } from '@/data/types';
-import { Button, ButtonGroup } from '@mui/material';
+import { Button, ButtonGroup, Snackbar } from '@mui/material';
 import {
 	DataGrid as MuiDataGrid,
 	GridColDef,
@@ -12,12 +12,15 @@ import ActionButtons from './ActionButtons';
 import Dialog from './Dialog';
 import { useState } from 'react';
 import DeleteDialog from './DeleteDialog';
+import deleteMessage from '@/utils/server-actions/deleteMessage';
+import { revalidatePath } from 'next/cache';
 
 export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
 	const [dialogMessage, setDialogMessage] = useState<MessagesRow | null>(null);
 	const open = Boolean(dialogMessage);
 
-	const [deleteDialogOpen, setDeleteDialogOpen] = useState<boolean>(false);
+	const [messageId, setMessageId] = useState<string | null>(null);
+	const deleteDialogOpen = Boolean(messageId);
 
 	const columns: GridColDef[] = defineColsMessages(
 		(params: GridRenderCellParams<any, string>) => (
@@ -28,27 +31,73 @@ export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
 			/>
 		)
 	);
+
+	const [snackBarMessage, setSnackBarMessage] = useState<string | null>(null);
+	const openSnackBar = Boolean(snackBarMessage);
+
 	function handleView(message: MessagesRow) {
 		setDialogMessage(message);
-	}
-	function handleDelete(id: string) {
-		setDeleteDialogOpen(true);
 	}
 	function handleClose() {
 		setDialogMessage(null);
 	}
-
-	function handleDeleteClose() {
-		setDeleteDialogOpen(false);
+	function handleDelete(id: string) {
+		setMessageId(id);
+		console.log(id);
 	}
+	function handleDeleteClose() {
+		setMessageId(null);
+	}
+	async function handleConfirmDelete() {
+		if (messageId) {
+			const response = await deleteMessage(messageId);
+			setMessageId(null);
+			if (response && 'success' in response) {
+				setDialogMessage(null);
+				handleOpenSnackBar(response.success);
+			} else {
+				setSnackBarMessage(response.error);
+				console.error('something went wrong.');
+			}
+		}
+		// deleteMessage(messageId as string);
+	}
+
+	const handleOpenSnackBar = (text: string) => {
+		setSnackBarMessage(text);
+	};
+
+	const handleCloseSnackBar = (
+		event: React.SyntheticEvent | Event,
+		reason?: string
+	) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+
+		setSnackBarMessage(null);
+	};
+
 	return (
 		<>
-			<DeleteDialog open={deleteDialogOpen} onClose={handleDeleteClose} />
+			{openSnackBar && (
+				<Snackbar
+					open={openSnackBar}
+					autoHideDuration={4000}
+					onClose={handleCloseSnackBar}
+					message={snackBarMessage}
+				/>
+			)}
+			<DeleteDialog
+				open={deleteDialogOpen}
+				onClose={handleDeleteClose}
+				onConfirm={handleConfirmDelete}
+			/>
 			<Dialog
 				message={dialogMessage}
 				onClose={handleClose}
 				open={open}
-				onDelete={() => handleDelete('asd')}
+				onDelete={handleDelete}
 			/>
 			<MuiDataGrid
 				rows={rows}
@@ -56,11 +105,11 @@ export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
 				initialState={{
 					pagination: {
 						paginationModel: {
-							pageSize: 5,
+							pageSize: 10,
 						},
 					},
 				}}
-				pageSizeOptions={[5]}
+				pageSizeOptions={[10]}
 				// checkboxSelection
 				disableRowSelectionOnClick
 			/>

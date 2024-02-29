@@ -23,7 +23,7 @@ export default function Dialog({
 }: {
 	message: MessagesRow | null;
 	onClose: () => void;
-	onDelete: () => void;
+	onDelete: (id: string) => void;
 	open: boolean;
 }) {
 	// console.log(message);
@@ -89,7 +89,7 @@ export default function Dialog({
 							variant='outlined'
 							size='small'
 							color='warning'
-							onClick={onDelete}
+							onClick={() => onDelete(message?.id as string)}
 							autoFocus
 						>
 							Delete
