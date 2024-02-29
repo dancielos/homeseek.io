@@ -3,7 +3,7 @@
 import MessageModel from '@/models/Message';
 import connectDB from '../db';
 
-export default async function postMessage() {
+export default async function postMessage(formData: FormData) {
 	const DUMMY_MESSAGE = {
 		name: 'Hello',
 		phone: 123456,
