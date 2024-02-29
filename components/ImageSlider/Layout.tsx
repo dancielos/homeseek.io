@@ -24,12 +24,14 @@ type ChildProps = {
 	images: TypeImage[];
 	showThumbnail: boolean;
 	autoHeight: boolean;
+	customHeight?: number | undefined;
 };
 
 export default function Layout({
 	images,
 	showThumbnail,
 	autoHeight,
+	customHeight,
 }: ChildProps) {
 	const thumbnailsRef = useRef() as React.MutableRefObject<
 		Map<number, HTMLLIElement>
@@ -112,7 +114,7 @@ export default function Layout({
 				<ImageGallery
 					handleScroll={handleScroll}
 					handleFullscreen={showFullscreen}
-					autoHeight
+					autoHeight={autoHeight}
 				/>
 				{showThumbnail ? (
 					<Thumbnails
@@ -127,7 +129,8 @@ export default function Layout({
 					fullscreen
 					handleScroll={handleScroll}
 					handleFullscreen={hideFullScreen}
-					autoHeight={false}
+					autoHeight={autoHeight}
+					customHeight={customHeight}
 				/>
 				<Thumbnails
 					fullscreen

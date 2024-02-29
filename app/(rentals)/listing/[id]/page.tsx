@@ -53,7 +53,11 @@ export default async function Details({
 					<Grid xm={10} sm={5} md={6}>
 						<Stack spacing={4}>
 							<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
-								<ImageSlider images={images} />
+								<ImageSlider
+									images={images}
+									customHeight={480}
+									autoHeight={false}
+								/>
 								<BasicDetails
 									address={address}
 									price={price}

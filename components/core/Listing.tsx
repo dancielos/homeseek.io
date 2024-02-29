@@ -63,8 +63,6 @@ export default function Listing({
 					sx={{
 						position: 'relative',
 						width: '100%',
-						height: '100%',
-
 						paddingLeft: {
 							xs: 0,
 						},

@@ -16,6 +16,7 @@ type ChildProps = {
 	handleScroll: (action: NavigationAction, index: number) => void;
 	handleFullscreen: () => void;
 	autoHeight: boolean;
+	customHeight?: number | undefined;
 };
 
 export default function ImageGallery({
@@ -23,6 +24,7 @@ export default function ImageGallery({
 	handleScroll,
 	handleFullscreen,
 	autoHeight,
+	customHeight,
 }: ChildProps) {
 	const { currentIndex, direction, images } = useContext(
 		ImageSliderContext
@@ -31,6 +33,7 @@ export default function ImageGallery({
 	let containerStyle = '';
 	if (fullscreen) containerStyle = 'h-4/5 min-w-full';
 	else if (autoHeight) containerStyle = 'h-[200px] max-w-full';
+	else if (customHeight) containerStyle = `h-[${customHeight}px] max-w-full`;
 	else containerStyle = 'h-[320px] w-full';
 
 	return (
