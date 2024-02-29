@@ -6,22 +6,18 @@ import {
 	Button,
 	IconButton,
 	Stack,
-	// Icon,
-	// Stack,
 	Toolbar,
+	Typography,
 } from '@mui/material';
-// import { useTheme } from '@emotion/react';
+
 import CTA from '../components/client/CTA';
 import { Menu } from '@mui/icons-material';
 import Link from 'next/link';
 import Logo from './Logo';
-import { getSession } from '@/utils/server-actions/auth';
+import { Suspense } from 'react';
+import LoginLink from '@/components/forms/login/LoginLink';
 
-// import styles from './NavBar.module.css';
-
-export default async function NavBar() {
-	const session = await getSession();
-	// const theme = useTheme();
+export default function NavBar() {
 	return (
 		<AppBar position='relative' elevation={0}>
 			<Toolbar
@@ -34,22 +30,9 @@ export default async function NavBar() {
 					<Logo />
 				</Link>
 				<Stack flexDirection='row' gap={2}>
-					{!session && (
-						<Button
-							color='inherit'
-							sx={{
-								display: {
-									xs: 'none',
-									xm: 'inherit',
-								},
-							}}
-							LinkComponent={Link}
-							id='navbar-link-login'
-							href='/login'
-						>
-							Login
-						</Button>
-					)}
+					<Suspense>
+						<LoginLink />
+					</Suspense>
 					<CTA
 						fluid
 						sx={{

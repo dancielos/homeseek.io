@@ -5,7 +5,7 @@ import { getSession } from '@/utils/server-actions/auth';
 import { Box } from '@mui/material';
 import { redirect } from 'next/navigation';
 
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 export default async function RentalsLayout({
 	children,
@@ -18,6 +18,7 @@ export default async function RentalsLayout({
 		<ThemeRegistry options={{ key: 'mui-theme' }} lightModeOnly>
 			<Box>
 				<NavBar />
+
 				<main>{children}</main>
 			</Box>
 		</ThemeRegistry>

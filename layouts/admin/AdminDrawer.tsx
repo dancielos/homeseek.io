@@ -11,19 +11,11 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import MailIcon from '@mui/icons-material/Mail';
 import SpeedIcon from '@mui/icons-material/Speed';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { getSession, logout } from '@/utils/server-actions/auth';
-import { Logout } from '@mui/icons-material';
-import { redirect } from 'next/navigation';
-import LogoutButton from './LogoutButton';
 
-export default async function AdminDrawer() {
-	const session = await getSession();
+import { Suspense } from 'react';
+import LogoutLink from '@/components/forms/login/LogoutLink';
 
-	function handleLogout() {
-		console.log('logging out...');
-	}
-
+export default function AdminDrawer() {
 	return (
 		<ClientDrawer>
 			<Box className={styles['back-button-container']}>
@@ -65,7 +57,9 @@ export default async function AdminDrawer() {
 				/>
 			</List>
 			<Divider />
-			<>{session ? <LogoutButton /> : ''}</>
+			<Suspense>
+				<LogoutLink />
+			</Suspense>
 		</ClientDrawer>
 	);
 }

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import Box from '@mui/material/Box';
 
@@ -9,6 +9,7 @@ import PageTitle from '@/components/client/admin/PageTitle';
 import ThemeRegistry from '@/data/theme/themeRegistry';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/utils/server-actions/auth';
+import H3 from '@/components/htmlElements/H3';
 
 export default async function AdminLayout({
 	children,
@@ -26,7 +27,9 @@ export default async function AdminLayout({
 					component='main'
 					sx={{ flexGrow: 1, p: 3, pt: { xs: 10, sm: 12 } }}
 				>
-					<PageTitle />
+					<Suspense>
+						<PageTitle title={session ? `Welcome ${session.user.name}` : ''} />
+					</Suspense>
 					{children}
 				</Box>
 			</Box>

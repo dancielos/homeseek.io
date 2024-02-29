@@ -17,6 +17,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { LineChart } from '@mui/x-charts';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CTA from '@/components/client/CTA';
+import { getSession } from '@/utils/server-actions/auth';
 
 const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
 const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];

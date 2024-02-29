@@ -7,12 +7,13 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { usePathname } from 'next/navigation';
 import CTA from '../CTA';
 
-export default function PageTitle() {
+export default function PageTitle({ title = '' }: { title: string }) {
 	const pathname = usePathname();
-	let title = '';
+
 	if (pathname === '/properties') title = 'Properties';
 	else if (pathname === '/properties/new') title = 'Add New Property';
 	else if (pathname === '/edit') title = 'Edit Property';
+	else if (pathname === '/messages') title = 'Messages';
 	return (
 		<Grid
 			container
@@ -32,6 +33,7 @@ export default function PageTitle() {
 						},
 						textAlign: 'left',
 					}}
+					id='dashboard-title'
 				>
 					{title}
 				</H1>
