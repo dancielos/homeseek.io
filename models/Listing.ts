@@ -27,7 +27,6 @@ interface Amenities {
 }
 
 export interface Listing {
-	id: number;
 	userId: Types.ObjectId;
 	address: Address;
 	price: number;
@@ -54,7 +53,6 @@ export interface Listing {
 }
 
 const listingSchema = new Schema<Listing>({
-	id: { type: Number, required: true },
 	userId: { type: Schema.Types.ObjectId, ref: 'User' },
 	address: {
 		street: { type: String, required: true },
