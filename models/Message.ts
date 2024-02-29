@@ -1,11 +1,12 @@
 import { Schema, Types, model, models } from 'mongoose';
+import { Listing } from './Listing';
 
 export type Message = {
 	name: string;
 	phone: string;
 	email: string;
 	message: string;
-	listingId: Types.ObjectId;
+	listingId: Types.ObjectId | Listing;
 	address: string;
 };
 
@@ -29,6 +30,7 @@ const messageSchema = new Schema<Message>({
 	listingId: {
 		type: Schema.Types.ObjectId,
 		required: true,
+		ref: 'Listing',
 	},
 	address: {
 		type: String,

@@ -59,6 +59,8 @@ export default function ListingContactForm({
 				>
 					Contact Property Owner
 				</H3>
+				<input type='hidden' name='listingId' value={id} />
+				<input type='hidden' name='address' value={address} />
 				<ContactField
 					name='name'
 					isSuccess={isSuccess}

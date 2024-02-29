@@ -4,6 +4,7 @@ import MessageModel from '@/models/Message';
 import connectDB from '../db';
 import validateEmail from '../validateEmail';
 import validatePhoneNumber from '../validatePhoneNumber';
+import { Types } from 'mongoose';
 
 type InputType = {
 	error: string[];
@@ -59,6 +60,12 @@ export default async function postMessage(
 		return { error };
 	}
 
+	const address = formData.get('address');
+	const listingId = new Types.ObjectId(formData.get('listingId') as string);
+
+	// hidden values should not have been removed
+	// will only check if it's empty
+
 	// Not necessary, just for the cool loading effect...
 	await new Promise<void>((resolve) => {
 		setTimeout(() => {
@@ -74,6 +81,8 @@ export default async function postMessage(
 			email,
 			phone,
 			message,
+			address,
+			listingId,
 		});
 
 		return { success: "Message successfully sent. We'll contact you soon." };
