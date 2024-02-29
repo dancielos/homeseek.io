@@ -65,7 +65,9 @@ export type MessagesRow = {
 	name: string;
 	message: string;
 	// actions: string;
+	listingId: string;
 	date: string;
+	listing: string;
 	phoneNumber: string;
 	emailAddress: string;
 };

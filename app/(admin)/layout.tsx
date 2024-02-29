@@ -42,7 +42,7 @@ export default async function AdminLayout({
 								title={session ? `Welcome ${session.user.name}` : ''}
 							/>
 						</Suspense>
-						{children}
+						<Suspense>{children}</Suspense>
 					</Box>
 				</Box>
 			</ScopedCssBaseline>

@@ -12,6 +12,8 @@ export default async function getMessages(): Promise<MessagesRow[]> {
 			id: m._id.toString(),
 			date: formatDate(m.date),
 			name: m.name,
+			listingId: m.listingId.toString(),
+			listing: m.address,
 			message: m.message,
 			phoneNumber: m.phone,
 			emailAddress: m.email,

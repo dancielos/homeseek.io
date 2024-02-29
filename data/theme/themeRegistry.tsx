@@ -30,7 +30,6 @@ export default function ThemeRegistry({
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log('use Effect from themeRegistry invoked...');
 		const currentTheme = hasThemeCache();
 
 		if (currentTheme) {
@@ -42,8 +41,6 @@ export default function ThemeRegistry({
 	if (!lightModeOnly) {
 		mode = theme === 'light' ? lightTheme : darkTheme;
 	}
-
-	console.log({ lightModeOnly, theme });
 
 	return (
 		<ThemeProvider theme={mode}>

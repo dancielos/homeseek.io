@@ -5,6 +5,7 @@ import connectDB from '../db';
 import validateEmail from '../validateEmail';
 import validatePhoneNumber from '../validatePhoneNumber';
 import { Types } from 'mongoose';
+import { revalidatePath } from 'next/cache';
 
 type InputType = {
 	error: string[];
