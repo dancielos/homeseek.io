@@ -10,7 +10,13 @@ import ContactField from './ContactField';
 import { Suspense } from 'react';
 import ContactSubmitButton from './ContactSubmitButton';
 
-export default function ListingContactForm() {
+export default function ListingContactForm({
+	id,
+	address,
+}: {
+	id: string;
+	address: string;
+}) {
 	const [response, formAction] = useFormState(postMessage, null);
 
 	const invalidInputs =

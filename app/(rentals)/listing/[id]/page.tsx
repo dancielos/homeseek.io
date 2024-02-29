@@ -81,7 +81,7 @@ export default async function Details({
 						</Stack>
 					</Grid>
 					<Grid xm={10} sm={5} md={4}>
-						<ListingContactForm />
+						<ListingContactForm id={params.id} address={address} />
 					</Grid>
 				</Grid>
 			</Container>
