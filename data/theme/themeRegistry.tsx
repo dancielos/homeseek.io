@@ -9,8 +9,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setTheme } from '../slices/themeSelector';
 import hasThemeCache from '@/utils/hasThemeCache';
-import prefersDarkTheme from '@/utils/prefersDarkTheme';
-import { current } from '@reduxjs/toolkit';
+import { ScopedCssBaseline } from '@mui/material';
 
 // TODO: is the caching here necessary?
 // Nextjs already has appRouterCacheProvider
@@ -31,6 +30,7 @@ export default function ThemeRegistry({
 	const dispatch = useDispatch();
 
 	useEffect(() => {
+		console.log('use Effect from themeRegistry invoked...');
 		const currentTheme = hasThemeCache();
 
 		if (currentTheme) {
@@ -43,9 +43,12 @@ export default function ThemeRegistry({
 		mode = theme === 'light' ? lightTheme : darkTheme;
 	}
 
+	console.log({ lightModeOnly, theme });
+
 	return (
 		<ThemeProvider theme={mode}>
-			<CssBaseline />
+			{/* <ScopedCssBaseline /> */}
+
 			{children}
 		</ThemeProvider>
 	);

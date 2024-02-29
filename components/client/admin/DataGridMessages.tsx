@@ -88,7 +88,7 @@ const columns: GridColDef[] = [
 	{
 		field: 'emailAddress',
 		headerName: 'Email Address',
-		type: 'number',
+		type: 'string',
 		minWidth: 120,
 		// width: 150,
 		disableColumnMenu: true,

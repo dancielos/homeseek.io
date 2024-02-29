@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from 'react';
+import { ReactNode, Suspense, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 
@@ -9,7 +9,9 @@ import PageTitle from '@/components/client/admin/PageTitle';
 import ThemeRegistry from '@/data/theme/themeRegistry';
 import { redirect } from 'next/navigation';
 import { getSession } from '@/utils/server-actions/auth';
-import H3 from '@/components/htmlElements/H3';
+import { ScopedCssBaseline } from '@mui/material';
+
+import './admin.css';
 
 export default async function AdminLayout({
 	children,
@@ -18,21 +20,26 @@ export default async function AdminLayout({
 }) {
 	const session = await getSession();
 	if (!session) redirect('/login');
+
 	return (
 		<ThemeRegistry options={{ key: 'mui-theme' }}>
-			<Box sx={{ display: 'flex' }}>
-				<AdminAppBar />
-				<AdminDrawer />
-				<Box
-					component='main'
-					sx={{ flexGrow: 1, p: 3, pt: { xs: 10, sm: 12 } }}
-				>
-					<Suspense>
-						<PageTitle title={session ? `Welcome ${session.user.name}` : ''} />
-					</Suspense>
-					<Suspense>{children}</Suspense>
+			<ScopedCssBaseline>
+				<Box sx={{ display: 'flex', height: '100vh' }}>
+					<AdminAppBar />
+					<AdminDrawer />
+					<Box
+						component='main'
+						sx={{ flexGrow: 1, p: 3, pt: { xs: 10, sm: 12 } }}
+					>
+						<Suspense>
+							<PageTitle
+								title={session ? `Welcome ${session.user.name}` : ''}
+							/>
+						</Suspense>
+						{children}
+					</Box>
 				</Box>
-			</Box>
+			</ScopedCssBaseline>
 		</ThemeRegistry>
 	);
 }

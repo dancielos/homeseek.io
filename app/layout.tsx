@@ -3,6 +3,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 import { ReduxProvider } from '@/data/provider';
+import ThemeRegistry from '@/data/theme/themeRegistry';
 
 export const metadata: Metadata = {
 	title: 'Home Seek',
