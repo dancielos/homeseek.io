@@ -30,7 +30,7 @@ export default async function AdminLayout({
 					<Suspense>
 						<PageTitle title={session ? `Welcome ${session.user.name}` : ''} />
 					</Suspense>
-					{children}
+					<Suspense>{children}</Suspense>
 				</Box>
 			</Box>
 		</ThemeRegistry>

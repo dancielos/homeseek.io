@@ -63,6 +63,7 @@ export default async function postMessage(
 	const address = formData.get('address');
 	const listingId = new Types.ObjectId(formData.get('listingId') as string);
 
+	const date = new Date(Date.now());
 	// hidden values should not have been removed
 	// will only check if it's empty
 
@@ -70,7 +71,7 @@ export default async function postMessage(
 	await new Promise<void>((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, 1000);
+		}, 500);
 	});
 
 	try {
@@ -83,6 +84,7 @@ export default async function postMessage(
 			message,
 			address,
 			listingId,
+			date,
 		});
 
 		return { success: "Message successfully sent. We'll contact you soon." };

@@ -59,3 +59,13 @@ export type Bounds = {
 export type CoordsWithBounds = {
 	bounds: Bounds;
 } & Coords;
+
+export type MessagesRow = {
+	id: string;
+	name: string;
+	message: string;
+	// actions: string;
+	date: string;
+	phoneNumber: string;
+	emailAddress: string;
+};
