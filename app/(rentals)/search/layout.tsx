@@ -1,4 +1,4 @@
-import SearchBar from '@/pages/Search/SearchBar';
+import SearchBar from '@/pagesLayout/Search/SearchBar';
 import Grid from '@mui/material/Unstable_Grid2';
 import { ReactNode, Suspense } from 'react';
 import Loading from './loading';

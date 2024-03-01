@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import DataGridMessages from '@/pages/Messages/DataGridMessages';
+import DataGridMessages from '@/pagesLayout/Messages/DataGridMessages';
 import { MessagesRow } from '@/data/types';
 import getMessages from '@/utils/server-actions/getMessages';
 

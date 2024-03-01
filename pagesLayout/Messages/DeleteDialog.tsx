@@ -1,12 +1,13 @@
 // import deleteMessageAction from '@/utils/server-actions/deleteMessageAction';
+import deleteMessageAction from '@/utils/server-actions/deleteMessageAction';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import { useEffect } from 'react';
-// import { useFormState } from 'react-dom';
+import { useEffect } from 'react';
+import { useFormState } from 'react-dom';
 
 export default function DeleteDialog({
 	messageId,
@@ -19,18 +20,12 @@ export default function DeleteDialog({
 	onClose: () => void;
 	setResponse: (text: string) => void;
 }) {
-	// function deleteMessage(
-	// 	prevState: string | null | undefined,
-	// 	formDate: FormData
-	// ) {
-	// 	return '';
-	// }
-	// const [response, deleteAction] = useFormState(deleteMessageAction, null);
+	const [response, deleteAction] = useFormState(deleteMessageAction, null);
 
-	// useEffect(() => {
-	// 	if (response && 'success' in response) setResponse(response.success);
-	// 	else if (response && 'error' in response) setResponse(response.error);
-	// }, [response]);
+	useEffect(() => {
+		if (response && 'success' in response) setResponse(response.success);
+		else if (response && 'error' in response) setResponse(response.error);
+	}, [response]);
 
 	return (
 		<>
@@ -50,7 +45,7 @@ export default function DeleteDialog({
 					<Button variant='contained' color='warning' onClick={onClose}>
 						Cancel
 					</Button>
-					<form action={() => {}} id='delete-form'>
+					<form action={deleteAction} id='delete-form'>
 						<input
 							name='id'
 							type='hidden'

@@ -3,21 +3,24 @@
 import { revalidatePath } from 'next/cache';
 import connectDB from '../db';
 import MessageModel from '@/models/Message';
+import { getSession } from './auth';
 
 type DeleteMessagePrompt =
-	| {}
 	| { error: string }
 	| { success: string }
 	| null
 	| undefined;
 
 export default async function deleteMessageAction(
-	// prevState: DeleteMessagePrompt,
+	prevState: DeleteMessagePrompt,
 	formData: FormData
 ): Promise<DeleteMessagePrompt> {
 	// console.log(messageId);
 	console.log('invoking deleteMessage server action');
 	try {
+		const session = await getSession();
+		if (!session) return { error: `Error: You don't have permission.` };
+
 		await connectDB();
 
 		// Find the message by its ID and delete it

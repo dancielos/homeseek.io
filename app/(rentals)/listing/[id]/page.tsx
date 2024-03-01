@@ -2,10 +2,10 @@ import { Container, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import Map from '@/components/client/Map';
-import BasicDetails from '@/pages/Details/BasicDetails';
-import FeaturesAmenities from '@/pages/Details/FeaturesAmenities';
-import UtilitiesIncluded from '@/pages/Details/UtilitiesIncluded';
-import About from '@/pages/Details/About';
+import BasicDetails from '@/pagesLayout/Details/BasicDetails';
+import FeaturesAmenities from '@/pagesLayout/Details/FeaturesAmenities';
+import UtilitiesIncluded from '@/pagesLayout/Details/UtilitiesIncluded';
+import About from '@/pagesLayout/Details/About';
 import ListingContactForm from '@/components/forms/contact/ListingContactForm';
 import Section from '@/components/section/Section';
 import connectDB from '@/utils/db';
@@ -13,7 +13,7 @@ import ListingModel from '@/models/Listing';
 import formatAddress from '@/utils/formatAddress';
 import formatPrice from '@/utils/formatPrice';
 import ImageSlider from '@/components/ImageSlider/ImageSlider';
-import TitleBar from '@/pages/Details/TitleBar';
+import TitleBar from '@/pagesLayout/Details/TitleBar';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
 
