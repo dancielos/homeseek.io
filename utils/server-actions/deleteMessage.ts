@@ -4,9 +4,16 @@ import { revalidatePath } from 'next/cache';
 import connectDB from '../db';
 import MessageModel from '@/models/Message';
 
+type DeleteMessagePrompt =
+	| { error: string }
+	| { success: string }
+	| null
+	| undefined;
+
 export default async function deleteMessage(
-	messageId: string
-): Promise<{ success: string } | { error: string }> {
+	prevState: DeleteMessagePrompt,
+	formData: FormData
+): Promise<DeleteMessagePrompt> {
 	// console.log(messageId);
 	// console.log('invoking deleteMessage server action');
 	try {
@@ -14,7 +21,9 @@ export default async function deleteMessage(
 
 		// Find the message by its ID and delete it
 		// throw Error('test');
-		const deletedMessage = await MessageModel.findByIdAndDelete(messageId);
+		const deletedMessage = await MessageModel.findByIdAndDelete(
+			formData.get('id')
+		);
 		// const deletedMessage = '';
 
 		if (!deletedMessage) {

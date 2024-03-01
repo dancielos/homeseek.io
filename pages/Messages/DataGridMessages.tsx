@@ -1,6 +1,6 @@
 'use client';
 
-import defineColsMessages from './defineCols';
+import defineColsMessages from './defineColsMessages';
 import { MessagesRow } from '@/data/types';
 import { Snackbar } from '@mui/material';
 import {
@@ -12,40 +12,27 @@ import ActionButtons from './ActionButtons';
 import Dialog from './Dialog';
 import { useEffect, useState } from 'react';
 import DeleteDialog from './DeleteDialog';
-import deleteMessage from '@/utils/server-actions/deleteMessage';
-import { useFormState } from 'react-dom';
-import InfoBox from '@/components/htmlElements/InfoBox';
-// import deleteMessage from '@/utils/server-actions/deleteMessage';
 
-export default function DataGridMessages({
-	rows,
-}: // onDelete,
-{
-	rows: MessagesRow[];
-	// onDelete: (id: string) => Promise<{ success: string } | { error: string }>;
-}) {
+import InfoBox from '@/components/htmlElements/InfoBox';
+
+export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
 	const [dialogMessage, setDialogMessage] = useState<MessagesRow | null>(null);
 	const open = Boolean(dialogMessage);
 
 	const [messageId, setMessageId] = useState<string | null>(null);
 	const deleteDialogOpen = Boolean(messageId);
 
-	const deleteActionWithId = deleteMessage.bind(null, '' + messageId);
+	// const deleteActionWithId = deleteMessage.bind(null, '' + messageId);
 	// console.log({ messageId });
-	const [response, deleteAction] = useFormState(deleteActionWithId, null);
+	const [response, setResponse] = useState<string>('');
 
 	const [snackBarMessage, setSnackBarMessage] = useState<string | null>(null);
 	const openSnackBar = Boolean(snackBarMessage);
 
 	useEffect(() => {
 		setMessageId(null);
-		if (response && 'success' in response) {
-			console.log('message deleted');
-			handleOpenSnackBar(response.success);
-			setDialogMessage(null);
-		} else {
-			if (response && 'error' in response) handleOpenSnackBar(response.error);
-		}
+		handleOpenSnackBar(response);
+		setDialogMessage(null);
 	}, [response]);
 
 	const columns: GridColDef[] = defineColsMessages(
@@ -100,9 +87,10 @@ export default function DataGridMessages({
 			{rows.length > 0 ? (
 				<>
 					<DeleteDialog
+						messageId={messageId as string}
 						open={deleteDialogOpen}
 						onClose={handleDeleteClose}
-						onConfirm={deleteAction}
+						setResponse={setResponse}
 					/>
 					<Dialog
 						message={dialogMessage}

@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import DataGridMessages from '@/pages/Messages/DataGrid';
+import DataGridMessages from '@/pages/Messages/DataGridMessages';
 import { MessagesRow } from '@/data/types';
 import getMessages from '@/utils/server-actions/getMessages';
-import InfoBox from '@/components/htmlElements/InfoBox';
 
 export const revalidate = 0;
 

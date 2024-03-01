@@ -1,22 +1,29 @@
-import * as React from 'react';
+import deleteMessage from '@/utils/server-actions/deleteMessage';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Dispatch } from '@reduxjs/toolkit';
+import { SetStateAction } from 'react';
+import { useFormState } from 'react-dom';
 
 export default function DeleteDialog({
+	messageId,
 	open,
 	onClose,
-	onConfirm,
+	setResponse,
 }: {
+	messageId: string;
 	open: boolean;
 	onClose: () => void;
-	onConfirm: () => void;
+	setResponse: (text: string) => void;
 }) {
+	const [response, deleteAction] = useFormState(deleteMessage, null);
+
 	return (
-		<React.Fragment>
+		<>
 			<Dialog
 				open={open}
 				onClose={onClose}
@@ -33,7 +40,13 @@ export default function DeleteDialog({
 					<Button variant='contained' color='warning' onClick={onClose}>
 						Cancel
 					</Button>
-					<form action={onConfirm}>
+					<form action={deleteAction} id='delete-form'>
+						<input
+							name='id'
+							type='hidden'
+							id='delete-id'
+							value={messageId || ''}
+						/>
 						<Button
 							variant='outlined'
 							color='secondary'
@@ -45,6 +58,6 @@ export default function DeleteDialog({
 					</form>
 				</DialogActions>
 			</Dialog>
-		</React.Fragment>
+		</>
 	);
 }

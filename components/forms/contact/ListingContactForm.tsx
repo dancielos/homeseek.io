@@ -1,7 +1,6 @@
 'use client';
 
-import { Alert, Box, Stack, TextField } from '@mui/material';
-import CTA from '../../client/CTA';
+import { Alert, Stack, TextField } from '@mui/material';
 import H3 from '../../htmlElements/H3';
 import { BOX_SHADOW } from '@/data/constants';
 import postMessage from '@/utils/server-actions/postMessage';
