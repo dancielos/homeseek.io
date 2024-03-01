@@ -1,6 +1,6 @@
 'use server';
 
-import ListingModel, { Listing } from '@/models/Listing';
+import ListingModel from '@/models/Listing';
 import connectDB from '../db';
 import { Coords, PropertyListing, PropertyType } from '@/data/types';
 import formatAddress from '../formatAddress';
