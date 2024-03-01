@@ -20,6 +20,7 @@ import CTA from '@/components/client/CTA';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import styles from './page.module.css';
+import ActiveListings from '@/pagesLayout/Dashboard/ActiveListings';
 
 const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
 const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
@@ -113,27 +114,7 @@ export default function Dashboard() {
 					spacing={2}
 				>
 					<Grid xs={10} sm={5} md={10}>
-						<Paper
-							elevation={3}
-							// sx={{
-							// 	height: '100%',
-							// }}
-						>
-							<Typography variant='body2'># of Active Listings</Typography>
-							<Typography component='p' variant='h3'>
-								120
-							</Typography>
-							<Typography color='text.secondary' sx={{ flex: 1 }}>
-								on 15 March, 2019
-							</Typography>
-							<CTA
-								color='secondary'
-								href='/properties'
-								id='dashboard-manage-properties'
-							>
-								Manage Properties
-							</CTA>
-						</Paper>
+						<ActiveListings />
 					</Grid>
 					<Grid xs={10} sm={5} md={10}>
 						<Paper
