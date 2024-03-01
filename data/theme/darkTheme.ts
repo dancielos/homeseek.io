@@ -41,7 +41,6 @@ darkTheme.components = {
 			{
 				props: { variant: 'subtle' },
 				style: {
-					color: darkTheme.palette.subtle.light,
 					backgroundColor: darkTheme.palette.subtle.light,
 				},
 			},
