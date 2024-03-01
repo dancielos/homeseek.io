@@ -39,7 +39,7 @@ export default async function AdminLayout({
 					>
 						<Suspense>
 							<PageTitle
-								title={session ? `Welcome ${session.user.name}` : ''}
+								title={session ? `Welcome, ${session.user.name}!` : ''}
 							/>
 						</Suspense>
 						<Suspense>{children}</Suspense>

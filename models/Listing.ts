@@ -50,6 +50,7 @@ export interface Listing {
 		| 'internet'
 		| 'cable'
 	)[];
+	date: Date;
 }
 
 const listingSchema = new Schema<Listing>({
@@ -128,6 +129,11 @@ const listingSchema = new Schema<Listing>({
 				enum: ['heating', 'water', 'electricity', 'internet', 'cable'],
 			},
 		],
+		required: true,
+	},
+	date: {
+		type: Schema.Types.Date,
+		default: Date.now,
 		required: true,
 	},
 });
