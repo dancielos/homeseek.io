@@ -21,18 +21,18 @@ export default function DeleteDialog({
 	onClose: () => void;
 	setResponse: (text: string) => void;
 }) {
-	function deleteMessage(
-		prevState: string | null | undefined,
-		formDate: FormData
-	) {
-		return '';
-	}
+	// function deleteMessage(
+	// 	prevState: string | null | undefined,
+	// 	formDate: FormData
+	// ) {
+	// 	return '';
+	// }
 	const [response, deleteAction] = useFormState(deleteMessageAction, null);
 
-	// useEffect(() => {
-	// 	if (response && 'success' in response) setResponse(response.success);
-	// 	else if (response && 'error' in response) setResponse(response.error);
-	// }, [response]);
+	useEffect(() => {
+		if (response && 'success' in response) setResponse(response.success);
+		else if (response && 'error' in response) setResponse(response.error);
+	}, [response]);
 
 	return (
 		<>
