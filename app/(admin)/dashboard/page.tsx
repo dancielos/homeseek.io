@@ -70,7 +70,7 @@ export default function Dashboard() {
 								120
 							</Typography>
 							<Typography color='text.secondary' sx={{ flex: 1 }}>
-								on 15 March, 2019
+								on {today}
 							</Typography>
 						</Paper>
 					</Grid>
