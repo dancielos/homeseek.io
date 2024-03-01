@@ -1,13 +1,18 @@
 import { MessagesRow } from '@/data/types';
 import { Button, ButtonGroup } from '@mui/material';
-import { GridRenderCellParams } from '@mui/x-data-grid';
+import { GridCellParams } from '@mui/x-data-grid';
 
 export default function ActionButtons({
-	params,
-	onView,
-	onDelete,
+	params = {
+		row: {
+			id: '',
+		},
+	} as GridCellParams<any, string>,
+
+	onView = () => {},
+	onDelete = () => {},
 }: {
-	params: GridRenderCellParams<any, string>;
+	params: GridCellParams<any, string>;
 	onView: (message: MessagesRow) => void;
 	onDelete: (id: string) => void;
 }) {
@@ -19,7 +24,7 @@ export default function ActionButtons({
 					fontSize: '1rem',
 					height: '1rem',
 				}}
-				color='subtle'
+				// color='subtle'
 				aria-label='outlined button group'
 				disableElevation
 			>
@@ -28,9 +33,9 @@ export default function ActionButtons({
 						px: 2,
 						py: 1,
 					}}
+					color='inherit'
 					onClick={() => onView(params.row)}
 				>
-					{/* {params.row.name} */}
 					View
 				</Button>
 

@@ -35,6 +35,7 @@ lightTheme.components = {
 			{
 				props: { variant: 'subtle' },
 				style: {
+					color: baseTheme.palette.common.black,
 					backgroundColor: '#f1f3f5',
 				},
 			},

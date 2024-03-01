@@ -6,7 +6,7 @@ import { Snackbar } from '@mui/material';
 import {
 	DataGrid as MuiDataGrid,
 	GridColDef,
-	GridRenderCellParams,
+	GridCellParams,
 } from '@mui/x-data-grid';
 import ActionButtons from './ActionButtons';
 import Dialog from './Dialog';
@@ -15,7 +15,11 @@ import DeleteDialog from './DeleteDialog';
 
 import InfoBox from '@/components/htmlElements/InfoBox';
 
-export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
+export default function DataGridMessages({
+	rows = [],
+}: {
+	rows: MessagesRow[];
+}) {
 	const [dialogMessage, setDialogMessage] = useState<MessagesRow | null>(null);
 	const open = Boolean(dialogMessage);
 
@@ -36,7 +40,13 @@ export default function DataGridMessages({ rows }: { rows: MessagesRow[] }) {
 	}, [response]);
 
 	const columns: GridColDef[] = defineColsMessages(
-		(params: GridRenderCellParams<any, string>) => (
+		(
+			params: GridCellParams<any, string> = {
+				row: {
+					id: '',
+				},
+			} as GridCellParams<any, string>
+		) => (
 			<ActionButtons
 				params={params}
 				onView={handleView}

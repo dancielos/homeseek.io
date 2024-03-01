@@ -12,7 +12,7 @@ type DeleteMessagePrompt =
 	| undefined;
 
 export default async function deleteMessageAction(
-	prevState: DeleteMessagePrompt,
+	// prevState: DeleteMessagePrompt,
 	formData: FormData
 ): Promise<DeleteMessagePrompt> {
 	// console.log(messageId);
