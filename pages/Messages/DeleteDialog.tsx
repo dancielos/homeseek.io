@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Dispatch } from '@reduxjs/toolkit';
-import { SetStateAction } from 'react';
+import { SetStateAction, useEffect } from 'react';
 import { useFormState } from 'react-dom';
 
 export default function DeleteDialog({
@@ -21,6 +21,11 @@ export default function DeleteDialog({
 	setResponse: (text: string) => void;
 }) {
 	const [response, deleteAction] = useFormState(deleteMessage, null);
+
+	useEffect(() => {
+		if (response && 'success' in response) setResponse(response.success);
+		else if (response && 'error' in response) setResponse(response.error);
+	}, [response]);
 
 	return (
 		<>
