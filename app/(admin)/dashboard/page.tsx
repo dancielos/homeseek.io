@@ -20,6 +20,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import styles from './page.module.css';
 import ActiveListings from '@/pagesLayout/Dashboard/ActiveListings';
 import ViewsReport from '@/pagesLayout/Dashboard/ViewsReport';
+import formatDate from '@/utils/formatDate';
 
 function createData(
 	name: string,
@@ -40,9 +41,7 @@ const rows = [
 ];
 
 export default function Dashboard() {
-	const today = new Intl.DateTimeFormat('en-CA', {
-		dateStyle: 'full',
-	}).format(Date.now());
+	const today = formatDate(Date.now());
 	return (
 		<Grid container columns={10} spacing={4}>
 			<Grid xs={10} md={7}>
