@@ -1,12 +1,13 @@
-import deleteMessage from '@/utils/server-actions/deleteMessage';
+'use client';
+
+import deleteMessageAction from '@/utils/server-actions/deleteMessageAction';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Dispatch } from '@reduxjs/toolkit';
-import { SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
 
 export default function DeleteDialog({
@@ -20,12 +21,18 @@ export default function DeleteDialog({
 	onClose: () => void;
 	setResponse: (text: string) => void;
 }) {
-	const [response, deleteAction] = useFormState(deleteMessage, null);
+	function deleteMessage(
+		prevState: string | null | undefined,
+		formDate: FormData
+	) {
+		return '';
+	}
+	const [response, deleteAction] = useFormState(deleteMessageAction, null);
 
-	useEffect(() => {
-		if (response && 'success' in response) setResponse(response.success);
-		else if (response && 'error' in response) setResponse(response.error);
-	}, [response]);
+	// useEffect(() => {
+	// 	if (response && 'success' in response) setResponse(response.success);
+	// 	else if (response && 'error' in response) setResponse(response.error);
+	// }, [response]);
 
 	return (
 		<>
