@@ -1,5 +1,3 @@
-'use client';
-
 import {
 	Box,
 	Button,
@@ -21,18 +19,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import styles from './page.module.css';
 import ActiveListings from '@/pagesLayout/Dashboard/ActiveListings';
-
-const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const xLabels = [
-	'2024-01-27',
-	'2024-01-28',
-	'2024-01-29',
-	'2024-01-30',
-	'2024-01-31',
-	'2024-02-01',
-	'2024-02-02',
-];
+import ViewsReport from '@/pagesLayout/Dashboard/ViewsReport';
 
 function createData(
 	name: string,
@@ -53,58 +40,13 @@ const rows = [
 ];
 
 export default function Dashboard() {
+	const today = new Intl.DateTimeFormat('en-CA', {
+		dateStyle: 'full',
+	}).format(Date.now());
 	return (
 		<Grid container columns={10} spacing={4}>
 			<Grid xs={10} md={7}>
-				<Paper elevation={3}>
-					<Stack flexDirection='row' justifyContent='space-between'>
-						<Container
-							sx={{
-								m: 0,
-								flexBasis: {
-									xs: '100%',
-									sm: 'auto',
-								},
-								px: {
-									xs: 1,
-									sm: 2,
-								},
-							}}
-						>
-							<Typography variant='body2'>Total Views</Typography>
-							<Typography variant='h4'>1,250</Typography>
-						</Container>
-
-						<Button
-							variant='subtle'
-							endIcon={<ArrowDropDownIcon />}
-							sx={{
-								minWidth: {
-									xs: 0.24,
-									sm: 0.16,
-								},
-								alignSelf: 'flex-start',
-								px: {
-									xs: 3,
-									xm: 2,
-									sm: 3,
-									md: 0,
-								},
-							}}
-						>
-							Month
-						</Button>
-					</Stack>
-					<LineChart
-						// width={500}
-						height={300}
-						series={[
-							{ data: pData, label: 'Impressions' },
-							{ data: uData, label: 'Views' },
-						]}
-						xAxis={[{ scaleType: 'point', data: xLabels }]}
-					/>
-				</Paper>
+				<ViewsReport />
 			</Grid>
 			<Grid xs={10} md={3}>
 				<Grid
@@ -114,7 +56,7 @@ export default function Dashboard() {
 					spacing={2}
 				>
 					<Grid xs={10} sm={5} md={10}>
-						<ActiveListings />
+						<ActiveListings date={today} />
 					</Grid>
 					<Grid xs={10} sm={5} md={10}>
 						<Paper
