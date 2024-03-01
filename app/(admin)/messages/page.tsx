@@ -12,13 +12,9 @@ export default async function Messages() {
 	return (
 		<>
 			<Box sx={{ overflow: 'auto', minHeight: '80vh' }}>
-				{messages.length > 0 ? (
-					<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
-						<DataGridMessages rows={messages} />
-					</Box>
-				) : (
-					<InfoBox message='You have no new messages.' />
-				)}
+				<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
+					<DataGridMessages rows={messages} />
+				</Box>
 			</Box>
 		</>
 	);

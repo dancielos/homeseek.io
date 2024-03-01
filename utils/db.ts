@@ -1,10 +1,14 @@
-import { Schema, model, connect, models } from 'mongoose';
+import { Schema, model, connect, models, connection } from 'mongoose';
 
 export default async function connectDB() {
 	try {
-		await connect(process.env.DB_URL);
-		console.log('Successfully established database connection.');
-		return true;
+		if (!connection.readyState) {
+			await connect(process.env.DB_URL);
+			console.log('Successfully established database connection.');
+			return true;
+		} else {
+			console.log('Already connected');
+		}
 	} catch (err) {
 		console.error('Database connection failed.' + err);
 		return false;

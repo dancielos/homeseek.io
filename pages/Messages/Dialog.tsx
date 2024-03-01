@@ -48,6 +48,7 @@ export default function Dialog({
 						}}
 					>
 						<DialogContentText
+							component='div'
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',

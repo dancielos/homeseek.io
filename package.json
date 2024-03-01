@@ -8,7 +8,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"test": "vitest",
-		"e2e": "cypress open"
+		"e2e": "cypress open",
+		"e2e:run": "cypress run"
 	},
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.496.0",
