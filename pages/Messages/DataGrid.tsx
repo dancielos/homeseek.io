@@ -71,25 +71,6 @@ export default function DataGridMessages({
 	function handleDeleteClose() {
 		setMessageId(null);
 	}
-	// async function handleConfirmDelete() {
-	// 	try {
-	// 		if (messageId) {
-	// 			// const response = await onDelete(messageId);
-	// 			setMessageId(null);
-	// 			if (response && 'success' in response) {
-	// 				setDialogMessage(null);
-	// 				handleOpenSnackBar(response.success);
-	// 			} else {
-	// 				setSnackBarMessage(response.error);
-	// 				console.error('something went wrong.');
-	// 			}
-	// 		}
-	// 	} catch (error) {
-	// 		console.error('something went wrong.');
-	// 	}
-
-	// 	// deleteMessage(messageId as string);
-	// }
 
 	const handleOpenSnackBar = (text: string) => {
 		setSnackBarMessage(text);
@@ -121,7 +102,7 @@ export default function DataGridMessages({
 					<DeleteDialog
 						open={deleteDialogOpen}
 						onClose={handleDeleteClose}
-						onConfirm={async () => deleteAction()}
+						onConfirm={deleteAction}
 					/>
 					<Dialog
 						message={dialogMessage}

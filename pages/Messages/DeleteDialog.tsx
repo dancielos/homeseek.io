@@ -33,14 +33,16 @@ export default function DeleteDialog({
 					<Button variant='contained' color='warning' onClick={onClose}>
 						Cancel
 					</Button>
-					<Button
-						variant='outlined'
-						color='secondary'
-						onClick={onConfirm}
-						autoFocus
-					>
-						Delete
-					</Button>
+					<form action={onConfirm}>
+						<Button
+							variant='outlined'
+							color='secondary'
+							type='submit'
+							autoFocus
+						>
+							Delete
+						</Button>
+					</form>
 				</DialogActions>
 			</Dialog>
 		</React.Fragment>
