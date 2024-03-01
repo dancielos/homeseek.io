@@ -8,10 +8,10 @@ export default async function getListingsCount(): Promise<number> {
 		await connectDB();
 
 		const listingsCount = await ListingModel.countDocuments({}).exec();
-		console.log({ listingsCount });
+		// console.log({ listingsCount });
 		return listingsCount;
 	} catch (error) {
-		console.log(error);
+		console.error(error);
 		return 0;
 	}
 }

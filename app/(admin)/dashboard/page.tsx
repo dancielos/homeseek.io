@@ -41,7 +41,7 @@ const rows = [
 ];
 
 export default function Dashboard() {
-	const today = formatDate(Date.now());
+	const today = formatDate(Date.now(), 'full');
 	return (
 		<Grid container columns={10} spacing={4}>
 			<Grid xs={10} md={7}>

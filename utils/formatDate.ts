@@ -1,5 +1,10 @@
-export default function formatDate(date: Date | number) {
+type DateStyle = 'full' | 'long' | 'medium' | 'short';
+
+export default function formatDate(
+	date: Date | number,
+	dateStyle: DateStyle = 'short'
+) {
 	return new Intl.DateTimeFormat('en-CA', {
-		dateStyle: 'full',
+		dateStyle,
 	}).format(date);
 }
