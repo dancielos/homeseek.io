@@ -1,12 +1,10 @@
 'use client';
 
-import defineColsMessages from './defineColsMessages';
 import { MessagesRow } from '@/data/types';
 import { Snackbar } from '@mui/material';
 import {
 	DataGrid as MuiDataGrid,
-	GridColDef,
-	GridCellParams,
+	GridRenderCellParams,
 } from '@mui/x-data-grid';
 import ActionButtons from './ActionButtons';
 import Dialog from './Dialog';
@@ -20,6 +18,64 @@ export default function DataGridMessages({
 }: {
 	rows: MessagesRow[];
 }) {
+	const columns = [
+		{
+			field: 'name',
+			headerName: 'From',
+			minWidth: 120,
+			disableColumnMenu: true,
+		},
+		{
+			field: 'listing',
+			headerName: 'Listing',
+			minWidth: 250,
+			disableColumnMenu: true,
+		},
+		{
+			field: 'actions',
+			headerName: 'Actions',
+			minWidth: 200,
+			sortable: false,
+			disableColumnMenu: true,
+			renderCell: (params: GridRenderCellParams<any, string>): JSX.Element => (
+				<ActionButtons
+					params={params}
+					onView={handleView}
+					onDelete={handleDelete}
+				/>
+			),
+		},
+		{
+			field: 'date',
+			headerName: 'Date',
+			minWidth: 120,
+			disableColumnMenu: true,
+		},
+		{
+			field: 'phoneNumber',
+			headerName: 'Phone Number',
+			minWidth: 120,
+			disableColumnMenu: true,
+		},
+		{
+			field: 'emailAddress',
+			headerName: 'Email Address',
+			type: 'string',
+			minWidth: 120,
+			// width: 150,
+			disableColumnMenu: true,
+			// editable: true,
+		},
+		{
+			field: 'message',
+			headerName: 'Message',
+			// width: 150,
+			minWidth: 250,
+			disableColumnMenu: true,
+			// editable: true,
+		},
+	];
+
 	const [dialogMessage, setDialogMessage] = useState<MessagesRow | null>(null);
 	const open = Boolean(dialogMessage);
 
@@ -38,22 +94,6 @@ export default function DataGridMessages({
 		handleOpenSnackBar(response);
 		setDialogMessage(null);
 	}, [response]);
-
-	const columns: GridColDef[] = defineColsMessages(
-		(
-			params: GridCellParams<any, string> = {
-				row: {
-					id: '',
-				},
-			} as GridCellParams<any, string>
-		) => (
-			<ActionButtons
-				params={params}
-				onView={handleView}
-				onDelete={handleDelete}
-			/>
-		)
-	);
 
 	function handleView(message: MessagesRow) {
 		setDialogMessage(message);
