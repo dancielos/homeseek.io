@@ -29,6 +29,7 @@ import {
 	ShowerOutlined,
 } from '@mui/icons-material';
 import InfoBox from '@/components/htmlElements/InfoBox';
+import Agreement from './Agreement';
 
 const customH2Style: SxProps = {
 	fontSize: {
@@ -60,48 +61,37 @@ export default function ListingForm({
 				<Paper elevation={3}>
 					<H2 sx={customH2Style}>Address</H2>
 					<Grid container spacing={3}>
-						<Grid xs={12} md={6}>
+						<Grid xs={12}>
 							<TextField
 								required
-								id='firstName'
-								name='firstName'
+								id='street'
+								name='street'
 								label='Street'
+								variant='outlined'
+								color='secondary'
 								fullWidth
-								autoComplete='given-name'
-								variant='filled'
 							/>
 						</Grid>
 						<Grid xs={12} md={6}>
 							<TextField
 								required
-								id='lastName'
-								name='lastName'
-								label='City'
+								id='cityProvince'
+								name='cityProvince'
+								label='City, Province'
 								fullWidth
-								autoComplete='family-name'
-								variant='filled'
+								variant='outlined'
+								color='secondary'
 							/>
 						</Grid>
 						<Grid xs={12} md={6}>
 							<TextField
 								required
-								id='firstName'
-								name='firstName'
-								label='Province'
-								fullWidth
-								autoComplete='given-name'
-								variant='filled'
-							/>
-						</Grid>
-						<Grid xs={12} md={6}>
-							<TextField
-								required
-								id='lastName'
-								name='lastName'
+								id='postalCode'
+								name='postalCode'
 								label='Postal Code'
 								fullWidth
-								autoComplete='family-name'
-								variant='filled'
+								variant='outlined'
+								color='secondary'
 							/>
 						</Grid>
 					</Grid>
@@ -109,16 +99,17 @@ export default function ListingForm({
 					<H2 sx={customH2Style}>Basic Details</H2>
 					<Grid container spacing={3}>
 						<Grid xs={12} md={6}>
-							<FormControl fullWidth variant='filled'>
+							<FormControl fullWidth variant='outlined'>
 								<InputLabel id='demo-simple-select-label'>
 									Property Type
 								</InputLabel>
 								<Select
-									// variant='filled'
+									variant='outlined'
 									labelId='demo-simple-select-label'
 									id='demo-simple-select'
 									// value={age}
-									label='Age'
+									label='Property Type'
+									color='secondary'
 									// onChange={handleChange}
 								>
 									<MenuItem value={10}>Ten</MenuItem>
@@ -130,11 +121,12 @@ export default function ListingForm({
 						<Grid xs={12} md={6}>
 							<TextField
 								type='number'
-								variant='filled'
+								variant='outlined'
 								required
 								name='lastName'
 								id='outlined-start-adornment'
 								label='Price'
+								color='secondary'
 								fullWidth
 								InputProps={{
 									startAdornment: (
@@ -148,11 +140,12 @@ export default function ListingForm({
 						<Grid xs={12} md={6}>
 							<TextField
 								type='number'
-								variant='filled'
+								variant='outlined'
 								required
 								name='lastName'
 								id='outlined-start-adornment'
 								label='# of Bedrooms'
+								color='secondary'
 								fullWidth
 								InputProps={{
 									startAdornment: (
@@ -166,12 +159,13 @@ export default function ListingForm({
 						<Grid xs={12} md={6}>
 							<TextField
 								type='number'
-								variant='filled'
+								variant='outlined'
 								required
 								name='lastName'
 								id='outlined-start-adornment'
 								label='# of Bathrooms'
 								fullWidth
+								color='secondary'
 								InputProps={{
 									startAdornment: (
 										<InputAdornment position='start'>
@@ -184,12 +178,13 @@ export default function ListingForm({
 						<Grid xs={12}>
 							<TextField
 								type='number'
-								variant='filled'
+								variant='outlined'
 								required
 								name='lastName'
 								id='outlined-start-adornment'
 								label='About the listing'
 								fullWidth
+								color='secondary'
 								multiline
 								rows={6}
 							/>
@@ -256,12 +251,7 @@ export default function ListingForm({
 			</Grid>
 
 			<Grid xs={10}>
-				<Paper elevation={3}>
-					<FormControlLabel
-						control={<Checkbox id='agreement' name='agreement' />}
-						label='By checking this checkbox, you agree to the terms and conditions.'
-					/>
-				</Paper>
+				<Agreement />
 			</Grid>
 			<Grid
 				xs={10}

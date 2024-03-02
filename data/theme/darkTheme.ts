@@ -46,4 +46,17 @@ darkTheme.components = {
 			},
 		],
 	},
+	MuiInputLabel: {
+		styleOverrides: {
+			// root: {
+			// paddingBottom: 0,
+			// backgroundColor: 'rgba(33, 37, 41, 0.8)',
+			// '& input, & label': {
+			// 	color: '#ffe8cc',
+			// },
+			focused: {
+				color: '#fff !important',
+			},
+		},
+	},
 };

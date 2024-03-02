@@ -131,7 +131,6 @@ baseTheme.palette = {
 
 baseTheme.components = {
 	...baseTheme.components,
-
 	MuiChip: {
 		styleOverrides: {
 			root: {
