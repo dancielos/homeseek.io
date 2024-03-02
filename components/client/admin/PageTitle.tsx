@@ -44,7 +44,7 @@ export default function PageTitle({ title = '' }: { title?: string }) {
 					</CTA>
 				)}
 			</Grid>
-			{pathname === '/properties' && (
+			{/* {pathname === '/properties' && (
 				<Grid xs={10} sm={5} display='flex' justifyContent='flex-end'>
 					<TextField
 						size='small'
@@ -54,7 +54,7 @@ export default function PageTitle({ title = '' }: { title?: string }) {
 					/>
 					<Button variant='subtle'>Search</Button>
 				</Grid>
-			)}
+			)} */}
 		</Grid>
 	);
 }

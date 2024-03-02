@@ -144,11 +144,21 @@ export default function PropertiesData({
 			disableColumnSelector
 			disableDensitySelector
 			disableColumnMenu
+			autoHeight
 			pageSizeOptions={[20]}
 			slots={{ toolbar: GridToolbar }}
 			slotProps={{
 				toolbar: {
+					printOptions: { disableToolbarButton: true },
+					csvOptions: { disableToolbarButton: true },
 					showQuickFilter: true,
+					quickFilterProps: {
+						variant: 'outlined',
+						size: 'small',
+						sx: {
+							m: 1,
+						},
+					},
 				},
 			}}
 			// checkboxSelection
