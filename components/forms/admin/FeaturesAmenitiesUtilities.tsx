@@ -1,18 +1,6 @@
 import H2 from '@/components/htmlElements/H2';
-import {
-	Checkbox,
-	Divider,
-	FormControlLabel,
-	Paper,
-	SxProps,
-} from '@mui/material';
-
-const customH2Style: SxProps = {
-	fontSize: {
-		xs: '1rem',
-		md: '1.4rem',
-	},
-};
+import { customH2Style } from '@/data/constants';
+import { Checkbox, Divider, FormControlLabel, Paper } from '@mui/material';
 
 export default function FeaturesAmenitiesUtilities() {
 	return (

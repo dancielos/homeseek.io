@@ -1,3 +1,4 @@
+import { SxProps } from '@mui/material';
 import {
 	City,
 	ListingSelectOptions,
@@ -140,3 +141,10 @@ export const AVAILABLE_CITIES: ListingSelectOptions[] = [
 		label: 'Edmonton, AB',
 	},
 ];
+
+export const customH2Style: SxProps = {
+	fontSize: {
+		xs: '1rem',
+		md: '1.4rem',
+	},
+};

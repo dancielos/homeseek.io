@@ -1,18 +1,15 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import { Divider, InputAdornment, Paper, SxProps } from '@mui/material';
+import { Divider, InputAdornment, Paper } from '@mui/material';
 
 import H2 from '@/components/htmlElements/H2';
 import ListingTextField from './ListingTextField';
 import ListingSelect from './ListingSelect';
-import { AVAILABLE_CITIES, PROPERTY_TYPE_OPTIONS } from '@/data/constants';
+import {
+	AVAILABLE_CITIES,
+	PROPERTY_TYPE_OPTIONS,
+	customH2Style,
+} from '@/data/constants';
 import { AttachMoney, BedOutlined, ShowerOutlined } from '@mui/icons-material';
-
-const customH2Style: SxProps = {
-	fontSize: {
-		xs: '1rem',
-		md: '1.4rem',
-	},
-};
 
 export default function AddressBasicDetails() {
 	return (
