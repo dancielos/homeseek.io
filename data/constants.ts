@@ -1,4 +1,9 @@
-import { City, PROPERTY_TYPE, PropertyListing } from './types';
+import {
+	City,
+	ListingSelectOptions,
+	PROPERTY_TYPE,
+	PropertyListing,
+} from './types';
 
 // STYLES
 export const BOX_SHADOW = 'rgba(0, 0, 0, 0.1) 0px 4px 12px';
@@ -77,3 +82,61 @@ export const propertyTypesArray = Object.entries(PROPERTY_TYPE).map(
 		value,
 	})
 );
+
+export const PROPERTY_TYPE_OPTIONS: ListingSelectOptions[] =
+	propertyTypesArray.map(({ name, value }) => ({
+		value: name,
+		label: value,
+	}));
+
+export const AVAILABLE_CITIES: ListingSelectOptions[] = [
+	{
+		value: {
+			city: 'Toronto',
+			province: 'Ontario',
+		},
+		label: 'Toronto, ON',
+	},
+	{
+		value: {
+			city: 'Vancouver',
+			province: 'British Columbia',
+		},
+		label: 'Vancouver, BC',
+	},
+	{
+		value: {
+			city: 'Calgary',
+			province: 'Alberta',
+		},
+		label: 'Calgary, AB',
+	},
+	{
+		value: {
+			city: 'Montreal',
+			province: 'Quebec',
+		},
+		label: 'Montreal, QC',
+	},
+	{
+		value: {
+			city: 'Quebec City',
+			province: 'Quebec',
+		},
+		label: 'Quebec City, QC',
+	},
+	{
+		value: {
+			city: 'Ottawa',
+			province: 'Ontario',
+		},
+		label: 'Ottawa, ON',
+	},
+	{
+		value: {
+			city: 'Edmonton',
+			province: 'Alberta',
+		},
+		label: 'Edmonton, AB',
+	},
+];

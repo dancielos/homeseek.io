@@ -72,3 +72,12 @@ export type MessagesRow = {
 	phoneNumber: string;
 	emailAddress: string;
 };
+
+export type ListingSelectOptions = {
+	value:
+		| string
+		| {
+				[key: string]: string;
+		  };
+	label: string;
+};

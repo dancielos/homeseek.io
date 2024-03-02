@@ -31,6 +31,12 @@ import {
 import InfoBox from '@/components/htmlElements/InfoBox';
 import Agreement from './Agreement';
 import ListingTextField from './ListingTextField';
+import ListingSelect from './ListingSelect';
+import {
+	AVAILABLE_CITIES,
+	PROPERTY_TYPE_OPTIONS,
+	propertyTypesArray,
+} from '@/data/constants';
 
 const customH2Style: SxProps = {
 	fontSize: {
@@ -66,7 +72,12 @@ export default function ListingForm({
 							<ListingTextField name='street' />
 						</Grid>
 						<Grid xs={12} md={6}>
-							<ListingTextField name='cityProvince' label='City, Province' />
+							<ListingSelect
+								id='cityProvince'
+								label='City, Province'
+								labelId='city-province-label'
+								options={AVAILABLE_CITIES}
+							/>
 						</Grid>
 						<Grid xs={12} md={6}>
 							<ListingTextField name='postalCode' label='Postal Code' />
@@ -76,24 +87,12 @@ export default function ListingForm({
 					<H2 sx={customH2Style}>Basic Details</H2>
 					<Grid container spacing={3}>
 						<Grid xs={12} md={6}>
-							<FormControl fullWidth variant='outlined'>
-								<InputLabel id='demo-simple-select-label'>
-									Property Type
-								</InputLabel>
-								<Select
-									variant='outlined'
-									labelId='demo-simple-select-label'
-									id='demo-simple-select'
-									// value={age}
-									label='Property Type'
-									color='secondary'
-									// onChange={handleChange}
-								>
-									<MenuItem value={10}>Ten</MenuItem>
-									<MenuItem value={20}>Twenty</MenuItem>
-									<MenuItem value={30}>Thirty</MenuItem>
-								</Select>
-							</FormControl>
+							<ListingSelect
+								id='propertyType'
+								label='Property Type'
+								labelId='property-type-label'
+								options={PROPERTY_TYPE_OPTIONS}
+							/>
 						</Grid>
 						<Grid xs={12} md={6}>
 							<ListingTextField

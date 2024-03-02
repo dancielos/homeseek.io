@@ -11,7 +11,6 @@ export default function ListingTextField({
 	label = name,
 	...rest
 }: ListingTextField) {
-	console.log(rest);
 	return (
 		<TextField
 			required
