@@ -16,6 +16,7 @@ import { CloudUpload } from '@mui/icons-material';
 import Agreement from './Agreement';
 
 import AddressBasicDetails from './AddressBasicDetails';
+import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 
 const customH2Style: SxProps = {
 	fontSize: {
@@ -55,42 +56,7 @@ export default function ListingForm({
 					gap: 2,
 				}}
 			>
-				<Paper elevation={3}>
-					<H2 sx={customH2Style}>Features and Amenities</H2>
-
-					<FormControlLabel required control={<Checkbox />} label='Required' />
-					<FormControlLabel
-						required
-						control={<Checkbox />}
-						label='Pet Friendly'
-					/>
-					<FormControlLabel required control={<Checkbox />} label='Something' />
-					<FormControlLabel required control={<Checkbox />} label='Required' />
-					<FormControlLabel
-						required
-						control={<Checkbox />}
-						label='Pet Friendly'
-					/>
-					<FormControlLabel required control={<Checkbox />} label='Something' />
-
-					<Divider sx={{ my: 2 }} />
-					<H2 sx={customH2Style}>Utilities Included</H2>
-					<FormControlLabel
-						required
-						control={<Checkbox />}
-						label='Dishwasher'
-					/>
-					<FormControlLabel
-						required
-						control={<Checkbox />}
-						label='Laundry machine'
-					/>
-					<FormControlLabel
-						required
-						control={<Checkbox />}
-						label='Oven range'
-					/>
-				</Paper>
+				<FeaturesAmenitiesUtilities />
 				<Paper elevation={3}>
 					<H2 sx={customH2Style}>Images</H2>
 					<Button
