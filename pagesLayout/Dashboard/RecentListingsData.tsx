@@ -4,6 +4,7 @@ import formatPrice from '@/utils/formatPrice';
 import getRecentListings from '@/utils/server-actions/getRecentListings';
 import { Button, TableBody, TableCell, TableRow } from '@mui/material';
 import Link from 'next/link';
+import ListingLink from '../../components/ui/admin/ListingLink';
 
 export default async function RecentListingsData() {
 	const recentListings = await getRecentListings(7);
@@ -21,18 +22,13 @@ export default async function RecentListingsData() {
 						sx={{
 							minWidth: {
 								xs: '50vw',
-								xm: '40vw',
-								sm: 'auto',
+								// xm: '40vw',
+								sm: '40vw',
+								md: 'auto',
 							},
 						}}
 					>
-						<Button
-							LinkComponent={Link}
-							href={`/listing/${row.id}`}
-							color='subtle'
-						>
-							{row.address}
-						</Button>
+						<ListingLink text={row.address} id={row.id} />
 					</TableCell>
 					<TableCell align='right'>
 						{PROPERTY_TYPE[row.propertyType as PropertyType]}

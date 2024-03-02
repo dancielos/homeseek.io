@@ -21,6 +21,7 @@ export type PropertyListing = {
 	price: number;
 	lat: number;
 	lng: number;
+	userId: string;
 };
 
 export type City = {

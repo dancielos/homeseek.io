@@ -88,6 +88,7 @@ export default async function getListings({
 
 				return {
 					id: l._id.toString(),
+					userId: l.userId.toString(),
 					address,
 					propertyType: l.propertyType as PropertyType,
 					bedrooms: l.numBedrooms,
