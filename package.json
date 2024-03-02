@@ -19,7 +19,7 @@
 		"@emotion/styled": "^11.11.0",
 		"@mui/icons-material": "^5.15.6",
 		"@mui/lab": "^5.0.0-alpha.163",
-		"@mui/material": "^5.15.6",
+		"@mui/material": "^5.15.11",
 		"@mui/material-nextjs": "^5.15.6",
 		"@mui/x-charts": "^6.19.3",
 		"@mui/x-data-grid": "^6.19.3",
