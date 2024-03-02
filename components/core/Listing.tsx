@@ -8,7 +8,6 @@ import {
 	Typography,
 } from '@mui/material';
 
-import Image from 'next/image';
 import { PROPERTY_TYPE, PropertyListing } from '@/data/types';
 
 import {
@@ -21,50 +20,16 @@ import IconText from '../ui/IconText';
 import styles from './Listing.module.css';
 import DetailsLink from '@/components/ui/DetailsLink';
 import ImageSlider from '../ImageSlider/ImageSlider';
+import { Listing } from '@/models/Listing';
+import { TypeImage } from '../ImageSlider/types/types';
+import formatPrice from '@/utils/formatPrice';
+import { FeaturedListing } from '@/utils/server-actions/getFeaturedListings';
 
-interface ListingProps extends PropertyListing {
+type ListingProps = {
 	size?: 'sm' | 'md' | 'lg';
 	variant?: 'landscape' | 'portrait';
 	i: number;
-}
-
-// TODO: refactor the code so it's cleaner
-//       both on portrait and landscape versions
-
-const images = [
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/golden-retriever-puppies-1280-720px.jpg',
-		alt: 'Golden Retriever Puppies',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/border-collie-854x623px.jpg',
-		alt: 'Border Collie',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/cheddar-1920-1080px.jpg',
-		alt: 'Cheddar the Dog',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/hachiko-1366-768px.jpg',
-		alt: 'Hachiko lookalike',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/husky-1000-1500px.jpg',
-		alt: 'Husky Dog',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/squishy-dog-700-668px.jpg',
-		alt: 'Adorable Squishy Dog',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/stella-1600-900px.jpg',
-		alt: 'Stella the Dog',
-	},
-	{
-		src: 'https://image-slider-sample.s3.ca-central-1.amazonaws.com/hachiko-1366-768px.jpg',
-		alt: 'Hachiko lookalike',
-	},
-];
+} & (PropertyListing | FeaturedListing);
 
 export default function Listing({
 	size = 'sm',
@@ -72,7 +37,14 @@ export default function Listing({
 	i = 0,
 	...rest
 }: ListingProps) {
+	// console.log('from Listing component: ' + address);
 	const isLandscape = variant === 'landscape';
+	const images: TypeImage[] = rest.img.map((src, i) => ({
+		src: `https://homeseek-bucket.s3.ca-central-1.amazonaws.com/${src}`,
+		alt: `${rest.address}-${i}`,
+	}));
+	const price = formatPrice(rest.price);
+	// console.log(images);
 
 	return (
 		<Card className={styles[`card-${variant}`]}>
@@ -91,8 +63,7 @@ export default function Listing({
 				<Container
 					sx={{
 						position: 'relative',
-						width: 'auto',
-						aspectRatio: 16 / 8,
+						width: '100%',
 						paddingLeft: {
 							xs: 0,
 						},
@@ -103,14 +74,7 @@ export default function Listing({
 						mb: 2,
 					}}
 				>
-					<ImageSlider images={images} showThumbnail={false} />
-					{/* <Image
-						src='https://source.unsplash.com/random?wallpapers'
-						alt={`${rest.address} Property`}
-						width={640}
-						height={320}
-						className={styles['card-img']}
-					/> */}
+					<ImageSlider images={images} showThumbnail={false} autoHeight />
 				</Container>
 				<Container
 					sx={
@@ -153,13 +117,13 @@ export default function Listing({
 						textAlign={isLandscape ? 'left' : 'right'}
 						order={-1}
 					>
-						${rest.price} CAD
+						{price}
 					</Typography>
 					{isLandscape ? (
 						<CardActions sx={{ justifyContent: 'flex-end', px: 0 }}>
 							<DetailsLink
 								data-testid={`more-details-${i}`}
-								href='/listing/something'
+								href={`/listing/${rest.id}`}
 							>
 								More details
 							</DetailsLink>
@@ -170,7 +134,7 @@ export default function Listing({
 			{isLandscape ? null : (
 				<CardActions sx={{ m: 1, justifyContent: 'flex-end' }}>
 					<DetailsLink
-						href='/listing/something'
+						href={`/listing/${rest.id}`}
 						data-testid={`more-details-${i}`}
 					>
 						More details

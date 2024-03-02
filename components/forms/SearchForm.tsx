@@ -1,19 +1,16 @@
-// 'use client';
+'use client';
 
 // import { handleTextField } from '@/utils/actions';
-import {
-	IconButton,
-	InputAdornment,
-	Stack,
-	SxProps,
-	TextField,
-} from '@mui/material';
+import { Autocomplete, Button, Stack, SxProps, TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CTA from '../client/CTA';
-import { SearchOutlined } from '@mui/icons-material';
-import Filters from './Filters';
-import SearchCityTooltip from './SearchCityTooltip';
-import Link from 'next/link';
+import Filters from './filters/Filters';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { SyntheticEvent, useState } from 'react';
+import { useDebounce } from '@/hooks/useDebounce';
+import { getSearchQuery } from '@/utils/getSearchQuery';
+import useSearchQuery from '@/hooks/useSearchQuery';
+import { CITIES } from '@/data/constants';
 
 type SearchFormProps = {
 	withFilters?: boolean;
@@ -22,8 +19,29 @@ type SearchFormProps = {
 
 export default function SearchForm({
 	withFilters = false,
-	sx,
+	sx = {},
 }: SearchFormProps) {
+	// TODO:
+	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
+
+	const [searchInput, setSearchInput] = useState<string>(
+		searchParams?.get('s') || ''
+	);
+	const debouncedSearch = useDebounce(searchInput);
+
+	if (pathname !== '/') useSearchQuery('s', '' + debouncedSearch);
+
+	async function submitSearch(formData: FormData) {
+		// ONLY for homepage where 'listening' is not important
+		// AND where the user needs to explicitly submit the form
+		// AND from the homepage, ONLY the 's' will be available
+		const searchInput = (formData.get('search-input') as string) || 'toronto';
+		const query = getSearchQuery(pathname!, searchInput);
+		router.push(query);
+	}
+
 	if (!withFilters) {
 		return (
 			<Stack
@@ -36,23 +54,36 @@ export default function SearchForm({
 				width={{ xs: '100%', md: 1 / 2 }}
 				margin='auto'
 				autoComplete='off'
+				action={submitSearch}
 			>
-				<SearchCityTooltip>
-					<TextField
-						type='search'
-						id='search-input'
-						label='City or Address'
-						variant='filled'
-						fullWidth
-						focused
-						sx={sx ? { ...sx } : {}}
-					/>
-				</SearchCityTooltip>
+				<Autocomplete
+					disablePortal
+					options={CITIES}
+					sx={{
+						width: '100%',
+					}}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							type='search'
+							id='search-input'
+							name='search-input'
+							label='City'
+							variant='filled'
+							fullWidth
+							focused
+							sx={sx ? { ...sx } : {}}
+							required
+						/>
+					)}
+				/>
+
 				<CTA
 					type='submit'
 					id='search-submit'
-					LinkComponent={Link}
-					href='/search'
+					component={Button}
+					// LinkComponent={Link}
+					// href='/search'
 				>
 					Search
 				</CTA>
@@ -69,41 +100,41 @@ export default function SearchForm({
 			justifyContent='center'
 			columns={10}
 			// margin='auto'
+			// action={submitSearch}
+			action={() => {}}
 			autoComplete='off'
 		>
 			<Grid xs={6} xm={7} sm={6} md={4}>
-				<SearchCityTooltip>
-					<TextField
-						id='search-input'
-						type='search'
-						label='City or Address'
-						variant='filled'
-						fullWidth
-						sx={{
-							color: 'primary.main',
-							// borderColor: '#ffffff',
-							// backgroundColor: 'rgba(33, 37, 41, 0.8)',
-							'& input, & label': {
+				{/* <SearchCityTooltip> */}
+				<Autocomplete
+					disablePortal
+					options={CITIES}
+					value={searchInput}
+					onChange={(
+						event: SyntheticEvent<Element, Event>,
+						newValue: string | null
+					) => {
+						setSearchInput((newValue as string) || '');
+					}}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							type='search'
+							id='search-input'
+							name='search-input'
+							label='City'
+							fullWidth
+							variant='filled'
+							sx={{
 								color: 'primary.main',
-							},
-						}}
-						InputProps={{
-							endAdornment: (
-								<InputAdornment position='end'>
-									{/* <Button
-									color='secondary'
-									variant='contained'
-									endIcon={<SearchOutlined />}
-								></Button> */}
-									<IconButton color='secondary' type='submit'>
-										<SearchOutlined />
-									</IconButton>
-								</InputAdornment>
-							),
-						}}
-						// focused
-					/>
-				</SearchCityTooltip>
+								'& input, & label': {
+									color: 'primary.main',
+								},
+							}}
+							required
+						/>
+					)}
+				/>
 			</Grid>
 			<Grid xs={'auto'} flexShrink={1}>
 				<Filters />

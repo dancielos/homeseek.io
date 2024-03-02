@@ -13,6 +13,8 @@ export declare global {
 			SECRET_ACCESS_KEY: string;
 			GOOGLE_MAPS_API_KEY: string;
 			S3_URL: string;
+			GOOGLE_MAPS_ID: string;
+			HOMESEEK_SECRET: string;
 		}
 	}
 }

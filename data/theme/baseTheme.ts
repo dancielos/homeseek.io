@@ -201,4 +201,14 @@ baseTheme.components = {
 			},
 		},
 	},
+	MuiCheckbox: {
+		styleOverrides: {
+			root: {
+				// color: baseTheme.palette.secondary.main,
+				'&.Mui-checked': {
+					color: baseTheme.palette.secondary.main,
+				},
+			},
+		},
+	},
 };

@@ -25,6 +25,14 @@ export default function CTA({
 	}
 	// const linkComponent = args.type === 'link' ? Link :
 
+	if (args.type === 'submit') {
+		return (
+			<Button color='secondary' variant={variant} {...args}>
+				{children}
+			</Button>
+		);
+	}
+
 	return (
 		<Button
 			color='secondary'

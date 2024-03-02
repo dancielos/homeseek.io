@@ -11,7 +11,9 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import MailIcon from '@mui/icons-material/Mail';
 import SpeedIcon from '@mui/icons-material/Speed';
 import HolidayVillageIcon from '@mui/icons-material/HolidayVillage';
-import SettingsIcon from '@mui/icons-material/Settings';
+
+import { Suspense } from 'react';
+import LogoutLink from '@/components/forms/login/LogoutLink';
 
 export default function AdminDrawer() {
 	return (
@@ -53,9 +55,11 @@ export default function AdminDrawer() {
 					href='/properties'
 					id='drawer-link-properties'
 				/>
-				<ListItem text='Settings' Icon={SettingsIcon} />
 			</List>
 			<Divider />
+			<Suspense>
+				<LogoutLink />
+			</Suspense>
 		</ClientDrawer>
 	);
 }

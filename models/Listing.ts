@@ -26,8 +26,7 @@ interface Amenities {
 	other: ('onSiteMaintenance' | 'noSmoking')[];
 }
 
-interface Listing {
-	id: number;
+export interface Listing {
 	userId: Types.ObjectId;
 	address: Address;
 	price: number;
@@ -51,10 +50,10 @@ interface Listing {
 		| 'internet'
 		| 'cable'
 	)[];
+	date: Date;
 }
 
 const listingSchema = new Schema<Listing>({
-	id: { type: Number, required: true },
 	userId: { type: Schema.Types.ObjectId, ref: 'User' },
 	address: {
 		street: { type: String, required: true },
@@ -130,6 +129,11 @@ const listingSchema = new Schema<Listing>({
 				enum: ['heating', 'water', 'electricity', 'internet', 'cable'],
 			},
 		],
+		required: true,
+	},
+	date: {
+		type: Schema.Types.Date,
+		default: Date.now,
 		required: true,
 	},
 });

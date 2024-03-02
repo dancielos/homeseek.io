@@ -1,4 +1,4 @@
-import ListingForm from '@/components/client/admin/ListingForm';
+import ListingForm from '@/components/forms/admin/ListingForm';
 
 export default function NewProperty() {
 	return (

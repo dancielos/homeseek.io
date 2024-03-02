@@ -12,12 +12,16 @@ export const PROPERTY_TYPE = {
 export type PropertyType = keyof typeof PROPERTY_TYPE;
 
 export type PropertyListing = {
+	id: string;
 	propertyType: PropertyType;
 	bedrooms: number;
 	bathrooms: number;
 	address: string;
-	img: string;
+	img: string[];
 	price: number;
+	lat: number;
+	lng: number;
+	userId: string;
 };
 
 export type City = {
@@ -35,4 +39,45 @@ export type Address = {
 	city: string;
 	province: string;
 	postalCode: string;
+};
+
+export type Coords = {
+	lat: number;
+	lng: number;
+};
+
+export type Bounds = {
+	northeast: {
+		lat: number;
+		lng: number;
+	};
+	southwest: {
+		lat: number;
+		lng: number;
+	};
+};
+
+export type CoordsWithBounds = {
+	bounds: Bounds;
+} & Coords;
+
+export type MessagesRow = {
+	id: string;
+	name: string;
+	message: string;
+	// actions: string;
+	listingId: string;
+	date: string;
+	listing: string;
+	phoneNumber: string;
+	emailAddress: string;
+};
+
+export type ListingSelectOptions = {
+	value:
+		| string
+		| {
+				[key: string]: string;
+		  };
+	label: string;
 };

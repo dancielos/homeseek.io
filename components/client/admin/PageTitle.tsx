@@ -7,12 +7,14 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { usePathname } from 'next/navigation';
 import CTA from '../CTA';
 
-export default function PageTitle() {
+export default function PageTitle({ title = '' }: { title?: string }) {
 	const pathname = usePathname();
-	let title = '';
+
 	if (pathname === '/properties') title = 'Properties';
 	else if (pathname === '/properties/new') title = 'Add New Property';
 	else if (pathname === '/edit') title = 'Edit Property';
+	else if (pathname === '/messages') title = 'Messages';
+	// else if (pathname === '/dashboard') title = `${}`
 	return (
 		<Grid
 			container
@@ -32,6 +34,7 @@ export default function PageTitle() {
 						},
 						textAlign: 'left',
 					}}
+					id='dashboard-title'
 				>
 					{title}
 				</H1>
@@ -41,7 +44,7 @@ export default function PageTitle() {
 					</CTA>
 				)}
 			</Grid>
-			{pathname === '/properties' && (
+			{/* {pathname === '/properties' && (
 				<Grid xs={10} sm={5} display='flex' justifyContent='flex-end'>
 					<TextField
 						size='small'
@@ -51,7 +54,7 @@ export default function PageTitle() {
 					/>
 					<Button variant='subtle'>Search</Button>
 				</Grid>
-			)}
+			)} */}
 		</Grid>
 	);
 }

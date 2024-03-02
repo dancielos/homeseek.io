@@ -1,8 +1,14 @@
 describe('Admin Page Theme Switching', () => {
 	beforeEach(() => {
-		cy.visit(`${Cypress.config().baseUrl}/dashboard`);
+		cy.visit(`${Cypress.config().baseUrl}/login`);
 		// Clear localStorage before each test
 		cy.clearLocalStorage();
+
+		cy.get('form#login-form').within(() => {
+			cy.get('input[name=email]').type('demo@homeseek.io');
+			cy.get('input[name=password]').type('Password123!');
+			cy.get('button[type=submit]').click();
+		});
 	});
 
 	it('should initially have no theme set in localStorage', () => {
