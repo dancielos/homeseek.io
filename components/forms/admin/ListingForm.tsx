@@ -3,9 +3,7 @@
 import H2 from '@/components/htmlElements/H2';
 import H3 from '@/components/htmlElements/H3';
 import {
-	Box,
 	Button,
-	ButtonGroup,
 	Checkbox,
 	Divider,
 	FormControl,
@@ -21,7 +19,7 @@ import {
 	styled,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import CTA from '../CTA';
+import CTA from '../../client/CTA';
 import {
 	AttachMoney,
 	BedOutlined,
@@ -30,6 +28,7 @@ import {
 	Shower,
 	ShowerOutlined,
 } from '@mui/icons-material';
+import InfoBox from '@/components/htmlElements/InfoBox';
 
 const customH2Style: SxProps = {
 	fontSize: {
@@ -256,6 +255,14 @@ export default function ListingForm({
 				</Paper>
 			</Grid>
 
+			<Grid xs={10}>
+				<Paper elevation={3}>
+					<FormControlLabel
+						control={<Checkbox id='agreement' name='agreement' />}
+						label='By checking this checkbox, you agree to the terms and conditions.'
+					/>
+				</Paper>
+			</Grid>
 			<Grid
 				xs={10}
 				sx={{
