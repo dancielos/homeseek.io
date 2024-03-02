@@ -12,7 +12,7 @@ export type AdminListing = {
 	street: string;
 	cityProvince: string;
 	propertyType: (typeof PROPERTY_TYPE)[PropertyType];
-	price: string;
+	price: number;
 	numBedrooms: number;
 	numBathrooms: number;
 	date: string;
@@ -29,7 +29,7 @@ export default async function getListingsForAdmin(): Promise<AdminListing[]> {
 			street: listing.address.street,
 			cityProvince: `${listing.address.city}, ${listing.address.province}`,
 			propertyType: PROPERTY_TYPE[listing.propertyType as PropertyType],
-			price: formatPrice(listing.price),
+			price: listing.price,
 			numBedrooms: listing.numBedrooms,
 			numBathrooms: listing.numBathrooms,
 			date: formatDate(listing.date, 'long'),
