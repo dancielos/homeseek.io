@@ -30,6 +30,7 @@ import {
 } from '@mui/icons-material';
 import InfoBox from '@/components/htmlElements/InfoBox';
 import Agreement from './Agreement';
+import ListingTextField from './ListingTextField';
 
 const customH2Style: SxProps = {
 	fontSize: {
@@ -62,37 +63,13 @@ export default function ListingForm({
 					<H2 sx={customH2Style}>Address</H2>
 					<Grid container spacing={3}>
 						<Grid xs={12}>
-							<TextField
-								required
-								id='street'
-								name='street'
-								label='Street'
-								variant='outlined'
-								color='secondary'
-								fullWidth
-							/>
+							<ListingTextField name='street' />
 						</Grid>
 						<Grid xs={12} md={6}>
-							<TextField
-								required
-								id='cityProvince'
-								name='cityProvince'
-								label='City, Province'
-								fullWidth
-								variant='outlined'
-								color='secondary'
-							/>
+							<ListingTextField name='cityProvince' label='City, Province' />
 						</Grid>
 						<Grid xs={12} md={6}>
-							<TextField
-								required
-								id='postalCode'
-								name='postalCode'
-								label='Postal Code'
-								fullWidth
-								variant='outlined'
-								color='secondary'
-							/>
+							<ListingTextField name='postalCode' label='Postal Code' />
 						</Grid>
 					</Grid>
 					<Divider sx={{ my: 2 }} />
@@ -119,15 +96,9 @@ export default function ListingForm({
 							</FormControl>
 						</Grid>
 						<Grid xs={12} md={6}>
-							<TextField
+							<ListingTextField
+								name='price'
 								type='number'
-								variant='outlined'
-								required
-								name='lastName'
-								id='outlined-start-adornment'
-								label='Price'
-								color='secondary'
-								fullWidth
 								InputProps={{
 									startAdornment: (
 										<InputAdornment position='start'>
@@ -138,15 +109,10 @@ export default function ListingForm({
 							/>
 						</Grid>
 						<Grid xs={12} md={6}>
-							<TextField
+							<ListingTextField
+								name='numBedrooms'
 								type='number'
-								variant='outlined'
-								required
-								name='lastName'
-								id='outlined-start-adornment'
 								label='# of Bedrooms'
-								color='secondary'
-								fullWidth
 								InputProps={{
 									startAdornment: (
 										<InputAdornment position='start'>
@@ -157,15 +123,10 @@ export default function ListingForm({
 							/>
 						</Grid>
 						<Grid xs={12} md={6}>
-							<TextField
+							<ListingTextField
+								name='numBathrooms'
 								type='number'
-								variant='outlined'
-								required
-								name='lastName'
-								id='outlined-start-adornment'
 								label='# of Bathrooms'
-								fullWidth
-								color='secondary'
 								InputProps={{
 									startAdornment: (
 										<InputAdornment position='start'>
@@ -176,15 +137,9 @@ export default function ListingForm({
 							/>
 						</Grid>
 						<Grid xs={12}>
-							<TextField
-								type='number'
-								variant='outlined'
-								required
-								name='lastName'
-								id='outlined-start-adornment'
+							<ListingTextField
+								name='about'
 								label='About the listing'
-								fullWidth
-								color='secondary'
 								multiline
 								rows={6}
 							/>
