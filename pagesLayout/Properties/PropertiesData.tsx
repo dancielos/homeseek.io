@@ -45,7 +45,7 @@ export default function PropertiesData({
 		{
 			field: 'actions',
 			headerName: 'Actions',
-			minWidth: 240,
+			minWidth: 200,
 			sortable: false,
 			disableColumnMenu: true,
 			renderCell: (params: GridRenderCellParams<any, string>) => (

@@ -97,8 +97,10 @@ export default function ViewsReport() {
 						onClick={() => setOpen(true)}
 						sx={{
 							minWidth: {
-								xs: 0.24,
-								sm: 0.16,
+								xm: 0.48,
+								xs: 0.4,
+								sm: 0.32,
+								md: 0.2,
 							},
 							alignSelf: 'flex-start',
 							px: {

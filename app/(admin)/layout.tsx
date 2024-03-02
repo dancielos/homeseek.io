@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, useEffect } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 import Box from '@mui/material/Box';
 
