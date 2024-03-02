@@ -5,14 +5,26 @@ import connectDB from '../db';
 import { PropertyListing, PropertyType } from '@/data/types';
 import formatAddress from '../formatAddress';
 
+export type FeaturedListing = {
+	id: string;
+	address: string;
+	propertyType: PropertyType;
+	bedrooms: number;
+	bathrooms: number;
+	img: string[];
+	price: number;
+	lat: number;
+	lng: number;
+};
+
 export default async function getFeaturedListings(): Promise<
-	PropertyListing[]
+	FeaturedListing[]
 > {
 	try {
 		await connectDB();
 
 		const featuredListings = await ListingModel.find({ featured: true }).exec();
-		const formattedListings: PropertyListing[] = featuredListings.map((l) => {
+		const formattedListings: FeaturedListing[] = featuredListings.map((l) => {
 			const address = formatAddress(
 				l.address.street,
 				l.address.city,

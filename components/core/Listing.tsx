@@ -23,12 +23,13 @@ import ImageSlider from '../ImageSlider/ImageSlider';
 import { Listing } from '@/models/Listing';
 import { TypeImage } from '../ImageSlider/types/types';
 import formatPrice from '@/utils/formatPrice';
+import { FeaturedListing } from '@/utils/server-actions/getFeaturedListings';
 
-interface ListingProps extends PropertyListing {
+type ListingProps = {
 	size?: 'sm' | 'md' | 'lg';
 	variant?: 'landscape' | 'portrait';
 	i: number;
-}
+} & (PropertyListing | FeaturedListing);
 
 export default function Listing({
 	size = 'sm',

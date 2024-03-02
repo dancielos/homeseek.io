@@ -1,11 +1,11 @@
 import Listing from '@/components/core/Listing';
-import { PropertyListing } from '@/data/types';
+import { FeaturedListing } from '@/utils/server-actions/getFeaturedListings';
 import Grid from '@mui/material/Unstable_Grid2';
 
 export default function Bento({
 	listings = [],
 }: {
-	listings: PropertyListing[];
+	listings: FeaturedListing[];
 }) {
 	// console.log(listings[0].id);
 	return (
