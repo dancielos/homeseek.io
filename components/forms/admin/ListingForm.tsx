@@ -8,58 +8,23 @@ import Agreement from './Agreement';
 import AddressBasicDetails from './AddressBasicDetails';
 import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 import ImageUpload from './ImageUpload';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useFormState } from 'react-dom';
-
-const AMENITIES_FEATURES = [
-	'On-Site Staff',
-	'Fitness Area',
-	'Laundry Facilities',
-	'Parking - Underground',
-	'Elevator',
-	'Storage Lockers',
-	'Recreation Room',
-	'Swimming Pool',
-	'Balcony',
-	'Central Heating',
-	'Air Conditioning',
-	'Pet Friendly',
-	'Wheelchair Accessible',
-	'Gymnasium',
-	'Roof Deck',
-	'24/7 Security',
-	'Concierge Service',
-	'BBQ Area',
-	'Garden',
-	'Childcare Facility',
-];
-
-const AMENITIES_NEARBY = [
-	'Schools',
-	'Shopping',
-	'Convenience Store',
-	'Public Transit',
-	'Parks',
-	'Restaurants',
-	'Pharmacy',
-	'Gym/Fitness Center',
-	'Hospital/Clinic',
-	'Library',
-];
+import { AMENITIES_FEATURES, AMENITIES_NEARBY } from '@/data/constants';
 
 export default function ListingForm({
 	id = 'new-property-form',
 }: {
 	id: string;
 }) {
-	const [valueFeatures, setValueFeatures] = useState<string[]>([
-		AMENITIES_FEATURES[0],
-	]);
+	const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
+	const [valueNearby, setValueNearby] = useState([AMENITIES_NEARBY[0]]);
+	const [valueOthers, setValueOthers] = useState([]);
 
 	// const debouncedFeatures = useDebounce(valueFeatures);
 
-	async function test(prevState: string, formData: FormData) {
+	function test(prevState: string, formData: FormData) {
 		console.log(Array.from(formData.entries()));
 		// console.log({ debouncedFeatures });
 		return '';
@@ -90,11 +55,15 @@ export default function ListingForm({
 				}}
 			>
 				<input type='hidden' name='amenities-features' value={valueFeatures} />
+				<input type='hidden' name='amenities-nearby' value={valueNearby} />
+
 				<FeaturesAmenitiesUtilities
-					featuresOptions={AMENITIES_FEATURES}
 					valueFeatures={valueFeatures}
 					setValueFeatures={setValueFeatures}
+					valueNearby={valueNearby}
+					setValueNearby={setValueNearby}
 				/>
+
 				<ImageUpload />
 			</Grid>
 

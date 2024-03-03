@@ -148,3 +148,39 @@ export const customH2Style: SxProps = {
 		md: '1.4rem',
 	},
 };
+
+export const AMENITIES_FEATURES = [
+	'On-Site Staff',
+	'Fitness Area',
+	'Laundry Facilities',
+	'Parking - Underground',
+	'Elevator',
+	'Storage Lockers',
+	'Recreation Room',
+	'Swimming Pool',
+	'Balcony',
+	'Central Heating',
+	'Air Conditioning',
+	'Pet Friendly',
+	'Wheelchair Accessible',
+	'Gymnasium',
+	'Roof Deck',
+	'24/7 Security',
+	'Concierge Service',
+	'BBQ Area',
+	'Garden',
+	'Childcare Facility',
+];
+
+export const AMENITIES_NEARBY = [
+	'Public Transit',
+	'Schools',
+	'Shopping',
+	'Convenience Store',
+	'Parks',
+	'Restaurants',
+	'Pharmacy',
+	'Gym/Fitness Center',
+	'Hospital/Clinic',
+	'Library',
+];

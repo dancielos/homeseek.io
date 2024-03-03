@@ -1,7 +1,11 @@
 'use client';
 
 import H2 from '@/components/htmlElements/H2';
-import { customH2Style } from '@/data/constants';
+import {
+	AMENITIES_FEATURES,
+	AMENITIES_NEARBY,
+	customH2Style,
+} from '@/data/constants';
 import { CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
 import {
 	Autocomplete,
@@ -13,56 +17,30 @@ import {
 	TextField,
 } from '@mui/material';
 
-import { Dispatch, SetStateAction, useMemo, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
+import AutocompleteAmenities from './AutocompleteAmenities';
+import AutocompleteOthers from './AutocompleteOthers';
+import ListingTextField from './ListingTextField';
 
-const AMENITIES_FEATURES = [
-	'On-Site Staff',
-	'Fitness Area',
-	'Laundry Facilities',
-	'Parking - Underground',
-	'Elevator',
-	'Storage Lockers',
-	'Recreation Room',
-	'Swimming Pool',
-	'Balcony',
-	'Central Heating',
-	'Air Conditioning',
-	'Pet Friendly',
-	'Wheelchair Accessible',
-	'Gymnasium',
-	'Roof Deck',
-	'24/7 Security',
-	'Concierge Service',
-	'BBQ Area',
-	'Garden',
-	'Childcare Facility',
-];
+// import dynamic from 'next/dynamic';
 
-const AMENITIES_NEARBY = [
-	'Schools',
-	'Shopping',
-	'Convenience Store',
-	'Public Transit',
-	'Parks',
-	'Restaurants',
-	'Pharmacy',
-	'Gym/Fitness Center',
-	'Hospital/Clinic',
-	'Library',
-];
+// const AutocompleteAmenities = dynamic(() => import('./AutocompleteAmenities'));
 
 const icon = <CheckBoxOutlineBlank fontSize='small' />;
 const checkedIcon = <CheckBox fontSize='small' />;
 
 export default function FeaturesAmenitiesUtilities({
-	featuresOptions,
 	valueFeatures,
 	setValueFeatures,
+	valueNearby,
+	setValueNearby,
 }: {
-	featuresOptions: string[];
 	valueFeatures: string[];
 	setValueFeatures: Dispatch<SetStateAction<string[]>>;
+	valueNearby: string[];
+	setValueNearby: Dispatch<SetStateAction<string[]>>;
 }) {
+	// const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	// const [valueNearby, setValueNearby] = useState<string[]>([AMENITIES_FEATURES[0]]);
 
 	// console.log(value);
@@ -70,86 +48,33 @@ export default function FeaturesAmenitiesUtilities({
 		<Paper elevation={3}>
 			<H2 sx={customH2Style}>Features and Amenities</H2>
 
-			<Autocomplete
-				multiple
+			<AutocompleteAmenities
+				label='Features'
 				value={valueFeatures}
-				onChange={(event: any, newValue: string[]) => {
-					setValueFeatures(newValue);
-				}}
+				setValue={setValueFeatures}
 				options={AMENITIES_FEATURES}
-				disableCloseOnSelect
-				renderOption={(props, option, { selected }) => (
-					<li {...props} key={option}>
-						<Checkbox
-							icon={icon}
-							checkedIcon={checkedIcon}
-							style={{ marginRight: 8 }}
-							checked={selected}
-						/>
-						{option}
-					</li>
-				)}
-				renderTags={(value: string[], getTagProps) =>
-					value.map((option: string, index: number) => (
-						<Chip
-							variant='outlined'
-							label={option}
-							{...getTagProps({ index })}
-						/>
-					))
-				}
-				renderInput={(params) => (
-					<TextField
-						{...params}
-						value={valueFeatures}
-						variant='outlined'
-						label='Features'
-						color='secondary'
-					/>
-				)}
 			/>
+			<Divider sx={{ m: 2 }} />
 
-			<Autocomplete
-				multiple
-				// value={value}
-				// onChange={(event: any, newValue: string[]) => {
-				// 	setValue(newValue);
-				// }}
+			<AutocompleteAmenities
+				label='Nearby'
+				value={valueNearby}
+				setValue={setValueNearby}
 				options={AMENITIES_NEARBY}
-				disableCloseOnSelect
-				renderOption={(props, option, { selected }) => (
-					<li {...props} key={option}>
-						<Checkbox
-							icon={icon}
-							checkedIcon={checkedIcon}
-							style={{ marginRight: 8 }}
-							checked={selected}
-						/>
-						{option}
-					</li>
-				)}
-				renderTags={(value: string[], getTagProps) =>
-					value.map((option: string, index: number) => (
-						<Chip
-							variant='outlined'
-							label={option}
-							{...getTagProps({ index })}
-						/>
-					))
-				}
-				renderInput={(params) => (
-					<TextField
-						{...params}
-						variant='outlined'
-						label='Nearby'
-						id='amenities-nearby'
-						name='amenities-nearby'
-						color='secondary'
-					/>
-				)}
 			/>
 
-			<Divider sx={{ my: 2 }} />
+			<Divider sx={{ m: 2 }} />
+
+			<ListingTextField
+				name='amenities-others'
+				label='Others'
+				placeholder='Separate values with comma (,)'
+				multiline
+				rows={6}
+				required={false}
+			/>
+
+			{/* <Divider sx={{ my: 2 }} />
 			<H2 sx={customH2Style}>Utilities Included</H2>
 			<FormControlLabel required control={<Checkbox />} label='Dishwasher' />
 			<FormControlLabel
@@ -157,7 +82,7 @@ export default function FeaturesAmenitiesUtilities({
 				control={<Checkbox />}
 				label='Laundry machine'
 			/>
-			<FormControlLabel required control={<Checkbox />} label='Oven range' />
+			<FormControlLabel required control={<Checkbox />} label='Oven range' /> */}
 		</Paper>
 	);
 }
