@@ -19,7 +19,6 @@ import {
 
 import { Dispatch, SetStateAction, useState } from 'react';
 import AutocompleteAmenities from './AutocompleteAmenities';
-import AutocompleteOthers from './AutocompleteOthers';
 import ListingTextField from './ListingTextField';
 
 // import dynamic from 'next/dynamic';
@@ -29,17 +28,9 @@ import ListingTextField from './ListingTextField';
 const icon = <CheckBoxOutlineBlank fontSize='small' />;
 const checkedIcon = <CheckBox fontSize='small' />;
 
-export default function FeaturesAmenitiesUtilities({
-	valueFeatures,
-	setValueFeatures,
-	valueNearby,
-	setValueNearby,
-}: {
-	valueFeatures: string[];
-	setValueFeatures: Dispatch<SetStateAction<string[]>>;
-	valueNearby: string[];
-	setValueNearby: Dispatch<SetStateAction<string[]>>;
-}) {
+export default function FeaturesAmenitiesUtilities() {
+	const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
+	const [valueNearby, setValueNearby] = useState([AMENITIES_NEARBY[0]]);
 	// const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	// const [valueNearby, setValueNearby] = useState<string[]>([AMENITIES_FEATURES[0]]);
 
@@ -48,6 +39,7 @@ export default function FeaturesAmenitiesUtilities({
 		<Paper elevation={3}>
 			<H2 sx={customH2Style}>Features and Amenities</H2>
 
+			<input type='hidden' name='amenities-features' value={valueFeatures} />
 			<AutocompleteAmenities
 				label='Features'
 				value={valueFeatures}
@@ -56,6 +48,7 @@ export default function FeaturesAmenitiesUtilities({
 			/>
 			<Divider sx={{ m: 2 }} />
 
+			<input type='hidden' name='amenities-nearby' value={valueNearby} />
 			<AutocompleteAmenities
 				label='Nearby'
 				value={valueNearby}

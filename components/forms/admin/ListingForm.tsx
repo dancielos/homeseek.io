@@ -12,26 +12,25 @@ import { Suspense, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useFormState } from 'react-dom';
 import { AMENITIES_FEATURES, AMENITIES_NEARBY } from '@/data/constants';
+import createListing from '@/utils/server-actions/createListing';
 
 export default function ListingForm({
 	id = 'new-property-form',
 }: {
 	id: string;
 }) {
-	const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
-	const [valueNearby, setValueNearby] = useState([AMENITIES_NEARBY[0]]);
-	const [valueOthers, setValueOthers] = useState([]);
-
 	// const debouncedFeatures = useDebounce(valueFeatures);
 
-	function test(prevState: string, formData: FormData) {
-		console.log(Array.from(formData.entries()));
-		// console.log({ debouncedFeatures });
-		return '';
-	}
+	// function test(prevState: string, formData: FormData) {
+	// 	console.log(Array.from(formData.entries()));
+	// 	// console.log({ debouncedFeatures });
+	// 	return '';
+	// }
 
 	// const test2 = test.bind(null, { features: debouncedFeatures });
-	const [response, formAction] = useFormState(test, '');
+	const [response, formAction] = useFormState(createListing, []);
+
+	console.log(`RESPONSE: ${response}`);
 
 	return (
 		<Grid
@@ -54,15 +53,7 @@ export default function ListingForm({
 					gap: 2,
 				}}
 			>
-				<input type='hidden' name='amenities-features' value={valueFeatures} />
-				<input type='hidden' name='amenities-nearby' value={valueNearby} />
-
-				<FeaturesAmenitiesUtilities
-					valueFeatures={valueFeatures}
-					setValueFeatures={setValueFeatures}
-					valueNearby={valueNearby}
-					setValueNearby={setValueNearby}
-				/>
+				<FeaturesAmenitiesUtilities />
 
 				<ImageUpload />
 			</Grid>
