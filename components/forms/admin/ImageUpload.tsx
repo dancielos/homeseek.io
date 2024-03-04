@@ -1,4 +1,4 @@
-import { CloudUpload, Delete } from '@mui/icons-material';
+import { CloudUpload, Delete, Upload } from '@mui/icons-material';
 import {
 	Box,
 	Button,
@@ -116,6 +116,9 @@ export default function ImageUpload() {
 				/>
 				<div {...getRootProps({ className: styles['dropzone'] })}>
 					<input {...getInputProps()} />
+					<Box display='flex' justifyContent='center' mb={2}>
+						<CloudUpload fontSize='large' />
+					</Box>
 					<Typography textAlign='center'>
 						Upload your images by clicking this box or simply dragging and
 						dropping them here.
