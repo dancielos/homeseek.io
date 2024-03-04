@@ -1,8 +1,9 @@
-import { CloudUpload } from '@mui/icons-material';
+import { CloudUpload, Delete } from '@mui/icons-material';
 import {
 	Box,
 	Button,
 	Card,
+	CardActions,
 	CardContent,
 	CardMedia,
 	IconButton,
@@ -64,36 +65,32 @@ export default function ImageUpload() {
 		}
 		const newFiles = acceptedFiles
 			.filter((file, i) => {
-				// console.log({ i, currentFileCount });
 				if (currentFileCount < MAX_NUMBER_FILES) {
 					currentFileCount++;
-					// console.log('returning');
 					return file;
 				}
 			})
 			.map((file, i) => {
-				// console.log({ i, file });
 				return Object.assign(file, {
 					preview: URL.createObjectURL(file),
 				});
 			});
-		// console.log('setting files');
 		setFiles((prevFiles) => [...prevFiles, ...newFiles]);
 	}
-	// console.log(files);
-	// console.log(getInputProps());
 
-	// console.log({ acceptedFiles });
-	// console.log({ fileRejections });
-
-	// const files = acceptedFiles.map((file) => (
-	// 	<li key={file.name}>
-	// 		{file.name} - {file.size} bytes
-	// 	</li>
-	// ));
+	function handleDeleteImage(index: number) {
+		if (fileCount <= 0) {
+			setOpenSnackbar('Something went wrong, please try again later.');
+			return;
+		}
+		setFiles((prevFiles) => {
+			const newFiles = [...prevFiles];
+			newFiles.splice(index, 1);
+			return newFiles;
+		});
+	}
 
 	useEffect(() => {
-		// Make sure to revoke the data uris to avoid memory leaks, will run on unmount
 		return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
 	}, []);
 
@@ -129,7 +126,7 @@ export default function ImageUpload() {
 			</aside> */}
 				<aside className={styles['thumbsContainer']}>
 					{files.map((file, i) => (
-						<Card sx={{ display: 'flex', width: '100%' }} key={i}>
+						<Card sx={{ width: '100%' }} key={i}>
 							<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 								<CardMedia
 									component='img'
@@ -146,6 +143,18 @@ export default function ImageUpload() {
 										{file.name}
 									</Typography>
 								</CardContent>
+								<CardActions
+									sx={{
+										justifySelf: 'end',
+									}}
+								>
+									<IconButton
+										aria-label='delete'
+										onClick={() => handleDeleteImage(i)}
+									>
+										<Delete />
+									</IconButton>
+								</CardActions>
 							</Box>
 						</Card>
 					))}
