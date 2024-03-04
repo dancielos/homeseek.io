@@ -1,0 +1,35 @@
+.dropzone {
+	padding: 2.4rem 1rem;
+}
+
+.thumbsContainer {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-top: 2rem;
+	gap: 1rem;
+}
+
+.thumb {
+	display: inline-flex;
+	border-radius: 2px;
+	border: 1px solid #eaeaea;
+	margin-bottom: 8px;
+	margin-right: 8px;
+	width: 100px;
+	height: 100px;
+	padding: 4px;
+	box-sizing: border-box;
+}
+
+.thumbInner {
+	display: flex;
+	min-width: 0;
+	overflow: hidden;
+}
+
+.img {
+	display: block;
+	width: auto;
+	height: 100%;
+}
