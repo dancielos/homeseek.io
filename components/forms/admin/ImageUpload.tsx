@@ -108,6 +108,12 @@ export default function ImageUpload() {
 			)}
 
 			<FormContainer title='Images'>
+				<input
+					type='hiddden'
+					name='img'
+					id='img-hidden'
+					value={JSON.stringify(files.map((file) => file.name))}
+				/>
 				<div {...getRootProps({ className: styles['dropzone'] })}>
 					<input {...getInputProps()} />
 					<Typography textAlign='center'>

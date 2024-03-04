@@ -39,7 +39,11 @@ export default function FeaturesAmenitiesUtilities() {
 	// console.log(value);
 	return (
 		<FormContainer title='Features and Amenities'>
-			<input type='hidden' name='amenities-features' value={valueFeatures} />
+			<input
+				type='hidden'
+				name='amenities-features'
+				value={JSON.stringify(valueFeatures)}
+			/>
 			<AutocompleteAmenities
 				label='Features'
 				value={valueFeatures}
@@ -48,7 +52,11 @@ export default function FeaturesAmenitiesUtilities() {
 			/>
 			<Divider sx={{ m: 2 }} />
 
-			<input type='hidden' name='amenities-nearby' value={valueNearby} />
+			<input
+				type='hidden'
+				name='amenities-nearby'
+				value={JSON.stringify(valueNearby)}
+			/>
 			<AutocompleteAmenities
 				label='Nearby'
 				value={valueNearby}
