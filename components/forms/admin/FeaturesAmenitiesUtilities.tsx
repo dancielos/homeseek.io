@@ -83,7 +83,7 @@ export default function FeaturesAmenitiesUtilities() {
 					label={utility}
 					key={`${utility}-${i}`}
 					name='utilities'
-					value={utility}
+					defaultValue={utility}
 					id={`utilities-${utility}`}
 				/>
 			))}
