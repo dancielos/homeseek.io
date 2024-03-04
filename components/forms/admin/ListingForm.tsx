@@ -54,10 +54,10 @@ export default function ListingForm({
 				}}
 			>
 				<FeaturesAmenitiesUtilities />
-
+			</Grid>
+			<Grid xs={10}>
 				<ImageUpload />
 			</Grid>
-
 			<Grid xs={10}>
 				<Agreement />
 			</Grid>

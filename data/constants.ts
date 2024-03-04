@@ -184,3 +184,11 @@ export const AMENITIES_NEARBY = [
 	'Hospital/Clinic',
 	'Library',
 ];
+
+export const UTILITIES_INCLUDED = [
+	'Electricity',
+	'Water',
+	'Internet',
+	'Cable',
+	'Gas',
+];

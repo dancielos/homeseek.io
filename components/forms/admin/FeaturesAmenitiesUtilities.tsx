@@ -4,6 +4,7 @@ import H2 from '@/components/htmlElements/H2';
 import {
 	AMENITIES_FEATURES,
 	AMENITIES_NEARBY,
+	UTILITIES_INCLUDED,
 	customH2Style,
 } from '@/data/constants';
 import { CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
@@ -67,15 +68,18 @@ export default function FeaturesAmenitiesUtilities() {
 				required={false}
 			/>
 
-			{/* <Divider sx={{ my: 2 }} />
+			<Divider sx={{ my: 3 }} />
 			<H2 sx={customH2Style}>Utilities Included</H2>
-			<FormControlLabel required control={<Checkbox />} label='Dishwasher' />
-			<FormControlLabel
-				required
-				control={<Checkbox />}
-				label='Laundry machine'
-			/>
-			<FormControlLabel required control={<Checkbox />} label='Oven range' /> */}
+			{UTILITIES_INCLUDED.map((utility, i) => (
+				<FormControlLabel
+					control={<Checkbox />}
+					label={utility}
+					key={`${utility}-${i}`}
+					name='utilities'
+					value={utility}
+					id={`utilities-${utility}`}
+				/>
+			))}
 		</Paper>
 	);
 }
