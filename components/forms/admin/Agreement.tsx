@@ -29,6 +29,7 @@ export default function Agreement() {
 			</ol>
 			<Divider />
 			<FormControlLabel
+				required
 				control={<Checkbox id='agreement' name='agreement' />}
 				label='You agree to abide by these terms and conditions by checking the checkbox.'
 			/>

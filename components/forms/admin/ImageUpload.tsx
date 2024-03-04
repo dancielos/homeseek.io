@@ -41,6 +41,9 @@ export default function ImageUpload() {
 				'image/*': ['.jpeg', '.png', '.jpg'],
 			},
 			onDrop: handleOnDrop,
+			onDropRejected: (fileRejections) => {
+				setOpenSnackbar(`Error: Invalid image file. Please try again.`);
+			},
 		});
 
 	function handleCloseSnackbar() {
@@ -61,23 +64,23 @@ export default function ImageUpload() {
 		}
 		const newFiles = acceptedFiles
 			.filter((file, i) => {
-				console.log({ i, currentFileCount });
+				// console.log({ i, currentFileCount });
 				if (currentFileCount < MAX_NUMBER_FILES) {
 					currentFileCount++;
-					console.log('returning');
+					// console.log('returning');
 					return file;
 				}
 			})
 			.map((file, i) => {
-				console.log({ i, file });
+				// console.log({ i, file });
 				return Object.assign(file, {
 					preview: URL.createObjectURL(file),
 				});
 			});
-		console.log('setting files');
+		// console.log('setting files');
 		setFiles((prevFiles) => [...prevFiles, ...newFiles]);
 	}
-	console.log(files);
+	// console.log(files);
 	// console.log(getInputProps());
 
 	// console.log({ acceptedFiles });
@@ -108,24 +111,18 @@ export default function ImageUpload() {
 			)}
 
 			<FormContainer title='Images'>
-				<Paper
-					elevation={4}
-					sx={{
-						border: '2px dashed',
-					}}
-				>
-					<div {...getRootProps({ className: styles['dropzone'] })}>
-						<input {...getInputProps()} />
-						<Typography textAlign='center'>
-							Upload your images by clicking this box or simply dragging and
-							dropping them here.
-						</Typography>
-						<Typography textAlign='center' variant='body2' fontStyle='italic-'>
-							Note: Only {MAX_NUMBER_FILES} images (.jpg, .jpeg, .png) will be
-							accepted.
-						</Typography>
-					</div>
-				</Paper>
+				<div {...getRootProps({ className: styles['dropzone'] })}>
+					<input {...getInputProps()} />
+					<Typography textAlign='center'>
+						Upload your images by clicking this box or simply dragging and
+						dropping them here.
+					</Typography>
+					<Typography textAlign='center' variant='body2' fontStyle='italic-'>
+						Note: Only {MAX_NUMBER_FILES} images (.jpg, .jpeg, .png) will be
+						accepted.
+					</Typography>
+				</div>
+
 				{/* <aside>
 				<h4>Files</h4>
 				<ul>{files}</ul>

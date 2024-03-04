@@ -1,5 +1,6 @@
 .dropzone {
 	padding: 2.4rem 1rem;
+	border: 2px dashed;
 }
 
 .thumbsContainer {
