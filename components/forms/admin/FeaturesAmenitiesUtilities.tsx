@@ -21,6 +21,7 @@ import {
 import { Dispatch, SetStateAction, useState } from 'react';
 import AutocompleteAmenities from './AutocompleteAmenities';
 import ListingTextField from './ListingTextField';
+import FormContainer from './FormContainer';
 
 // import dynamic from 'next/dynamic';
 
@@ -37,9 +38,7 @@ export default function FeaturesAmenitiesUtilities() {
 
 	// console.log(value);
 	return (
-		<Paper elevation={3}>
-			<H2 sx={customH2Style}>Features and Amenities</H2>
-
+		<FormContainer title='Features and Amenities'>
 			<input type='hidden' name='amenities-features' value={valueFeatures} />
 			<AutocompleteAmenities
 				label='Features'
@@ -80,6 +79,6 @@ export default function FeaturesAmenitiesUtilities() {
 					id={`utilities-${utility}`}
 				/>
 			))}
-		</Paper>
+		</FormContainer>
 	);
 }

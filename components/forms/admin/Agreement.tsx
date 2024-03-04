@@ -1,16 +1,9 @@
-import H3 from '@/components/htmlElements/H3';
-import {
-	Checkbox,
-	Divider,
-	FormControlLabel,
-	List,
-	Paper,
-	Typography,
-} from '@mui/material';
+import { Checkbox, Divider, FormControlLabel, Typography } from '@mui/material';
+import FormContainer from './FormContainer';
 
 export default function Agreement() {
 	return (
-		<Paper elevation={3}>
+		<FormContainer>
 			<Typography variant='h4'>Terms and conditions:</Typography>
 			<ol>
 				<li>
@@ -39,6 +32,6 @@ export default function Agreement() {
 				control={<Checkbox id='agreement' name='agreement' />}
 				label='You agree to abide by these terms and conditions by checking the checkbox.'
 			/>
-		</Paper>
+		</FormContainer>
 	);
 }

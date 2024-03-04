@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import { Divider, InputAdornment, Paper } from '@mui/material';
+import { Divider, InputAdornment } from '@mui/material';
 
 import H2 from '@/components/htmlElements/H2';
 import ListingTextField from './ListingTextField';
@@ -10,11 +10,11 @@ import {
 	customH2Style,
 } from '@/data/constants';
 import { AttachMoney, BedOutlined, ShowerOutlined } from '@mui/icons-material';
+import FormContainer from './FormContainer';
 
 export default function AddressBasicDetails() {
 	return (
-		<Paper elevation={3}>
-			<H2 sx={customH2Style}>Address</H2>
+		<FormContainer title='Address'>
 			<Grid container spacing={3}>
 				<Grid xs={12}>
 					<ListingTextField name='street' />
@@ -92,6 +92,6 @@ export default function AddressBasicDetails() {
 					/>
 				</Grid>
 			</Grid>
-		</Paper>
+		</FormContainer>
 	);
 }

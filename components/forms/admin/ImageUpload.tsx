@@ -1,8 +1,7 @@
-import H2 from '@/components/htmlElements/H2';
-import { customH2Style } from '@/data/constants';
 import { CloudUpload } from '@mui/icons-material';
-import { Button, Paper, TextField, styled } from '@mui/material';
+import { Button } from '@mui/material';
 import { useRef } from 'react';
+import FormContainer from './FormContainer';
 
 // const VisuallyHiddenInput = styled('input')({
 // 	clip: 'rect(0 0 0 0)',
@@ -22,8 +21,7 @@ export default function ImageUpload() {
 		console.log(imageUploadRef.current?.files);
 	}
 	return (
-		<Paper elevation={3}>
-			<H2 sx={customH2Style}>Images</H2>
+		<FormContainer title='Images'>
 			<Button component='label' variant='contained' startIcon={<CloudUpload />}>
 				Upload file
 			</Button>
@@ -34,6 +32,6 @@ export default function ImageUpload() {
 				accept='image/png, image/gif, image/jpeg, image/jpg'
 				multiple
 			/>
-		</Paper>
+		</FormContainer>
 	);
 }
