@@ -1,5 +1,6 @@
 import { CloudUpload, Delete, Upload } from '@mui/icons-material';
 import {
+	Alert,
 	Box,
 	Button,
 	Card,
@@ -23,7 +24,11 @@ interface FileWithPreview extends File {
 
 const MAX_NUMBER_FILES = 5;
 
-export default function ImageUpload() {
+export default function ImageUpload({
+	invalidInputs = [],
+}: {
+	invalidInputs?: string[];
+}) {
 	// const imageUploadRef = useRef<HTMLInputElement>(null);
 	// function test() {
 	// 	console.log(imageUploadRef.current?.files);
@@ -46,6 +51,8 @@ export default function ImageUpload() {
 				setOpenSnackbar(`Error: Invalid image file. Please try again.`);
 			},
 		});
+
+	const isError = invalidInputs.includes('img');
 
 	function handleCloseSnackbar() {
 		setOpenSnackbar(null);
@@ -168,7 +175,14 @@ export default function ImageUpload() {
 						</Card>
 					))}
 				</aside>
-
+				{isError ? (
+					<Alert severity='error'>
+						Please upload at least one image, and make sure it's a valid image
+						format (.jpg, .jpeg, .png).{' '}
+					</Alert>
+				) : (
+					''
+				)}
 				{/* <Button component='label' variant='contained' startIcon={<CloudUpload />}>
 				Upload file
 			</Button>

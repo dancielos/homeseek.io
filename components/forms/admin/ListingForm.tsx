@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@mui/material';
+import { Button, Snackbar } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CTA from '../../client/CTA';
 import Agreement from './Agreement';
@@ -8,29 +8,23 @@ import Agreement from './Agreement';
 import AddressBasicDetails from './AddressBasicDetails';
 import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 import ImageUpload from './ImageUpload';
-import { Suspense, useState } from 'react';
-import { useDebounce } from '@/hooks/useDebounce';
+
 import { useFormState } from 'react-dom';
-import { AMENITIES_FEATURES, AMENITIES_NEARBY } from '@/data/constants';
-import createListing from '@/utils/server-actions/createListing';
+
+import { postListing } from '@/utils/server-actions/postListing';
 
 export default function ListingForm({
 	id = 'new-property-form',
 }: {
 	id: string;
 }) {
-	// const debouncedFeatures = useDebounce(valueFeatures);
+	const [response, formAction] = useFormState(postListing, null);
 
-	// function test(prevState: string, formData: FormData) {
-	// 	console.log(Array.from(formData.entries()));
-	// 	// console.log({ debouncedFeatures });
-	// 	return '';
-	// }
+	console.log(response);
 
-	// const test2 = test.bind(null, { features: debouncedFeatures });
-	const [response, formAction] = useFormState(createListing, []);
-
-	console.log(`RESPONSE: ${response}`);
+	const isError = !response?.success;
+	const errorMessage = response?.message;
+	const invalidInputs = response?.invalidInput;
 
 	return (
 		<Grid
@@ -42,7 +36,7 @@ export default function ListingForm({
 			action={formAction}
 		>
 			<Grid xs={10} md={5}>
-				<AddressBasicDetails />
+				<AddressBasicDetails invalidInputs={invalidInputs as string[]} />
 			</Grid>
 			<Grid
 				xs={10}
@@ -56,10 +50,10 @@ export default function ListingForm({
 				<FeaturesAmenitiesUtilities />
 			</Grid>
 			<Grid xs={10}>
-				<ImageUpload />
+				<ImageUpload invalidInputs={invalidInputs as string[]} />
 			</Grid>
 			<Grid xs={10}>
-				<Agreement />
+				<Agreement invalidInputs={invalidInputs as string[]} />
 			</Grid>
 			<Grid
 				xs={10}

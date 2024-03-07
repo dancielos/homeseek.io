@@ -1,7 +1,18 @@
-import { Checkbox, Divider, FormControlLabel, Typography } from '@mui/material';
+import {
+	Alert,
+	Checkbox,
+	Divider,
+	FormControlLabel,
+	Typography,
+} from '@mui/material';
 import FormContainer from './FormContainer';
 
-export default function Agreement() {
+export default function Agreement({
+	invalidInputs = [],
+}: {
+	invalidInputs?: string[];
+}) {
+	const isError = invalidInputs.includes('agreement');
 	return (
 		<FormContainer>
 			<Typography variant='h4'>Terms and conditions:</Typography>
@@ -33,6 +44,13 @@ export default function Agreement() {
 				control={<Checkbox id='agreement' name='agreement' />}
 				label='You agree to abide by these terms and conditions by checking the checkbox.'
 			/>
+			{isError ? (
+				<Alert severity='error'>
+					You must agree to the terms before you can create a listing.
+				</Alert>
+			) : (
+				''
+			)}
 		</FormContainer>
 	);
 }

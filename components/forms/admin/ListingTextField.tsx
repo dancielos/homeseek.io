@@ -4,11 +4,13 @@ import { TextField, TextFieldProps } from '@mui/material';
 type ListingTextField = {
 	name: string;
 	label?: string;
+	error?: boolean;
 } & TextFieldProps;
 
 export default function ListingTextField({
 	name,
 	label = name,
+	error = false,
 	...rest
 }: ListingTextField) {
 	return (
@@ -20,6 +22,7 @@ export default function ListingTextField({
 			variant='outlined'
 			color='secondary'
 			fullWidth
+			error={error}
 			{...rest}
 		/>
 	);

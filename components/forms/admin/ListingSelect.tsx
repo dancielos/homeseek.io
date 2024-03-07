@@ -1,19 +1,29 @@
 import { ListingSelectOptions } from '@/data/types';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import {
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	SelectProps,
+} from '@mui/material';
+
+type ListingSelectProps = {
+	id: string;
+	label: string;
+	labelId: string;
+	options: ListingSelectOptions[];
+	error?: boolean;
+};
 
 export default function ListingSelect({
 	id,
 	label,
 	labelId,
 	options,
-}: {
-	id: string;
-	label: string;
-	labelId: string;
-	options: ListingSelectOptions[];
-}) {
+	error = false,
+}: ListingSelectProps) {
 	return (
-		<FormControl fullWidth variant='outlined'>
+		<FormControl fullWidth variant='outlined' error={error}>
 			<InputLabel id={labelId}>{label}</InputLabel>
 			<Select
 				variant='outlined'
@@ -27,9 +37,9 @@ export default function ListingSelect({
 				<MenuItem disabled value=''>
 					<em>{label}</em>
 				</MenuItem>
-				{options.map((city, i) => (
-					<MenuItem key={i} value={JSON.stringify(city.value)}>
-						{city.label}
+				{options.map((option, i) => (
+					<MenuItem key={i} value={option.value as string}>
+						{option.label}
 					</MenuItem>
 				))}
 			</Select>

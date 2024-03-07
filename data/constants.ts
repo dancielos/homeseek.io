@@ -4,6 +4,7 @@ import {
 	ListingSelectOptions,
 	PROPERTY_TYPE,
 	PropertyListing,
+	PropertyType,
 } from './types';
 
 // STYLES
@@ -142,6 +143,11 @@ export const AVAILABLE_CITIES: ListingSelectOptions[] = [
 	},
 ];
 
+export const AVAILABLE_CITIES_OPTION = AVAILABLE_CITIES.map((ac) => ({
+	label: ac.label,
+	value: ac.label,
+}));
+
 export const customH2Style: SxProps = {
 	fontSize: {
 		xs: '1rem',
@@ -192,3 +198,7 @@ export const UTILITIES_INCLUDED = [
 	'Cable',
 	'Gas',
 ];
+
+export const PROPERTY_TYPE_KEYS: Array<PropertyType> = Object.keys(
+	PROPERTY_TYPE
+) as Array<PropertyType>;

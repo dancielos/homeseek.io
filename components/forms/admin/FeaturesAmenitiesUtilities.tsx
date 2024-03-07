@@ -14,11 +14,18 @@ import {
 	Chip,
 	Divider,
 	FormControlLabel,
+	FormGroup,
 	Paper,
 	TextField,
 } from '@mui/material';
 
-import { Dispatch, SetStateAction, useState } from 'react';
+import {
+	ChangeEvent,
+	Dispatch,
+	SetStateAction,
+	SyntheticEvent,
+	useState,
+} from 'react';
 import AutocompleteAmenities from './AutocompleteAmenities';
 import ListingTextField from './ListingTextField';
 import FormContainer from './FormContainer';
@@ -33,15 +40,28 @@ const checkedIcon = <CheckBox fontSize='small' />;
 export default function FeaturesAmenitiesUtilities() {
 	const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	const [valueNearby, setValueNearby] = useState([AMENITIES_NEARBY[0]]);
+	const [valueUtilities, setValueUtilities] = useState<string[]>([]);
 	// const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	// const [valueNearby, setValueNearby] = useState<string[]>([AMENITIES_FEATURES[0]]);
 
 	// console.log(value);
+
+	function handleCheckboxChange(event: ChangeEvent<HTMLInputElement>) {
+		const isChecked = event.target?.checked;
+		const value = event.target?.value;
+
+		// Update the array of selected utilities based on the checkbox state
+		if (isChecked) {
+			setValueUtilities([...valueUtilities, value]);
+		} else {
+			setValueUtilities(valueUtilities.filter((utility) => utility !== value));
+		}
+	}
 	return (
 		<FormContainer title='Features and Amenities'>
 			<input
 				type='hidden'
-				name='amenities-features'
+				name='amenitiesFeatures'
 				value={JSON.stringify(valueFeatures)}
 			/>
 			<AutocompleteAmenities
@@ -54,7 +74,7 @@ export default function FeaturesAmenitiesUtilities() {
 
 			<input
 				type='hidden'
-				name='amenities-nearby'
+				name='amenitiesNearby'
 				value={JSON.stringify(valueNearby)}
 			/>
 			<AutocompleteAmenities
@@ -67,7 +87,7 @@ export default function FeaturesAmenitiesUtilities() {
 			<Divider sx={{ m: 2 }} />
 
 			<ListingTextField
-				name='amenities-others'
+				name='amenitiesOthers'
 				label='Others'
 				placeholder='Separate values with comma (,)'
 				multiline
@@ -77,13 +97,14 @@ export default function FeaturesAmenitiesUtilities() {
 
 			<Divider sx={{ my: 3 }} />
 			<H2 sx={customH2Style}>Utilities Included</H2>
+			<input type='hidden' name='utilities' value={'' + valueUtilities} />
 			{UTILITIES_INCLUDED.map((utility, i) => (
 				<FormControlLabel
-					control={<Checkbox />}
+					control={<Checkbox onChange={handleCheckboxChange} />}
 					label={utility}
 					key={`${utility}-${i}`}
-					name='utilities'
-					defaultValue={utility}
+					// name='utilities'
+					value={utility}
 					id={`utilities-${utility}`}
 				/>
 			))}

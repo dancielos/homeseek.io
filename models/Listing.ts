@@ -1,29 +1,11 @@
-import { Address } from '@/data/types';
+import { PROPERTY_TYPE_KEYS } from '@/data/constants';
+import { Address, PropertyType } from '@/data/types';
 import { Schema, Types, model, models } from 'mongoose';
 
 interface Amenities {
-	features: (
-		| 'elevator'
-		| 'lockers'
-		| 'fridge'
-		| 'dryer'
-		| 'laundry'
-		| 'dishwasher'
-		| 'microwave'
-		| 'parking'
-		| 'stove'
-		| 'garage'
-		| 'pool'
-		| 'gym'
-	)[];
-	nearby: (
-		| 'publicTransit'
-		| 'convenienceStore'
-		| 'shopping'
-		| 'school'
-		| 'parks'
-	)[];
-	other: ('onSiteMaintenance' | 'noSmoking')[];
+	features: string[];
+	nearby: string[];
+	other: string[];
 }
 
 export interface Listing {
@@ -34,23 +16,15 @@ export interface Listing {
 	numBathrooms: number;
 	isPetFriendly: boolean;
 	img: string[];
-	propertyType:
-		| 'House'
-		| 'Condo/Apartment'
-		| 'Row/Townhouse'
-		| 'Duplex/Triplex'
-		| 'Mobile'
-		| 'Multi-family';
+	propertyType: PropertyType;
 	about: string;
 	amenities: Amenities;
-	utilitiesIncluded: (
-		| 'heating'
-		| 'water'
-		| 'electricity'
-		| 'internet'
-		| 'cable'
-	)[];
+	utilitiesIncluded: string[];
 	date: Date;
+}
+
+export interface ListingInput extends Omit<Listing, 'propertyType'> {
+	propertyType: PropertyType;
 }
 
 const listingSchema = new Schema<Listing>({
@@ -68,68 +42,23 @@ const listingSchema = new Schema<Listing>({
 	img: { type: [String], required: true },
 	propertyType: {
 		type: String,
-		enum: [
-			'House',
-			'Condo/Apartment',
-			'Row/Townhouse',
-			'Duplex/Triplex',
-			'Mobile',
-			'Multi-family',
-		],
+		enum: [...PROPERTY_TYPE_KEYS],
 		required: true,
 	},
 	about: { type: String, required: true },
 	amenities: {
 		features: {
-			type: [
-				{
-					type: String,
-					enum: [
-						'elevator',
-						'lockers',
-						'fridge',
-						'dryer',
-						'laundry',
-						'dishwasher',
-						'microwave',
-						'parking',
-						'stove',
-						'garage',
-						'pool',
-						'gym',
-					],
-				},
-			],
-			required: true,
+			type: [String],
 		},
 		nearby: {
-			type: [
-				{
-					type: String,
-					enum: [
-						'publicTransit',
-						'convenienceStore',
-						'shopping',
-						'school',
-						'parks',
-					],
-				},
-			],
-			required: true,
+			type: [String],
 		},
 		other: {
-			type: [{ type: String, enum: ['onSiteMaintenance', 'noSmoking'] }],
-			required: true,
+			type: [String],
 		},
 	},
 	utilitiesIncluded: {
-		type: [
-			{
-				type: String,
-				enum: ['heating', 'water', 'electricity', 'internet', 'cable'],
-			},
-		],
-		required: true,
+		type: [String],
 	},
 	date: {
 		type: Schema.Types.Date,
