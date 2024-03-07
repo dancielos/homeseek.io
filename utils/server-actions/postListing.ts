@@ -11,6 +11,7 @@ import { Types } from 'mongoose';
 import connectDB from '../db';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import delay from '../delay';
 
 type InputTypes = {
 	[key: string]: FormDataEntryValue;
@@ -241,13 +242,16 @@ export async function postListing(
 		await connectDB();
 
 		console.log('creating listing?');
-		const newListing = await ListingModel.create(formattedData);
+		// const newListing = await ListingModel.create(formattedData);
+
+		await delay(10);
 
 		return {
 			success: true,
 			message: '',
 			invalidInput: isValid.invalidInputs,
-			id: newListing._id.toString(),
+			// id: newListing._id.toString(),
+			id: 'newListing._id.toString()',
 		};
 	} catch (error) {
 		console.error(error);

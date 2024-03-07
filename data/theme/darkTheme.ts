@@ -1,4 +1,9 @@
-import { createTheme } from '@mui/material';
+import {
+	Components,
+	ComponentsOverrides,
+	Theme,
+	createTheme,
+} from '@mui/material';
 import { baseTheme } from './baseTheme';
 
 export let darkTheme = createTheme(baseTheme, {

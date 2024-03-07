@@ -1,8 +1,16 @@
-import { createTheme, responsiveFontSizes } from '@mui/material';
+import {
+	ButtonProps,
+	createTheme,
+	responsiveFontSizes,
+	useTheme,
+} from '@mui/material';
 
 import { Ubuntu } from 'next/font/google';
 import { BOX_SHADOW } from '../constants';
+import { OverridesStyleRules } from '@mui/material/styles/overrides';
+
 // import './globals.css';
+
 enum FontWeight {
 	LIGHT = 400,
 	NORMAL = 500,

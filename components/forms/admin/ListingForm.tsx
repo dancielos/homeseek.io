@@ -12,19 +12,24 @@ import ImageUpload from './ImageUpload';
 import { useFormState } from 'react-dom';
 
 import { postListing } from '@/utils/server-actions/postListing';
+import { useRouter } from 'next/navigation';
+import ListingFormSubmit from './ListingFormSubmit';
 
 export default function ListingForm({
 	id = 'new-property-form',
 }: {
 	id: string;
 }) {
-	const [response, formAction] = useFormState(postListing, null);
+	const router = useRouter();
 
-	console.log(response);
+	const [response, formAction] = useFormState(postListing, null);
 
 	const isError = !response?.success;
 	const errorMessage = response?.message;
 	const invalidInputs = response?.invalidInput;
+
+	if (isError) window.scrollTo({ top: 0, behavior: 'smooth' });
+	// else router.push(`/listing/${response.id}`);
 
 	return (
 		<Grid
@@ -71,7 +76,7 @@ export default function ListingForm({
 				<Button color='warning' size='small' variant='outlined'>
 					Delete
 				</Button>
-				<CTA type='submit'>Save / Update Property</CTA>
+				<ListingFormSubmit text='Save Listing' />
 			</Grid>
 		</Grid>
 	);

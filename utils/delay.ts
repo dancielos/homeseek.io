@@ -3,10 +3,10 @@
 
 // await delay(3000);
 
-export default async function delay() {
+export default async function delay(seconds: number = 3) {
 	return new Promise<void>((resolve) => {
 		setTimeout(() => {
 			resolve();
-		}, 3000);
+		}, seconds * 1000);
 	});
 }
