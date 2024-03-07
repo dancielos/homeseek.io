@@ -16,6 +16,7 @@ import ImageSlider from '@/components/ImageSlider/ImageSlider';
 import TitleBar from '@/pagesLayout/Details/TitleBar';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
+import Alert from '@/pagesLayout/Details/Alert';
 
 export default async function Details({
 	params = { id: '' },
@@ -85,6 +86,7 @@ export default async function Details({
 					</Grid>
 				</Grid>
 			</Container>
+			<Alert />
 		</>
 	);
 }

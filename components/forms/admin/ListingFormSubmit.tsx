@@ -13,7 +13,13 @@ import {
 import { useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 
-export default function ListingFormSubmit({ text }: { text: string }) {
+export default function ListingFormSubmit({
+	text,
+	isError = false,
+}: {
+	text: string;
+	isError?: boolean;
+}) {
 	const { pending } = useFormStatus();
 
 	return (

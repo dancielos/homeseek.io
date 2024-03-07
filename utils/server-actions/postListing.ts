@@ -161,6 +161,8 @@ export async function postListing(
 	prevState: FormResponse,
 	formData: FormData
 ): Promise<FormResponse> {
+	await delay();
+
 	const session = await getSession();
 	if (!session || session.role > 1) {
 		return {
@@ -242,16 +244,14 @@ export async function postListing(
 		await connectDB();
 
 		console.log('creating listing?');
-		// const newListing = await ListingModel.create(formattedData);
-
-		await delay(10);
+		const newListing = await ListingModel.create(formattedData);
 
 		return {
 			success: true,
 			message: '',
 			invalidInput: isValid.invalidInputs,
-			// id: newListing._id.toString(),
-			id: 'newListing._id.toString()',
+			id: newListing._id.toString(),
+			// id: 'newListing._id.toString()',
 		};
 	} catch (error) {
 		console.error(error);
