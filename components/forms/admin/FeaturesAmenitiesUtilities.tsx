@@ -52,7 +52,7 @@ export default function FeaturesAmenitiesUtilities({
 		if (data) {
 			if (data?.amenitiesFeatures) setValueFeatures(data.amenitiesFeatures);
 			if (data?.amenitiesNearby) setValueNearby(data.amenitiesNearby);
-			// if (data?.amenitiesOthers) setValueUtilities(data.amenitiesOthers);
+			if (data?.utilities) setValueUtilities(data.utilities);
 		}
 	}, [data, setValueFeatures, setValueNearby]);
 	// const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
@@ -71,6 +71,7 @@ export default function FeaturesAmenitiesUtilities({
 			setValueUtilities(valueUtilities.filter((utility) => utility !== value));
 		}
 	}
+
 	return (
 		<FormContainer title='Features and Amenities'>
 			<input
@@ -115,10 +116,17 @@ export default function FeaturesAmenitiesUtilities({
 			<input type='hidden' name='utilities' value={'' + valueUtilities} />
 			{UTILITIES_INCLUDED.map((utility, i) => (
 				<FormControlLabel
-					control={<Checkbox onChange={handleCheckboxChange} />}
+					control={
+						<Checkbox
+							onChange={handleCheckboxChange}
+							defaultChecked={data?.utilities.includes(utility)}
+						/>
+					}
 					label={utility}
 					key={`${utility}-${i}`}
 					// name='utilities'
+					//
+					defaultChecked
 					value={utility}
 					id={`utilities-${utility}`}
 				/>
