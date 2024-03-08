@@ -66,6 +66,7 @@ export default function AddressBasicDetails({
 						variant='outlined'
 						error={invalidInputs.includes('propertyType')}
 						options={PROPERTY_TYPE_OPTIONS}
+						defaultValue={data?.propertyType ?? ''}
 					/>
 				</Grid>
 				<Grid xs={12} md={6}>
