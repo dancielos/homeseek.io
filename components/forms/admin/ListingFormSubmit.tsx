@@ -16,11 +16,14 @@ import { useFormStatus } from 'react-dom';
 export default function ListingFormSubmit({
 	text,
 	isError = false,
+	pending = false,
 }: {
 	text: string;
 	isError?: boolean;
+	pending?: boolean;
 }) {
-	const { pending } = useFormStatus();
+	// const { pending } = useFormStatus();
+	// console.log(pending);
 
 	return (
 		<>

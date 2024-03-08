@@ -5,12 +5,14 @@ import { useFormStatus } from 'react-dom';
 export default function Alert({
 	message,
 	isError = false,
+	pending = false,
 }: {
 	message: string;
-	isError: boolean;
+	isError?: boolean;
+	pending?: boolean;
 }) {
 	const [open, setOpen] = useState<boolean>(isError);
-	const { pending } = useFormStatus();
+	// const { pending } = useFormStatus();
 
 	useEffect(() => {
 		if (!pending) setOpen(isError);

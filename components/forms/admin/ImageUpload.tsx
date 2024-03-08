@@ -36,8 +36,6 @@ export default function ImageUpload({
 	// }
 	// const [files, setFiles] = useState<FileWithPreview[]>([]);
 	const fileCount = files.length;
-
-	console.log({ files });
 	// console.log('after render:', fileCount);
 
 	// const [rejectedFiles, setRejectedFiles] = useState<FileRejection[]>([]);

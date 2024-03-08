@@ -17,7 +17,8 @@ import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import hashFilename from '../hashFilename';
 
 type InputTypes = {
-	[key: string]: FormDataEntryValue;
+	[key: string]: FormDataEntryValue | string[];
+	img: string[];
 };
 
 type ValidResponse = {
@@ -87,8 +88,8 @@ function validateInput({
 	if (!about) invalidInputs.push('about');
 
 	// img,
-	const images: string[] = JSON.parse(img.toString());
-	if (images.length <= 0 || !validateImageFilenames(images))
+
+	if (img.length <= 0 || !validateImageFilenames(img))
 		invalidInputs.push('img');
 
 	// amenitiesFeatures,
@@ -138,9 +139,7 @@ function formatData({
 		numBathrooms: +numBathrooms,
 		numBedrooms: +numBedrooms,
 		isPetFriendly: isPetFriendly.toString().toLowerCase() === 'yes',
-		img: JSON.parse(img.toString()).map(
-			(image: string, i: number) => `tmp/${image}`
-		),
+		img,
 		propertyType: ('' + propertyType) as PropertyType,
 		about: '' + about,
 		amenities: {
@@ -169,17 +168,17 @@ async function uploadToS3(
 			return client.send(
 				new PutObjectCommand({
 					Bucket: process.env.BUCKET_NAME,
-					Key: `tmp/${filenames[i]}`,
+					Key: filenames[i],
 					Body: Buffer.from(fileData),
 				})
 			);
 		});
 
-	// const response = await Promise.all(commands);
+	const responses = await Promise.all(commands);
 
-	// console.log(response);
-
-	return false;
+	return responses.every(
+		(response) => response['$metadata'].httpStatusCode === 200
+	);
 }
 
 export type FormResponse =
@@ -197,23 +196,17 @@ export async function postListing(
 	// prevState: FormResponse,
 	formData: FormData
 ): Promise<FormResponse> {
-	// console.log(files);
-	// await delay();
-	// console.log(formData.get('img[]'));
-	// console.log(images);
-
 	const session = await getSession();
+
 	if (!session || session.role > 1) {
 		return {
 			success: false,
-			message: 'Something went wrong. Please try again.',
+			message: 'You are not authorized. Please sign in again. ',
 			invalidInput: [],
 			id: '',
 		};
 	}
-	// console.log(session);
 
-	// console.log('property type', formData.get('propertyType'));
 	const {
 		street,
 		cityProvince,
@@ -232,7 +225,6 @@ export async function postListing(
 		agreement,
 	} = Object.fromEntries(formData.entries());
 
-	// console.log(img);
 	const images: Array<File> = [0, 1, 2, 3, 4]
 		.map((i) => {
 			return formData.get(`img[${i}]`) as File;
@@ -240,83 +232,76 @@ export async function postListing(
 		.filter((image) => image !== null);
 
 	const filenames = images.map((image, i) => {
-		return hashFilename(image.name, i);
+		return `tmp/${hashFilename(image.name, i)}`;
 	});
 
-	console.log(filenames);
+	const isValid = validateInput({
+		img: filenames,
+		street,
+		cityProvince,
+		postalCode,
+		propertyType,
+		price,
+		numBedrooms,
+		numBathrooms,
+		isPetFriendly,
+		about,
+		utilities,
+		amenitiesFeatures,
+		amenitiesNearby,
+		amenitiesOthers,
+		agreement,
+	});
 
-	// upload to S3
-	const s3Response = await uploadToS3(images, filenames);
+	if (!isValid.success) {
+		return {
+			success: isValid.success,
+			message: 'There are some invalid field(s). Please try again.',
+			invalidInput: isValid.invalidInputs,
+			id: '',
+		};
+	}
 
-	return { success: false, message: 'test 1 2 3', invalidInput: [], id: '' };
-	// const isValid = validateInput({
-	// 	street,
-	// 	cityProvince,
-	// 	postalCode,
-	// 	propertyType,
-	// 	price,
-	// 	numBedrooms,
-	// 	numBathrooms,
-	// 	isPetFriendly,
-	// 	about,
-	// 	utilities,
-	// 	img,
-	// 	amenitiesFeatures,
-	// 	amenitiesNearby,
-	// 	amenitiesOthers,
-	// 	agreement,
-	// });
+	const formattedData = formatData({
+		userId: session.user.id,
+		street,
+		cityProvince,
+		postalCode,
+		propertyType,
+		price,
+		numBedrooms,
+		numBathrooms,
+		isPetFriendly,
+		about,
+		utilities,
+		img: filenames,
+		amenitiesFeatures,
+		amenitiesNearby,
+		amenitiesOthers,
+	});
 
-	// if (!isValid.success) {
-	// 	return {
-	// 		success: isValid.success,
-	// 		message: 'There are some invalid field(s). Please try again.',
-	// 		invalidInput: isValid.invalidInputs,
-	// 		id: '',
-	// 	};
-	// }
+	try {
+		await connectDB();
 
-	// const formattedData = formatData({
-	// 	userId: session.user.id,
-	// 	street,
-	// 	cityProvince,
-	// 	postalCode,
-	// 	propertyType,
-	// 	price,
-	// 	numBedrooms,
-	// 	numBathrooms,
-	// 	isPetFriendly,
-	// 	about,
-	// 	utilities,
-	// 	img,
-	// 	amenitiesFeatures,
-	// 	amenitiesNearby,
-	// 	amenitiesOthers,
-	// });
+		const s3Response = await uploadToS3(images, filenames);
+		if (!s3Response) throw Error('Failed to upload images.');
 
-	// try {
-	// 	await connectDB();
+		const newListing = await ListingModel.create(formattedData);
 
-	// 	console.log('Creating a new listing...');
-
-	// 	// upload to
-
-	// 	// const newListing = await ListingModel.create(formattedData);
-
-	// 	return {
-	// 		success: true,
-	// 		message: '',
-	// 		invalidInput: isValid.invalidInputs,
-	// 		// id: newListing._id.toString(),
-	// 		id: 'newListing._id.toString()',
-	// 	};
-	// } catch (error) {
-	// 	console.error(error);
-	// 	return {
-	// 		success: false,
-	// 		message: `Something went wrong: ${error}`,
-	// 		invalidInput: isValid.invalidInputs,
-	// 		id: '',
-	// 	};
-	// }
+		return {
+			success: true,
+			message: '',
+			invalidInput: isValid.invalidInputs,
+			id: newListing._id.toString(),
+			// id: 'newListing._id.toString()',
+		};
+	} catch (error) {
+		console.error(error);
+		return {
+			success: false,
+			message: `Something went wrong: ${error}`,
+			invalidInput: isValid.invalidInputs,
+			id: '',
+		};
+	}
 }

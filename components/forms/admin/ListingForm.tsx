@@ -11,11 +11,11 @@ import ImageUpload from './ImageUpload';
 
 import { useFormState } from 'react-dom';
 
-import { postListing } from '@/utils/server-actions/postListing';
+import { FormResponse, postListing } from '@/utils/server-actions/postListing';
 import { useRouter } from 'next/navigation';
 import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
-import { SyntheticEvent, useRef, useState } from 'react';
+import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 export interface FileWithPreview extends File {
@@ -29,32 +29,35 @@ export default function ListingForm({
 }) {
 	const router = useRouter();
 	const [files, setFiles] = useState<FileWithPreview[]>([]);
+	const [pending, setPending] = useState<boolean>(false);
 	const formRef = useRef(null);
 
 	// const postListingWithFiles = postListing.bind(null, files);
+	const [formState, setFormState] = useState<FormResponse>(null);
 
-	async function testForm(e: SyntheticEvent) {
+	// const [response, formAction] = useFormState(postListing, null
+
+	const isError = !formState?.success;
+	const errorMessage = formState?.message;
+	const invalidInputs = formState?.invalidInput ?? [];
+
+	useEffect(() => {
+		if (isError) window.scrollTo({ top: 0, behavior: 'smooth' });
+		else router.push(`/listing/${formState.id}?status=success`);
+	}, [formState]);
+
+	async function formAction(e: SyntheticEvent) {
+		setPending(true);
 		e.preventDefault();
 		const formData = new FormData(formRef.current!);
 		files.forEach((file, i) => {
 			formData.append(`img[${i}]`, file);
 		});
 
-		console.log(Object.fromEntries(formData.entries()));
-
 		const response = await postListing(formData);
-		console.log(response);
+		setFormState(response);
+		setPending(false);
 	}
-
-	// const [response, formAction] = useFormState(postListing, null);
-	const response = { success: false, message: '', invalidInput: [] };
-
-	const isError = !response?.success;
-	const errorMessage = response?.message;
-	const invalidInputs = response?.invalidInput ?? [];
-
-	// if (isError) window.scrollTo({ top: 0, behavior: 'smooth' });
-	// else router.push(`/listing/${response.id}?status=success`);
 
 	return (
 		<>
@@ -65,14 +68,19 @@ export default function ListingForm({
 				component='form'
 				id={id}
 				// action={formAction}
-				onSubmit={testForm}
+				onSubmit={formAction}
 				ref={formRef}
 			>
-				{invalidInputs.length > 0 && (
-					<Alert message={errorMessage as string} isError={isError} />
+				{/* {invalidInputs.length > 0 && ( */}
+				{isError && errorMessage && errorMessage !== '' && (
+					<Alert
+						message={errorMessage as string}
+						isError={isError}
+						pending={pending}
+					/>
 				)}
 				<Grid xs={10} md={5}>
-					{/* <AddressBasicDetails invalidInputs={invalidInputs as string[]} /> */}
+					<AddressBasicDetails invalidInputs={invalidInputs as string[]} />
 				</Grid>
 				<Grid
 					xs={10}
@@ -83,7 +91,7 @@ export default function ListingForm({
 						gap: 2,
 					}}
 				>
-					{/* <FeaturesAmenitiesUtilities /> */}
+					<FeaturesAmenitiesUtilities />
 				</Grid>
 				<Grid xs={10}>
 					<ImageUpload
@@ -93,7 +101,7 @@ export default function ListingForm({
 					/>
 				</Grid>
 				<Grid xs={10}>
-					{/* <Agreement invalidInputs={invalidInputs as string[]} /> */}
+					<Agreement invalidInputs={invalidInputs as string[]} />
 				</Grid>
 				<Grid
 					xs={10}
@@ -111,7 +119,11 @@ export default function ListingForm({
 					<Button color='warning' size='small' variant='outlined'>
 						Delete
 					</Button>
-					<ListingFormSubmit text='Save Listing' isError={isError} />
+					<ListingFormSubmit
+						text='Save Listing'
+						isError={isError}
+						pending={pending}
+					/>
 				</Grid>
 			</Grid>
 		</>
