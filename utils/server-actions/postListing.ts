@@ -1,18 +1,15 @@
 'use server';
 
-import { AVAILABLE_CITIES, PROPERTY_TYPE_OPTIONS } from '@/data/constants';
+import { AVAILABLE_CITIES } from '@/data/constants';
 import validatePostalCode from '../validatePostalCode';
 import validatePropertyType from '../validatePropertyType';
 import validateImageFilenames from '../validateImageFilenames';
-import ListingModel, { Listing, ListingInput } from '@/models/Listing';
+import ListingModel, { ListingInput } from '@/models/Listing';
 import { getSession } from './auth';
 import { PropertyType } from '@/data/types';
 import { Types } from 'mongoose';
 import connectDB from '../db';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import delay from '../delay';
-import { FileWithPreview } from '@/components/forms/admin/ListingForm';
+
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import hashFilename from '../hashFilename';
 

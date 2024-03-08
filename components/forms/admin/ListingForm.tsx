@@ -1,22 +1,18 @@
 'use client';
 
-import { Button, Snackbar } from '@mui/material';
+import { Button } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import CTA from '../../client/CTA';
 import Agreement from './Agreement';
 
 import AddressBasicDetails from './AddressBasicDetails';
 import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 import ImageUpload from './ImageUpload';
 
-import { useFormState } from 'react-dom';
-
 import { FormResponse, postListing } from '@/utils/server-actions/postListing';
 import { useRouter } from 'next/navigation';
 import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 export interface FileWithPreview extends File {
 	preview: string;
@@ -110,7 +106,7 @@ export default function ListingForm({
 					sx={{
 						mt: 1,
 						display: 'flex',
-						justifyContent: 'space-between',
+						justifyContent: action === 'edit' ? 'space-between' : 'flex-end',
 						flexDirection: {
 							xs: 'column',
 							xm: 'row',
@@ -118,9 +114,11 @@ export default function ListingForm({
 						gap: 2,
 					}}
 				>
-					<Button color='warning' size='small' variant='outlined'>
-						Delete
-					</Button>
+					{action === 'edit' && (
+						<Button color='warning' size='small' variant='outlined'>
+							Delete
+						</Button>
+					)}
 					<ListingFormSubmit
 						text='Save Listing'
 						isError={isError}
