@@ -20,7 +20,10 @@ export type AdminListing = {
 
 export default async function getListingsForAdmin(): Promise<AdminListing[]> {
 	try {
-		const listings = await ListingModel.find().populate('userId').exec();
+		const listings = await ListingModel.find()
+			.populate('userId')
+			.sort({ date: -1 })
+			.exec();
 
 		const formattedListing: AdminListing[] = listings.map((listing) => ({
 			id: listing._id.toString(),
