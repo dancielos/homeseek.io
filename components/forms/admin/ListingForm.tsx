@@ -22,7 +22,7 @@ export interface FileWithPreview extends File {
 export type InputData = {
 	id: string;
 	street: string;
-	// cityProvince: ListingSelectOptions;
+	cityProvince: ListingSelectOptions;
 	postalCode: string;
 	propertyType: PropertyType;
 	price: number;

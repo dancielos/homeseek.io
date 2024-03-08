@@ -42,6 +42,8 @@ export default function AddressBasicDetails({
 						label='City, Province'
 						labelId='city-province-label'
 						options={AVAILABLE_CITIES_OPTION}
+						variant='outlined'
+						defaultValue={data?.cityProvince.label ?? ''}
 					/>
 				</Grid>
 				<Grid xs={12} md={6}>
@@ -61,6 +63,7 @@ export default function AddressBasicDetails({
 						id='propertyType'
 						label='Property Type'
 						labelId='property-type-label'
+						variant='outlined'
 						error={invalidInputs.includes('propertyType')}
 						options={PROPERTY_TYPE_OPTIONS}
 					/>

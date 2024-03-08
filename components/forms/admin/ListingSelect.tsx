@@ -7,7 +7,7 @@ import {
 	SelectProps,
 } from '@mui/material';
 
-type ListingSelectProps = {
+type ListingSelectProps = SelectProps & {
 	id: string;
 	label: string;
 	labelId: string;
@@ -21,18 +21,20 @@ export default function ListingSelect({
 	labelId,
 	options,
 	error = false,
+	variant = 'outlined',
+	...rest
 }: ListingSelectProps) {
 	return (
 		<FormControl fullWidth variant='outlined' error={error}>
 			<InputLabel id={labelId}>{label}</InputLabel>
 			<Select
-				variant='outlined'
 				labelId={labelId}
 				id={id}
 				name={id}
 				label={label}
 				color='secondary'
-				defaultValue=''
+				{...rest}
+				variant={variant}
 			>
 				<MenuItem disabled value=''>
 					<em>{label}</em>

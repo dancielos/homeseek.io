@@ -5,6 +5,8 @@ import connectDB from '@/utils/db';
 import { redirect } from 'next/navigation';
 import { isValidObjectId } from 'mongoose';
 import { getSession } from '@/utils/server-actions/auth';
+import { AVAILABLE_CITIES } from '@/data/constants';
+import { ListingSelectOptions } from '@/data/types';
 
 export default async function EditProperty({
 	params = { id: '' },
@@ -30,7 +32,14 @@ export default async function EditProperty({
 	const data: InputData = {
 		id: params.id,
 		street: listing.address.street,
-		// cityProvince: ,
+		cityProvince: AVAILABLE_CITIES.find((ac) => {
+			if (
+				typeof ac.value === 'object' &&
+				ac.value.city === listing.address.city &&
+				ac.value.province === listing.address.province
+			)
+				return ac.label;
+		})!, // it will never be undefined
 		postalCode: listing.address.postalCode,
 		propertyType: listing.propertyType,
 		price: listing.price,
