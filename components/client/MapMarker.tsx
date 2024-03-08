@@ -1,5 +1,5 @@
 import { Coords } from '@/data/types';
-import formatPrice from '@/utils/formatPrice';
+import formatPrice from '@/utils/formatters/formatPrice';
 import { Stack, Typography } from '@mui/material';
 import {
 	AdvancedMarker,

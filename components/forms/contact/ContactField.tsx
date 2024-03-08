@@ -1,4 +1,4 @@
-import toTitleCase from '@/utils/toTitleCase';
+import toTitleCase from '@/utils/formatters/toTitleCase';
 import { TextField } from '@mui/material';
 
 type ContactFieldProps = {

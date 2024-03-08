@@ -2,8 +2,9 @@
 
 import { isValidObjectId } from 'mongoose';
 import { getSession } from './auth';
-import { FormResponse } from './postListing';
+
 import ListingModel from '@/models/Listing';
+import { FormResponse } from '@/data/types';
 
 export default async function updateListing(
 	formData: FormData

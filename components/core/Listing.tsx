@@ -22,7 +22,7 @@ import DetailsLink from '@/components/ui/DetailsLink';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import { Listing } from '@/models/Listing';
 import { TypeImage } from '../ImageSlider/types/types';
-import formatPrice from '@/utils/formatPrice';
+import formatPrice from '@/utils/formatters/formatPrice';
 import { FeaturedListing } from '@/utils/server-actions/getFeaturedListings';
 
 type ListingProps = {

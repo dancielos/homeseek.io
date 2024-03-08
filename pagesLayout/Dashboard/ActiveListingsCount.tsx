@@ -1,6 +1,6 @@
 'use server';
 
-import formatNumber from '@/utils/formatNumber';
+import formatNumber from '@/utils/formatters/formatNumber';
 import getListingsCount from '@/utils/server-actions/getListingsCount';
 import { Typography } from '@mui/material';
 

@@ -14,6 +14,7 @@ import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { ListingSelectOptions, PropertyType } from '@/data/types';
+import updateListing from '@/utils/server-actions/updateListing';
 
 export interface FileWithPreview extends File {
 	preview: string;
@@ -76,7 +77,14 @@ export default function ListingForm({
 			formData.append(`img[${i}]`, file);
 		});
 
-		const response = await postListing(formData);
+		if (action === 'edit') {
+			formData.append('uploadedImages', JSON.stringify(uploadedImages) || '');
+		}
+
+		const response =
+			action === 'add'
+				? await postListing(formData)
+				: await updateListing(formData);
 		setFormState(response);
 		setPending(false);
 	}
@@ -101,6 +109,11 @@ export default function ListingForm({
 						pending={pending}
 					/>
 				)}
+				{action === 'edit' ? (
+					<input type='hidden' name='listingId' value={data?.id.toString()} />
+				) : (
+					''
+				)}
 				<Grid xs={10} md={5}>
 					<AddressBasicDetails
 						invalidInputs={invalidInputs as string[]}
@@ -119,6 +132,11 @@ export default function ListingForm({
 					<FeaturesAmenitiesUtilities data={data} />
 				</Grid>
 				<Grid xs={10}>
+					{action === 'edit' ? (
+						<input type='hidden' name='uploadedImages' value={uploadedImages} />
+					) : (
+						''
+					)}
 					<ImageUpload
 						invalidInputs={invalidInputs as string[]}
 						files={files}

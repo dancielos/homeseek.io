@@ -19,7 +19,7 @@ import Dropzone, { FileRejection, useDropzone } from 'react-dropzone';
 import styles from './ImageUpload.module.css';
 import { FileWithPreview } from './ListingForm';
 import ImageUploadPreviews from './ImageUploadPreviews';
-import getFilename from '@/utils/getFilename';
+import getFilename from '@/utils/getters/getFilename';
 import H3 from '@/components/htmlElements/H3';
 
 const MAX_NUMBER_FILES = 5;

@@ -2,8 +2,8 @@
 
 import MessageModel from '@/models/Message';
 import connectDB from '../db';
-import validateEmail from '../validations/validateEmail';
-import validatePhoneNumber from '../validations/validatePhoneNumber';
+import validateEmail from '../validators/validateEmail';
+import validatePhoneNumber from '../validators/validatePhoneNumber';
 import { Types } from 'mongoose';
 import { revalidatePath } from 'next/cache';
 

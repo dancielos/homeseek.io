@@ -2,7 +2,7 @@
 
 import ListingLink from '@/components/ui/admin/ListingLink';
 import { PROPERTY_TYPE } from '@/data/types';
-import formatPrice from '@/utils/formatPrice';
+import formatPrice from '@/utils/formatters/formatPrice';
 import { getSession } from '@/utils/server-actions/auth';
 import { AdminListing } from '@/utils/server-actions/getListingsForAdmin';
 import { Bathroom, BathroomOutlined, BedOutlined } from '@mui/icons-material';

@@ -81,3 +81,25 @@ export type ListingSelectOptions = {
 		  };
 	label: string;
 };
+
+//======== for SERVER ACTIONS ========//
+
+export type InputTypes = {
+	[key: string]: FormDataEntryValue | string[];
+	img: string[];
+};
+
+export type ValidResponse = {
+	success: boolean;
+	invalidInputs: string[];
+};
+
+export type FormResponse =
+	| {
+			success: boolean;
+			message: string;
+			invalidInput: string[];
+			id: string;
+	  }
+	| null
+	| undefined;

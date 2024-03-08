@@ -1,6 +1,6 @@
 import { PROPERTY_TYPE, PropertyType } from '@/data/types';
-import formatDate from '@/utils/formatDate';
-import formatPrice from '@/utils/formatPrice';
+import formatDate from '@/utils/formatters/formatDate';
+import formatPrice from '@/utils/formatters/formatPrice';
 import getRecentListings from '@/utils/server-actions/getRecentListings';
 import { Button, TableBody, TableCell, TableRow } from '@mui/material';
 import Link from 'next/link';

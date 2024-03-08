@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 
 import ActiveListings from '@/pagesLayout/Dashboard/ActiveListings';
 import ViewsReport from '@/pagesLayout/Dashboard/ViewsReport';
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatters/formatDate';
 import RecentListings from '@/pagesLayout/Dashboard/RecentListings';
 import PageTitle from '@/components/client/admin/PageTitle';
 

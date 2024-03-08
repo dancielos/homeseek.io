@@ -1,6 +1,6 @@
 import { useDebounce } from '@/hooks/useDebounce';
 import useSearchQuery from '@/hooks/useSearchQuery';
-import { getSearchQuery } from '@/utils/getSearchQuery';
+import { getSearchQuery } from '@/utils/getters/getSearchQuery';
 import { Box, Slider, Typography } from '@mui/material';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { SyntheticEvent, useEffect, useState } from 'react';

@@ -8,7 +8,7 @@ import Filters from './filters/Filters';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { SyntheticEvent, useState } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
-import { getSearchQuery } from '@/utils/getSearchQuery';
+import { getSearchQuery } from '@/utils/getters/getSearchQuery';
 import useSearchQuery from '@/hooks/useSearchQuery';
 import { CITIES } from '@/data/constants';
 

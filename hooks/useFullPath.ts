@@ -1,4 +1,4 @@
-import concatPathQuery from '@/utils/concatPathQuery';
+import concatPathQuery from '@/utils/formatters/concatPathQuery';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 // RETRIEVES the current path
