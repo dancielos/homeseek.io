@@ -40,6 +40,7 @@ export default function ImageUploadPreviews({
 						style={{
 							objectFit: 'cover',
 						}}
+						quality={24}
 					/>
 				</CardMedia>
 

@@ -30,12 +30,14 @@ export default function ImageUpload({
 	setFiles,
 	action,
 	images = [],
+	setUploadedImages,
 }: {
 	invalidInputs?: string[];
 	files: FileWithPreview[];
 	setFiles: Dispatch<SetStateAction<FileWithPreview[]>>;
 	action: 'add' | 'edit';
 	images: string[];
+	setUploadedImages: Dispatch<SetStateAction<string[]>>;
 }) {
 	// const imageUploadRef = useRef<HTMLInputElement>(null);
 	// function test() {
@@ -105,6 +107,18 @@ export default function ImageUpload({
 		});
 	}
 
+	function handleDeleteUploadedImage(index: number) {
+		if (images.length <= 0) {
+			setOpenSnackbar('Something went wrong, please try again later.');
+			return;
+		}
+		setUploadedImages((prevFiles) => {
+			const newImages = [...prevFiles];
+			newImages.splice(index, 1);
+			return newImages;
+		});
+	}
+
 	useEffect(() => {
 		return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
 	}, []);
@@ -143,6 +157,11 @@ export default function ImageUpload({
 				<ul>{files}</ul>
 			</aside> */}
 				<aside className={styles['thumbsContainer']}>
+					{files.length > 0 ? (
+						<Typography variant='h6'>New Images</Typography>
+					) : (
+						''
+					)}
 					{files.map((file, i) => (
 						<ImageUploadPreviews
 							name={file.name}
@@ -151,17 +170,22 @@ export default function ImageUpload({
 							handleDeleteImage={handleDeleteImage}
 						/>
 					))}
-					<Typography variant='h6'>Uploaded Images</Typography>
-					{action === 'edit' && images.length > 0
-						? images.map((image, i) => (
+					{action === 'edit' && images.length > 0 ? (
+						<>
+							<Typography variant='h6'>Uploaded Images</Typography>
+
+							{images.map((image, i) => (
 								<ImageUploadPreviews
 									name={getFilename(image) as string}
 									preview={`${process.env.S3_URL}/${image}`}
 									i={i}
-									handleDeleteImage={handleDeleteImage}
+									handleDeleteImage={handleDeleteUploadedImage}
 								/>
-						  ))
-						: ''}
+							))}
+						</>
+					) : (
+						''
+					)}
 				</aside>
 				{isError ? (
 					<Alert severity='error'>

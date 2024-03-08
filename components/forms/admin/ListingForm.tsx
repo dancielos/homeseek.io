@@ -48,6 +48,9 @@ export default function ListingForm({
 }) {
 	const router = useRouter();
 	const [files, setFiles] = useState<FileWithPreview[]>([]);
+	const [uploadedImages, setUploadedImages] = useState<string[]>(
+		data?.img || []
+	);
 	const [pending, setPending] = useState<boolean>(false);
 	const formRef = useRef(null);
 
@@ -121,7 +124,8 @@ export default function ListingForm({
 						files={files}
 						setFiles={setFiles}
 						action={action}
-						images={data?.img || []}
+						images={uploadedImages}
+						setUploadedImages={setUploadedImages}
 					/>
 				</Grid>
 				<Grid xs={10}>
