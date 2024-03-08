@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
-import toTitleCase from '@/utils/toTitleCase';
+import toTitleCase from '@/utils/formatters/toTitleCase';
 
 describe('test the util function, toTitleCase', () => {
 	// passing all lowercase

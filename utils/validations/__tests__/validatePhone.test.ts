@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import validatePhoneNumber from '@/utils/validatePhoneNumber';
+import validatePhoneNumber from '@/utils/validations/validatePhoneNumber';
 
 describe('test the util function, validatePhoneNumber', () => {
 	// Empty phone number

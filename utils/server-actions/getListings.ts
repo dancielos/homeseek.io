@@ -3,7 +3,7 @@
 import ListingModel from '@/models/Listing';
 import connectDB from '../db';
 import { Coords, PropertyListing, PropertyType } from '@/data/types';
-import formatAddress from '../formatAddress';
+import formatAddress from '../formatters/formatAddress';
 import getPin from './getPin';
 import getCoordsFromCity from './getCoordsFromCity';
 import { generateRandomCoordinates } from '../generateRandomCoordinates';

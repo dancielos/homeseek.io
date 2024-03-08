@@ -1,7 +1,7 @@
 import { MessagesRow } from '@/data/types';
 import connectDB from '../db';
 import MessageModel, { Message } from '@/models/Message';
-import formatDate from '../formatDate';
+import formatDate from '../formatters/formatDate';
 
 export default async function getMessages(): Promise<MessagesRow[]> {
 	try {

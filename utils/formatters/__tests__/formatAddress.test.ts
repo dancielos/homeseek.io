@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import formatAddress from '@/utils/formatAddress';
+import formatAddress from '@/utils/formatters/formatAddress';
 
 describe('test the util function, formatAddress', () => {
 	// Passing all lowercase

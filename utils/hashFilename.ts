@@ -1,5 +1,5 @@
 import { createHash } from 'crypto';
-import getExtension from './getExtension';
+import getExtension from './getters/getExtension';
 
 export default function hashFilename(s: string, i: number): string {
 	const extension = getExtension(s);

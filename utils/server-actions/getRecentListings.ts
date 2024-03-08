@@ -1,6 +1,6 @@
 import ListingModel from '@/models/Listing';
 import connectDB from '../db';
-import formatAddress from '../formatAddress';
+import formatAddress from '../formatters/formatAddress';
 import { PropertyType } from '@/data/types';
 
 type RecentListing = {

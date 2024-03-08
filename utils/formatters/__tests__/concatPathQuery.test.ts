@@ -1,4 +1,4 @@
-import concatPathQuery from '@/utils/concatPathQuery';
+import concatPathQuery from '@/utils/formatters/concatPathQuery';
 import { ReadonlyURLSearchParams } from 'next/navigation';
 import { describe, expect, test } from 'vitest';
 

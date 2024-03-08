@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import formatNumber from '@/utils/formatNumber';
+import formatNumber from '@/utils/formatters/formatNumber';
 
 describe('test the util function, formatNumber', () => {
 	// Test with a number less than 1000

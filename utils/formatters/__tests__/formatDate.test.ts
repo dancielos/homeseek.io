@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import formatDate from '@/utils/formatDate';
+import formatDate from '@/utils/formatters/formatDate';
 
 describe('test the util function, formatDate', () => {
 	const locale = 'en-CA';

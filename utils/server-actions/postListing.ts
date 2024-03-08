@@ -1,9 +1,9 @@
 'use server';
 
 import { AVAILABLE_CITIES } from '@/data/constants';
-import validatePostalCode from '../validatePostalCode';
-import validatePropertyType from '../validatePropertyType';
-import validateImageFilenames from '../validateImageFilenames';
+import validatePostalCode from '../validations/validatePostalCode';
+import validatePropertyType from '../validations/validatePropertyType';
+import validateImageFilenames from '../validations/validateImageFilenames';
 import ListingModel, { ListingInput } from '@/models/Listing';
 import { getSession } from './auth';
 import { PropertyType } from '@/data/types';
@@ -24,7 +24,7 @@ type ValidResponse = {
 	invalidInputs: string[];
 };
 
-function validateInput({
+export function validateInput({
 	street,
 	cityProvince,
 	postalCode,
@@ -103,7 +103,7 @@ function validateInput({
 	};
 }
 
-function formatData({
+export function formatData({
 	userId,
 	street,
 	cityProvince,

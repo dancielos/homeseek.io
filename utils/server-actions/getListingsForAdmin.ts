@@ -2,8 +2,8 @@
 
 import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import ListingModel from '@/models/Listing';
-import formatPrice from '../formatPrice';
-import formatDate from '../formatDate';
+import formatPrice from '../formatters/formatPrice';
+import formatDate from '../formatters/formatDate';
 
 export type AdminListing = {
 	id: string;

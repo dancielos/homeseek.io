@@ -3,7 +3,7 @@
 import ListingModel from '@/models/Listing';
 import connectDB from '../db';
 import { PropertyListing, PropertyType } from '@/data/types';
-import formatAddress from '../formatAddress';
+import formatAddress from '../formatters/formatAddress';
 
 export type FeaturedListing = {
 	id: string;

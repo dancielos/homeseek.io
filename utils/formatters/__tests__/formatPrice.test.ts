@@ -1,5 +1,5 @@
 import { describe, expect, test, vi } from 'vitest';
-import formatPrice from '@/utils/formatPrice';
+import formatPrice from '@/utils/formatters/formatPrice';
 
 describe('test the util function, formatPrice', () => {
 	// Valid integer price
