@@ -1,4 +1,4 @@
-import ListingForm from '@/components/forms/admin/ListingForm';
+import ListingForm, { InputData } from '@/components/forms/admin/ListingForm';
 import ListingModel from '@/models/Listing';
 import connectDB from '@/utils/db';
 
@@ -27,27 +27,27 @@ export default async function EditProperty({
 		redirect('/properties');
 	}
 
-	const data = {
+	const data: InputData = {
 		id: params.id,
-		// street: listing.street,
-		// // cityProvince: ,
-		// postalCode: listing.postalCode,
-		// propertyType: listing.propertyType,
-		// price: listing.price,
-		// numBedrooms: listing.numBedrooms,
-		// numBathrooms: listing.numBathrooms,
-		// isPetFriendly: listing.isPetFriendly ? 'yes' : 'no',
-		// about: listing.about,
-		// utilities: listing.utilities.join(', '),
-		// // img:
-		// amenitiesFeatures: listing.amenitiesFeatures,
-		// amenitiesNearby: listing.amenitiesNearby,
-		// amenitiesOthers: listing.amenitiesOthers,
+		street: listing.address.street,
+		// cityProvince: ,
+		postalCode: listing.address.postalCode,
+		propertyType: listing.propertyType,
+		price: listing.price,
+		numBedrooms: listing.numBedrooms,
+		numBathrooms: listing.numBathrooms,
+		isPetFriendly: listing.isPetFriendly ? 'yes' : 'no',
+		about: listing.about,
+		utilities: listing.utilitiesIncluded,
+		// img:
+		amenitiesFeatures: listing.amenities.features,
+		amenitiesNearby: listing.amenities.nearby,
+		amenitiesOthers: listing.amenities.others?.join(', ') ?? '',
 	};
 	console.log(data);
 	return (
 		<>
-			<ListingForm id='new-property-form' action='edit' />
+			<ListingForm id='new-property-form' action='edit' data={data} />
 		</>
 	);
 }

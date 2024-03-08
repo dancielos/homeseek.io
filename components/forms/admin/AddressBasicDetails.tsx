@@ -20,17 +20,20 @@ import {
 } from '@/data/constants';
 import { AttachMoney, BedOutlined, ShowerOutlined } from '@mui/icons-material';
 import FormContainer from './FormContainer';
+import { InputData } from './ListingForm';
 
 export default function AddressBasicDetails({
 	invalidInputs = [],
+	data,
 }: {
 	invalidInputs: string[];
+	data?: InputData;
 }) {
 	return (
 		<FormContainer title='Address'>
 			<Grid container spacing={3}>
 				<Grid xs={12}>
-					<ListingTextField name='street' />
+					<ListingTextField name='street' defaultValue={data?.street ?? ''} />
 				</Grid>
 				<Grid xs={12} md={6}>
 					<ListingSelect
@@ -46,6 +49,7 @@ export default function AddressBasicDetails({
 						name='postalCode'
 						label='Postal Code'
 						error={invalidInputs.includes('postalCode')}
+						defaultValue={data?.postalCode ?? ''}
 					/>
 				</Grid>
 			</Grid>
@@ -73,6 +77,7 @@ export default function AddressBasicDetails({
 								</InputAdornment>
 							),
 						}}
+						defaultValue={data?.price ?? ''}
 					/>
 				</Grid>
 				<Grid xs={12} md={6}>
@@ -88,6 +93,7 @@ export default function AddressBasicDetails({
 								</InputAdornment>
 							),
 						}}
+						defaultValue={data?.numBedrooms ?? ''}
 					/>
 				</Grid>
 				<Grid xs={12} md={6}>
@@ -103,6 +109,7 @@ export default function AddressBasicDetails({
 								</InputAdornment>
 							),
 						}}
+						defaultValue={data?.numBathrooms ?? ''}
 					/>
 				</Grid>
 				<Grid
@@ -122,7 +129,7 @@ export default function AddressBasicDetails({
 						aria-required='true'
 						// value={value}
 						// onChange={handleChange}
-						defaultValue='yes'
+						defaultValue={data?.isPetFriendly ?? 'yes'}
 						sx={{
 							// display: 'flex',
 							flexDirection: 'row',
@@ -149,6 +156,7 @@ export default function AddressBasicDetails({
 						multiline
 						error={invalidInputs.includes('about')}
 						rows={6}
+						defaultValue={data?.about ?? ''}
 					/>
 				</Grid>
 			</Grid>

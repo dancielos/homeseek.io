@@ -19,10 +19,10 @@ export interface FileWithPreview extends File {
 	preview: string;
 }
 
-type InputData = {
+export type InputData = {
 	id: string;
 	street: string;
-	cityProvince: ListingSelectOptions;
+	// cityProvince: ListingSelectOptions;
 	postalCode: string;
 	propertyType: PropertyType;
 	price: number;
@@ -30,11 +30,11 @@ type InputData = {
 	numBathrooms: number;
 	isPetFriendly: 'yes' | 'no';
 	about: string;
-	utilities: string;
+	utilities: string[];
 	// img:
 	amenitiesFeatures: string[];
 	amenitiesNearby: string[];
-	amenitiesOthers: string[];
+	amenitiesOthers: string;
 } | null;
 
 export default function ListingForm({
@@ -99,7 +99,10 @@ export default function ListingForm({
 					/>
 				)}
 				<Grid xs={10} md={5}>
-					<AddressBasicDetails invalidInputs={invalidInputs as string[]} />
+					<AddressBasicDetails
+						invalidInputs={invalidInputs as string[]}
+						data={data}
+					/>
 				</Grid>
 				<Grid
 					xs={10}
