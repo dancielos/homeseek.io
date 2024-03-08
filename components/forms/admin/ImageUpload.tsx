@@ -19,6 +19,8 @@ import Dropzone, { FileRejection, useDropzone } from 'react-dropzone';
 import styles from './ImageUpload.module.css';
 import { FileWithPreview } from './ListingForm';
 import ImageUploadPreviews from './ImageUploadPreviews';
+import getFilename from '@/utils/getFilename';
+import H3 from '@/components/htmlElements/H3';
 
 const MAX_NUMBER_FILES = 5;
 
@@ -27,7 +29,7 @@ export default function ImageUpload({
 	files = [],
 	setFiles,
 	action,
-	images,
+	images = [],
 }: {
 	invalidInputs?: string[];
 	files: FileWithPreview[];
@@ -149,6 +151,17 @@ export default function ImageUpload({
 							handleDeleteImage={handleDeleteImage}
 						/>
 					))}
+					<Typography variant='h4'>Current Uploaded</Typography>
+					{action === 'edit' && images.length > 0
+						? images.map((image, i) => (
+								<ImageUploadPreviews
+									name={getFilename(image) as string}
+									preview={`${process.env.S3_URL}/${image}`}
+									i={i}
+									handleDeleteImage={handleDeleteImage}
+								/>
+						  ))
+						: ''}
 				</aside>
 				{isError ? (
 					<Alert severity='error'>

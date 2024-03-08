@@ -8,6 +8,7 @@ import {
 	IconButton,
 	Typography,
 } from '@mui/material';
+import Image from 'next/image';
 
 export default function ImageUploadPreviews({
 	name,
@@ -22,18 +23,26 @@ export default function ImageUploadPreviews({
 }) {
 	return (
 		<Card sx={{ width: '100%' }} key={i}>
-			<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-				<CardMedia
-					component='img'
-					sx={{ width: 120 }}
-					image={preview}
-					alt='Live from space album cover'
+			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+				<Image
+					src={preview}
+					width={120}
+					height={120}
+					alt={preview}
+					style={{
+						objectFit: 'cover',
+					}}
 				/>
-				<CardContent sx={{ flex: '1 0 auto' }}>
+
+				<CardContent>
 					<Typography
 						variant='subtitle1'
 						color='text.secondary'
-						component='div'
+						component='p'
+						sx={{
+							wordBreak: 'break-word',
+							overflowWrap: 'break-word',
+						}}
 					>
 						{name}
 					</Typography>
