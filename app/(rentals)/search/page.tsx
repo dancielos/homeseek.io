@@ -20,7 +20,7 @@ type SearchParams = {
 
 const fallbacks = {
 	city: 'toronto',
-	price: '1000,10000',
+	price: '1,10000',
 	beds: '1,6',
 	baths: '1,3',
 	propertyType: Object.keys(PROPERTY_TYPE).join(',') as string,

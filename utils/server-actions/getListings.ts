@@ -7,6 +7,8 @@ import formatAddress from '../formatAddress';
 import getPin from './getPin';
 import getCoordsFromCity from './getCoordsFromCity';
 import { generateRandomCoordinates } from '../generateRandomCoordinates';
+import { getSession } from './auth';
+import { Types, isValidObjectId } from 'mongoose';
 
 type ListingsProps = {
 	city: string;
@@ -40,6 +42,7 @@ export default async function getListings({
 	const maxBath = Math.max(baths[0], baths[1]);
 
 	// console.log(propertyType);
+	const session = await getSession();
 
 	const query: { [key: string]: any } = {
 		'address.city': { $regex: new RegExp(city, 'i') },
@@ -48,12 +51,21 @@ export default async function getListings({
 		numBathrooms: { $gte: minBath, $lte: maxBath },
 		propertyType: { $in: propertyType },
 	};
+	if (!session) {
+		const userId = '65c513affbbb710a9158396b';
+		if (isValidObjectId(userId)) {
+			query.userId = new Types.ObjectId(userId);
+		} else {
+			query.userId = userId;
+		}
+	}
+
 	if (isPetFriendly === true) query.isPetFriendly = isPetFriendly;
 	try {
 		await connectDB();
 		// Retrieve listings that match the given city
 		const pins: Coords[] = [];
-		const listings = await ListingModel.find(query).exec();
+		const listings = await ListingModel.find(query).sort({ date: -1 }).exec();
 
 		const formattedListings: PropertyListing[] = await Promise.all(
 			listings.map(async (l) => {
