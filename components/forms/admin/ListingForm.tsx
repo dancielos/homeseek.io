@@ -113,7 +113,7 @@ export default function ListingForm({
 						gap: 2,
 					}}
 				>
-					<FeaturesAmenitiesUtilities />
+					<FeaturesAmenitiesUtilities data={data} />
 				</Grid>
 				<Grid xs={10}>
 					<ImageUpload

@@ -51,7 +51,7 @@ export default async function EditProperty({
 		// img:
 		amenitiesFeatures: listing.amenities.features,
 		amenitiesNearby: listing.amenities.nearby,
-		amenitiesOthers: listing.amenities.others?.join(', ') ?? '',
+		amenitiesOthers: listing.amenities.other?.join(', '),
 	};
 	console.log(data);
 	return (

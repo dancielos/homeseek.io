@@ -24,11 +24,13 @@ import {
 	Dispatch,
 	SetStateAction,
 	SyntheticEvent,
+	useEffect,
 	useState,
 } from 'react';
 import AutocompleteAmenities from './AutocompleteAmenities';
 import ListingTextField from './ListingTextField';
 import FormContainer from './FormContainer';
+import { InputData } from './ListingForm';
 
 // import dynamic from 'next/dynamic';
 
@@ -37,10 +39,22 @@ import FormContainer from './FormContainer';
 const icon = <CheckBoxOutlineBlank fontSize='small' />;
 const checkedIcon = <CheckBox fontSize='small' />;
 
-export default function FeaturesAmenitiesUtilities() {
+export default function FeaturesAmenitiesUtilities({
+	data,
+}: {
+	data?: InputData;
+}) {
 	const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	const [valueNearby, setValueNearby] = useState([AMENITIES_NEARBY[0]]);
 	const [valueUtilities, setValueUtilities] = useState<string[]>([]);
+
+	useEffect(() => {
+		if (data) {
+			if (data?.amenitiesFeatures) setValueFeatures(data.amenitiesFeatures);
+			if (data?.amenitiesNearby) setValueNearby(data.amenitiesNearby);
+			// if (data?.amenitiesOthers) setValueUtilities(data.amenitiesOthers);
+		}
+	}, [data, setValueFeatures, setValueNearby]);
 	// const [valueFeatures, setValueFeatures] = useState([AMENITIES_FEATURES[0]]);
 	// const [valueNearby, setValueNearby] = useState<string[]>([AMENITIES_FEATURES[0]]);
 
@@ -93,6 +107,7 @@ export default function FeaturesAmenitiesUtilities() {
 				multiline
 				rows={6}
 				required={false}
+				defaultValue={data?.amenitiesOthers ?? ''}
 			/>
 
 			<Divider sx={{ my: 3 }} />
