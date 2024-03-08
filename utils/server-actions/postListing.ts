@@ -12,6 +12,7 @@ import connectDB from '../db';
 
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import hashFilename from '../hashFilename';
+import { revalidatePath } from 'next/cache';
 
 type InputTypes = {
 	[key: string]: FormDataEntryValue | string[];
@@ -284,6 +285,8 @@ export async function postListing(
 		if (!s3Response) throw Error('Failed to upload images.');
 
 		const newListing = await ListingModel.create(formattedData);
+
+		revalidatePath('/(admin)/properties', 'page');
 
 		return {
 			success: true,
