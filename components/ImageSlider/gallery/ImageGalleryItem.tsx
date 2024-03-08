@@ -6,6 +6,7 @@ type ChildProps = {
 	id: string;
 	className: string;
 	fullscreen?: boolean;
+	priority?: boolean;
 };
 
 export default function ImageGalleryItem({
@@ -13,6 +14,7 @@ export default function ImageGalleryItem({
 	id,
 	className,
 	fullscreen,
+	priority = false,
 }: ChildProps) {
 	return (
 		<div
@@ -32,6 +34,7 @@ export default function ImageGalleryItem({
 					overflow: 'hidden',
 				}}
 				className='rounded-[1px] blur-sm brightness-75'
+				priority={priority}
 			/>
 			<Image
 				src={image.src}
@@ -46,6 +49,7 @@ export default function ImageGalleryItem({
 					// objectPosition: 'center',
 				}}
 				className='rounded-[1px]'
+				priority={priority}
 			/>
 		</div>
 	);

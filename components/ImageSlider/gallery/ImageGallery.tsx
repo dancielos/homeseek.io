@@ -52,6 +52,7 @@ export default function ImageGallery({
 									: styles['right-to-left']
 								: 'invisible'
 						} `}
+						priority={i === 0}
 					/>
 				))}
 			</div>

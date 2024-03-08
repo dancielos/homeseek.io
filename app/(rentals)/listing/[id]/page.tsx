@@ -17,6 +17,7 @@ import TitleBar from '@/pagesLayout/Details/TitleBar';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
 import Alert from '@/pagesLayout/Details/Alert';
+import { getSession } from '@/utils/server-actions/auth';
 
 export default async function Details({
 	params = { id: '' },
@@ -25,6 +26,12 @@ export default async function Details({
 }) {
 	await connectDB();
 	const listing = await ListingModel.findById(params.id);
+
+	const session = await getSession();
+	const isListingByCurrentUser = session.id === listing.userId;
+
+	console.log({ isListingByCurrentUser });
+
 	// console.log(listing.address);
 	const address = formatAddress(
 		listing.address.street,
@@ -59,6 +66,7 @@ export default async function Details({
 									customHeight={480}
 									autoHeight={false}
 								/>
+
 								<BasicDetails
 									address={address}
 									price={price}
