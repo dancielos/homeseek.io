@@ -18,12 +18,17 @@ import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
 import Alert from '@/pagesLayout/Details/Alert';
 import ActionButtons from '@/pagesLayout/Details/ActionButtons';
+import { redirect } from 'next/navigation';
+import { isValidObjectId } from 'mongoose';
 
 export default async function Details({
 	params = { id: '' },
 }: {
 	params: { id: string };
 }) {
+	const isValid = isValidObjectId(params.id);
+	if (!isValid) redirect('/');
+
 	await connectDB();
 	const listing = await ListingModel.findById(params.id);
 

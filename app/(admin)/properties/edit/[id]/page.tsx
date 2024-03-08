@@ -1,3 +1,9 @@
-export default function Edit() {
-	return <div>Edit Property page</div>;
+import ListingForm from '@/components/forms/admin/ListingForm';
+
+export default function EditProperty() {
+	return (
+		<>
+			<ListingForm id='new-property-form' action='edit' />
+		</>
+	);
 }
