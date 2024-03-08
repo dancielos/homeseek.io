@@ -3,6 +3,7 @@
 import ListingLink from '@/components/ui/admin/ListingLink';
 import { PROPERTY_TYPE } from '@/data/types';
 import formatPrice from '@/utils/formatPrice';
+import { getSession } from '@/utils/server-actions/auth';
 import { AdminListing } from '@/utils/server-actions/getListingsForAdmin';
 import { Bathroom, BathroomOutlined, BedOutlined } from '@mui/icons-material';
 import { Button, ButtonGroup, Stack, Typography } from '@mui/material';
@@ -30,8 +31,12 @@ const VISIBLE_FIELDS = [
 
 export default function PropertiesData({
 	rows = [] as AdminListing[],
+	userId = '',
+	isSuperAdmin = false,
 }: {
 	rows: AdminListing[];
+	userId: string;
+	isSuperAdmin?: boolean;
 }) {
 	const columns: GridColDef[] = useMemo(
 		() => [
@@ -60,36 +65,39 @@ export default function PropertiesData({
 				headerName: 'Actions',
 				minWidth: 200,
 				sortable: false,
-				renderCell: (params: GridRenderCellParams<any, string>) => (
-					<ButtonGroup
-						variant='outlined'
-						sx={{
-							fontSize: '1rem',
-							height: '1rem',
-						}}
-						color='subtle'
-						aria-label='outlined button group'
-						disableElevation
-					>
-						<Button
+				renderCell: (params: GridRenderCellParams<any, string>) =>
+					userId === params.row.userId || isSuperAdmin ? (
+						<ButtonGroup
+							variant='outlined'
 							sx={{
-								px: 2,
-								py: 1,
+								fontSize: '1rem',
+								height: '1rem',
 							}}
+							color='subtle'
+							aria-label='outlined button group'
+							disableElevation
 						>
-							Edit
-						</Button>
-						<Button
-							sx={{
-								px: 2,
-								py: 1,
-							}}
-							color='warning'
-						>
-							Delete
-						</Button>
-					</ButtonGroup>
-				),
+							<Button
+								sx={{
+									px: 2,
+									py: 1,
+								}}
+							>
+								Edit
+							</Button>
+							<Button
+								sx={{
+									px: 2,
+									py: 1,
+								}}
+								color='warning'
+							>
+								Delete
+							</Button>
+						</ButtonGroup>
+					) : (
+						''
+					),
 			},
 			{
 				field: 'propertyType',

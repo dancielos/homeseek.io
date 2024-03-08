@@ -13,17 +13,38 @@ import { useRouter } from 'next/navigation';
 import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { ListingSelectOptions, PropertyType } from '@/data/types';
 
 export interface FileWithPreview extends File {
 	preview: string;
 }
 
+type InputData = {
+	id: string;
+	street: string;
+	cityProvince: ListingSelectOptions;
+	postalCode: string;
+	propertyType: PropertyType;
+	price: number;
+	numBedrooms: number;
+	numBathrooms: number;
+	isPetFriendly: 'yes' | 'no';
+	about: string;
+	utilities: string;
+	// img:
+	amenitiesFeatures: string[];
+	amenitiesNearby: string[];
+	amenitiesOthers: string[];
+} | null;
+
 export default function ListingForm({
 	id = 'new-property-form',
 	action = 'add',
+	data,
 }: {
 	id: string;
 	action: 'add' | 'edit';
+	data?: InputData;
 }) {
 	const router = useRouter();
 	const [files, setFiles] = useState<FileWithPreview[]>([]);
