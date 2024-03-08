@@ -48,7 +48,7 @@ export default async function EditProperty({
 		isPetFriendly: listing.isPetFriendly ? 'yes' : 'no',
 		about: listing.about,
 		utilities: listing.utilitiesIncluded,
-		// img:
+		img: listing.img,
 		amenitiesFeatures: listing.amenities.features,
 		amenitiesNearby: listing.amenities.nearby,
 		amenitiesOthers: listing.amenities.other?.join(', '),

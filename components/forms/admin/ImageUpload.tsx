@@ -18,6 +18,7 @@ import Dropzone, { FileRejection, useDropzone } from 'react-dropzone';
 
 import styles from './ImageUpload.module.css';
 import { FileWithPreview } from './ListingForm';
+import ImageUploadPreviews from './ImageUploadPreviews';
 
 const MAX_NUMBER_FILES = 5;
 
@@ -25,17 +26,21 @@ export default function ImageUpload({
 	invalidInputs = [],
 	files = [],
 	setFiles,
+	action,
+	images,
 }: {
 	invalidInputs?: string[];
 	files: FileWithPreview[];
 	setFiles: Dispatch<SetStateAction<FileWithPreview[]>>;
+	action: 'add' | 'edit';
+	images: string[];
 }) {
 	// const imageUploadRef = useRef<HTMLInputElement>(null);
 	// function test() {
 	// 	console.log(imageUploadRef.current?.files);
 	// }
 	// const [files, setFiles] = useState<FileWithPreview[]>([]);
-	const fileCount = files.length;
+	const fileCount = files.length + (action === 'edit' ? images.length : 0);
 	// console.log('after render:', fileCount);
 
 	// const [rejectedFiles, setRejectedFiles] = useState<FileRejection[]>([]);
@@ -137,37 +142,12 @@ export default function ImageUpload({
 			</aside> */}
 				<aside className={styles['thumbsContainer']}>
 					{files.map((file, i) => (
-						<Card sx={{ width: '100%' }} key={i}>
-							<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-								<CardMedia
-									component='img'
-									sx={{ width: 120 }}
-									image={file.preview}
-									alt='Live from space album cover'
-								/>
-								<CardContent sx={{ flex: '1 0 auto' }}>
-									<Typography
-										variant='subtitle1'
-										color='text.secondary'
-										component='div'
-									>
-										{file.name}
-									</Typography>
-								</CardContent>
-								<CardActions
-									sx={{
-										justifySelf: 'end',
-									}}
-								>
-									<IconButton
-										aria-label='delete'
-										onClick={() => handleDeleteImage(i)}
-									>
-										<Delete />
-									</IconButton>
-								</CardActions>
-							</Box>
-						</Card>
+						<ImageUploadPreviews
+							name={file.name}
+							preview={file.preview}
+							i={i}
+							handleDeleteImage={handleDeleteImage}
+						/>
 					))}
 				</aside>
 				{isError ? (

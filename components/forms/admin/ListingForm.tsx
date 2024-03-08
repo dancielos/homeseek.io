@@ -31,7 +31,7 @@ export type InputData = {
 	isPetFriendly: 'yes' | 'no';
 	about: string;
 	utilities: string[];
-	// img:
+	img: string[];
 	amenitiesFeatures: string[];
 	amenitiesNearby: string[];
 	amenitiesOthers: string;
@@ -120,6 +120,8 @@ export default function ListingForm({
 						invalidInputs={invalidInputs as string[]}
 						files={files}
 						setFiles={setFiles}
+						action={action}
+						images={data?.img || []}
 					/>
 				</Grid>
 				<Grid xs={10}>

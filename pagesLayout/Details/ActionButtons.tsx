@@ -11,7 +11,7 @@ export default async function ActionButtons({
 }) {
 	const session = await getSession();
 	const isListingByCurrentUser = session?.user.id === userId;
-	const isSuperAdmin = session.user.role === 0;
+	const isSuperAdmin = session?.user.role === 0;
 	// listing.userId.toString();
 	return (
 		<>
