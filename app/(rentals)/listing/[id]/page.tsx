@@ -17,8 +17,6 @@ import TitleBar from '@/pagesLayout/Details/TitleBar';
 import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
 import Alert from '@/pagesLayout/Details/Alert';
-import { getSession } from '@/utils/server-actions/auth';
-import Link from 'next/link';
 import ActionButtons from '@/pagesLayout/Details/ActionButtons';
 
 export default async function Details({
