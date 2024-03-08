@@ -12,7 +12,7 @@ export default function PageTitle({ title = '' }: { title?: string }) {
 
 	if (pathname === '/properties') title = 'Properties';
 	else if (pathname === '/properties/new') title = 'Add New Property';
-	else if (pathname === '/edit') title = 'Edit Property';
+	else if (pathname.startsWith('/properties/edit')) title = 'Editing Property';
 	else if (pathname === '/messages') title = 'Messages';
 	// else if (pathname === '/dashboard') title = `${}`
 	return (
