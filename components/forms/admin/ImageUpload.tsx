@@ -12,29 +12,32 @@ import {
 	Snackbar,
 	Typography,
 } from '@mui/material';
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import FormContainer from './FormContainer';
 import Dropzone, { FileRejection, useDropzone } from 'react-dropzone';
 
 import styles from './ImageUpload.module.css';
-
-interface FileWithPreview extends File {
-	preview: string;
-}
+import { FileWithPreview } from './ListingForm';
 
 const MAX_NUMBER_FILES = 5;
 
 export default function ImageUpload({
 	invalidInputs = [],
+	files = [],
+	setFiles,
 }: {
 	invalidInputs?: string[];
+	files: FileWithPreview[];
+	setFiles: Dispatch<SetStateAction<FileWithPreview[]>>;
 }) {
 	// const imageUploadRef = useRef<HTMLInputElement>(null);
 	// function test() {
 	// 	console.log(imageUploadRef.current?.files);
 	// }
-	const [files, setFiles] = useState<FileWithPreview[]>([]);
+	// const [files, setFiles] = useState<FileWithPreview[]>([]);
 	const fileCount = files.length;
+
+	console.log({ files });
 	// console.log('after render:', fileCount);
 
 	// const [rejectedFiles, setRejectedFiles] = useState<FileRejection[]>([]);
@@ -115,14 +118,8 @@ export default function ImageUpload({
 			)}
 
 			<FormContainer title='Images'>
-				<input
-					type='hidden'
-					name='img'
-					id='img-hidden'
-					value={JSON.stringify(files.map((file) => file.name))}
-				/>
 				<div {...getRootProps({ className: styles['dropzone'] })}>
-					<input {...getInputProps()} />
+					<input {...getInputProps()} name='img' />
 					<Box display='flex' justifyContent='center' mb={2}>
 						<CloudUpload fontSize='large' />
 					</Box>
