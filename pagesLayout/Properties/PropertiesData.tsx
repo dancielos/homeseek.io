@@ -15,6 +15,7 @@ import {
 	GridToolbar,
 	GridValueFormatterParams,
 } from '@mui/x-data-grid';
+import Link from 'next/link';
 import { useMemo } from 'react';
 
 const VISIBLE_FIELDS = [
@@ -82,6 +83,8 @@ export default function PropertiesData({
 									px: 2,
 									py: 1,
 								}}
+								LinkComponent={Link}
+								href={`/properties/edit/${params.row.id}`}
 							>
 								Edit
 							</Button>
@@ -91,6 +94,8 @@ export default function PropertiesData({
 									py: 1,
 								}}
 								color='warning'
+								LinkComponent={Link}
+								href={`/properties/edit/${params.row.id}?action=delete`}
 							>
 								Delete
 							</Button>
