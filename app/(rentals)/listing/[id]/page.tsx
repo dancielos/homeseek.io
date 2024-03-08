@@ -1,4 +1,4 @@
-import { Container, Stack } from '@mui/material';
+import { Box, Button, ButtonGroup, Container, Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import Map from '@/components/client/Map';
@@ -18,6 +18,7 @@ import getCoordsFromCity from '@/utils/server-actions/getCoordsFromCity';
 import getPin from '@/utils/server-actions/getPin';
 import Alert from '@/pagesLayout/Details/Alert';
 import { getSession } from '@/utils/server-actions/auth';
+import Link from 'next/link';
 
 export default async function Details({
 	params = { id: '' },
@@ -28,9 +29,7 @@ export default async function Details({
 	const listing = await ListingModel.findById(params.id);
 
 	const session = await getSession();
-	const isListingByCurrentUser = session.id === listing.userId;
-
-	console.log({ isListingByCurrentUser });
+	const isListingByCurrentUser = session.user.id === listing.userId.toString();
 
 	// console.log(listing.address);
 	const address = formatAddress(
@@ -66,7 +65,31 @@ export default async function Details({
 									customHeight={480}
 									autoHeight={false}
 								/>
-
+								{isListingByCurrentUser && (
+									<Box
+										sx={{
+											my: 2,
+										}}
+									>
+										<ButtonGroup aria-label='Basic button group'>
+											<Button
+												color='info'
+												variant='contained'
+												LinkComponent={Link}
+												href={`/properties/edit/${listing.id}`}
+											>
+												Edit
+											</Button>
+											<Button
+												color='error'
+												LinkComponent={Link}
+												href={`/properties/edit/${listing.id}?action=delete`}
+											>
+												Delete
+											</Button>
+										</ButtonGroup>
+									</Box>
+								)}
 								<BasicDetails
 									address={address}
 									price={price}

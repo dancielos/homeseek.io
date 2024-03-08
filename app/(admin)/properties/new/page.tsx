@@ -3,7 +3,7 @@ import ListingForm from '@/components/forms/admin/ListingForm';
 export default function NewProperty() {
 	return (
 		<>
-			<ListingForm id='new-property-form' />
+			<ListingForm id='new-property-form' action='add' />
 		</>
 	);
 }

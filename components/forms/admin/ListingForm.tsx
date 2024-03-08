@@ -24,8 +24,10 @@ export interface FileWithPreview extends File {
 
 export default function ListingForm({
 	id = 'new-property-form',
+	action = 'add',
 }: {
 	id: string;
+	action: 'add' | 'edit';
 }) {
 	const router = useRouter();
 	const [files, setFiles] = useState<FileWithPreview[]>([]);
