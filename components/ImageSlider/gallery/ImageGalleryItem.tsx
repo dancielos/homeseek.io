@@ -34,7 +34,7 @@ export default function ImageGalleryItem({
 					overflow: 'hidden',
 				}}
 				className='rounded-[1px] blur-sm brightness-75'
-				priority={priority}
+				// priority={priority}
 			/>
 			<Image
 				src={image.src}
@@ -49,7 +49,7 @@ export default function ImageGalleryItem({
 					// objectPosition: 'center',
 				}}
 				className='rounded-[1px]'
-				priority={priority}
+				// priority={priority}
 			/>
 		</div>
 	);
