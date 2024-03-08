@@ -19,6 +19,7 @@ import getPin from '@/utils/server-actions/getPin';
 import Alert from '@/pagesLayout/Details/Alert';
 import { getSession } from '@/utils/server-actions/auth';
 import Link from 'next/link';
+import ActionButtons from '@/pagesLayout/Details/ActionButtons';
 
 export default async function Details({
 	params = { id: '' },
@@ -27,9 +28,6 @@ export default async function Details({
 }) {
 	await connectDB();
 	const listing = await ListingModel.findById(params.id);
-
-	const session = await getSession();
-	const isListingByCurrentUser = session.user.id === listing.userId.toString();
 
 	// console.log(listing.address);
 	const address = formatAddress(
@@ -65,31 +63,10 @@ export default async function Details({
 									customHeight={480}
 									autoHeight={false}
 								/>
-								{isListingByCurrentUser && (
-									<Box
-										sx={{
-											my: 2,
-										}}
-									>
-										<ButtonGroup aria-label='Basic button group'>
-											<Button
-												color='info'
-												variant='contained'
-												LinkComponent={Link}
-												href={`/properties/edit/${listing.id}`}
-											>
-												Edit
-											</Button>
-											<Button
-												color='error'
-												LinkComponent={Link}
-												href={`/properties/edit/${listing.id}?action=delete`}
-											>
-												Delete
-											</Button>
-										</ButtonGroup>
-									</Box>
-								)}
+								<ActionButtons
+									listingId={listing.id}
+									userId={listing.userId.toString()}
+								/>
 								<BasicDetails
 									address={address}
 									price={price}
