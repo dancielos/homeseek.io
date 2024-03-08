@@ -23,16 +23,25 @@ export default function ImageUploadPreviews({
 }) {
 	return (
 		<Card sx={{ width: '100%' }} key={i}>
-			<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-				<Image
-					src={preview}
-					width={120}
-					height={120}
-					alt={preview}
-					style={{
-						objectFit: 'cover',
-					}}
-				/>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'row',
+					alignItems: 'center',
+					justifyContent: 'flex-start',
+				}}
+			>
+				<CardMedia>
+					<Image
+						src={preview}
+						width={120}
+						height={120}
+						alt={preview}
+						style={{
+							objectFit: 'cover',
+						}}
+					/>
+				</CardMedia>
 
 				<CardContent>
 					<Typography
@@ -49,10 +58,20 @@ export default function ImageUploadPreviews({
 				</CardContent>
 				<CardActions
 					sx={{
-						justifySelf: 'end',
+						flexGrow: 1,
+						justifyContent: 'flex-end',
 					}}
 				>
-					<IconButton aria-label='delete' onClick={() => handleDeleteImage(i)}>
+					<IconButton
+						aria-label='delete'
+						onClick={() => handleDeleteImage(i)}
+						sx={{
+							mr: {
+								xs: 0,
+								sm: 2,
+							},
+						}}
+					>
 						<Delete />
 					</IconButton>
 				</CardActions>

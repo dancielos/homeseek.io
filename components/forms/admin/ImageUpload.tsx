@@ -151,7 +151,7 @@ export default function ImageUpload({
 							handleDeleteImage={handleDeleteImage}
 						/>
 					))}
-					<Typography variant='h4'>Current Uploaded</Typography>
+					<Typography variant='h6'>Uploaded Images</Typography>
 					{action === 'edit' && images.length > 0
 						? images.map((image, i) => (
 								<ImageUploadPreviews
