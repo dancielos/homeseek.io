@@ -4,6 +4,7 @@ import { PROPERTY_TYPE, PropertyType } from '@/data/types';
 import ListingModel from '@/models/Listing';
 import formatPrice from '../formatters/formatPrice';
 import formatDate from '../formatters/formatDate';
+import connectDB from '../db';
 
 export type AdminListing = {
 	id: string;
@@ -20,6 +21,7 @@ export type AdminListing = {
 
 export default async function getListingsForAdmin(): Promise<AdminListing[]> {
 	try {
+		await connectDB();
 		const listings = await ListingModel.find()
 			.populate('userId')
 			.sort({ date: -1 })
