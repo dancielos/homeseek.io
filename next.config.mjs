@@ -26,6 +26,8 @@ const nextConfig = {
 		DB_URL: process.env.DB_URL,
 		S3_URL: process.env.S3_URL,
 		HOMESEEK_SECRET: process.env.HOMESEEK_SECRET,
+		BUCKET_NAME: process.env.BUCKET_NAME,
+		BUCKET_REGION: process.env.BUCKET_REGION,
 	},
 	transpilePackages: ['@mui/x-charts'],
 };
