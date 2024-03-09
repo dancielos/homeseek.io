@@ -78,7 +78,7 @@ export default function SectionCta() {
 							take advantage of our platform's powerful exposure to find the
 							perfect renters.
 						</P>
-						<CTA>Start listing your property</CTA>
+						<CTA href='/dashboard'>Start listing your property</CTA>
 					</Grid>
 					<Grid xs={10} sm={4} md={3} lg={2} sx={{ position: 'inherit' }}>
 						<Image
