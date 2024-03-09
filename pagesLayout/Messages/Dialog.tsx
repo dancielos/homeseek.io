@@ -42,11 +42,7 @@ export default function Dialog({
 					<DialogTitle id='responsive-dialog-title'>
 						{`${message?.name || ''} (${message?.emailAddress || ''})`}
 					</DialogTitle>
-					<DialogContent
-						sx={{
-							minWidth: '480px',
-						}}
-					>
+					<DialogContent>
 						<DialogContentText
 							component='div'
 							sx={{
