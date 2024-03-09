@@ -28,6 +28,8 @@ const nextConfig = {
 		HOMESEEK_SECRET: process.env.HOMESEEK_SECRET,
 		BUCKET_NAME: process.env.BUCKET_NAME,
 		BUCKET_REGION: process.env.BUCKET_REGION,
+		ACCESS_KEY_ID: process.env.ACCESS_KEY_ID,
+		SECRET_ACCESS_KEY: process.env.SECRET_ACCESS_KEY,
 	},
 	transpilePackages: ['@mui/x-charts'],
 };
