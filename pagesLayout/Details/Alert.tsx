@@ -29,7 +29,9 @@ export default function Alert() {
 			<DialogTitle id='alert-dialog-title'>{'Success!'}</DialogTitle>
 			<DialogContent>
 				<DialogContentText id='alert-dialog-description'>
-					You have successfully created a new Listing.
+					{params.get('a')
+						? 'The listing has been successfully updated.'
+						: 'You have successfully created a new Listing.'}
 				</DialogContentText>
 			</DialogContent>
 			<DialogActions>

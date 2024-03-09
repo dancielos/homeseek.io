@@ -67,7 +67,11 @@ export default function ListingForm({
 
 	useEffect(() => {
 		if (isError) window.scrollTo({ top: 0, behavior: 'smooth' });
-		else router.push(`/listing/${formState.id}?status=success`);
+		else {
+			if (action === 'add')
+				router.push(`/listing/${formState.id}?status=success`);
+			else router.push(`/listing/${formState.id}?status=success&a=e`);
+		}
 	}, [formState]);
 
 	async function formAction(e: SyntheticEvent) {
