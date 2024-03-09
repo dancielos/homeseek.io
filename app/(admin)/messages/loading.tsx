@@ -15,29 +15,27 @@ export default function Loading() {
 		<Box sx={{ overflow: 'auto', minHeight: '80vh' }}>
 			<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
 				<TableContainer>
-					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'flex-end',
-						}}
-					>
-						<Skeleton width={240} height={48} />
-					</Box>
 					<Table sx={{ minWidth: 650 }} size='small' aria-label='a dense table'>
 						<TableHead>
 							<TableRow>
-								<TableCell width={150}>Street</TableCell>
-								<TableCell align='right' width={210}>
-									City, Province
+								<TableCell width={150}>From</TableCell>
+								<TableCell align='right' width={120}>
+									Listing
 								</TableCell>
 								<TableCell align='right' width={150}>
-									Owner / Landlord
-								</TableCell>
-								<TableCell align='right' width={240}>
 									Actions
 								</TableCell>
-								<TableCell align='right' width={150}>
-									Property Type
+								<TableCell align='right' width={100}>
+									Date
+								</TableCell>
+								<TableCell align='right' width={100}>
+									Phone number
+								</TableCell>
+								<TableCell align='right' width={100}>
+									Email Address
+								</TableCell>
+								<TableCell align='right' width={240}>
+									Message
 								</TableCell>
 							</TableRow>
 						</TableHead>
@@ -45,6 +43,12 @@ export default function Loading() {
 							{rows.map((row) => (
 								<TableRow key={row}>
 									<TableCell component='th' scope='row'>
+										<Skeleton />
+									</TableCell>
+									<TableCell align='right'>
+										<Skeleton />
+									</TableCell>
+									<TableCell align='right'>
 										<Skeleton />
 									</TableCell>
 									<TableCell align='right'>

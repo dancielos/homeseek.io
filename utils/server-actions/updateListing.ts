@@ -74,7 +74,7 @@ export default async function updateListing(
 	} = Object.fromEntries(formData.entries());
 
 	const parsedUploadedImages = JSON.parse(uploadedImages.toString());
-	console.log('RAW: ', parsedUploadedImages);
+	// console.log('RAW: ', parsedUploadedImages);
 
 	// validate the data
 
