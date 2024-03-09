@@ -16,6 +16,7 @@ import Link from 'next/link';
 import Logo from './Logo';
 import { Suspense } from 'react';
 import LoginLink from '@/components/forms/login/LoginLink';
+import BurgerMenu from '@/components/client/BurgerMenu';
 
 export default function NavBar() {
 	return (
@@ -48,20 +49,7 @@ export default function NavBar() {
 						Post your listing
 					</CTA>
 				</Stack>
-				<Box
-					sx={{ flexGrow: 1, display: { xs: 'flex', xm: 'none' } }}
-					justifyContent='flex-end'
-				>
-					<IconButton
-						size='large'
-						aria-label='account of current user'
-						aria-controls='menu-appbar'
-						aria-haspopup='true'
-						color='inherit'
-					>
-						<Menu />
-					</IconButton>
-				</Box>
+				<BurgerMenu />
 			</Toolbar>
 		</AppBar>
 	);
