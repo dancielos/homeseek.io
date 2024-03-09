@@ -24,7 +24,7 @@ export default function PropertyTypeFilter() {
 	// when nothing is checked, the house is still checked
 
 	const newValue = initialValue;
-	console.log({ propertyParam, newValue });
+	// console.log({ propertyParam, newValue });
 
 	if (propertyParam) {
 		const properties = propertyParam?.split(',');

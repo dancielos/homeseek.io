@@ -8,7 +8,7 @@ export function getUserCity() {
 				);
 				const data = await response.json();
 
-				console.log(`getUserCity(): ${data}`);
+				// console.log(`getUserCity(): ${data}`);
 			},
 			(error) => {
 				console.error('Error getting user location:', error);

@@ -18,9 +18,9 @@ describe('Links should direct the use to correct pages', () => {
 		cy.get('[data-testid=go-back]').click();
 
 		cy.url().should('match', homepageRegex);
-		cy.get('a[data-testid=listing-for-city-toronto]').click();
-
-		cy.url().should('include', '/search?s=toronto');
+		cy.get('a[data-testid=listing-for-city-calgary]').click();
+		cy.wait(4000);
+		cy.url().should('include', '/search?s=calgary');
 		cy.get('a[data-testid=more-details-0]').click();
 
 		cy.url().should('include', '/listing/');

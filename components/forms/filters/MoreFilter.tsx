@@ -16,9 +16,9 @@ let renderCounter = 0;
 
 export default function MoreFilter() {
 	renderCounter += 1;
-	console.log(renderCounter);
+	// console.log(renderCounter);
 	const moreParam = useSearchParams()?.get(MORE_PARAM);
-	console.log(`${moreParam} ... ${Boolean(moreParam)}`);
+	// console.log(`${moreParam} ... ${Boolean(moreParam)}`);
 	const [checkboxes, setCheckboxes] = useState({
 		isPetFriendly: moreParam === 'true',
 	});

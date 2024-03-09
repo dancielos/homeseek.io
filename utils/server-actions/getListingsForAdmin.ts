@@ -25,8 +25,6 @@ export default async function getListingsForAdmin(): Promise<AdminListing[]> {
 			.sort({ date: -1 })
 			.exec();
 
-		console.log(listings[0]);
-
 		const formattedListing: AdminListing[] = listings.map((listing) => ({
 			id: listing._id.toString(),
 			userId: listing.userId._id.toString(),
