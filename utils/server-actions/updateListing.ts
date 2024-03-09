@@ -27,7 +27,7 @@ export default async function updateListing(
 			id: '',
 		};
 	}
-
+	await connectDB();
 	const listing = await ListingModel.findById(listingId);
 	if (!listing) {
 		return {
@@ -40,11 +40,12 @@ export default async function updateListing(
 
 	const session = await getSession();
 	const isSuperAdmin = session?.user.role === 0;
-	if (
+	const isAuthorized =
 		!session ||
 		session.role > 1 ||
-		(!isSuperAdmin && listing.userId.toString() !== session.user.id)
-	) {
+		(!isSuperAdmin && listing.userId.toString() !== session.user.id);
+
+	if (isAuthorized) {
 		return {
 			success: false,
 			message: 'You are not authorized. Please sign in again. ',
@@ -148,8 +149,6 @@ export default async function updateListing(
 	);
 
 	try {
-		await connectDB();
-
 		if (!comparedImages.isTheSame) {
 			const s3Response = await deleteFromS3(comparedImages.toDelete);
 			if (!s3Response) throw Error(`Failed to update images.`);

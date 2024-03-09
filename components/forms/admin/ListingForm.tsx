@@ -9,12 +9,15 @@ import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 import ImageUpload from './ImageUpload';
 
 import { postListing } from '@/utils/server-actions/postListing';
-import { useRouter } from 'next/navigation';
+import { redirect, usePathname, useRouter } from 'next/navigation';
 import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
 import { FormResponse, ListingSelectOptions, PropertyType } from '@/data/types';
 import updateListing from '@/utils/server-actions/updateListing';
+import ConfirmDeleteDialog from './ConfirmDeleteDialog';
+import Link from 'next/link';
+import deleteListing from '@/utils/server-actions/deleteListing';
 
 export interface FileWithPreview extends File {
 	preview: string;
@@ -48,11 +51,12 @@ export default function ListingForm({
 	data?: InputData;
 }) {
 	const router = useRouter();
+	const pathname = usePathname();
 	const [files, setFiles] = useState<FileWithPreview[]>([]);
 	const [uploadedImages, setUploadedImages] = useState<string[]>(
 		data?.img || []
 	);
-	console.log('RAW: ', uploadedImages);
+
 	const [pending, setPending] = useState<boolean>(false);
 	const formRef = useRef(null);
 
@@ -92,6 +96,21 @@ export default function ListingForm({
 				: await updateListing(formData);
 		setFormState(response);
 		setPending(false);
+	}
+
+	async function handleConfirmDelete() {
+		setPending(true);
+		const response = await deleteListing(data?.id as string);
+		if (!response?.success) {
+			setFormState(response);
+			router.push(pathname, { scroll: false });
+		} else router.push('/properties', { scroll: true });
+
+		setPending(false);
+	}
+
+	function handleDelete() {
+		router.push(`${pathname}?action=delete`, { scroll: false });
 	}
 
 	return (
@@ -168,7 +187,12 @@ export default function ListingForm({
 					}}
 				>
 					{action === 'edit' && (
-						<Button color='warning' size='small' variant='outlined'>
+						<Button
+							color='warning'
+							size='small'
+							variant='outlined'
+							onClick={handleDelete}
+						>
 							Delete
 						</Button>
 					)}
@@ -180,6 +204,7 @@ export default function ListingForm({
 					/>
 				</Grid>
 			</Grid>
+			<ConfirmDeleteDialog onConfirm={handleConfirmDelete} />
 		</>
 	);
 }

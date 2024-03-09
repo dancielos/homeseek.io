@@ -6,7 +6,7 @@ import { getSession } from '@/utils/server-actions/auth';
 export default async function Properties() {
 	const listings = await getListingsForAdmin();
 	const session = await getSession();
-	const isSuperAdmin = session.user.role === 0;
+	const isSuperAdmin = session?.user.role === 0;
 	return (
 		<>
 			<Box sx={{ overflow: 'auto', minHeight: '80vh' }}>
