@@ -42,7 +42,7 @@ export default function formatListingInputData({
 		numBathrooms: +numBathrooms,
 		numBedrooms: +numBedrooms,
 		isPetFriendly: isPetFriendly.toString().toLowerCase() === 'yes',
-		img: [...(uploadedImages as string[]), ...img],
+		img: uploadedImages ? [...(uploadedImages as string[]), ...img] : [...img],
 		propertyType: ('' + propertyType) as PropertyType,
 		about: '' + about,
 		amenities: {

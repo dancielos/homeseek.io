@@ -15,6 +15,8 @@ export async function postListing(
 	// prevState: FormResponse,
 	formData: FormData
 ): Promise<FormResponse> {
+	console.log('invoking server action...');
+	console.log('validating session...');
 	const session = await getSession();
 
 	if (!session || session.role > 1) {
@@ -44,6 +46,8 @@ export async function postListing(
 		agreement,
 	} = Object.fromEntries(formData.entries());
 
+	console.log('looping image inputs...');
+
 	const images: Array<File> = [0, 1, 2, 3, 4]
 		.map((i) => {
 			return formData.get(`img[${i}]`) as File;
@@ -53,6 +57,8 @@ export async function postListing(
 	const filenames = images.map((image, i) => {
 		return `tmp/${hashFilename(image.name, i)}`;
 	});
+
+	console.log('validating inputs...');
 
 	const isValid = validateListingInput({
 		img: filenames,
@@ -81,6 +87,9 @@ export async function postListing(
 		};
 	}
 
+	console.log('inputs are valid.');
+	console.log('formatting input...');
+
 	const formattedData = formatListingInputData({
 		userId: session.user.id,
 		street,
@@ -99,12 +108,18 @@ export async function postListing(
 		amenitiesOthers,
 	});
 
+	console.log('FORMATTED DATA: ', formattedData);
+
 	try {
+		console.log('connecting to DB...');
 		await connectDB();
 
+		console.log('uploading to S3...');
 		const s3Response = await uploadToS3(images, filenames);
 		if (!s3Response) throw Error('Failed to upload images.');
+		console.log('image upload successful');
 
+		console.log('creating new listing...');
 		const newListing = await ListingModel.create(formattedData);
 
 		revalidatePath('/(admin)/properties', 'page');
