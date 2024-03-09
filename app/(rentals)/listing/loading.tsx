@@ -17,7 +17,7 @@ export default function Loading() {
 				}}
 			>
 				<Grid container columns={10} columnSpacing={2} rowSpacing={6}>
-					<Grid xm={10} sm={5} md={6}>
+					<Grid xs={10} sm={5} md={6}>
 						<Stack spacing={4}>
 							<Section fullWidth variant='custom' sx={{ p: { xs: 0 } }}>
 								<Skeleton variant='rectangular' height={240} />
@@ -48,7 +48,7 @@ export default function Loading() {
 							<Skeleton variant='rectangular' height={320} />
 						</Stack>
 					</Grid>
-					<Grid xm={10} sm={5} md={4}>
+					<Grid xs={10} sm={5} md={4}>
 						<Stack
 							id='contact-listing'
 							data-testid='contact-listing'
