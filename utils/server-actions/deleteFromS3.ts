@@ -1,6 +1,7 @@
 'use server';
 
-import { DeleteObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { DeleteObjectCommand } from '@aws-sdk/client-s3';
+import { client } from '../s3';
 
 export default async function deleteFromS3(
 	images: Array<string>
@@ -9,9 +10,9 @@ export default async function deleteFromS3(
 	// console.log('to be deleted: ', images);
 	if (images.length === 0) return false;
 
-	const client = new S3Client({
-		region: process.env.BUCKET_REGION,
-	});
+	// const client = new S3Client({
+	// 	region: process.env.BUCKET_REGION,
+	// });
 
 	const commands = images.map((image) => {
 		return client.send(
