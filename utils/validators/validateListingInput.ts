@@ -4,6 +4,10 @@ import validatePostalCode from './validatePostalCode';
 import validatePropertyType from './validatePropertyType';
 import validateImageFilenames from './validateImageFilenames';
 
+type ValidatingInputTypes = InputTypes & {
+	uploadedImages?: string[];
+};
+
 export function validateListingInput({
 	street,
 	cityProvince,
@@ -20,7 +24,8 @@ export function validateListingInput({
 	amenitiesNearby,
 	amenitiesOthers,
 	agreement,
-}: InputTypes): ValidResponse {
+	uploadedImages,
+}: ValidatingInputTypes): ValidResponse {
 	// const street = formData.get('street');
 	const invalidInputs: string[] = [];
 	if (agreement !== 'on' && agreement !== 'true')
@@ -66,9 +71,10 @@ export function validateListingInput({
 	if (!about) invalidInputs.push('about');
 
 	// img,
-
-	if (img.length <= 0 || !validateImageFilenames(img))
-		invalidInputs.push('img');
+	if (img.length <= 0 || !validateImageFilenames(img)) {
+		if (!uploadedImages || uploadedImages.length <= 0)
+			invalidInputs.push('img');
+	}
 
 	// amenitiesFeatures,
 	if (!Array.isArray(JSON.parse(amenitiesFeatures.toString())))

@@ -3,6 +3,10 @@ import { InputTypes, PropertyType } from '@/data/types';
 import { ListingInput } from '@/models/Listing';
 import { Types } from 'mongoose';
 
+type FormatInputData = InputTypes & {
+	uploadedImages?: string[];
+};
+
 export default function formatListingInputData({
 	userId,
 	street,
@@ -19,7 +23,8 @@ export default function formatListingInputData({
 	amenitiesFeatures,
 	amenitiesNearby,
 	amenitiesOthers,
-}: InputTypes): ListingInput {
+	uploadedImages,
+}: FormatInputData): ListingInput {
 	const { city, province } = AVAILABLE_CITIES.find(
 		(ac) => ac.label === cityProvince.toString()
 	)?.value as { city: string; province: string };
@@ -37,7 +42,7 @@ export default function formatListingInputData({
 		numBathrooms: +numBathrooms,
 		numBedrooms: +numBedrooms,
 		isPetFriendly: isPetFriendly.toString().toLowerCase() === 'yes',
-		img,
+		img: [...(uploadedImages as string[]), ...img],
 		propertyType: ('' + propertyType) as PropertyType,
 		about: '' + about,
 		amenities: {
