@@ -8,12 +8,12 @@ import AddressBasicDetails from './AddressBasicDetails';
 import FeaturesAmenitiesUtilities from './FeaturesAmenitiesUtilities';
 import ImageUpload from './ImageUpload';
 
-import { FormResponse, postListing } from '@/utils/server-actions/postListing';
+import { postListing } from '@/utils/server-actions/postListing';
 import { useRouter } from 'next/navigation';
 import ListingFormSubmit from './ListingFormSubmit';
 import Alert from './Alert';
 import { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import { ListingSelectOptions, PropertyType } from '@/data/types';
+import { FormResponse, ListingSelectOptions, PropertyType } from '@/data/types';
 import updateListing from '@/utils/server-actions/updateListing';
 
 export interface FileWithPreview extends File {
@@ -52,6 +52,7 @@ export default function ListingForm({
 	const [uploadedImages, setUploadedImages] = useState<string[]>(
 		data?.img || []
 	);
+	console.log('RAW: ', uploadedImages);
 	const [pending, setPending] = useState<boolean>(false);
 	const formRef = useRef(null);
 
@@ -171,6 +172,7 @@ export default function ListingForm({
 						text='Save Listing'
 						isError={isError}
 						pending={pending}
+						action={action}
 					/>
 				</Grid>
 			</Grid>

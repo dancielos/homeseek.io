@@ -11,10 +11,12 @@ export default function ListingFormSubmit({
 	text,
 	isError = false,
 	pending = false,
+	action,
 }: {
 	text: string;
 	isError?: boolean;
 	pending?: boolean;
+	action: 'add' | 'edit';
 }) {
 	// const { pending } = useFormStatus();
 	// console.log(pending);
@@ -42,7 +44,9 @@ export default function ListingFormSubmit({
 								}}
 							>
 								<CircularProgress />
-								Creating a new listing, please wait a moment.
+								{action === 'add'
+									? 'Creating a new listing, please wait a moment...'
+									: 'Updating listing, please wait a moment...'}
 							</DialogContentText>
 						</DialogContent>
 					</Dialog>

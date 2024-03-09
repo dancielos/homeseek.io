@@ -24,6 +24,7 @@ export default async function EditProperty({
 	await connectDB();
 
 	const listing = await ListingModel.findById(params.id);
+	if (!listing) redirect('/properties');
 
 	if (listing.userId.toString() !== session.user.id && !isSuperAdmin) {
 		redirect('/properties');
@@ -53,7 +54,7 @@ export default async function EditProperty({
 		amenitiesNearby: listing.amenities.nearby,
 		amenitiesOthers: listing.amenities.other?.join(', '),
 	};
-	console.log(data);
+	// console.log(data);
 	return (
 		<>
 			<ListingForm id='new-property-form' action='edit' data={data} />

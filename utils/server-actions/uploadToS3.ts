@@ -1,3 +1,5 @@
+'use server';
+
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 
 export default async function uploadToS3(

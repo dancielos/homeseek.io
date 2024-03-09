@@ -9,6 +9,10 @@ import hashFilename from '../hashFilename';
 import { validateListingInput } from '../validators/validateListingInput';
 import formatListingInputData from '../formatters/formatListingInputData';
 import connectDB from '../db';
+import compareUploadedImages from '../compareUploadedImages';
+import deleteFromS3 from './deleteFromS3';
+import uploadToS3 from './uploadToS3';
+import { revalidatePath } from 'next/cache';
 
 export default async function updateListing(
 	formData: FormData
@@ -68,6 +72,9 @@ export default async function updateListing(
 		agreement,
 	} = Object.fromEntries(formData.entries());
 
+	const parsedUploadedImages = JSON.parse(uploadedImages.toString());
+	console.log('RAW: ', parsedUploadedImages);
+
 	// validate the data
 
 	const images: Array<File> = [0, 1, 2, 3, 4]
@@ -80,11 +87,9 @@ export default async function updateListing(
 		return `tmp/${hashFilename(image.name, i)}`;
 	});
 
-	console.log('validating...');
-
 	const isValid = validateListingInput({
 		img: filenames,
-		uploadedImages: JSON.parse(uploadedImages.toString()),
+		uploadedImages: parsedUploadedImages,
 		street,
 		cityProvince,
 		postalCode,
@@ -110,11 +115,7 @@ export default async function updateListing(
 		};
 	}
 
-	console.log('fields are valid.');
-
-	console.log('formatting data...');
-
-	const formattedData = formatListingInputData({
+	const { userId, date, ...formattedData } = formatListingInputData({
 		userId: session.user.id,
 		street,
 		cityProvince,
@@ -130,10 +131,10 @@ export default async function updateListing(
 		amenitiesFeatures,
 		amenitiesNearby,
 		amenitiesOthers,
-		uploadedImages: JSON.parse(uploadedImages.toString()),
+		uploadedImages: parsedUploadedImages,
 	});
 
-	console.log(formattedData);
+	// console.log(formattedData);
 
 	// check if there's a difference between
 	// old uploadedImages vs. new uploadedImages
@@ -141,25 +142,38 @@ export default async function updateListing(
 	// that means you need to delete
 	// some object from S3
 
+	const comparedImages = compareUploadedImages(
+		listing.img,
+		parsedUploadedImages
+	);
+
 	try {
 		await connectDB();
 
-		//
+		if (!comparedImages.isTheSame) {
+			const s3Response = await deleteFromS3(comparedImages.toDelete);
+			if (!s3Response) throw Error(`Failed to update images.`);
+		}
 
-		// const s3Response = await uploadToS3(images, filenames);
-		// if (!s3Response) throw Error('Failed to upload images.');
+		const s3Response = await uploadToS3(images, filenames);
+		if (!s3Response) throw Error('Failed to upload images.');
 
 		// const newListing = await ListingModel.create(formattedData);
 
-		// revalidatePath('/(admin)/properties', 'page');
+		const updatedListing = await ListingModel.findByIdAndUpdate(
+			listingId,
+			formattedData
+		);
 
-		// return {
-		// 	success: true,
-		// 	message: '',
-		// 	invalidInput: isValid.invalidInputs,
-		// 	id: listing._id.toString(),
-		// 	// id: 'newListing._id.toString()',
-		// };
+		revalidatePath('/(admin)/properties', 'page');
+
+		return {
+			success: true,
+			message: '',
+			invalidInput: isValid.invalidInputs,
+			id: listing._id.toString(),
+			// id: 'newListing._id.toString()',
+		};
 	} catch (error) {
 		console.error(error);
 		return {

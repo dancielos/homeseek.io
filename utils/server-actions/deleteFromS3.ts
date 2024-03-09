@@ -6,11 +6,13 @@ export default async function deleteFromS3(
 	images: Array<string>
 ): Promise<boolean> {
 	console.log('deleting from s3');
+	console.log('to be deleted: ', images);
 	if (images.length === 0) return false;
 
 	const client = new S3Client({
 		region: process.env.BUCKET_REGION,
 	});
+
 	const commands = images.map((image) => {
 		return client.send(
 			new DeleteObjectCommand({
@@ -21,8 +23,9 @@ export default async function deleteFromS3(
 	});
 
 	const responses = await Promise.all(commands);
+	console.log('responses:', responses);
 
 	return responses.every(
-		(response) => response['$metadata'].httpStatusCode === 200
+		(response) => response['$metadata'].httpStatusCode === 204
 	);
 }

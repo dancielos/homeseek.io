@@ -32,6 +32,8 @@ export default async function Details({
 	await connectDB();
 	const listing = await ListingModel.findById(params.id);
 
+	if (!listing) redirect('/');
+
 	// console.log(listing.address);
 	const address = formatAddress(
 		listing.address.street,
