@@ -13,7 +13,7 @@ export async function encrypt(payload: any) {
 	return await new SignJWT(payload)
 		.setProtectedHeader({ alg: 'HS256' })
 		.setIssuedAt()
-		.setExpirationTime('1h')
+		.setExpirationTime('24h')
 		.sign(key);
 }
 
@@ -64,7 +64,7 @@ export async function login(
 
 	if (!user) return { error: 'Failed to login. Please try again.' };
 
-	const expires = new Date(Date.now() + 60 * 60 * 1000);
+	const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
 	const session = await encrypt({ user, expires });
 
 	cookies().set('session', session, { expires, httpOnly: true });

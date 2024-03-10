@@ -3,6 +3,7 @@ import StickyBar from '@/components/ui/StickyBar';
 import { MailOutline } from '@mui/icons-material';
 import { IconButton, Stack } from '@mui/material';
 import BackButton from '../../components/client/BackButton';
+import Link from 'next/link';
 
 export default function TitleBar({ title }: { title: string }) {
 	return (
@@ -63,6 +64,7 @@ export default function TitleBar({ title }: { title: string }) {
 						},
 						flex: '0 0 10%',
 					}}
+					href='#contact-listing'
 					// startIcon={}
 				>
 					<MailOutline />
