@@ -4,7 +4,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { ReduxProvider } from '@/data/provider';
 import ThemeRegistry from '@/data/theme/themeRegistry';
-import { CssBaseline } from '@mui/material';
+import { CircularProgress, CssBaseline } from '@mui/material';
+import { Suspense } from 'react';
+import Loading from './(rentals)/loading';
 
 export const metadata: Metadata = {
 	title: 'Home Seek',

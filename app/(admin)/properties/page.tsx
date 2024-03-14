@@ -13,7 +13,7 @@ export default async function Properties() {
 				<Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
 					<PropertiesData
 						rows={listings}
-						userId={session.user.id}
+						userId={session?.user.id ?? ''}
 						isSuperAdmin={isSuperAdmin}
 					/>
 				</Box>
